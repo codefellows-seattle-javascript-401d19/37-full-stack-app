@@ -1,33 +1,50 @@
 'use strict';
 
+require('dotenv').config();
+const PRODUCTION = process.env.NODE_ENV === 'production';
+const { EnvironmentPlugin } = require('webpack');
+const CleanPlugin = require('clean-webpack-plugin');
+const UglifyPlugin = require('uglifyjs-webpack-plugin');
+
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const extractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = {
-  entry: `${__dirname}/src/main.js`,
-  output: {
-    path: `${__dirname}/src/build`,
-    filename: 'bundle.[hash].js',
-  },
-  plugins: [
-    new htmlWebpackPlugin(),
-    new extractTextPlugin('bundle.[hash].scss'),
+let webpackConfig = module.exports = {};
+webpackConfig.entry = `${__dirname}/src/main.js`,
+webpackConfig.output = {
+  path: `${__dirname}/src/build`,
+  filename: 'bundle.[hash].js',
+  publicPath: process.env.CDN_URL,
+};
+
+webpackConfig.plugins = [
+  new htmlWebpackPlugin(),
+  new EnvironmentPlugin(['NODE_ENV']),
+  new extractTextPlugin('bundle.[hash].scss'),
+];
+
+if(PRODUCTION){
+  webpackConfig.plugins = webpackConfig.plugins.concat([
+    new UglifyPlugin(),
+    new CleanPlugin(),
+  ]);
+}
+
+webpackConfig.module = {
+  rules: [
+    {
+      test: /\.js$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader',
+    },
+    {
+      test: /\.scss/,
+      loader: 'style-loader!css-loader!sass-loader',
+    },
   ],
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-      },
-      {
-        test: /\.scss/,
-        loader: 'style-loader!css-loader!sass-loader',
-      },
-    ],
-  },
-  devtool: 'eval-source-map',
-  devServer: {
-    historyApiFallback: true,
-  },
+};
+
+webpackConfig.devtool = PRODUCTION ? undefined : 'eval-source-map';
+webpackConfig.devServer = {
+  historyApiFallback: true,
 };
