@@ -2,7 +2,29 @@ import React from 'react';
 
 class Landing extends React.Component{
   render(){
-    return <div>baby groot</div>;
+    let signUpJSX =
+      <form>
+        <input
+          type='text'
+          placeholder='username'
+        />
+        <input
+          type='text'
+          placeholder='password'
+        />
+        <input
+          type='text'
+          placeholder='email'
+        />
+      </form>;
+
+    let showJSX;
+    // let showJSX = token ? signUpJSX : loginJSX;
+    return (
+      <div>
+        {showJSX}
+      </div>
+    );
   }
 }
 
