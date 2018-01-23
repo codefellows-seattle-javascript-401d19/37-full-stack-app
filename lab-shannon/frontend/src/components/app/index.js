@@ -1,8 +1,8 @@
 import React from 'react';
 import {BrowserRouter, Link, Route} from 'react-router-dom';
-import Dashboard from './dashboard';
-import Landing from './landing';
-import AuthRedirect from './auth-redirect';
+import Dashboard from '../dashboard';
+import Landing from '../landing';
+import AuthRedirect from '../auth-redirect';
 
 class App extends React.Component{
   render(){
