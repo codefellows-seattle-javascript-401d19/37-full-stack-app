@@ -4,9 +4,9 @@
 // PRODUCTION SETTINGS
 //-------------------------------------------------------------
 require('dotenv').config();
-const {DefinePlugIn, EnvironmentPlug} = require('webpack');
+const {DefinePlugin, EnvironmentPlugin} = require('webpack');
 const CleanPlugin = require('clean-webpack-plugin');
-cost UglifyPlugin = require('uglifyjs-webpack-plugin');
+const UglifyPlugin = require('uglifyjs-webpack-plugin');
 //-------------------------------------------------------------
 
 const HTMLPlugin = require('html-webpack-plugin');
@@ -22,7 +22,7 @@ webPackConfig.output = {
   filename : 'bundle.[hash].js',
   path : `${__dirname}/build`,
   publicPath : process.env.CDN_URL,
-}
+};
 //-------------------------------------------------------------
 webPackConfig.plugins = [
   new HTMLPlugin( {title : 'ScrambleVOXXX!'} ),
@@ -58,16 +58,16 @@ webPackConfig.module = {
             options: {
               sourceMap : true,
               includePaths: [`${__dirname}/src/style`],
-            }
-          }
-        ]
+            },
+          },
+        ],
       }),
-    }
+    },
   ],
 };
 //-----------------------------------------
 webPackConfig.devtool = PRODUCTION ? undefined : 'eval-source-map';
 
 webPackConfig.devServer = {
-  historyApiFallback: true
+  historyApiFallback: true,
 };
