@@ -37,17 +37,19 @@ class Landing extends React.Component {
 
     let rootJSX =
       <div>
-        <h2> welcome </h2>
-        <Link to='/signup'> signup </Link>
-        <Link to='/login'> login </Link>
+        <h1> Welcome to scrambleVox! </h1>
+        <h2> Login or signup to get started: </h2>
+        <Link to='/signup'>Signup</Link>
+        <br/>
+        <Link to='/login'>Login</Link>
       </div>;
 
     let signUpJSX =
       <div>
-        <h2> signup </h2>
+        <h2> Signup </h2>
         <AuthForm onComplete={this.handleSignup} />
-        <p> already have an account? </p>
-        <Link to='/login'> login </Link>
+        <p> Already have an account? </p>
+        <Link to='/login'>Login</Link>
       </div>;
 
     let loginJSX =
@@ -55,7 +57,7 @@ class Landing extends React.Component {
         <h2> Login </h2>
         <AuthForm type='login' onComplete={this.handleLogin}/>
         <h2> Signup </h2>
-        <Link to='/signup'> signup </Link>
+        <Link to='/signup'>Signup</Link>
       </div>;
     return (
       <div className='landing'>

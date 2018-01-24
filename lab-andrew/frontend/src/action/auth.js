@@ -18,7 +18,8 @@ export const signupAction = (user) => (store) => {
     .then(response => {
       console.log({response});
       return store.dispatch(setTokenAction(response.text));
-    });
+    })
+    .catch(err => console.log(err));
 };
 
 export const loginAction = (user) => (store) => {
