@@ -4,7 +4,8 @@
   "description": "Code 401 Lab 37 Trendly Full Stack",
   "main": "index.js",
   "scripts": {
-    "test": "jest -i --coverage"
+    "test": "jest -i --coverage",
+    "watch": "webpack-dev-server --inline --hot"
   },
   "repository": {
     "type": "git",
@@ -46,7 +47,13 @@
     "webpack-dev-server": "^2.11.1"
   },
   "devDependencies": {
+    "clean-webpack-plugin": "^0.1.17",
+    "dotenv": "^4.0.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.16.0",
-    "redux-devtools-extension": "^2.13.2"
+    "jest": "^22.1.4",
+    "redux-devtools-extension": "^2.13.2",
+    "uglifyjs-webpack-plugin": "^1.1.6"
   }
 }
