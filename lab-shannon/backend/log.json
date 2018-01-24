@@ -60,3 +60,4 @@
 {"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-24T07:48:27.918Z"}
 {"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-24T07:49:00.644Z"}
 {"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-24T07:49:09.491Z"}
+{"level":"info","message":"Server is listening on port 3000","timestamp":"2018-01-24T22:36:11.771Z"}

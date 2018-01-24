@@ -22,6 +22,9 @@ const userSchema = mongoose.Schema({
     required: true,
     unique: true,
   },
+  profile: {
+    type : mongoose.Schema.Types.ObjectId,
+  },
   tokenSeed: {
     type: String,
     required: true,
