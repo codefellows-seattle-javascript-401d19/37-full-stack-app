@@ -26,6 +26,9 @@ class AuthForm extends React.Component{
   }
 
   render(){
+    let {type} = this.props;
+    type = type === 'login' ? type : 'signup';
+
     let signUpJSX =
       <input
         name='email'
@@ -34,6 +37,8 @@ class AuthForm extends React.Component{
         placeholder='email'
         onChange={this.onChange}
       />;
+
+    let renderedJSX = (type !== 'login') ? signUpJSX : undefined;
 
     return(
       <form onSubmit={this.handleSubmit}>
@@ -45,7 +50,7 @@ class AuthForm extends React.Component{
           onChange={this.onChange}
         />
 
-        {signUpJSX}
+        {renderedJSX}
 
         <input
           name='password'

@@ -21,10 +21,12 @@ webpackConfig.plugins = [
   new htmlWebpackPlugin(),
   new EnvironmentPlugin(['NODE_ENV']),
   new DefinePlugin({
-    API_URL : JSON.stringify(process.env.API_URL),
+    __API_URL__ : JSON.stringify(process.env.API_URL),
   }),
   new extractTextPlugin('bundle.[hash].scss'),
 ];
+
+console.log(process.env.API_URL, `apiurl`);
 
 if(PRODUCTION){
   webpackConfig.plugins = webpackConfig.plugins.concat([

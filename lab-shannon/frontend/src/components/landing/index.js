@@ -1,7 +1,8 @@
 import React from 'react';
 import AuthForm from '../auth-form';
 import {connect} from 'react-redux';
-import actions from '../../actions/auth';
+import {Link} from 'react-router-dom';
+import * as actions from '../../actions/auth';
 
 class Landing extends React.Component{
   constructor(props){
@@ -14,20 +15,49 @@ class Landing extends React.Component{
     this.props.doSignup(user)
       .then(() => {
         this.props.history.push('/dashboard');
-      });
+      })
+      .catch(console.error);
   }
 
   onLogin(user){
     this.props.doLogin(user)
       .then(() => {
         this.props.history.push('/dashboard');
-      });
+      })
+      .catch(console.error);
   }
 
   render(){
+    let {location} = this.props;
+
+    let rootJSX =
+      <div>
+        <h2>Welcome</h2>
+        <Link to='/signup'>Sign Up</Link>
+        <Link to='/login'>Login</Link>
+      </div>;
+
+    let signUpJSX =
+      <div>
+        <h2>Thank you for signing up!</h2>
+        <AuthForm onComplete={this.onSignup}/>
+        <p>Already have an account?</p>
+        <Link to='/login'>Login</Link>
+      </div>;
+
+    let loginJSX =
+      <div>
+        <h2>Please login below</h2>
+        <AuthForm type={'login'} onComplete={this.onLogin} />
+        <p>Need to create an account?</p>
+        <Link to='/signup'>Sign Up</Link>
+      </div>;
+
     return (
       <div>
-        <AuthForm onComplete={this.onSignup}/>
+        {location.pathname === '/' ? rootJSX : undefined}
+        {location.pathname === '/signup' ? signUpJSX : undefined}
+        {location.pathname === '/login' ? loginJSX : undefined}
       </div>
     );
   }

@@ -10,7 +10,7 @@ export const removeToken = () => ({
 });
 
 export const signup = (user) => (store) => {
-  return superagent.post(`${API_URL}/signup`) //eslint-disable-line
+  return superagent.post(`${__API_URL__}/signup`) //eslint-disable-line
     .send(user)
     .withCredentials()
     .then(response => {
@@ -20,7 +20,7 @@ export const signup = (user) => (store) => {
 };
 
 export const login = (user) => (store) => {
-  return superagent.get(`${API_URL}/login`) //eslint-disable-line
+  return superagent.get(`${__API_URL__}/login`) //eslint-disable-line
     .auth(user.username, user.password)
     .withCredentials()
     .then(response => {
