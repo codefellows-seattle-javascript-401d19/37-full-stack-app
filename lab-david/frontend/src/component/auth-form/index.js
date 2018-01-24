@@ -13,7 +13,7 @@ class AuthForm extends React.Component {
     //-------------------------------------------------------------
     // BINDING HANDLES
     //-------------------------------------------------------------
-    let memberFunctions = Object.getOwnPropertyNames(AuthForm.protoype);
+    let memberFunctions = Object.getOwnPropertyNames(AuthForm.prototype);
     for(let functionName of memberFunctions){
       if(functionName.startsWith('handle')){
         this[functionName] = this[functionName].bind(this);
@@ -60,7 +60,7 @@ class AuthForm extends React.Component {
 
         <input
           name='username'
-          placholder='Your Username'
+          placeholder='Your Username'
           type='text'
           value={this.state.username}
           onChange={this.handleChange}

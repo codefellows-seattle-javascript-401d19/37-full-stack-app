@@ -1,7 +1,7 @@
 {
   "name": "lab-david",
   "version": "1.0.0",
-  "description": "This is a note list saver thing built on ReactJS.",
+  "description": "This is a full stack app built on ReactJS.",
   "main": "index.js",
   "scripts": {
     "test": "jest",

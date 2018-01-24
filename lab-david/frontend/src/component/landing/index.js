@@ -32,6 +32,14 @@ class Landing extends React.Component{
       })
       .catch(console.error);
   }
+
+  handleSignup(user){
+    this.props.doSignup(user)
+      .then(() => {
+        this.props.history.push(routes.DASHBOARD_ROUTE);
+      })
+      .catch(console.error);
+  }
   //-------------------------------------------------------------
   // HOOKS
   //-------------------------------------------------------------
