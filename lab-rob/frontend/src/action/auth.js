@@ -1,6 +1,6 @@
 import superagent from 'superagent';
 
-import {LOGIN_ROUTE, SIGNUP_ROUTE, ROOT_ROUTE, DASHBOARD_ROUTE} from '../../routes';
+import {LOGIN_ROUTE, SIGNUP_ROUTE, ROOT_ROUTE, DASHBOARD_ROUTE} from '../routes';
 
 export const setTokenAction = token => ({
   type: 'TOKEN_SET',
