@@ -1,0 +1,12 @@
+@import 'vars';
+
+.app{
+  border: solid $color-accent 3px;
+}
+
+@media screen and (min-width: 1080px){
+  .app {
+    width: 1080px;
+    margin: 0 auto;
+  }
+}
