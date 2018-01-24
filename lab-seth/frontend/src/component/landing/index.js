@@ -7,7 +7,6 @@ import * as authActions from '../../action/auth';
 import * as routes from '../../routes';
 
 import './landing.scss';
-import { disconnect } from 'cluster';
 
 class Landing extends React.Component{
     constructor(props){
@@ -22,7 +21,7 @@ class Landing extends React.Component{
   }
 
   handleLogin(user){
-    this.props.completeLogin(user)
+    this.props.doLogin(user)
       .then(() => {
         this.props.history.push(routes.DASHBOARD_ROUTE);
       })
@@ -30,7 +29,7 @@ class Landing extends React.Component{
   }
 
   handleSignup(user){
-    this.props.completeSignup(user)
+    this.props.doSignup(user)
       .then(() => {
         this.props.history.push(routes.DASHBOARD_ROUTE);
       })
@@ -79,8 +78,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  completeSignup : (user) => dispatch(authActions.signupAction(user)),
-  completeLogin : (user) => dispatch(authActions.loginAction(user)),
+  doSignup : (user) => dispatch(authActions.signupAction(user)),
+  doLogin : (user) => dispatch(authActions.loginAction(user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);
