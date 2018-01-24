@@ -7,7 +7,6 @@ import * as authActions from '../../action/auth';
 import * as routes from '../../routes';
 
 import './landing.scss';
-import { disconnect } from 'cluster';
 
 class Landing extends React.Component{
     constructor(props){
