@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-// import Dashboard from '../dashboard';
+
+import Landing from '../landing';
+import Dashboard from '../dashboard';
+import AuthRedirect from '../auth-redirect';
 
 const App = () => {
   return (
@@ -8,6 +11,10 @@ const App = () => {
       <BrowserRouter>
         <div>
           <Route path='*' component={ AuthRedirect } />
+          <Route exact path='/' component={Landing} />
+          <Route exact path='/signup' component={Landing} />
+          <Route exact path='/login' component={Landing} />
+          <Route exact path='/dashboard' component={Dashboard} />
         </div>
       </BrowserRouter>
     </div>
