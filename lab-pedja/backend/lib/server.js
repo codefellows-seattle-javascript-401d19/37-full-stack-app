@@ -2,6 +2,7 @@
 
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const logger = require('./logger');
 
@@ -19,6 +20,7 @@ mongoose.Promise = Promise;
 // LOGGER MIDDLEWARE
 // ---------------------------------------------
 
+app.use(cors({origin: 'http://localhost:8080'}));
 app.use(require('./logger-middleware'));
 
 // ---------------------------------------------
