@@ -1,4 +1,10 @@
-let initialState = null;
+import * as cookie from '../lib/cookie';
+
+const SCRAMBLEVOX_COOKIE = 'scrambleVox-Token';
+
+let token = cookie.cookieFetch('');
+
+let initialState = token ? token : null;
 
 export default (state = initialState, {type, payload}) => {
   switch (type) {
