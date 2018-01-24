@@ -5,7 +5,7 @@ const {DefinePlugin, EnvironmentPlugin} = require('webpack');
 const CleanPlugin = require('clean-webpack-plugin');
 const UglifyPlugin = require('uglifyjs-webpack-plugin');
 const HTMLPlugin = require('html-webpack-plugin');
-const ExtractPlugin = require('extract-text-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const webPackConfig = module.exports = {};
 
@@ -25,7 +25,7 @@ webPackConfig.plugins = [
   new DefinePlugin({
     __API_URL__: JSON.stringify(process.env.API_URL),
   }),
-  new ExtractPlugin({filename: 'bundle.[hash].css', disable: process.env.NODE_ENV !== 'production'}),
+  new ExtractTextPlugin({filename: 'bundle.[hash].css', disable: process.env.NODE_ENV !== 'production'}),
 ];
 
 if (PRODUCTION) {
@@ -44,7 +44,7 @@ webPackConfig.module = {
     },
     {
       test: /\.scss$/,
-      loader: ExtractPlugin.extract({
+      loader: ExtractTextPlugin.extract({
         fallback: 'style-loader',
         use: [
           'css-loader',
