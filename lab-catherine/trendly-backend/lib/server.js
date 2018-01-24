@@ -6,6 +6,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const log = require('./logger');
 const fs = require('fs-extra');
+const cors = require('cors');
 require('./scheduler').runEventsNextDay();
 require('./scheduler').runUpdateAllGroups();
 
@@ -17,6 +18,11 @@ mongoose.Promise = Promise;
 const server = module.exports = {};
 
 const app = express();
+
+app.use(cors({
+  origin: 'http://localhost:8080',
+  credentials: true,
+})),
 
 // ================ ROUTE SETUP ===================
 app.use(require('./middleware/logger-middleware'));
