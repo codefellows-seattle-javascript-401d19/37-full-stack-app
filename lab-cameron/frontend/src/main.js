@@ -7,15 +7,14 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
 
 import App from './component/app';
-// import reducer from './reducer';
+import reducer from './reducer';
 
-import session from './lib/redux-session';
 import thunk from './lib/redux-thunk';
 
 const store = createStore(
-  // reducer,
+  reducer,
   composeWithDevTools(
-    applyMiddleware(session, thunk)
+    applyMiddleware(thunk)
   )
 );
 

@@ -10,6 +10,9 @@ import * as routes from '../../routes';
 class Landing extends Component {
   constructor(props) {
     super(props);
+
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleSignup = this.handleSignup.bind(this);
   }
 
 
@@ -36,7 +39,7 @@ class Landing extends Component {
     const rootJSX =
       <div>
         <h2>Welcome</h2>
-        <Link to='/'>signup</Link>
+        <Link to='/signup'>signup</Link>
         <Link to='/login'>login</Link>
       </div>;
 
