@@ -1,60 +1,86 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import CategoryForm from '../category-form';
-import CategoryItem from '../category-item';
-import * as categoryActions from '../../action/category';
+import {Link} from 'react-router-dom';
+
+import AuthForm from '../auth-form';
+import * as authActions from '../../action/auth';
+import * as routes from '../../routes';
 
 import './landing.scss';
+import { disconnect } from 'cluster';
 
 class Landing extends React.Component{
+    constructor(props){
+      super(props);
 
-  componentWillMount() {
-    this.props.handleGetCategory();
+    let memberFunctions = Object.getOwnPropertyNames(Landing.prototype);
+    for (let functionName of memberFunctions) {
+      if (functionName.startsWith('handle')) {
+        this[functionName] = this[functionName].bind(this);
+      }
+    }
   }
-  
+
+  handleLogin(user){
+    this.props.completeLogin(user)
+      .then(() => {
+        this.props.history.push(routes.DASHBOARD_ROUTE);
+      })
+      .catch(console.error);
+  }
+
+  handleSignup(user){
+    this.props.completeSignup(user)
+      .then(() => {
+        this.props.history.push(routes.DASHBOARD_ROUTE);
+      })
+      .catch(console.error);
+  }
+
   render() {
-    let {
-      categories,
-      categoryCreate,
-      categoryUpdate,
-      categoryDestroy,
-      handleGetCategory,
-    } = this.props;
+    let {location} = this.props;
+
+    let rootJSX = 
+      <div>
+        <h2> Welcome </h2>
+        <p><Link to='/signup'> Signup </Link></p>
+        <p><Link to='/login'> Login </Link></p>
+      </div>;
+
+    let signupJSX = 
+      <div>
+        <h2> Signup </h2>
+        <AuthForm onComplete={this.handleSignup} />
+        <h2> Login </h2>
+        <Link to='/login' >Login </Link>
+      </div>;
+
+    let loginJSX = 
+      <div>
+        <h2> Login </h2>
+        <AuthForm onComplete={this.handleLogin} />
+        <h2> Signup </h2>
+        <Link to='/signup' >Signup </Link>
+      </div>;
+      
 
     return (
       <div className='landing'>
-        <CategoryForm className='form' onComplete={categoryCreate} />
-        {
-          categories.map((category,index) => 
-          <div key={index}>
-            <CategoryItem 
-              category={category}
-              categoryUpdate={categoryUpdate}
-              categoryDestroy={categoryDestroy}
-            />
-          </div>
-        )}
+        {location.pathname === routes.ROOT_ROUTE ? rootJSX :undefined}
+        {location.pathname === routes.SIGNUP_ROUTE ? signupJSX :undefined}
+        {location.pathname === routes.LOGIN_ROUTE ? loginJSX :undefined}
       </div>
     );
   }
 }
 
-let mapStateToProps = (state) => {
-  //creating props in landing
-  return {
-    categories : state.categories,
-  }
-};
+const mapStateToProps = (state) => ({
+    token : state.token,
+});
 
-let mapDispatchToProps = (dispatch) => {
-  // Creating props in landing that allow us to create update and remove
-  return {
-    categoryCreate: (data) => dispatch(categoryActions.postCategory(data)),
-    categoryUpdate: (data) => dispatch(categoryActions.updateAction(data)),
-    categoryDestroy: (data) => dispatch(categoryActions.removeAction(data)),
-    handleGetCategory: () => dispatch(categoryActions.getCategories()),
-  }
-};
+const mapDispatchToProps = (dispatch) => ({
+  completeSignup : (user) => dispatch(authActions.signupAction(user)),
+  completeLogin : (user) => dispatch(authActions.loginAction(user)),
+});
 
-//this is the connection to the store, this is a curried function
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);
