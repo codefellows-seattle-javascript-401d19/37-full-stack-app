@@ -1,5 +1,5 @@
 import superagent from 'superagent'
-import * as routes from '../routes'
+import * as routes from '../route'
 
 export const setTokenAction = (token) => ({
   type : 'TOKEN_SET',

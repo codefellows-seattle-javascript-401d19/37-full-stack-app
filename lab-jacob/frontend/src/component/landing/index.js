@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import AuthForm from '../auth-form';
 import * as authActions from '../../action/auth';
 
-import * as routes from '../../routes';
+import * as routes from '../../route';
 
 class Landing extends React.Component{
   constructor(props){

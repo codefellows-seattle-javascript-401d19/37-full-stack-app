@@ -5,12 +5,12 @@ import {createStore, applyMiddleware} from 'redux'
 
 import reducer from './reducer'
 import App from './component/app'
-import thunk from './lib/redux-thunk'
+import thunk from './lib/redux.thunk'
 import reporter from './lib/redux-reporter'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 const store = createStore(reducer, composeWithDevTools(
-  applyMiddleware(thunk, reporter),
+  applyMiddleware(thunk, reporter)
 ))
 
 const container = document.createElement('div')

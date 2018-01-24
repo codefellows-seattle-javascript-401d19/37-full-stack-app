@@ -1,9 +1,8 @@
 'use strict';
 
-import dotenv from 'dotenv'
-dotenv.config()
+require('dotenv').config();
 
-const {DefinePlugin, EnviromentPlugin} = require('webpack');
+const {DefinePlugin, EnvironmentPlugin} = require('webpack');
 const CleanPlugin = require('clean-webpack-plugin')
 const UglifyPlugin = require('uglifyjs-webpack-plugin')
 
@@ -22,7 +21,7 @@ webPackConfig.output = {
 
 webPackConfig.plugins = [
   new HTMLPlugin({title : 'FullStack App'}),
-  new EnviromentPlugin(['NODE_ENV']),
+  new EnvironmentPlugin(['NODE_ENV']),
   new DefinePlugin({
     __API_URL__ : JSON.stringify(process.env.API_URL),
   }),
