@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
+
 import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from './lib/thunk';
 
