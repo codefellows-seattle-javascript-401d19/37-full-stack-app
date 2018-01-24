@@ -19,10 +19,15 @@ class Landing extends React.Component {
     }
   }
 
+  handleSignup(user) {
+    this.props.doSignup(user);
+  }
+
   handleLogin(user) {
     this.props.doLogin(user)
       .then(() => {
-        this.props.history.push(routes.DASHBOARD_ROUTE);
+        console.log('this is not working');
+        this.props.history.push(routes.DASHBOARD);
       })
       .catch(console.error);
   }
@@ -70,4 +75,4 @@ const mapDispatchToProps = (dispatch) => ({
   doSignup : (user) => dispatch(authActions.signupAction(user)),
   doLogin : (user) => dispatch(authActions.loginAction(user)),
 });
-export default connect(mapStateToProps,mapDispatchToProps)(Landing);
+export default connect(mapStateToProps, mapDispatchToProps)(Landing);

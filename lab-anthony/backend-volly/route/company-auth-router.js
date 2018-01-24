@@ -14,7 +14,7 @@ const bearerAuthCompany = require('../lib/bearer-auth-middleware')(Company);
 
 const companyAuthRouter = module.exports = new Router();
 
-companyAuthRouter.post('/company/signup', jsonParser, (request, response, next) => {
+companyAuthRouter.post('/signup', jsonParser, (request, response, next) => {
   if(!request.body.companyName || !request.body.password || !request.body.email || !request.body.phoneNumber || !request.body.website)
     return next(new httpErrors(400, '__ERROR__ <companyName>, <email>, <phoneNumber>, <website> and <password> are required to sign up.'));
 
@@ -56,7 +56,7 @@ companyAuthRouter.post('/company/send', bearerAuthCompany, jsonParser, (request,
     .catch(next);
 });
 
-companyAuthRouter.get('/company/login', basicAuthCompany, (request, response, next) => {
+companyAuthRouter.get('/login', basicAuthCompany, (request, response, next) => {
   return request.company.createToken()
     .then(token => response.json({token}))
     .catch(next);
@@ -82,10 +82,10 @@ companyAuthRouter.put('/company/update', bearerAuthCompany, jsonParser, (request
 
   if(request.body.phoneNumber) {
     let formattedPhoneNumber = phoneNumber.verifyPhoneNumber(request.body.phoneNumber);
-  
+
     if(!formattedPhoneNumber)
       return next(new httpErrors(400, '__ERROR__ invalid phone number'));
-    
+
     request.body.phoneNumber = formattedPhoneNumber;
   }
 
@@ -149,7 +149,7 @@ companyAuthRouter.put('/company/approve', bearerAuthCompany, jsonParser, (reques
 
       return null;
     })
-    .then(message => {      
+    .then(message => {
       logger.info('approved:' + (message ? `${message.sid}: message sent to ${request.volunteer.phoneNumber}` : 'volunteer not textable'));
       return Company.findById(request.companyId)
         .populate('pendingVolunteers')
@@ -165,10 +165,10 @@ companyAuthRouter.put('/company/terminate', bearerAuthCompany, jsonParser, (requ
 
   let pendingVolunteers = {}, activeVolunteers = {};
   let volunteerId = request.body.volunteerId.toString();
-  
+
   request.company.activeVolunteers
     .forEach(volunteerId => activeVolunteers[volunteerId.toString()] = true);
-  
+
   request.company.pendingVolunteers
     .forEach(volunteerId => pendingVolunteers[volunteerId.toString()] = true);
 

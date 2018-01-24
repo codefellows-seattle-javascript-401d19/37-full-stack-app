@@ -17,6 +17,7 @@ export const removeTokenAction = () => ({
 // ASYNC
 //----------------------------------------------
 export const signupAction = (user) => (store) => {
+  console.log(user);
   return superagent.post(`${__API_URL__}${routes.SIGNUP_ROUTE}`)
     .send(user)
     .withCredentials()
@@ -28,7 +29,7 @@ export const signupAction = (user) => (store) => {
 
 export const loginAction = (user) => (store) => {
   return superagent.get(`${__API_URL__}${routes.LOGIN_ROUTE}`)
-    .auth(user.username,user.password)
+    .auth(user.companyName, user.password)
     .withCredentials()
     .then(response => {
       console.log({response});

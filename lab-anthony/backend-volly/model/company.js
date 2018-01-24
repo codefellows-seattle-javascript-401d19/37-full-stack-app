@@ -79,7 +79,7 @@ companySchema.methods._censorVolunteers = volunteers => {
 
 companySchema.methods.getCensoredVolunteers = function() {
   return {
-    pendingVolunteers: this.getCensoredPendingVolunteers(), 
+    pendingVolunteers: this.getCensoredPendingVolunteers(),
     activeVolunteers: this.getCensoredActiveVolunteers(),
   };
 };

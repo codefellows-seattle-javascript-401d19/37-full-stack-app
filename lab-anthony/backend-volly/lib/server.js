@@ -4,13 +4,18 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const logger = require('./logger');
-const cors = require('cors');
-app.use(cors({origin: 'http://localhost:8080', credentials: true}));
+
 
 const app = express();
 let isServerOn = false;
 let httpServer = null;
 
+// ---------------------------------------------
+// CORS
+// ---------------------------------------------
+
+const cors = require('cors');
+app.use(cors({origin: 'http://localhost:8080', credentials: true})),
 // ---------------------------------------------
 // MONGODB
 // ---------------------------------------------

@@ -1,9 +1,11 @@
 import React from 'react';
 
 let emptyState = {
-  username: '',
-  email: '',
+  companyName: '',
   password: '',
+  website: '',
+  email: '',
+  phoneNumber: '',
 };
 
 class AuthForm extends React.Component {
@@ -36,13 +38,30 @@ class AuthForm extends React.Component {
     type = type === 'login' ? type : 'signup';
 
     let signupJSX =
+    <div>
+      <input
+        name='website'
+        placeholder='website'
+        type='text'
+        value={this.state.website}
+        onChange={this.handleChange}
+      />
       <input
         name='email'
         placeholder='email'
         type='email'
         value={this.state.email}
         onChange={this.handleChange}
-      />;
+      />
+      <input
+        name='phoneNumber'
+        placeholder='phone number'
+        type='text'
+        value={this.state.phoneNumber}
+        onChange={this.handleChange}
+      />
+    </div>;
+
 
     let signupRenderedJSX = (type !== 'login') ? signupJSX : undefined;
 
@@ -50,10 +69,10 @@ class AuthForm extends React.Component {
       <form className='auth-form' onSubmit={this.handleSubmit} >
 
         <input
-          name='username'
-          placeholder='username'
+          name='companyName'
+          placeholder='companyName'
           type='text'
-          value={this.state.username}
+          value={this.state.companyName}
           onChange={this.handleChange}
         />
 
