@@ -1,5 +1,3 @@
-// david - TODO - fill out this profile form similar to the auth form I think
-
 import React from 'react';
 
 let emptyState = {

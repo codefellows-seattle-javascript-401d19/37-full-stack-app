@@ -112,7 +112,7 @@ class AuthForm extends React.Component {
     let signupRenderedJSX = ( type !== 'login') ? signupJSX : undefined;
 
 
-    // TODO : need to add password field below I think - per code demo
+    // TODO : need to add password field below I think - per code
     return (
       <form className='auth-form' noValidate onSubmit={this.handleSubmit} >
 
