@@ -40,3 +40,8 @@
 {"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-24T06:37:39.054Z"}
 {"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-24T06:38:45.783Z"}
 {"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-24T06:39:36.873Z"}
+{"level":"info","message":"Server is listening on port 3000","timestamp":"2018-01-24T17:30:25.901Z"}
+{"level":"info","message":"Server is listening on port 3000","timestamp":"2018-01-24T17:30:47.656Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-24T17:31:06.209Z"}
+{"level":"info","message":"Server is listening on port 3000","timestamp":"2018-01-24T17:35:46.591Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-24T17:36:24.459Z"}
