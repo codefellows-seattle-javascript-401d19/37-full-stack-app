@@ -1,4 +1,4 @@
-import './_category-form.scss';
+import './_auth-form.scss';
 import React from 'react';
 
 let emptyState = {

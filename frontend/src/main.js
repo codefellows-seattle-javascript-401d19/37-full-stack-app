@@ -19,7 +19,7 @@ let middleware = {
 };
 
 let store = createStore(reducer, composeWithDevTools(
-  applyMiddleware(...middleware)
+  applyMiddleware(thunk, session, reporter)
 ));
 
 //-------------

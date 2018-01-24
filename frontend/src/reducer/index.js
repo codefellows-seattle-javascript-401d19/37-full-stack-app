@@ -1,9 +1,7 @@
 import {combineReducers} from 'redux';
 
-import categorys from './categorys';
-import expenses from './expenses';
+import tokens from './tokens';
 
 export default combineReducers({
-  categorys,
-  expenses,
+  tokens,
 });
