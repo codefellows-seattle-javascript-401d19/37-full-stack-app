@@ -80,6 +80,8 @@ class AuthForm extends React.Component {
           onChange={this.handleChange}
         />
 
+        {signupRender}
+
         <button type='submit'>{type}</button>
       </form>
     );

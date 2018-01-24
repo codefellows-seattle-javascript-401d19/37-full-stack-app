@@ -1,4 +1,4 @@
-const emptyState = {};
+const emptyState = null;
 
 export default (state = emptyState, {type, payload}) => {
   switch(type) {

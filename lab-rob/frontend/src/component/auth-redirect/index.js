@@ -17,7 +17,7 @@ class AuthRedirect extends React.Component {
       if(!token)
         destinationRoute = ROOT_ROUTE;
     }
-
+    console.log(destinationRoute ? 'truthy' : 'falsy');
     return (
       <div className='auth-redirect'>
         {destinationRoute ? <Redirect to={destinationRoute} /> : null}
