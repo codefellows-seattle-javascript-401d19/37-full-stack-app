@@ -23,5 +23,3 @@ ReactDOM.render(
     <App />
   </Provider>, container
 );
-
-// TODO: reducer(s), app, then try it!
