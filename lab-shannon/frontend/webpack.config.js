@@ -2,7 +2,7 @@
 
 require('dotenv').config();
 const PRODUCTION = process.env.NODE_ENV === 'production';
-const { EnvironmentPlugin } = require('webpack');
+const { EnvironmentPlugin, DefinePlugin } = require('webpack');
 const CleanPlugin = require('clean-webpack-plugin');
 const UglifyPlugin = require('uglifyjs-webpack-plugin');
 
@@ -20,6 +20,9 @@ webpackConfig.output = {
 webpackConfig.plugins = [
   new htmlWebpackPlugin(),
   new EnvironmentPlugin(['NODE_ENV']),
+  new DefinePlugin({
+    API_URL : JSON.stringify(process.env.API_URL),
+  }),
   new extractTextPlugin('bundle.[hash].scss'),
 ];
 

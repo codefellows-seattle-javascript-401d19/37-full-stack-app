@@ -10,11 +10,21 @@ export const removeToken = () => ({
 });
 
 export const signup = (user) => (store) => {
-  return superagent.post(`http://localhost:3000/signup`)
+  return superagent.post(`${API_URL}/signup`) //eslint-disable-line
     .send(user)
     .withCredentials()
     .then(response => {
-      console.log(response);
+      console.log(response, `signup response`);
+      // return store.dispatch(setToken(response));
+    });
+};
+
+export const login = (user) => (store) => {
+  return superagent.get(`${API_URL}/login`) //eslint-disable-line
+    .auth(user.username, user.password)
+    .withCredentials()
+    .then(response => {
+      console.log(response, `login response`);
       // return store.dispatch(setToken(response));
     });
 };

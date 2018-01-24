@@ -13,7 +13,10 @@ mongoose.Promise = Promise;
 
 const app = express();
 const cors = require('cors');
-app.use(cors());
+app.use(cors(
+  {origin: 'http://localhost:8080',
+    credentials: true,
+  }));
 
 app.use(require('./middleware/logger-middleware'));
 app.use(require('../route/user-router'));
