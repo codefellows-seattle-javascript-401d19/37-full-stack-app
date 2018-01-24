@@ -1,79 +1,36 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
-let emptyState = {
-  title: '',
-  price: 0,
-};
-
-class ExpenseForm extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = this.props.expense || emptyState;
-
-    this.handleChange = (event) => {
-      let { name, value } = event.target;
-      if (name === 'price' && value.match(/^-?\d*(\.\d{0,2})?$/gm)) {
-        return this.setState({ [name]: value });
-
-      } else if (name !== 'price') {
-        return this.setState({ [name]: value });
-        
-      } else {
-        return;
-      }
-    };
-
-    this.handleSubmit = (event) => {
-      event.preventDefault();
-      let {title, price} = this.state;
-
-      let categoryID = this.props.category ? 
-        this.props.category.id : 
-        this.props.expense.categoryID;
-
-      price = price.toString().replace(/^(-|0)?0*/, '$1');
-      price = isNaN(Number(price)) ? 0 : Number(price);
-
-      this.props.onComplete({
-        ...this.state,
-        price,
-        categoryID,
-      });
-      this.setState(emptyState);
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.expense) {
-      this.setState(nextProps.expense);
-    }
-  }
-
+class AuthRedirect extends React.Component {
   render() {
-    let buttonText = this.props.expense ? 'update expense' : 'add expense';
+    let { location, history, token } = this.props;
+    let { pathname } = location;
+    let destinationRoute = null;
+
+    if (pathname === '/' ||
+        pathname === '/signup' ||
+        pathname === '/login') {
+
+        if (token) 
+          destinationRoute = '/dashboard';
+    } else {
+      if (!token)
+        destinationRoute = '/';
+    }
 
     return (
-      <form onSubmit={this.handleSubmit} className='expense-form'>
-        <input 
-          onChange={this.handleChange} 
-          type="text" 
-          name='title' 
-          placeholder='expense title' 
-          value={this.state.title} 
-        />
-
-        <input 
-          onChange={this.handleChange} 
-          type="text" 
-          name='price' 
-          placeholder='price' 
-          value={this.state.price} 
-        />
-        <button type='submit'> {buttonText} </button>
-      </form>
+      <div className='auth-redirect'>
+        {destinationRoute ? <Redirect to={destinationRoute} /> : undefined}
+      </div>
     );
   }
 }
+
+let mapStateToProps = (state) => {
+  return ({
+    token: state.token,
+  });
+};
 
 export default ExpenseForm;

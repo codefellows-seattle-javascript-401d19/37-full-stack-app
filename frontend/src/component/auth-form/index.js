@@ -1,4 +1,7 @@
 import React from 'react';
+import { signupAction, loginAction } from '../../action/auth';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 let emptystate = {
   username: '',
@@ -16,6 +19,15 @@ class AuthForm extends React.Component {
       let { name, value } = event.target;
       this.setState({ [name] : value });
     }
+    this.handleSubmit = (e) => {
+      e.preventDefault();
+
+      if (this.props.signup) {
+        this.props.signMeUp(this.state);
+      } else {
+        this.props.logMeIn(this.state);
+      }
+    };
   }
   
   render() {
@@ -25,15 +37,26 @@ class AuthForm extends React.Component {
     let header = this.props.signup ? 'Signup' : 'Login';
 
     return (
-      <div className='auth-form'>
+      <form className='auth-form' onSubmit={this.handleSubmit}>
         <h1>{header}</h1>
         <input onChange={this.handleChange} type="username" name='username' placeholder ='username' />
         {renderEmail}
         <input onChange={this.handleChange} type="password" name='password' placeholder ='password' />
-      </div>
+        <button type="submit"> {header.toLowerCase()} </button>
+      </form>
     );
   }
-
 }
 
-export default AuthForm;
+const mapStateToProps = (state) => ({
+  token : state.token,
+});
+
+let mapDispatchToProps = (dispatch) => {
+  return {
+    signMeUp : (user) => dispatch(signupAction(user)),
+    logMeIn : (user) => dispatch(loginAction(user)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(AuthForm);

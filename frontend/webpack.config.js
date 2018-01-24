@@ -28,7 +28,7 @@ webPackConfig.output = {
 // -----------------------------------------------
 
 webPackConfig.plugins = [
-  new HTMLPlugin(),
+  new HTMLPlugin({title: 'Full Stack Application! ^.^'}),
   new EnvironmentPlugin(['NODE_ENV']),
   new DefinePlugin({
     __API_URL__ : JSON.stringify(process.env.API_URL),

@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-import Dashboard from '../dashboard/index';
+import Dashboard from '../dashboard';
+import Landing from '../landing';
 import AuthForm from '../auth-form';
 
 
@@ -17,26 +18,16 @@ class App extends React.Component {
           <div>
             <nav>
               <Link to='/'> Home </Link>
-              <Link to='/signup'> Signup </Link>
-              <Link to='/login'> Login </Link>
             </nav>
-            <Route exact path='/signup' render={() => <AuthForm signup={true}/>} />
+            <Route exact path='/' component={Landing} />
+            <Route exact path='/signup' component={AuthForm} />
             <Route exact path='/login' component={AuthForm} />
+            <Route exact path='/dashboard' component={Dashboard} />
           </div>
         </BrowserRouter>
       </div>
     );
   }
-
-  componentWillMount() {
-    console.log('MOUNTING DATABASE');
-  }
-
 }
 
-let mapDispatchToProps = (dispatch) => {
-  return {
-  };
-};
-
-export default connect(null, mapDispatchToProps)(App);
+export default App;

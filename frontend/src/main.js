@@ -12,7 +12,7 @@ import session from './lib/redux-session';
 import thunk from './lib/redux-thunk';
 
 let store = createStore(reducer, composeWithDevTools(
-  applyMiddleware(reporter, session, thunk)));
+  applyMiddleware(reporter, thunk)));
 
 const container = document.createElement('div');
 document.body.appendChild(container);

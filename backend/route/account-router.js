@@ -5,6 +5,7 @@ const jsonParser = require('body-parser').json();
 const Account = require('../model/account');
 const httpError = require('http-errors');
 const basicAuthMiddleware = require('../lib/middleware/basic-auth-middleware');
+const log = require('../lib/logger');
 
 const accountRouter = module.exports = new Router();
 
@@ -21,6 +22,7 @@ accountRouter.get('/login', basicAuthMiddleware, (request, response, next) => {
 
 // ============================= POST =============================
 accountRouter.post('/signup', jsonParser, (request, response, next) => {
+  log('info', request.body);
   if (!request.body.username || !request.body.password || !request.body.email) {
     return next(new httpError(400, '__ERROR__ Insufficient data: Requires username, password, and email'));
   }

@@ -14,19 +14,19 @@ export const removeTokenAction = () => ({
 export const signupAction = (user) => (store) => {
   return superagent.post(`${__API_URL__}/signup`)
     .send(user)
-    .withCredentials()
+    // .withCredentials()
     .then(response => {
       console.log('__SIGNUP_RESPONSE__', { response });
-      return store.dispatch(setTokenAction('token placeholder'));
+      return store.dispatch(setTokenAction(response.body.token));
     });
 };
 
 export const loginAction = (user) => (store) => {
-  return superagent.post(`${__API_URL__}/login`)
+  return superagent.get(`${__API_URL__}/login`)
     .send(user.username, user.password)
-    .withCredentials()
+    // .withCredentials()
     .then(response => {
       console.log('__SIGNUP_RESPONSE__', { response });
-      return store.dispatch(setTokenAction('token placeholder'));
+      return store.dispatch(setTokenAction(response.body.token));
     });
 };
