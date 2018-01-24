@@ -12,7 +12,6 @@ let emptyState = {
   password: '',
   passwordDirty: false,
   passwordError: '',
-
 };
 
 class AuthForm extends React.Component {

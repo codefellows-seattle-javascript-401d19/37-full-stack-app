@@ -42,7 +42,7 @@ class Profile extends React.Component {
     
     let JSXEditing = JSXDisplay = JSXProfile = null;
 
-    if(profile){
+    if(profile){ //may need forms separated
       JSXEditing = 
         <div> 
           <ProfileForm profile={profile} onComplete={this.handleUpdate} />
