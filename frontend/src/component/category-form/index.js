@@ -2,15 +2,17 @@ import './_category-form.scss';
 import React from 'react';
 
 let emptyState = {
-  title: '',
+  username: '',
+  email: '',
+  password: '',
 };
 
-class CategoryForm extends React.Component{
+class AuthForm extends React.Component{
   constructor(props){
     super(props);
-    this.state = this.props.category || emptyState;
+    this.state = emptyState;
 
-    let memberFunctions = Object.getOwnPropertyNames(CategoryForm.prototype);
+    let memberFunctions = Object.getOwnPropertyNames(AuthForm.prototype);
     for(let functionName of memberFunctions){
       if(functionName.startsWith('handle')){
         this[functionName] = this[functionName].bind(this);
@@ -30,41 +32,52 @@ class CategoryForm extends React.Component{
     this.setState(emptyState);
   }
 
-  componentWillReceiveProps(nextProps){
-    if(nextProps.category)
-      this.setState(nextProps.category);
-  }
 
   render() {
-    let buttonText = this.props.category ? 'update category' : 'create category';
-    let nameText = this.props.category ? this.props.category.name : 'Category Form';
+    let {type} = this.props;
+    type = type === 'login' ? type : 'signup';
+
+    let signupJSX =
+    <input
+      name = 'email'
+      placeholder = 'email'
+      type = 'email'
+      value = {this.state.email}
+      onChange = {this.handleChange}
+    />;
+
+    let signupRenderedJSX = (type !== 'login') ? signupJSX : undefined;
+
 
     return(
       <form
         onSubmit = {this.handleSubmit}
-        className = "category-form">
+        className = "auth-form">
 
         <input
           type="text"
-          name="name"
-          placeholder="category name"
-          value={this.state.name}
+          name="username"
+          placeholder="username"
+          value={this.state.username}
           onChange={this.handleChange}
           required={true}
         />
+
+        {signupRenderedJSX}
+
         <input
-          type="number"
-          name="budget"
-          placeholder="budget"
-          value={this.state.budget}
+          type="password"
+          name="password"
+          placeholder="password"
+          value={this.state.password}
           onChange={this.handleChange}
           required={true}
         />
-        <button onClick={this.handleSubmit}> {buttonText} </button>
+        <button type='submit' onClick={this.handleSubmit}> {type} </button>
 
       </form>
     );
   }
 }
 
-export default CategoryForm;
+export default AuthForm;

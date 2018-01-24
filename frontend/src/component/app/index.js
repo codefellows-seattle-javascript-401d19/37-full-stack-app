@@ -1,8 +1,10 @@
 import './_app.scss';
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
-import Landing from '../landing';
 
+import Landing from '../landing';
+import Dashboard from '../dashboard';
+import AuthRedirect from '../auth-redirect';
 //import landing
 
 class App extends React.Component{
@@ -11,7 +13,11 @@ class App extends React.Component{
       <div className="app">
         <BrowserRouter>
           <div>
-            <Route exact path="/" component={Landing} />
+            <Route path="*" component={AuthRedirect} />
+            <Route path="/" component={Landing} />
+            <Route path="/signup" component={Landing} />
+            <Route path="/login" component={Landing} />
+            <Route path="/dashboard" component={Dashboard} />
           </div>
         </BrowserRouter>
       </div>);
