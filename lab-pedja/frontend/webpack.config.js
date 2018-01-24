@@ -1,28 +1,33 @@
-'use string';
+'use strict';
 
+//---------------------------------------------------------------------
+// PRODUCTION SETTINGS
+//---------------------------------------------------------------------
 require('dotenv').config();
 
-const {DefinePlugin, EnvironmentPlugin} = require('webpack');
+const {DefinePlugin,EnvironmentPlugin} = require('webpack');
 const CleanPlugin = require('clean-webpack-plugin');
-const UglifyPlugin = require('uglify-webpack-plugin');
+const UglifyPlugin = require('uglifyjs-webpack-plugin');
+//---------------------------------------------------------------------
 
 const HTMLPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const webPackConfig = module.exports = {};
 
-const PRODUCTION = process.env.NODE_ENV === 'production';
+const PRODUCTION = process.env.NODE_ENV === 'production'; 
 
+//------------------------------------------------------------
 webPackConfig.entry = `${__dirname}/src/main.js`;
 webPackConfig.output = {
-  filename: 'bundle.[hash].js',
-  path: `${__dirname}/build`,
-  publicPath: process.env.CDN_URL,
-};
-
+  filename : 'bundle.[hash].js',
+  path : `${__dirname}/build`,
+  publicPath : process.env.CDN_URL,
+}
+//------------------------------------------------------------
 webPackConfig.plugins = [
-  new HTMLPlugin({ title : 'Full Stack Application' }),
-  new EnvironmentPlugin([ 'NODE_ENV', '' ]),
+  new HTMLPlugin({title : 'Volly'}),
+  new EnvironmentPlugin(['NODE_ENV']),
   new DefinePlugin({
     __API_URL__ : JSON.stringify(process.env.API_URL),
   }),
@@ -35,35 +40,36 @@ if(PRODUCTION) {
     new CleanPlugin(),
   ]);
 }
-
+//------------------------------------------------------------
 webPackConfig.module = {
   rules: [
     {
       test: /\.js$/,
       exclude: /node_modules/,
-      loader: 'babel-loader',
+      loader: 'babel-loader', 
     },
     {
-      test: /\.scss$/,
+      test:  /\.scss$/,
       loader: ExtractTextPlugin.extract({
         use: [
-          'css-loader',
-          'resolve-url-loader',
+          'css-loader', 
+          'resolve-url-loader', 
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: true,
+              sourceMap: true, 
               includePaths: [`${__dirname}/src/style`],
-            },
-          },
-        ],
+            }
+          }
+        ]
       }),
-    },
+    }
   ],
 };
 
-webPackConfig.devtool = PRODUCTION ? undefined : 'eval-source-map';
+//------------------------------------------------------------
+webPackConfig.devtool = PRODUCTION ? undefined : 'cheap-module-source-map';
 
 webPackConfig.devServer = {
-  historyApiFallback: true,
+  historyApiFallback: true
 };

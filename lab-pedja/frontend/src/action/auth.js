@@ -16,9 +16,9 @@ export const removeTokenAction = () => ({
 // ==========================================
 // ASYNC 
 // ==========================================
-export const signupAction = user => store => {
+export const signupAction = company => store => {
   return superagent.post(`${__API_URL__}${routes.SIGNUP_ROUTE}`)
-  .send(user)
+  .send(company)
   .withCredentials()
   .then(response => {
     console.log({response});
@@ -26,10 +26,10 @@ export const signupAction = user => store => {
   });
 };
 
-export const loginAction = user => store => {
+export const loginAction = company => store => {
   return superagent.get(`${__API_URL__}${routes.LOGIN_ROUTE}`)
-    .auth(user.username, user.password)
-    .withCredentials()
+    .auth(company.companyName, company.password)
+    // .withCredentials()
     .then(response => {
       console.log(response);
       return store.dispatch(setTokenAction(response.text));

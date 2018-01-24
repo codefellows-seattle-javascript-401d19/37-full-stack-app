@@ -1,78 +1,90 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import React from 'react';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
-import AuthForm from "../auth-form";
-import * as authActions from "../../action/auth ";
-import * as routes from "../../routes";
+import AuthForm from '../auth-form';
+import * as authActions from '../../action/auth';
 
-class Landing extends React.Component {
+import * as routes from '../../routes';
+
+class Landing extends React.Component{
   constructor(props){
     super(props);
-
-    this.handleSignup = this.handleSignup.bind(this);    
-    this.handleLogin = this.handleLogin.bind(this);    
+    //-------------------------------------------------------------
+    // Binding Handlers
+    //-------------------------------------------------------------
+    let memberFunctions = Object.getOwnPropertyNames(Landing.prototype);
+    for(let functionName of memberFunctions){
+      if(functionName.startsWith('handle')){
+        this[functionName] = this[functionName].bind(this);
+      }
+    }
+    //-------------------------------------------------------------
   }
-
-  handleSignup(user){
-    this.props.doSignup(user)
+  //---------------------------------------------------------------
+  // Member Functions
+  //---------------------------------------------------------------
+  handleLogin(company){
+    this.props.doLogin(company)
       .then(() => {
         this.props.history.push(routes.DASHBOARD_ROUTE);
       })
       .catch(console.error);
   }
 
-  handleLogin(user){
-    this.props.doLogin(user)
+  handleSignup(company){
+    this.props.doSignup(company)
       .then(() => {
         this.props.history.push(routes.DASHBOARD_ROUTE);
       })
       .catch(console.error);
   }
-
-  render() {
+  //---------------------------------------------------------------
+  // Hooks
+  //---------------------------------------------------------------
+  render(){
     let {location} = this.props;
 
     let rootJSX = 
       <div>
         <h2> welcome </h2>
-        <Link to='/signup'> signup </Link>
-        <Link to='/login'> login </Link>
+        <Link to='/company/signup'> signup </Link>
+        <Link to='/company/login'> login </Link>
       </div>;
-
+    
     let signUpJSX = 
       <div>
         <h2> signup </h2>
-        <AuthForm onComplete={this.handleSignup}/>
+        <AuthForm onComplete={this.handleSignup} signUpJSX={true}/>
         <p> already have an account? </p>
-        <Link to='/login'> login </Link>
+        <Link to='/company/login'> login </Link>
+      </div>;
+    
+    let loginJSX = 
+      <div>
+        <h2> login </h2>
+        <AuthForm type='login' onComplete={this.handleLogin} />
+        <p> Don't have an account? </p>
+        <Link to='/company/signup'> signup </Link>
       </div>;
 
-    let loginJSX = 
-    <div>
-      <h2> login </h2>
-      <AuthForm onComplete={this.handleLogin}/>
-      <p> Do you want to signup? </p>
-      <Link to='/signup'> signup </Link>
-    </div>;
-
-    return (
+    return(
       <div className='landing'>
         {location.pathname === routes.ROOT_ROUTE ? rootJSX : undefined}
-        {location.pathname === routes.LOGIN_ROUTE ? loginJSX : undefined}
         {location.pathname === routes.SIGNUP_ROUTE ? signUpJSX : undefined}
+        {location.pathname === routes.LOGIN_ROUTE ? loginJSX : undefined}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   token : state.token,
 });
 
-const mapDispatchToProps = dispatch => ({
-  doSignup : user => dispatch(authActions.signupAction(user)),
-  doLogin : user => dispatch(authActions.loginAction(user)),
+const mapDispatchToProps = (dispatch) => ({
+  doSignup : (company) => dispatch(authActions.signupAction(company)),
+  doLogin : (company) => dispatch(authActions.loginAction(company)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Landing);
+export default connect(mapStateToProps,mapDispatchToProps)(Landing);
