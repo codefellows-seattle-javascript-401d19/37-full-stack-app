@@ -57,7 +57,7 @@ describe('routerAuth', () => {
         expect(res.status).toEqual(200)
         expect(res.text).toBeTruthy()
         let XSlugramToken = res.headers['set-cookie'][0]
-        expect(XSlugramToken.indexOf(`X-Sluggram-Token=${res.text}`)).toBeGreaterThan(-1)
+        expect(XSlugramToken.indexOf(`LINDAHLGRAM-Token=${res.text}`)).toBeGreaterThan(-1)
       })
     })
 

@@ -4,7 +4,7 @@ const validateProfile = (profile) => {
   if(!profile)
     throw new Error('hey profile is required');
 
-  let {username, email, bio, owner} = profile; // david - TODO these are properties on the profile model so change them
+  let {username, email, bio, owner} = profile; 
 
   if(!username || !email || !bio || !owner)
     throw new Error('invalid profile there');

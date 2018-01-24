@@ -1,7 +1,7 @@
-import * as cookie from './lib/cookie';
+import * as cookie from '../lib/cookie';
 
-const SCRAMBLEVOX_COOKIE = 'X-Budget-Token'; // TODO set up x-budget-token in backend - attach in backend when it sets up token
-let token = cookie.cookieFetch(SCRAMBLEVOX_COOKIE);
+const LINDAHLGRAM_COOKIE = 'LINDAHLGRAM-Token'; // TODO set up x-budget-token in backend - attach in backend when it sets up token
+let token = cookie.cookieFetch(LINDAHLGRAM_COOKIE);
 
 let initialState = token ? token : null;
 

@@ -11,7 +11,7 @@ class Header extends React.Component{
         <li> <Link to='/login'> Login </Link></li>
         <li> <Link to='/signup'> Signup </Link></li>
       </ul>;
-    let JSXLoggedIn = null;
+    let JSXLoggedIn = 
     <ul>
       <li> <Link to='/dashboard'>Home</Link></li>
       <li> <Link to='/upload'>Upload</Link></li>
@@ -20,7 +20,7 @@ class Header extends React.Component{
 
     return(
       <header className='header'>
-        <h1>ScrambleVox</h1>
+        <h1>Lindahlgram</h1>
         <nav>
           { this.props.loggedIn ? JSXLoggedIn : JSXNotLoggedIn }
         </nav>

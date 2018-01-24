@@ -35,10 +35,12 @@
     "superagent": "^3.8.2",
     "uglifyjs-webpack-plugin": "^1.1.6",
     "uuid": "^3.2.1",
+    "validator": "^9.2.0",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.0"
   },
   "devDependencies": {
+    "dotenv": "^4.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "jest": "^22.1.1",

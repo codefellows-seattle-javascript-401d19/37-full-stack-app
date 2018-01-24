@@ -15,7 +15,7 @@ export const removeTokenAction = () => ({
 });
 
 export const logoutAction = () => {
-  cookies.cookieDelete('SCRAMBLEVOX-Token'); // david - TODO figure out what should be deleted
+  cookies.cookieDelete('LINDAHLGRAM-Token'); // david - TODO figure out what should be deleted
   return removeTokenAction();
 };
 

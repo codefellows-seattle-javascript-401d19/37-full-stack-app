@@ -1,6 +1,5 @@
 import React from 'react';
 import validator from 'validator';
-// TODO install validator
 
 let emptyState = {
   username: '',
@@ -14,6 +13,8 @@ let emptyState = {
   password: '',
   passwordDirty: false,
   passwordError: 'Hey, Password is required',
+
+  submitted: false,
 };
 
 class AuthForm extends React.Component {
@@ -70,13 +71,13 @@ class AuthForm extends React.Component {
 
     // TODO : code more rules for each part of the following: 
     switch(name){
+      case 'username' :
+        if(value.length < 4)
+          return 'Your username must be at least 4 characters';
+        return null;
       case 'email' : 
         if(!validator.isEmail(value))
           return 'You must provide a valid email';
-        return null;
-      case 'username' :
-        if(value.length < 6)
-          return 'Your username must be at least 6 characters';
         return null;
       case 'password' :
         if(value.length < 6)
@@ -124,6 +125,19 @@ class AuthForm extends React.Component {
           placeholder='Your Username'
           type='text'
           value={this.state.username}
+          onChange={this.handleChange}
+        />
+
+        {signupRenderedJSX}
+
+        {this.state.passwordDirty ? <p>{this.state.passwordError} </p> : undefined }
+
+        <input
+          className={this.state.passwordDirty && this.state.passwordError ? 'invalid' : undefined}
+          name='password'
+          placeholder='Your Password'
+          type='password'
+          value={this.state.password}
           onChange={this.handleChange}
         />
 
