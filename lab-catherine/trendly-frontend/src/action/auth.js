@@ -19,7 +19,6 @@ export const signupAction = (user) => (store) => {
     .send(user)
     .withCredentials()
     .then(response => {
-      console.log({response});
       return store.dispatch(setTokenAction(response.text));
     });
 
@@ -30,7 +29,6 @@ export const loginAction = (user) => (store) => {
     .auth(user.username, user.password)
     .withCredientials()
     .then(response => {
-      console.log({response});
       return store.dispatch(setTokenAction(response.text));
     });
 };
