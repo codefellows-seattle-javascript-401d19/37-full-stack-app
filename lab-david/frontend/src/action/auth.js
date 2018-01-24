@@ -1,5 +1,6 @@
 import superagent from 'superagent';
 import * as routes from '../routes';
+import * as cookies from '../lib/cookie';
 
 //-------------------------------------------------------------
 // SYNC
@@ -12,6 +13,11 @@ export const setTokenAction = (token) => ({
 export const removeTokenAction = () => ({
   type : 'TOKEN_REMOVE',
 });
+
+export const logoutAction = () => {
+  cookies.cookieDelete('SCRAMBLEVOX-Token'); // david - TODO figure out what should be deleted
+  return removeTokenAction();
+};
 
 //-------------------------------------------------------------
 // ASYNC

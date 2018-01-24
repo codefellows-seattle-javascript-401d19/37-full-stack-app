@@ -14,7 +14,7 @@ export default (state = defaultState, action) => {
   let {type, payload} = action;
 
   switch(type){
-    case 'CLIENT_PROFILE_SET' :  // daivd - payload equals profile
+    case 'CLIENT_PROFILE_SET' :  // david - payload equals profile
       validateProfile(payload);
       return payload;
     case 'TOKEN_REMOVE' :
