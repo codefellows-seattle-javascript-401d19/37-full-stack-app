@@ -14,7 +14,6 @@ export const signup = (user) => (store) => {
     .send(user)
     .withCredentials()
     .then(response => {
-      console.log(response, `response`);
       return store.dispatch(setToken(response.body.token));
     });
 };

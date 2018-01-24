@@ -26,8 +26,6 @@ webpackConfig.plugins = [
   new extractTextPlugin('bundle.[hash].scss'),
 ];
 
-console.log(process.env.API_URL, `apiurl`);
-
 if(PRODUCTION){
   webpackConfig.plugins = webpackConfig.plugins.concat([
     new UglifyPlugin(),
