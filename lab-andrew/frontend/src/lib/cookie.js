@@ -5,3 +5,7 @@ export const cookieFetchAll = () => {
       return {[key.trim()]: value};
     });
 };
+
+export const cookieDelete = key => {
+  document.cookie = `${key}=; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+};
