@@ -16,6 +16,7 @@ export const removeTokenAction = () => ({
 export const signupAction = (user) => (store) => {
   return superagent.post(`${__API_URL__}${routes.SIGNUP_ROUTE}`)
     .send(user)
+    // .send()
     .withCredentials()
     .then(response => {
       console.log({response});

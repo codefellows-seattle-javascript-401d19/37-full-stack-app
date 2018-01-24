@@ -1,27 +1,22 @@
-import React from 'react';
-import ReactDom from 'react-dom';
-import {createStore, applyMiddleware} from 'redux';
-import {Provider} from 'react-redux';
+import React from 'react'
+import ReactDom from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
 
-import {composeWithDevTools} from 'redux-devtools-extension';
-import thunk from './lib/thunk';
-
-
-import App from './component/app';
-import reducer from './reducer';
-
-import session from './lib/redux-session';
-import reporter from './lib/redux-reporter';
-
+import reducer from './reducer'
+import App from './component/app'
+import thunk from './lib/thunk.js'
+import reporter from './lib/redux-reporter.js'
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const store = createStore(reducer, composeWithDevTools(
-  applyMiddleware(reporter, session, thunk)
-));
+  applyMiddleware(thunk, reporter),
+))
 
 const container = document.createElement('div');
 document.body.appendChild(container);
 
 ReactDom.render(
-  <Provider store={store}> 
+  <Provider store={store}>
     <App />
   </Provider>, container);

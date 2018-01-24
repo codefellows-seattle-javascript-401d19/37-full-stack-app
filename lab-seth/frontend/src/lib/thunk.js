@@ -1,10 +1,5 @@
-export default store => next => action => {
-  if (typeof action === 'function') {
-    return action(store.dispatch);
-  } else {
-    return next(action);
-  }
-};
+export default store => next => action => 
+  typeof action === 'function' ? action(store) : next(action);
 
 //This middleware intercepts actions:
 //  - if they are a function then execute the function, give the function access to the store, store.dispatch
