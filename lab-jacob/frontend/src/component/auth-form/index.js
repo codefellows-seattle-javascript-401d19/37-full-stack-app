@@ -55,7 +55,7 @@ class AuthForm extends React.Component {
           onChange={this.handleChange}
         />
 
-        {signupRenderedJSX}
+        {signupRenderJSX}
 
         <input
           name='password'

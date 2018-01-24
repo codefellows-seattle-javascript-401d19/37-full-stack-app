@@ -17,7 +17,7 @@
     "watch": "nodemon index.js",
     "test": "jest --runInBand",
     "test-watch": "jest --runInBand --watchAll",
-    "dbon": "mkdir -p ./db && mongod --dbpath ./db",
+    "dbon": "mkdir -p ./db && mongod --port 27018 --dbpath ./db",
     "dboff": "killall mongod"
   },
   "dependencies": {

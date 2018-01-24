@@ -1,6 +1,7 @@
 'use strict';
 
 import dotenv from 'dotenv'
+dotenv.config()
 
 const {DefinePlugin, EnviromentPlugin} = require('webpack');
 const CleanPlugin = require('clean-webpack-plugin')
@@ -23,7 +24,7 @@ webPackConfig.plugins = [
   new HTMLPlugin({title : 'FullStack App'}),
   new EnviromentPlugin(['NODE_ENV']),
   new DefinePlugin({
-    __API_URL__ : JSON.stringify(process.env.API_URL)
+    __API_URL__ : JSON.stringify(process.env.API_URL),
   }),
   new ExtractTextPlugin('bundle.[hash].css'),
 ];
@@ -53,16 +54,16 @@ webPackConfig.module = {
             options: {
               sourceMap: true, 
               includePaths: [`${__dirname}/src/style`],
-            }
-          }
-        ]
+            },
+          },
+        ],
       }),
-    }
+    },
   ],
 };
 
 webPackConfig.devtool = PRODUCTION ? undefined : 'eval-source-map';
 
 webPackConfig.devServer = {
-  historyApiFallback: true
+  historyApiFallback: true,
 };
