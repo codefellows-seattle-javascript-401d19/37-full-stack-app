@@ -16,7 +16,10 @@ let httpServer = null;
 
 mongoose.Promise = Promise;
 
-app.use(cors({origin: 'http://localhost:8080'}));
+app.use(cors({
+  origin: 'http://localhost:8080',
+  credentials: true,
+}));
 
 // ---------------------------------------------
 // LOGGER MIDDLEWARE

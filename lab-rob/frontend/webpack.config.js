@@ -24,7 +24,7 @@ webpackConfig.plugins = [
   }),
   new EnvironmentPlugin(['NODE_ENV']),
   new DefinePlugin({
-    __API_URL_: JSON.stringify(process.env.API_URL),
+    __API_URL__: JSON.stringify(process.env.API_URL),
   }),
   new ExtractTextPlugin({
     filename: 'bundle.[hash].css',
