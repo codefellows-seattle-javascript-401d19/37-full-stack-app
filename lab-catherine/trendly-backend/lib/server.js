@@ -19,10 +19,7 @@ const server = module.exports = {};
 
 const app = express();
 
-app.use(cors({
-  origin: 'http://localhost:8080',
-  credentials: true,
-})),
+app.use(cors()),
 
 // ================ ROUTE SETUP ===================
 app.use(require('./middleware/logger-middleware'));
