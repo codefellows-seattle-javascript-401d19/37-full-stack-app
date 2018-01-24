@@ -27,10 +27,8 @@ class AuthRedirect extends React.Component {
   }
 }
 
-let mapStateToProps = (state) => {
-  return ({
-    token: state.token,
-  });
-};
+const mapStateToProps = state => ({
+  token : state.token,
+});
 
-export default ExpenseForm;
+export default connect(mapStateToProps)(AuthRedirect);

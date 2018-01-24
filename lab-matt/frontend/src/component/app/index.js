@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Dashboard from '../dashboard';
 import Landing from '../landing';
 import AuthForm from '../auth-form';
+import AuthRedirect from '../auth-redirect';
 
 
 class App extends React.Component {
@@ -19,9 +20,10 @@ class App extends React.Component {
             <nav>
               <Link to='/'> Home </Link>
             </nav>
+            <Route exact path='*' component={AuthRedirect} />
             <Route exact path='/' component={Landing} />
-            <Route exact path='/signup' component={AuthForm} />
-            <Route exact path='/login' component={AuthForm} />
+            <Route exact path='/signup' component={Landing} />
+            <Route exact path='/login' component={Landing} />
             <Route exact path='/dashboard' component={Dashboard} />
           </div>
         </BrowserRouter>

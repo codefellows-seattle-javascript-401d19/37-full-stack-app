@@ -23,7 +23,7 @@ export const signupAction = (user) => (store) => {
 
 export const loginAction = (user) => (store) => {
   return superagent.get(`${__API_URL__}/login`)
-    .send(user.username, user.password)
+    .auth(user.username, user.password)
     // .withCredentials()
     .then(response => {
       console.log('__SIGNUP_RESPONSE__', { response });

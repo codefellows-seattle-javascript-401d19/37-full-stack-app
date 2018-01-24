@@ -19,14 +19,10 @@ class AuthForm extends React.Component {
       let { name, value } = event.target;
       this.setState({ [name] : value });
     }
+
     this.handleSubmit = (e) => {
       e.preventDefault();
-
-      if (this.props.signup) {
-        this.props.signMeUp(this.state);
-      } else {
-        this.props.logMeIn(this.state);
-      }
+      this.props.onComplete(this.state);
     };
   }
   
@@ -38,7 +34,6 @@ class AuthForm extends React.Component {
 
     return (
       <form className='auth-form' onSubmit={this.handleSubmit}>
-        <h1>{header}</h1>
         <input onChange={this.handleChange} type="username" name='username' placeholder ='username' />
         {renderEmail}
         <input onChange={this.handleChange} type="password" name='password' placeholder ='password' />
@@ -48,15 +43,4 @@ class AuthForm extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  token : state.token,
-});
-
-let mapDispatchToProps = (dispatch) => {
-  return {
-    signMeUp : (user) => dispatch(signupAction(user)),
-    logMeIn : (user) => dispatch(loginAction(user)),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(AuthForm);
+export default AuthForm;
