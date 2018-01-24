@@ -5,6 +5,7 @@ import * as db from './db'
 import express from 'express'
 import middleware from '../middleware'
 import {log, logError} from './util.js'
+require('dotenv').config();
 
 // STATE
 const app = express().use(middleware)
@@ -12,6 +13,7 @@ const state = {
   isOn: false, 
   http: null,
 }
+
 const cors = require('cors');
 app.use(cors({
   origin: '...',

@@ -5,6 +5,7 @@ import {log, error} from './util.js'
 const mongoose = require('mongoose')
 mongoose.Promise = Promise 
 
+require('dotenv').config();
 // STATE
 const state = { isOn: false }
 
@@ -14,7 +15,7 @@ export const start = () => {
   if(state.isOn)
     return Promise.reject(new Error('USER ERROR: db is connected'))
   state.isOn = true
-  return mongoose.connect(process.env.MONGO_URI, {useMongoClient: true})
+  return mongoose.connect( process.env.MONGO_URI, {useMongoClient: true})
 }
 
 export const stop = () => {
