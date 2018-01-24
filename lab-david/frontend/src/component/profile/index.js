@@ -11,17 +11,17 @@ class Profile extends React.Component{
 
     this.state = {
       editing : false,
-    }
-  }
-  //-------------------------------------------------------------
-  // BINDING FUNCTIONS
-  //-------------------------------------------------------------
-  let memberFunctions = Object.getOwnPropertyNames(Profile.prototype);
+    };
+    //-------------------------------------------------------------
+    // BINDING FUNCTIONS
+    //-------------------------------------------------------------
+    let memberFunctions = Object.getOwnPropertyNames(Profile.prototype);
     for(let functionName of memberFunctions){
       if(functionName.startsWith('handle')){
         this[functionName] = this[functionName].bind(this);
       }
     }
+  }
   //-------------------------------------------------------------
   // MEMBER FUNCTIONS
   //-------------------------------------------------------------
@@ -29,12 +29,12 @@ class Profile extends React.Component{
     this.props.profileCreate(profile)
       .then(() => {
         this.props.history.push(routes.DASHBOARD_ROUTE); // david - as soon as profile is created go back to dashboard
-      })
+      });
   }
 
   handleUpdate(profile){
     this.props.profileUpdate(profile);
-    this.setState({editing : false })
+    this.setState({editing : false });
   }
 
 
@@ -45,7 +45,7 @@ class Profile extends React.Component{
     let {
       profile,
       profileCreate,
-      profileUpdate
+      profileUpdate,
     } = this.props;
 
     let JSXEditing = null;
@@ -59,30 +59,30 @@ class Profile extends React.Component{
         <ProfileForm profile={profile} onComplete={this.handleUpdate} />
         <button onClick={() => this.setState({ editing : false })}> Cancel 
         </button>
-      </div>
+      </div>;
       
       JSXDisplay = 
       <div>
         <p>{profile.bio}</p> // david - TODO Fix profile bio
         <button onClick={() => this.setState({ editing : true })}> Edit Bio 
         </button>
-      </div>
+      </div>;
 
       JSXProfile = 
       <div>
         <h2>{profile.username}</h2>
         <h3>{profile.email}</h3>
         {this.state.editing ? JSXEditing : JSXDisplay}  
-      </div>
+      </div>;
     
     }
 
-  return(
-    <div>
-      <h1>Profile</h1>
-      {profile ? JSXProfile : <ProfileForm onComplete={this.handleUpdate} /> }
-    </div>
-  );
+    return(
+      <div>
+        <h1>Profile</h1>
+        {profile ? JSXProfile : <ProfileForm onComplete={this.handleUpdate} /> }
+      </div>
+    );
   }
 }
 
