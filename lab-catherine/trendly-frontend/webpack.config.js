@@ -24,6 +24,7 @@ webPackConfig.plugins = [
   new EnvironmentPlugin(['NODE_ENV']),
   new DefinePlugin({
     __API_URL__ : JSON.stringify(process.env.API_URL),
+    __CDN_URL__ : JSON.stringify(process.env.CDN_URL),
   }),
   new ExtractTextPlugin('bundle[hash].css'),
 ];

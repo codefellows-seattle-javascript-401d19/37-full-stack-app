@@ -1,3 +1,3 @@
 import {combineReducers} from 'redux';
-import token from './token.js';
+import token from './token';
 export default combineReducers({token});
