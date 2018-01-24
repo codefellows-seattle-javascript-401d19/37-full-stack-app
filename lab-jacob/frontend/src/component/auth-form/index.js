@@ -34,6 +34,8 @@ class AuthForm extends React.Component {
 
   render(){
     let {type} = this.props
+    type = type === 'login' ? type : 'signup'  
+
     let signupJSX = 
      <input 
        name = 'email'
