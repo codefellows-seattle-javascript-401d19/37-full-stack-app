@@ -19,23 +19,27 @@ export const removeTokenAction = () => ({
 //-----------------------------------------------------
 
 export const signupAction = user => store => {
-  return superagent
-    .post(`${__API_URL__}${routes.SIGNUP_ROUTE}`)
-    .send(user)
-    .withCredentials()
-    .then(response => {
-      console.log({ response });
-      return store.dispatch(setTokenAction(response.token));
-    });
+  return (
+    superagent
+      .post(`${__API_URL__}${routes.SIGNUP_ROUTE}`)
+      .send(user)
+  // .withCredentials()
+      .then(response => {
+        console.log({ response });
+        return store.dispatch(setTokenAction(JSON.parse(response.text).token));
+      })
+  );
 };
 
 export const loginAction = user => store => {
-  return superagent
-    .get(`${__API_URL__}${routes.LOGIN_ROUTE}`)
-    .auth(user.username, user.password)
-    .withCredentials()
-    .then(response => {
-      console.log({ response });
-      return store.dispatch(setTokenAction(response.token));
-    });
+  return (
+    superagent
+      .get(`${__API_URL__}${routes.LOGIN_ROUTE}`)
+      .auth(user.username, user.password)
+  // .withCredentials()
+      .then(response => {
+        console.log({ response });
+        return store.dispatch(setTokenAction(JSON.parse(response.text).token));
+      })
+  );
 };
