@@ -1,24 +1,43 @@
 'use strict';
 
+require('dotenv').config();
+
+const {DefinePlugin, EnvironmentPlugin} = require('webpack');
+const CleanPlugin = require('clean-webpack-plugin');
+const UglifyPlugin = require('uglifyjs-webpack-plugin');
+
 const webPackConfig = module.exports = {};
 
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const PRODUCTION = process.env.NODE_ENV === 'production';
 //=======================================
 
 webPackConfig.entry = `${__dirname}/src/main.js`;
 webPackConfig.output = {
   path: `${__dirname}/build`,
   filename: 'bundle.[hash].js',
+  publicPath : process.env.CDN_URL,
 },
 
 //=======================================
 
 webPackConfig.plugins = [
-  new HTMLWebpackPlugin(),
+  new HTMLWebpackPlugin({title : 'Day 37 Fullstack App'}),
+  new EnvironmentPlugin(['NODE_ENV']),
+  new DefinePlugin({
+    __API_URL__ : JSON.stringify(process.env.API_URL),
+  }),
   new ExtractTextPlugin('bundle.[hash].css'),
 ];
+
+if(PRODUCTION) {
+  webPackConfig.plugins = webPackConfig.plugins.concat([
+    new UglifyPlugin(),
+    new CleanPlugin(),
+  ]);
+}
 
 //=======================================
 
@@ -48,7 +67,7 @@ webPackConfig.module = {
   ],
 };
 
-webPackConfig.devtool = 'eval-source-map';
+webPackConfig.devtool = PRODUCTION ? undefined : 'eval-source-map';
 
 webPackConfig.devServer = {
   historyApiFallback: true,

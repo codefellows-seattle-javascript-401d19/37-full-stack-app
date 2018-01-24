@@ -1,4 +1,4 @@
-# Lab 28 Notes List
+# Lab 37 FullStackApp
 
 ## Author: Nicholas Carignan
 
@@ -27,7 +27,7 @@
 ## Setup
   clone the repo by typing in
 
-  `git clone https://github.com/ncarignan/28-todo-app.git`
+  `git clone https://github.com/ncarignan/37-full-stack-app.git`
 
   then install the packages with
 
