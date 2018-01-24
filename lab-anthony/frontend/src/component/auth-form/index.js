@@ -29,4 +29,48 @@ class AuthForm extends React.Component {
     this.props.onComplete(this.state);
     this.setState(emptyState);
   }
+
+  render(){
+    let { type } = this.props;
+
+    type = type === 'login' ? type : 'signup';
+
+    let signupJSX =
+      <input
+        name='email'
+        placeholder='email'
+        type='email'
+        value={this.state.email}
+        onChange={this.handleChange}
+      />;
+
+    let signupRenderedJSX = (type !== 'login') ? signupJSX : undefined;
+
+    return (
+      <form className='auth-form' onSubmit={this.handleSubmit} >
+
+        <input
+          name='username'
+          placeholder='username'
+          type='text'
+          value={this.state.username}
+          onChange={this.handleChange}
+        />
+
+        {signupRenderedJSX}
+
+        <input
+          name='password'
+          placeholder='password'
+          type='password'
+          value={this.state.password}
+          onChange={this.handleChange}
+        />
+
+        <button type='submit'> {type} </button>
+      </form>
+    );
+  }
 }
+
+export default AuthForm;
