@@ -14,8 +14,7 @@ export const signup = (user) => (store) => {
     .send(user)
     .withCredentials()
     .then(response => {
-      console.log(response, `signup response`);
-      // return store.dispatch(setToken(response));
+      return store.dispatch(setToken(response.text));
     });
 };
 
@@ -24,7 +23,6 @@ export const login = (user) => (store) => {
     .auth(user.username, user.password)
     .withCredentials()
     .then(response => {
-      console.log(response, `login response`);
-      // return store.dispatch(setToken(response));
+      return store.dispatch(setToken(response.text));
     });
 };
