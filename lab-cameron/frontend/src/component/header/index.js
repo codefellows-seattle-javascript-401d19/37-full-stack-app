@@ -34,3 +34,13 @@ class Header extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  loggedIn: !!state.token,
+});
+
+const mapDispatchToProps = dispatch => ({
+  doLogout: () => dispatch(authActions.logoutAction()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
