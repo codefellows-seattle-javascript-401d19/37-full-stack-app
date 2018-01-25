@@ -24,7 +24,7 @@ class ProfileForm extends React.Component{
   }
 
   handleSubmit(event){
-    event.default()
+    event.preventDefault()
     this.props.onComplete(this.state)
     this.setState({
       bio : '',
