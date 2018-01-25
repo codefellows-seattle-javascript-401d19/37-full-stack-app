@@ -11,8 +11,6 @@ export default (state = emptystate, action) => {
 
   switch (type) {
     case 'TOKEN_SET':
-    // TODO - PROPERLY CONFIGURE COOKIE
-      document.cookie=`${TRENDLY_COOKIE}=${payload}`;
       return payload;
   
     case 'TOKEN_REMOVE':
