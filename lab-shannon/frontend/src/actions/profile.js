@@ -7,13 +7,15 @@ export const setProfile = (user) => ({
 
 export const createProfile = profile => store => {
   let {token} = store.getState();
+  console.log(profile);
   return superagent.post(`${__API_URL__}/profile`) //eslint-disable-line
     .set('Authorization',`Bearer ${token}`)
     .set('Content-Type','application/json')
     .send(profile)
     .then(response => {
       return store.dispatch(setProfile(response.body));
-    });
+    })
+    .catch(error => console.log(error));
 };
 
 export const updateProfile = profile => store => {

@@ -5,12 +5,7 @@ const mongoose = require('mongoose');
 const profileSchema = mongoose.Schema({
   owner: {
     type : mongoose.Schema.Types.ObjectId,
-    required : true,
-    unique: true,
-  },
-  username: {
-    type: String,
-    required: true,
+    ref: 'user',
   },
   bio: {
     type: String,
@@ -20,10 +15,8 @@ const profileSchema = mongoose.Schema({
 const Profile = module.exports = mongoose.model('profile', profileSchema);
 
 Profile.create = (profile, user) => {
-  console.log(`groot`);
   return new Profile({
     owner: user._id,
-    username: user.username,
     bio: profile.bio,
   })
     .save()

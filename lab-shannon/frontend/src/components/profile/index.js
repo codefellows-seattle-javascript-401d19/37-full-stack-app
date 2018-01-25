@@ -43,7 +43,7 @@ class Profile extends React.Component{
       let nonEditingJSX =
       <div>
         <p>{profile.bio}</p>
-        <button onClick={() => this.setState({editing: true})}>Edit Bio</button>
+        <button onClick={() => this.setState({editing: true})}> Edit Bio </button>
       </div>;
 
       let editingJSX =
@@ -54,7 +54,7 @@ class Profile extends React.Component{
 
       let displayedProfileJSX =
         <div>
-          <h3>profile.name</h3>
+          <h3>profile.username</h3>
           {this.state.editing ? editingJSX : nonEditingJSX}
         </div>;
     }
