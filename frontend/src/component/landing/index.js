@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom';
 
 import AuthForm from '../auth-form';
 import * as authActions from '../../action/auth';
+import * as clientProfileActions  from '../../action/client-profile';
+
 
 import * as routes from '../../routes';
 
@@ -22,6 +24,7 @@ class Landing extends React.Component{
   handleLogin(user){
     this.props.handleLogin(user)
       .then(() => {
+        this.props.fetchClientProfile();
         this.props.history.push(routes.DASHBOARD_ROUTE);
       })
       .catch(console.error);
@@ -81,6 +84,7 @@ let mapDispatchToProps = (dispatch) => {
   return{
     handleSignup: (user) => dispatch(authActions.signupAction(user)),
     handleLogin: (user) => dispatch(authActions.loginAction(user)),
+    fetchClientProfile: () => dispatch(clientProfileActions.fetchAction()),
   };
 };
 

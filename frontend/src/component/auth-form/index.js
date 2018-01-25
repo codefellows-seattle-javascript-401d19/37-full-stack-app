@@ -14,6 +14,8 @@ let emptyState = {
   password: '',
   passwordDirty: false,
   passwordError: 'Password is required',
+
+  submitted : false,
 };
 
 class AuthForm extends React.Component{
@@ -51,6 +53,7 @@ class AuthForm extends React.Component{
         usernameDirty : true,
         emailDirty : true,
         passwordDirty : true,
+        submitted : true,
       });
 
     }
@@ -83,6 +86,7 @@ class AuthForm extends React.Component{
 
     let signupJSX =
     <input
+      className={this.state.emailDirty && this.state.emailError ? 'invalid' : undefined}
       name = 'email'
       placeholder = 'email'
       type = 'email'
@@ -99,9 +103,10 @@ class AuthForm extends React.Component{
         noValidate
         className = "auth-form">
 
-        {this.state.usernameDirty ? <p>{this.state.passwordError} </p> : undefined}
+        {this.state.usernameDirty ? <p>{this.state.usernameError} </p> : undefined}
 
         <input
+          className={this.state.usernameDirty && this.state.usernameError ? 'invalid' : undefined}
           type="text"
           name="username"
           placeholder="username"
@@ -115,6 +120,7 @@ class AuthForm extends React.Component{
 
         {this.state.passwordDirty ? <p>{this.state.passwordError} </p> : undefined}
         <input
+          className={this.state.passwordDirty && this.state.passwordError ? 'invalid' : undefined}
           type="password"
           name="password"
           placeholder="password"

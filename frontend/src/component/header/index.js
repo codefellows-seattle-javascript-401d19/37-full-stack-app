@@ -8,6 +8,8 @@ class Header extends React.Component{
     let loggedInJSX =
       <ul>
         <li> <Link to='/dashboard'> dashboard </Link> </li>
+        <li> <Link to='/upload'> upload </Link> </li>
+        <li> <Link to='/profile'> profile </Link> </li>
       </ul>;
 
     let notLoggedInJSX =
@@ -37,3 +39,5 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   handleLogout : () => dispatch(authActions.logoutAction()),
 });
+
+export default connect(mapStateToProps,mapDispatchToProps)(Header);
