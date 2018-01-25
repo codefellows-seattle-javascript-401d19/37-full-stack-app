@@ -5,7 +5,6 @@ import * as db from './db'
 import express from 'express'
 import middleware from '../middleware'
 import {log, logError} from './util.js'
-// const cors = require('cors');
 
 // STATE
 const app = express().use(middleware)
@@ -13,8 +12,6 @@ const state = {
   isOn: false, 
   http: null,
 }
-
-// app.use(cors({ origin: CORS_ORIGIN, credentials: true}))
 
 // INTERFACE 
 export const start = () => {

@@ -40,7 +40,7 @@ class Landing extends React.Component {
 
 		let rootJSX = 
 		<div>
-			<h2>Welcome to our blockchain.</h2>
+			<h2>Welcome to SlugGram.</h2>
 			<Link to='/signup'> Sign Up </Link>
 			<Link to='/login'> Log In </Link>
 		</div>;
