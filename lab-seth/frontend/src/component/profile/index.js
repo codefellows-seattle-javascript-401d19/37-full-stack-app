@@ -29,7 +29,7 @@ class Profile extends React.Component {
   }
 
   handleUpdate(profile){
-    this.props.profileUpdate(profile);
+    this.props.profileUpdate(profile)
     this.setState({editing:false});
   }
 

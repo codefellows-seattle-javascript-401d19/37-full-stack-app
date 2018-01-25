@@ -49,7 +49,7 @@ class Landing extends React.Component{
     let signupJSX = 
       <div>
         <h2> Signup </h2>
-        <AuthForm onComplete={this.handleSignup} />
+        <AuthForm type='signup' onComplete={this.handleSignup} />
         <h2> Need to Login? </h2>
         <Link to='/login' >Login </Link>
       </div>;
@@ -57,7 +57,7 @@ class Landing extends React.Component{
     let loginJSX = 
       <div>
         <h2> Login </h2>
-        <AuthForm onComplete={this.handleLogin} />
+        <AuthForm type='login' onComplete={this.handleLogin} />
         <h2> Need an account? </h2>
         <Link to='/signup' >Signup </Link>
       </div>;
