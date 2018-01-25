@@ -284,3 +284,6 @@
 {"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-25T23:35:41.035Z"}
 {"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-25T23:35:48.644Z"}
 {"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-25T23:35:48.700Z"}
+{"level":"info","message":"Processing : PUT on : /profile/5a6a578d519d8865c701abe5","timestamp":"2018-01-25T23:36:44.604Z"}
+{"level":"info","message":"Server is listening on port 3000","timestamp":"2018-01-25T23:55:30.207Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-25T23:56:23.500Z"}

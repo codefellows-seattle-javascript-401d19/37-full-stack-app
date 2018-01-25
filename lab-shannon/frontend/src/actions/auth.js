@@ -9,6 +9,7 @@ export const removeToken = () => ({
   type: 'REMOVE_TOKEN',
 });
 
+
 export const signup = (user) => (store) => {
   return superagent.post(`${__API_URL__}/signup`) //eslint-disable-line
     .send(user)
@@ -25,4 +26,8 @@ export const login = (user) => (store) => {
     .then(response => {
       return store.dispatch(setToken(response.body.token));
     });
+};
+
+export const logout = () => store => {
+  return removeToken();
 };
