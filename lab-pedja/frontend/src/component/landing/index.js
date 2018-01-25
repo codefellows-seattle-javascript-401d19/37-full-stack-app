@@ -10,38 +10,24 @@ import * as routes from '../../routes';
 class Landing extends React.Component{
   constructor(props){
     super(props);
-    //-------------------------------------------------------------
-    // Binding Handlers
-    //-------------------------------------------------------------
-    let memberFunctions = Object.getOwnPropertyNames(Landing.prototype);
-    for(let functionName of memberFunctions){
-      if(functionName.startsWith('handle')){
-        this[functionName] = this[functionName].bind(this);
-      }
-    }
-    //-------------------------------------------------------------
-  }
-  //---------------------------------------------------------------
-  // Member Functions
-  //---------------------------------------------------------------
-  handleLogin(company){
-    this.props.doLogin(company)
+
+    this.handleLogin = (company) => {
+      this.props.doLogin(company)
       .then(() => {
-        this.props.history.push(routes.DASHBOARD_ROUTE);
+        this.props.history.push('/dashboard');
       })
       .catch(console.error);
+    };
+    
+    this.handleSignup = (company) => {
+      this.props.doSignup(company)
+      .then(() => {
+        this.props.history.push('/dashboard');
+      })
+      .catch(console.error);
+    };
   }
 
-  handleSignup(company){
-    this.props.doSignup(company)
-      .then(() => {
-        this.props.history.push(routes.DASHBOARD_ROUTE);
-      })
-      .catch(console.error);
-  }
-  //---------------------------------------------------------------
-  // Hooks
-  //---------------------------------------------------------------
   render(){
     let {location} = this.props;
 
@@ -55,7 +41,7 @@ class Landing extends React.Component{
     let signUpJSX = 
       <div>
         <h2> signup </h2>
-        <AuthForm onComplete={this.handleSignup} signUpJSX={true}/>
+        <AuthForm type='signup' onComplete={this.handleSignup} />
         <p> already have an account? </p>
         <Link to='/company/login'> login </Link>
       </div>;

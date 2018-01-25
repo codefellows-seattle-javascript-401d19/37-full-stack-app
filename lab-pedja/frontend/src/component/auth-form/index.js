@@ -30,7 +30,6 @@ class AuthForm extends React.Component {
 
   render() {
     let { type } = this.props;
-    type = type === 'login' ? type : 'signup';
 
     let signupJSX = 
       <div>
@@ -58,7 +57,7 @@ class AuthForm extends React.Component {
 
       </div>;
 
-    let signupRenderJSX = (type !== 'login') ? signupJSX : undefined;
+    let signupRenderJSX = type == 'signup' ? signupJSX : undefined;
 
     return (
       <form className='auth-form' onSubmit={this.handleSubmit} >
