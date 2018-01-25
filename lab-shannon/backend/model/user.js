@@ -60,6 +60,7 @@ userSchema.methods.createToken = function () {
 const User = module.exports = mongoose.model('user', userSchema);
 
 User.create = (username, email, password) => {
+  console.log(`user groot`);
   const HASH_SALT_ROUNDS = 8;
   const passwordSalt = crypto.randomBytes(64).toString('hex');
   return bcrypt.hash(`${password}${passwordSalt}`, HASH_SALT_ROUNDS)

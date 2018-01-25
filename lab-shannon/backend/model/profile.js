@@ -8,7 +8,7 @@ const profileSchema = mongoose.Schema({
     required : true,
     unique: true,
   },
-  name: {
+  username: {
     type: String,
     required: true,
   },
@@ -19,11 +19,12 @@ const profileSchema = mongoose.Schema({
 
 const Profile = module.exports = mongoose.model('profile', profileSchema);
 
-profileSchema.create = (user) => {
+Profile.create = (profile, user) => {
+  console.log(`groot`);
   return new Profile({
     owner: user._id,
-    name: user.name,
-    bio: user.bio,
+    username: user.username,
+    bio: profile.bio,
   })
     .save()
     .then(profile => {
@@ -34,7 +35,7 @@ profileSchema.create = (user) => {
     });
 };
 
-profileSchema.update = (request) => {
-  let options = {new: true, runValidators: true};
+Profile.update = (request) => {
+  let options = {runValidators: true};
   return Profile.findByIdAndUpdate(request.params.id, {bio: request.body.bio}, options);
 };

@@ -9,14 +9,14 @@ const Profile = require('../model/profile');
 const profileRouter = module.exports = new Router();
 
 profileRouter.post('/profile', bearerAuth, jsonParser, (request, response, next) => {
-  return Profile.create(request.body)
-    .then(profile => response.json({profile}))
+  return Profile.create(request.body, request.user)
+    .then(profile => response.json(profile))
     .catch(next);
 });
 
 profileRouter.put('/profile/:id', bearerAuth, jsonParser, (request, response, next) => {
   return Profile.update(request)
-    .then(profile => response.json({profile}))
+    .then(profile => response.json(profile))
     .catch(next);
 });
 
@@ -26,7 +26,7 @@ profileRouter.get('/profile/myProfile', bearerAuth, (request, response, next) =>
       if(!profile){
         throw new httpErrors(404, `__ERROR__ no profile found`);
       }
-      return response.json({profile});
+      return response.json(profile);
     })
     .catch(next);
 });

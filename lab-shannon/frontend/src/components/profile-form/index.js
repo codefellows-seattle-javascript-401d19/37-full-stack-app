@@ -24,7 +24,7 @@ class ProfileForm extends React.Component{
     this.setState(emptyState);
   }
 
-  compontentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps){
     if(nextProps.profile){
       this.setState(nextProps.profile);
     }
@@ -35,7 +35,7 @@ class ProfileForm extends React.Component{
       <div>
         <h4>Testing out the profile form</h4>
         <form onSubmit={this.handleSubmit}>
-          <textArea
+          <textarea
             name = 'bio'
             value = {this.state.bio}
             onChange={this.handleChange}
