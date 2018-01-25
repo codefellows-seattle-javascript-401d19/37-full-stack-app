@@ -18,18 +18,19 @@ export default new Router()
 .use([
   // GLOBAL MIDDLEWARE
   cors({
-    origin: process.env.CORS_ORIGINS.split(' '),
+    // origin: process.env.CORS_ORIGINS.split(' '),
+    origin: 'http://localhost:8080',
     credentials: true,
   }),
   morgan('dev'),
   cookieParser(),
   requestReporter,
   bindResponseMethods,
-  // ROUTERS 
+  // ROUTERS
   routerAuth,
   routerPhoto,
   routerProfile,
   // ERROR HANDLERS
-  fourOhFour, 
+  fourOhFour,
   errorHandler,
 ])

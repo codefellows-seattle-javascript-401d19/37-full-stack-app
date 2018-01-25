@@ -2,25 +2,17 @@ import React from 'react';
 import validator from 'validator';
 
 let emptyState = {
-  companyName: '',
-  companyNameDirty: false,
-  companyNameError: 'company name is required',
+  username: '',
+  usernameDirty: false,
+  usernameError: 'user name is required',
 
   password: '',
   passwordDirty: false,
   passwordError: 'password is required',
 
-  website: '',
-  websiteDirty: false,
-  websiteError: 'website is required',
-
   email: '',
   emailDirty: false,
   emailError: 'email is required',
-
-  phoneNumber: '',
-  phoneNumberDirty: false,
-  phoneNumberError: 'phone number is required',
 };
 
 class AuthForm extends React.Component {
@@ -91,10 +83,10 @@ class AuthForm extends React.Component {
       <form className='auth-form' onSubmit={this.handleSubmit} >
 
         <input
-          name='companyName'
-          placeholder='companyName'
+          name='username'
+          placeholder='username'
           type='text'
-          value={this.state.companyName}
+          value={this.state.username}
           onChange={this.handleChange}
         />
 
