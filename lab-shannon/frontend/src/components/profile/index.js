@@ -35,8 +35,6 @@ class Profile extends React.Component{
       updateProfile,
     } = this.props;
 
-    console.log(profile, `is the profile`);
-
     // these three need to be declared outside of the if block since they're referenced outside of the if block
     let displayedProfileJSX = null;
     let nonEditingJSX = null;
@@ -57,11 +55,14 @@ class Profile extends React.Component{
 
       displayedProfileJSX =
         <div>
-          <h3>profile.username</h3>
+          <h3>{profile.username}</h3>
           {this.state.editing ? editingJSX : nonEditingJSX}
         </div>;
     }
 
+    if(profile){
+      console.log(profile, `profile`);
+    }
     return (
       <div>
         <h2>Profile</h2>
