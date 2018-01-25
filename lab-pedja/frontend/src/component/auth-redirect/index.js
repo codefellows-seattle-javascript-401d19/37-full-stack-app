@@ -1,26 +1,28 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
-import * as routes from "../../routes";
+import React from 'react';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom'; 
+import * as routes from '../../routes';
 
 class AuthRedirect extends React.Component {
-  render() {
-    let {location, history, token} = this.props;
+  render(){
+    let {location,history,token} = this.props;
     let {pathname} = location;
     let destinationRoute = null;
 
-    if(pathname === routes.LOGIN_ROUTE || pathname === routes.SIGNUP_ROUTE || pathname === routes.ROOT_ROUTE) {
-      if(token)
+    if(pathname === routes.LOGIN_ROUTE || pathname === routes.SIGNUP_ROUTE || pathname === routes.ROOT_ROUTE){
+      if(token){ 
         destinationRoute = routes.DASHBOARD_ROUTE;
-    } else{
+      }
+    }
+    else{
       if(!token)
         destinationRoute = routes.ROOT_ROUTE;
     }
-    return (
-      <div className='auth-redirect'>
-        { destinationRoute ? <Redirect to={destinationRoute} /> : undefined }
-      </div>
-    );
+     return(
+       <div className='auth-redirect'>
+        { destinationRoute ? <Redirect to={destinationRoute} />: undefined }
+       </div>
+     );
   }
 }
 

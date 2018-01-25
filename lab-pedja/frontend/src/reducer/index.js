@@ -1,6 +1,5 @@
-import { combineReducers } from "redux";
-import token from "./token";
+import {combineReducers} from 'redux';
+import token from './token.js';
+import clientProfile from "./client-profile.js";
 
-export default combineReducers({
-  token,
-})
+export default combineReducers({token,clientProfile});

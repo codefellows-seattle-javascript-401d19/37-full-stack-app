@@ -1,5 +1,4 @@
 'use strict';
-
 //---------------------------------------------------------------------
 // PRODUCTION SETTINGS
 //---------------------------------------------------------------------
@@ -15,7 +14,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const webPackConfig = module.exports = {};
 
-const PRODUCTION = process.env.NODE_ENV === 'production'; 
+const PRODUCTION = process.env.NODE_ENV === 'production';
 
 //------------------------------------------------------------
 webPackConfig.entry = `${__dirname}/src/main.js`;
@@ -26,7 +25,7 @@ webPackConfig.output = {
 }
 //------------------------------------------------------------
 webPackConfig.plugins = [
-  new HTMLPlugin({title : 'Volly'}),
+  new HTMLPlugin({title : 'Full Stack Application! ^-^'}),
   new EnvironmentPlugin(['NODE_ENV']),
   new DefinePlugin({
     __API_URL__ : JSON.stringify(process.env.API_URL),
@@ -66,9 +65,8 @@ webPackConfig.module = {
     }
   ],
 };
-
 //------------------------------------------------------------
-webPackConfig.devtool = PRODUCTION ? undefined : 'cheap-module-source-map';
+webPackConfig.devtool = PRODUCTION ? undefined : 'eval-source-map';
 
 webPackConfig.devServer = {
   historyApiFallback: true

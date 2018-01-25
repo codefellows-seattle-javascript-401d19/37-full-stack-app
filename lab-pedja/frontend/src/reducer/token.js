@@ -1,4 +1,7 @@
-let initialState = null;
+import * as util from "../lib/util";
+
+let token = util.cookieFetch('X-Sluggram-Token');
+let initialState = token ? token : null;
 
 export default (state=initialState, {type, payload}) => {
   switch(type){

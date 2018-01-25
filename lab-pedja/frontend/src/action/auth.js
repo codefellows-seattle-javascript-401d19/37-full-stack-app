@@ -1,24 +1,30 @@
-import superagent from "superagent";
-import * as routes from "../routes";
+import superagent from 'superagent';
+import * as routes from '../routes';
+import { cookieDelete } from "../lib/util";
 
-// ==========================================
+//----------------------------------------------
 // SYNC
-// ==========================================
+//----------------------------------------------
 export const setTokenAction = (token) => ({
-  type: 'TOKEN_SET',
-  payload: token,
+  type : 'TOKEN_SET',
+  payload : token,
 });
 
 export const removeTokenAction = () => ({
-  type: 'TOKEN_REMOVE',
+  type : 'TOKEN_REMOVE',
 });
 
-// ==========================================
-// ASYNC 
-// ==========================================
-export const signupAction = company => store => {
+export const logoutAction = () => {
+  cookieDelete('X-Sluggram-Token');
+  return removeTokenAction();
+}
+
+//----------------------------------------------
+// ASYNC
+//----------------------------------------------
+export const signupAction = (user) => (store) => {
   return superagent.post(`${__API_URL__}${routes.SIGNUP_ROUTE}`)
-  .send(company)
+  .send(user)
   .withCredentials()
   .then(response => {
     console.log({response});
@@ -26,12 +32,12 @@ export const signupAction = company => store => {
   });
 };
 
-export const loginAction = company => store => {
+export const loginAction = (user) => (store) => {
   return superagent.get(`${__API_URL__}${routes.LOGIN_ROUTE}`)
-    .auth(company.companyName, company.password)
+    .auth(user.username,user.password)
     .withCredentials()
     .then(response => {
-      console.log(response);
+      console.log({response});
       return store.dispatch(setTokenAction(response.text));
     });
 };

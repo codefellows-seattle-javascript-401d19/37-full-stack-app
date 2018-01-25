@@ -1,14 +1,12 @@
-import React from "react";
+import React from 'react';
 
 class Dashboard extends React.Component {
-  render() {
+  render(){
     return (
       <div className='dashboard'>
-        <h1>
-          Hello from Dashboard
-        </h1>
+        <h1> Its a me Dashboard </h1>
       </div>
-    )
+    );
   }
 }
 

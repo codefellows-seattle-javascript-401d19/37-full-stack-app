@@ -1,8 +1,8 @@
-401 JS --  Lab 37 Full Stack Crud App
+401 JS --  Lab 37+38 Full Stack Crud App
 ===
 
 ## Features
-> Purpose of this lab is practice creating async actions for making ajax calls to our server and adding simple AUTH that will allow company to signup/login to our Volly API.
+> Purpose of this lab is practice creating async actions for making ajax calls to our server and adding simple AUTH that will allow USER to signup/login to Sluggram RESTful API server. Lab 38 feature are user profile creation and updating.
 
 ## Code Style
 * Javascript ES6, JSX
@@ -27,15 +27,20 @@
 
   * Fork || clone this repo to you computer
 
-  * Run `npm install`
+  * Run `yarn`
 
-  * Run mongoDB with `npm run dbon` command
+  * Run mongoDB with `yarn dbon` command
 
-  * Start server with `node index.js`
+  * Start server with `yarn start`
 
   * Run webpack command `npm run watch`. After build has been completed - webpack-dev-server will show provide URL where your project is hosted. Copy that address to your browser to view app features
 
-  * Perform company signup/login  
+  * Perform user signup/login  
+  
+  * 
+
+### Credits
+REST API used for backend `https://github.com/slugbyte/sluggram` 
 
 ### Licence
-MIT © Pedja Josifovic401 JS 
+MIT © Pedja Josifovic 401 JS 

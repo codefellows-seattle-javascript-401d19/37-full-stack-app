@@ -3,55 +3,59 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import AuthForm from '../auth-form';
-import * as authActions from '../../action/auth';
-
 import * as routes from '../../routes';
+import * as authActions from '../../action/auth';
+import * as clientProfile from '../../action/client-profile';
 
 class Landing extends React.Component{
   constructor(props){
     super(props);
-
-    this.handleLogin = (company) => {
-      this.props.doLogin(company)
-      .then(() => {
-        this.props.history.push('/dashboard');
-      })
-      .catch(console.error);
-    };
     
-    this.handleSignup = (company) => {
-      this.props.doSignup(company)
-      .then(() => {
-        this.props.history.push('/dashboard');
-      })
-      .catch(console.error);
-    };
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleSignup = this.handleSignup.bind(this);
   }
 
+  handleLogin(user){
+    this.props.doLogin(user)
+      .then(() => {
+        this.props.fetchClientProfile();
+        this.props.history.push(routes.DASHBOARD_ROUTE);
+      })
+      .catch(console.error);
+  }
+
+  handleSignup(user){
+    this.props.doSignup(user)
+      .then(() => {
+        this.props.history.push(routes.DASHBOARD_ROUTE);
+      })
+      .catch(console.error);
+  }
+  //---------------------------------------------------------------
+  // Hooks
+  //---------------------------------------------------------------
   render(){
     let {location} = this.props;
 
     let rootJSX = 
       <div>
         <h2> welcome </h2>
-        <Link to='/company/signup'> signup </Link>
-        <Link to='/company/login'> login </Link>
       </div>;
     
     let signUpJSX = 
       <div>
         <h2> signup </h2>
-        <AuthForm type='signup' onComplete={this.handleSignup} />
+        <AuthForm onComplete={this.handleSignup} />
         <p> already have an account? </p>
-        <Link to='/company/login'> login </Link>
+        <Link to='/login'> login </Link>
       </div>;
     
     let loginJSX = 
       <div>
         <h2> login </h2>
         <AuthForm type='login' onComplete={this.handleLogin} />
-        <p> Don't have an account? </p>
-        <Link to='/company/signup'> signup </Link>
+        <p> Don&#39;t have an account? </p>
+        <Link to='/signup'> signup </Link>
       </div>;
 
     return(
@@ -69,8 +73,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  doSignup : (company) => dispatch(authActions.signupAction(company)),
-  doLogin : (company) => dispatch(authActions.loginAction(company)),
+  doSignup : (user) => dispatch(authActions.signupAction(user)),
+  doLogin : (user) => dispatch(authActions.loginAction(user)),
+  fetchClientProfile : () => dispatch(clientProfile.fetchAction()),
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(Landing);
