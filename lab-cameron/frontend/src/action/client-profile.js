@@ -26,7 +26,6 @@ export const updateAction = profile => store => {
     .set('Content-Type', 'application/json')
     .send(profile)
     .then(response => {
-      console.log(profile);
       return store.dispatch(setAction(response.body));
     });
 };
