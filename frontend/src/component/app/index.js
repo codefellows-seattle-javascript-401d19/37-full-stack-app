@@ -42,7 +42,7 @@ const mapStateToProps = (state) => ({
   loggedIn : !!state.token,
 });
 
-const mapDispatchToProps = (state) => ({
+const mapDispatchToProps = (dispatch) => ({
   fetchClientProfile : () => dispatch(clientProfile.fetchAction()),
 });
 
