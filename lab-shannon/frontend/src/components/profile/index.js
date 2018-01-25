@@ -23,6 +23,7 @@ class Profile extends React.Component{
   handleCreate(profile){
     this.props.createProfile(profile)
       .then(() => {
+        console.log(this.props);
         this.props.history.push('/dashboard');
       });
   }

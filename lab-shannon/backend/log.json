@@ -74,3 +74,12 @@
 {"level":"info","message":"__ERROR_MIDDLEWARE__","timestamp":"2018-01-25T06:32:16.634Z"}
 {"code":11000,"index":0,"errmsg":"E11000 duplicate key error collection: fullStackTesting.profile index: owner_1 dup key: { : ObjectId('5a6977a475be865b14df91f9') }","op":{"_id":"5a6979f075be865b14df91fb","owner":"5a6977a475be865b14df91f9","bio":"another maggie","__v":0}}
 {"level":"info","message":"Responding with a 409 status code","timestamp":"2018-01-25T06:32:16.635Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-25T16:59:16.336Z"}
+{"level":"info","message":"Processing : POST on : /profile","timestamp":"2018-01-25T16:59:23.113Z"}
+{"level":"info","message":"__ERROR_MIDDLEWARE__","timestamp":"2018-01-25T16:59:23.134Z"}
+{"code":11000,"index":0,"errmsg":"E11000 duplicate key error collection: fullStackTesting.profile index: owner_1 dup key: { : ObjectId('5a69673a559b6a5528a8eac4') }","op":{"_id":"5a6a0ceb75be865b14df91fc","owner":"5a69673a559b6a5528a8eac4","bio":"testing ","__v":0}}
+{"level":"info","message":"Responding with a 409 status code","timestamp":"2018-01-25T16:59:23.135Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-25T16:59:46.265Z"}
+{"level":"info","message":"Processing : POST on : /profile","timestamp":"2018-01-25T16:59:51.337Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-25T17:13:19.033Z"}
+{"level":"info","message":"Processing : POST on : /profile","timestamp":"2018-01-25T17:13:28.332Z"}
