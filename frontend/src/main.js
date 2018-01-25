@@ -8,18 +8,16 @@ import App from './component/app';
 import reducer from './reducer';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
-import session from './lib/redux-session';
 import thunk from './lib/redux-thunk';
 import reporter from './lib/redux-reporter';
 
 let middleware = {
   thunk,
-  session,
   reporter,
 };
 
 let store = createStore(reducer, composeWithDevTools(
-  applyMiddleware(thunk, session, reporter)
+  applyMiddleware(thunk, reporter)
 ));
 
 //-------------
