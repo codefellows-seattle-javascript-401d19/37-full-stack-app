@@ -1,6 +1,6 @@
 import superagent from 'superagent';
 import * as routes from '../routes';
-improt * as cookies from '../cookie';
+import {cookieDelete} from '../lib/cookie';
 
 //--------------------------------- SYNC Actions ---------------------------------
 export const setTokenAction = (token) => ({
@@ -13,7 +13,7 @@ export const removeTokenAction = () => ({
 });
 
 export const logoutAction = () => {
-  cookies.cookieDelete('X-Sluggram-Token');
+  cookieDelete('X-Sluggram-Token');
   return removeTokenAction();
 };
 
@@ -22,7 +22,6 @@ export const logoutAction = () => {
 export const signupAction = (user) => (store) => {
   return superagent.post(`${__API_URL__}${routes.SIGNUP_ROUTE}`)
     .send(user)
-    // .send()
     .withCredentials()
     .then(response => {
       console.log({response});

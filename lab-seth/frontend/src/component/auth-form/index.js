@@ -1,17 +1,18 @@
 import React from 'react';
+import validator from 'validator';
 
 let emptyState = {
   username: '',
   usernameDirty: false,
-  usernameError: '',
+  usernameError: 'Username is Required',
 
   email: '',
   emailDirty: false,
-  emailError: '',
+  emailError: 'Email is Required',
 
   password: '',
   passwordDirty: false,
-  passwordError: '',
+  passwordError: 'Password is Required',
 };
 
 class AuthForm extends React.Component {
@@ -50,17 +51,17 @@ class AuthForm extends React.Component {
         usernameDirty: true,
         emailDirty: true,
         passwordDirty: true,
+        submitted: true,
       });
     }
-
   }
 
-  handleValidation(){
+  handleValidation(name, validation){
     if(this.props.type == 'login') return null;
 
     switch(name){
       case 'username':
-        if(value.length < 6) return 'Name mus tbe at least 6 Characters';
+        if(value.length < 6) return 'Name must be at least 6 Characters';
       return null;
 
       case 'email':
@@ -79,7 +80,7 @@ class AuthForm extends React.Component {
   render() {
     let {type} = this.props;
 
-    type = type === 'login' ? type : 'signup';
+    type = type === 'login' ? 'login' : 'signup';
 
     let signupJSX = 
       <div>
@@ -88,17 +89,19 @@ class AuthForm extends React.Component {
           className={this.state.emailDirty && this.state.emailError ? 'invalid' :undefined}
           name='email'
           placeholder='email'
-          type='text'
+          type='email'
           value={this.state.email}
           onChange={this.handleChange}
           />;
       </div>
 
-    let signupRenderJSX = (type !== 'login') ? signupJSX : undefined;
+    let signupRenderedJSX = (type !== 'login') ? signupJSX : undefined;
 
     return (
       <form className='auth-form' noValidate onSubmit={this.handleSubmit} >
+
         {this.state.usernameDirty ? <p>{this.state.usernameError}</p> : undefined}
+
         <input
           className={this.state.usernameDirty && this.state.usernameError ? 'invalid' : undefined}
           name='username'
@@ -106,17 +109,20 @@ class AuthForm extends React.Component {
           type='text'
           value={this.state.username}
           onChange={this.handleChange}
-          />
+        />
 
-        {signupRenderJSX}
-          TODO: FINISH THIS
+        {signupRenderedJSX}
+
+        {this.state.passwordDirty ? <p>{this.state.passwordError}</p> : undefined}
+
         <input
+          className={this.state.passwordDirty && this.state.passwordError ? 'invalid' : undefined}
           name='password'
           placeholder='password'
           type='password'
           value={this.state.password}
           onChange={this.handleChange}
-          />
+        />
 
         <button type='submit'> {type} </button>
       </form>

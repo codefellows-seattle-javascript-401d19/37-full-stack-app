@@ -1,15 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {BrowserRouter, Route} from 'react-router-dom';
+
+import Header from '../header';
 import Landing from '../landing';
-import Dashboard from '../dashboard';
 import Profile from '../profile';
+import Dashboard from '../dashboard';
 import AuthRedirect from '../auth-redirect';
+
 import * as clientProfile from '../../action/client-profile';
 
 import './app.scss'
-
-//TODO: add something here to check for localstorage?
 
 class App extends React.Component {
   
@@ -44,7 +45,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
+  fetchClientProfile: () => dispatch(clientProfile.fetchAction()),
+});
 
-})
-
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

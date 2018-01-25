@@ -19,9 +19,6 @@ export default (state = null, action) => {
 
     case 'TOKEN_REMOVE':
       return defaultState;
-
-
-
       
     default:
       return state;

@@ -1,39 +1,47 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-redux';
 import * as authActions from '../../action/auth';
+// import * as cookie from '../../lib/cookie';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 
 class Header extends React.Component {
-  render(){
-    let JSXNotLoggedIn = 
-    <ul>
+  render() {
+    
+    let JSXNotLoggedIn =
+      <ul>
+        <li> <Link to='/'> Home </Link> </li>
+        <li> <Link to='/login'> Login </Link> </li>
+        <li> <Link to='/signup'> Signup </Link> </li>
+      </ul>;
 
-    </ul>
+    let JSXLoggedIn =
+      <ul>
+        <li> <Link to='/dashboard'> dashboard </Link> </li>
+        <li> <Link to='/upload'> upload </Link> </li>
+        <li> <Link to='/profile'> profile </Link> </li>
+      </ul>;
 
-
-
-    return(
+    return (
       <header className='header'>
-        <h1>Sluggream</h1>
+        <h1> Sluggram </h1>
         <nav>
           {this.props.loggedIn ? JSXLoggedIn : JSXNotLoggedIn}
         </nav>
-        {this.props.loggedIn ? 
-          <button oncClick={this.props.doLogout}> Logout </button> :
-          undefined
-        }
+        {this.props.loggedIn ?
+          <button onClick={this.props.doLogout}> logout </button>
+          : undefined}
       </header>
-    )
+    );
   }
-
 }
 
 const mapStateToProps = (state) => ({
-  loggedIn: !!state.token;
-})
+  loggedIn: !!state.token,
+});
 
-const mapDispatchToProps = (dispath) => ({
-  doLogout: () => dispath(authActions.logoutAction()),
-})
+const mapDispatchToProps = (dispatch) => ({
+  doLogout: () => dispatch(authActions.logoutAction()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

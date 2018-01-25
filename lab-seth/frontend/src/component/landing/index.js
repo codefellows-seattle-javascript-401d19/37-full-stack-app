@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 
 import AuthForm from '../auth-form';
 import * as authActions from '../../action/auth';
+import * as clientProfile from '../../action/client-profile';
 import * as routes from '../../routes';
 
 import './landing.scss';
@@ -23,6 +24,7 @@ class Landing extends React.Component{
   handleLogin(user){
     this.props.doLogin(user)
       .then(() => {
+        this.props.fetchClientProfile();
         this.props.history.push(routes.DASHBOARD_ROUTE);
       })
       .catch(console.error);
@@ -31,7 +33,7 @@ class Landing extends React.Component{
   handleSignup(user){
     this.props.doSignup(user)
       .then(() => {
-        this.props.history.push(routes.DASHBOARD_ROUTE);
+        this.props.history.push(routes.PROFILE_ROUTE);
       })
       .catch(console.error);
   }
@@ -41,16 +43,14 @@ class Landing extends React.Component{
 
     let rootJSX = 
       <div>
-        <h2> Welcome </h2>
-        <p><Link to='/signup'> Signup </Link></p>
-        <p><Link to='/login'> Login </Link></p>
+        <h2> Welcome to the Landing </h2>
       </div>;
 
     let signupJSX = 
       <div>
         <h2> Signup </h2>
         <AuthForm onComplete={this.handleSignup} />
-        <h2> Login </h2>
+        <h2> Need to Login? </h2>
         <Link to='/login' >Login </Link>
       </div>;
 
@@ -58,7 +58,7 @@ class Landing extends React.Component{
       <div>
         <h2> Login </h2>
         <AuthForm onComplete={this.handleLogin} />
-        <h2> Signup </h2>
+        <h2> Need an account? </h2>
         <Link to='/signup' >Signup </Link>
       </div>;
       
@@ -80,6 +80,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   doSignup : (user) => dispatch(authActions.signupAction(user)),
   doLogin : (user) => dispatch(authActions.loginAction(user)),
+  fetchClientProfile : () => dispatch(clientProfile.fetchAction()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);
