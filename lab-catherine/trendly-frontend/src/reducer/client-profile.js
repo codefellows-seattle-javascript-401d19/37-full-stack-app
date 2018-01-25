@@ -2,9 +2,9 @@ export const validateProfile = (profile) => {
   if(!profile)
     throw new Error('profile is required !');
 
-  let {meetupMemberId, name, phoneNumber} = profile;
+  let {meetupMemberId, name, phoneNumber, account, meetups} = profile;
 
-  if(!meetupMemberId || !name || !phoneNumber)
+  if(!account || !meetupMemberId)
     throw new Error('invalid profile!');
 };
 
@@ -12,7 +12,7 @@ export default (state = null, action) => {
   let {type, payload} = action;
   switch(type) {
     case 'CLIENT_PROFILE_SET':
-      validatProfile(payload);
+      validateProfile(payload);
       return payload;
     case 'TOKEN_REMOVE':
       return null;

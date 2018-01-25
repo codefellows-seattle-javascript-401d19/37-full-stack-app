@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 
 import AuthForm from '../auth-form';
 import * as authActions from '../../action/auth';
+import {fetchProfile} from '../../action/profile';
 
 import * as routes from '../../routes';
 
@@ -22,6 +23,7 @@ class Landing extends React.Component {
   handleLogin(user) {
     this.props.doLogin(user)
       .then(() => {
+        this.props.fetchAProfile();
         this.props.history.push(routes.DASHBOARD_ROUTE);
       })
       .catch(console.error);
@@ -78,6 +80,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   doSignup: (user) => dispatch(authActions.signupAction(user)),
   doLogin: (user) => dispatch(authActions.loginAction(user)),
+  fetchAProfile : (user) => dispatch(fetchProfile()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);

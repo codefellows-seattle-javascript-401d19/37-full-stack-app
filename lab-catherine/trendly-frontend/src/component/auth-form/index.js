@@ -1,5 +1,8 @@
 import React from 'react';
 import validator from 'validator';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import auth from '../../action/auth';
 
 let emptyState = {
   username: '',

@@ -1,12 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Link} from 'react-router-dom';
 
 import Header from '../header';
 import Landing from '../landing';
 import Profile from '../profile';
 import Dashboard from '../dashboard';
 import AuthRedirect from '../auth-redirect';
+import AuthForm from '../auth-form';
 
 import * as clientProfile from '../../action/client-profile';
 

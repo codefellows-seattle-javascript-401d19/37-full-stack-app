@@ -54,14 +54,14 @@ class Profile extends React.Component {
       
       JSXDisplay = 
         <div>
-          <p>{profile.bio}</p>
+          <p>{profile.meetups}</p>
           <button onClick={() => this.setState({editing:true})}> Edit Bio </button>
         </div>;
       
       JSXProfile = 
         <div>
-          <h2>{profile.username}</h2>
-          <h3>{profile.email}</h3>
+          <h2>{profile.name}</h2>
+          <h3>{profile.meetupMemberId}</h3>
           {this.state.editing ? JSXEditing : JSXDisplay }
         </div>;
     }

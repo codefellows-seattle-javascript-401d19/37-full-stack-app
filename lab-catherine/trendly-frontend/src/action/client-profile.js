@@ -7,7 +7,7 @@ const setAction = (profile) => ({
 });
 
 export const createAction = (profile) => (store) => {
-  let token = store.getState();
+  let {token} = store.getState();
 
   return superagent.post(`${__API_URL__}${routes.PROFILES_ROUTE}`)
     .set('Authorization, `Bearer ${token}')
@@ -19,7 +19,7 @@ export const createAction = (profile) => (store) => {
 };
 
 export const updateAction = (user) => (store) => {
-  let token = store.getState();
+  let {token} = store.getState();
 
   return superagent.put(`${__API_URL__}${routes.PROFILE_ROUTE}/${user._id}`)
     .set('Authorization', `Bearer ${token}`)
@@ -31,7 +31,7 @@ export const updateAction = (user) => (store) => {
 };
 
 export const fetchAction = () => (store) => {
-  let token = store.getState();
+  let {token} = store.getState();
 
   return superagent.get(`${__API_URL}${routes.PROFILE_ROUTE}/me`)
     .set('Authorization', `Bearer ${token}`)

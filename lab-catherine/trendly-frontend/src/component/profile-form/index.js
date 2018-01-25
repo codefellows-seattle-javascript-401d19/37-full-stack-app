@@ -1,7 +1,10 @@
 import React from 'react';
 
 let emptyState = {
-  bio: '',
+  meetupMemberId: '',
+  name: '',
+  phoneNumber: '',
+  meetups: '',
 };
 
 class ProfileForm extends React.Component {
@@ -18,15 +21,15 @@ class ProfileForm extends React.Component {
   }
 
   handleChange(event) {
-    let {value} = event.target;
+    let {name, value} = event.target;
     this.setState({
-      bio: value,
+      [name]: value,
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.onComlete(this.state);
+    this.props.onComplete(this.state);
     this.setState(emptyState);
   }
 
@@ -41,6 +44,27 @@ class ProfileForm extends React.Component {
         className='profile-form'
         onSubmit={this.handleSubmit}>
 
+        <input 
+          onChange={this.handleChange}
+          type='text' 
+          name='meetupMemberId' 
+          placeholder='meetup member id' 
+          value={this.state.meetupMemberId}
+        />
+        <input 
+          onChange={this.handleChange}
+          type='text' 
+          name='phoneNumber' 
+          placeholder='888-888-8888' 
+          value={this.state.phoneNumber}
+        />      
+        <input 
+          onChange={this.handleChange}
+          type='text' 
+          name='meetups' 
+          placeholder='meetups' 
+          value={this.state.meetups}
+        /> 
         <textarea
           name='bio'
           value={this.state.bio}

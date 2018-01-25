@@ -14,7 +14,7 @@ export const removeTokenAction = () => ({
 });
 
 export const logoutAction = () => {
-  cookies.cookieDelete('Trendly-Token');
+  cookies.cookieDelete('X-Trendly-Token');
   return removeTokenAction();
 };
 
