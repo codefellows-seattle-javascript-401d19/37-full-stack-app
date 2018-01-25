@@ -4,7 +4,6 @@ let emptyState = {
   meetupMemberId: '',
   name: '',
   phoneNumber: '',
-  email: '',
 };
 
 class ProfileForm extends Component {
@@ -51,13 +50,6 @@ class ProfileForm extends Component {
           placeholder='meetupMemberId'
           type='text'
           value={this.state.meetupMemberId}
-          onChange={this.handleChange}
-        />
-        <input
-          name='email'
-          placeholder='email'
-          type='email'
-          value={this.state.email}
           onChange={this.handleChange}
         />
         <input
