@@ -1,6 +1,12 @@
+import {cookieFetch} from '../lib/cookie';
+
+const COOKIE = 'X-Sluggram-Token';
+
 const emptyState = null;
 
-export default (state = emptyState, {type, payload}) => {
+let initialState = cookieFetch(COOKIE) || emptyState;
+
+export default (state = initialState, {type, payload}) => {
   switch(type) {
     case 'TOKEN_SET':
       return payload;
