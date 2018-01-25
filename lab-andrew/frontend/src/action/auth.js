@@ -34,7 +34,6 @@ export const loginAction = (user) => (store) => {
     .then(response => {
 
       console.log(response);
-      return store.dispatch(setTokenAction(response.text));
-    })
-    .then(what => console.log(what));
+      return store.dispatch(setTokenAction(JSON.parse(response.text).token));
+    });
 };

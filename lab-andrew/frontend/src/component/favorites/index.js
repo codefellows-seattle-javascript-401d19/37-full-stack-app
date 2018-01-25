@@ -1,17 +1,19 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import FavoritesForm from '../favorites-form';
+import {Redirect} from 'react-router-dom';
 
 import * as clientFavorites from '../../action/client-favorites';
 import * as routes from '../../routes';
 
 class Favorites extends React.Component {
+  
   constructor(props) {
     super(props);
     this.state = {
       editing: false,
     };
-
+    
     let memberFunctions = Object.getOwnPropertyNames(Favorites.prototype);
     for (let functionName of memberFunctions) {
       if (functionName.startsWith('handle')) {
@@ -19,7 +21,7 @@ class Favorites extends React.Component {
       }
     }
   }
-
+  
   handleUpdate(favorites) {
     this.props.favoritesUpdate(favorites);
     this.setState({editing: false});
@@ -27,32 +29,32 @@ class Favorites extends React.Component {
   render() {
     let {favorites} = this.props;
 
-    let JSXEditing = null;
-    let JSXDisplay = null;
-    let JSXFavorites = null;
-
-    if (favorites) {
-      JSXEditing =
-        <React.Fragment>
-          <FavoritesForm favorites={favorites} onComplete={this.handleUpdate} />
-          <button onClick={() => this.setState({editing: false})}> Cancel </button>
-        </React.Fragment>;
-      JSXDisplay =
-        <React.Fragment>
-          <p>{favorites.notes}</p>
-          <button onClick={() => this.setState({editing: true})}> Edit Notes </button>
-        </React.Fragment>;
-
-      JSXFavorites =
-        <React.Fragment>
-          {this.state.editing ? JSXEditing : JSXDisplay}
-        </React.Fragment>;
+    if (!this.props.loggedIn) {
+      return (<Redirect to={routes.ROOT_ROUTE}/>);
     }
-    
+
+    if (!favorites) {
+      return (<Redirect to={routes.ROOT_ROUTE}/>);
+    }
+
+    const JSXEditing =
+      <React.Fragment>
+        <FavoritesForm favorites={favorites} onComplete={this.handleUpdate} />
+        <button onClick={() => this.setState({editing: false})}> Cancel </button>
+      </React.Fragment>;
+      
+    const JSXDisplay =
+      <React.Fragment>
+        <p>{favorites.notes}</p>
+        <button onClick={() => this.setState({editing: true})}> Edit Notes </button>
+      </React.Fragment>;
+
+    const JSXFavorites = this.state.editing ? JSXEditing : JSXDisplay;
+
     return (
       <React.Fragment>
         <h2> favorites </h2>
-        {favorites ? JSXFavorites : <FavoritesForm onComplete={this.handleCreate} />}
+        {JSXFavorites}
       </React.Fragment>
 
     );
@@ -61,6 +63,7 @@ class Favorites extends React.Component {
 
 const mapStateToProps = (state) => ({
   favorites: state.clientFavorites,
+  loggedIn: !!state.token,
 });
 
 const mapDispatchToProps = (dispatch) => ({

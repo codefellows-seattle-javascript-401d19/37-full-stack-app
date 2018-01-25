@@ -1,5 +1,4 @@
 import React from 'react';
-// import {connect} from 'react-redux';
 import {BrowserRouter, Route} from 'react-router-dom';
 
 import Header from '../header';
@@ -8,16 +7,7 @@ import Favorites from '../favorites';
 import Dashboard from '../dashboard';
 import AuthRedirect from '../auth-redirect';
 
-// import * as clientFavorites from '../../action/client-favorites';
-
 class App extends React.Component {
-  // componentWillMount(){
-  //   if (this.props.loggedIn) {
-  //     this.props.fetchClientFavorites();
-  //     // .catch(console.error);
-  //   }
-  // }
-
   render(){
     return (
       <div className='app'>
@@ -36,13 +26,5 @@ class App extends React.Component {
     );
   }
 }
-
-// let mapStateToProps = (state) => ({
-//   loggedIn: !!state.token,
-// });
-
-// const mapDispatchToProps = (dispatch) => ({
-//   fetchClientFavorites: () => dispatch(clientFavorites.fetchAction()),
-// });
 
 export default App;
