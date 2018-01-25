@@ -1,9 +1,18 @@
 import React from 'react';
+import validator from 'validator';
 
 let emptyState = {
   username: '',
+  usernameDirty: false,
+  usernameError: 'Username is required',
+
   email: '',
+  emailDirty: false,
+  emailError: 'Email is required',
+  
   password: '',
+  passwordDirty: false,
+  passwordError: 'Password is required',
 };
 
 class AuthForm extends React.Component {
@@ -21,13 +30,49 @@ class AuthForm extends React.Component {
 
   handleChange(event) {
     let {name, value} = event.target;
-    this.setState({[name]: value});
+    this.setState({
+      [name]: value,
+      [`${name}Dirty`]: true,
+      [`${name}Error`]: this.handleValidation(name, value),
+    });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.onComplete(this.state);
-    this.setState(emptyState);
+    let {nameError, emailError, passwordError} = this.state;
+
+    if(this.props.type === 'login' || !nameError && !emailError && !passwordError) {
+      this.props.onComplete(this.state);
+      this.setState(emptyState);
+    } else {
+      this.setState({
+        usernameDirty: true,
+        emailDirty: true,
+        passwordDirty: true,
+      });
+    }
+  }
+
+  handleValidation(name, value) {
+    if(this.props.type === 'login')
+      return null;
+
+    switch(name) {
+      case 'username':
+        if(value.length < 6)
+          return 'Your name must be at least 6 characters long';
+        return null;
+      case 'email':
+        if(!validator.isEmail(value))
+          return 'You must provide a valid email';
+        return null;
+      case 'password':
+        if(value.length < 8)
+          return 'Your password must be at least 8 characters long';
+        return null;
+      default:
+        return null;
+    }
   }
 
   render() {
@@ -36,20 +81,26 @@ class AuthForm extends React.Component {
     type = type === 'login' ? type : 'signup';
 
     let signupJSX =
-    <input
-      name='email'
-      placeholder='email'
-      type='email'
-      value={this.state.email}
-      onChange={this.handleChange}
-    />;
+    <div>
+      {this.state.emailDirty ? <p>{this.state.emailError}</p> : undefined}
+      <input
+        className={this.state.emailDirty && this.state.emailError ? 'invalid' : undefined}
+        name='email'
+        placeholder='email'
+        type='email'
+        value={this.state.email}
+        onChange={this.handleChange}
+      />
+    </div>;
 
     let signupRenderedJSX = (type !== 'login') ? signupJSX : undefined;
 
     return (
-      <form className='auth-form' onSubmit={this.handleSubmit}>
+      <form className='auth-form' noValidate onSubmit={this.handleSubmit}>
 
+        {this.state.usernameDirty ? <p>{this.state.usernameError}</p> : undefined}
         <input
+          className={this.state.usernameDirty && this.state.usernameError ? 'invalid' : undefined}
           name='username'
           placeholder='username'
           type='text'
@@ -58,7 +109,7 @@ class AuthForm extends React.Component {
         />
 
         {signupRenderedJSX}
-
+        {this.state.passwordDirty && this.state.passwordError ? 'invalid' : undefined}
         <input
           name='password'
           placeholder='password'
