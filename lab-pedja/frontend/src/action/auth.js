@@ -29,7 +29,7 @@ export const signupAction = company => store => {
 export const loginAction = company => store => {
   return superagent.get(`${__API_URL__}${routes.LOGIN_ROUTE}`)
     .auth(company.companyName, company.password)
-    // .withCredentials()
+    .withCredentials()
     .then(response => {
       console.log(response);
       return store.dispatch(setTokenAction(response.text));
