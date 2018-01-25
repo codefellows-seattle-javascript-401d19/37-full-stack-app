@@ -22,7 +22,7 @@ class Header extends React.Component {
           <li><Link to='/profile'> Profile </Link></li>
           <li>
             {loggedIn ? <button onClick={logout}> logout </button> : null}
-          </li> 
+          </li>
         </ul>
       </React.Fragment>;
 
