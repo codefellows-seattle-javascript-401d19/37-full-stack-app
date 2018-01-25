@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import ProfileForm from '../profile-form';
 
-import * as clientProfileActions from '../../action/client-profile';
+import * as clientProfile from '../../action/client-profile';
 import * as routes from '../../routes';
 
 class Profile extends React.Component {
@@ -46,16 +46,25 @@ constructor(props) {
 		if(profile) {
 			JSXEditing = 
 			<div>
-				<p>{profile.bio}</p>
-				<button onClick={() => this.setState({editing: true})}> Edit Bio </button>
-			</div>
+			<p>Profile Edit</p>
+				<ProfileForm profile={profile} onComplete={this.handleUpdate} />
+				<button onClick={() => this.setState({editing: false})}> Cancel </button>
+			</div>;
+
+			JSXDisplay = 
+			<div>
+			<p>Profile Edit?</p>
+			<p>{profile.bio}</p>
+			<button onClick={() => this.setState({editing: true})}> Edit Bio </button>
+			</div>;
 
 			JSXProfile = 
 			<div>
+			<p>Profile Display</p>
 				<h2>{profile.username}</h2>
 				<h3>{profile.email}</h3>
 				{this.state.editing ? JSXEditing : JSXDisplay }
-			</div>
+			</div>;
 		}
 
 		return (
@@ -63,7 +72,7 @@ constructor(props) {
 				<h1>Profile</h1>
 				{profile ? JSXProfile : <ProfileForm onComplete={this.handleCreate}/> }
 			</div>
-		)
+		);
 	}
 }
 
@@ -72,8 +81,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	profileCreate: (profile) => dispatch(clientProfileActions.createAction(profile)),
-	profileUpdate: (profile) => dispatch(clientProfileActions.updateAction(profile)),
+	profileCreate: (profile) => dispatch(clientProfile.createAction(profile)),
+	profileUpdate: (profile) => dispatch(clientProfile.updateAction(profile)),
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(Profile);

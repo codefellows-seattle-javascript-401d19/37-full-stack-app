@@ -4,8 +4,10 @@ import {connect} from 'react-redux';
 
 import AuthForm from '../auth-form';
 import * as authActions from '../../action/auth';
+import * as clientProfile from '../../action/client-profile';
 
 import * as routes from '../../routes';
+
 
 class Landing extends React.Component {
 	constructor(props) {
@@ -22,17 +24,18 @@ class Landing extends React.Component {
 	handleLogin(user) {
 		this.props.doLogin(user)
 		.then (() => {
+			this.props.fetchClientProfile();
 			this.props.history.push(routes.DASHBOARD_ROUTE);
 		})
-		.catch(error => console.error);
+		.catch(console.error);
 	}
 
 	handleSignup(user) {
 		this.props.doSignup(user)
 		.then(() => {
-			this.props.history.push(routes.DASHBOARD_ROUTE);
+			this.props.history.push(routes.PROFILES_ROUTE);
 		})
-		.catch(error => console.error);
+		.catch(console.error);
 	}
 
 	render() {
@@ -78,6 +81,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
 	doSignup: (user) => dispatch(authActions.signupAction(user)),
 	doLogin: (user) => dispatch(authActions.loginAction(user)),
+	fetchClientProfile: () => dispatch(clientProfile.fetchAction()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);

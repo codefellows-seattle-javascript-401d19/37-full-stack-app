@@ -1,30 +1,30 @@
 import superagent from 'superagent';
 import * as routes from '../routes';
 
-export const setAction = (user) => ({
+export const setAction = (profile) => ({
 	type: 'CLIENT_PROFILE_SET',
-	payload: user,
+	payload: profile,
 });
 
-export const createAction = (user) => (store) => {
+export const createAction = (profile) => (store) => {
 	let {token} = store.getState();
 
-	return superagent.post(`${__API_URL__}${routes.PROFILE_ROUTE}`)
+	return superagent.post(`http://localhost:3000${routes.PROFILES_ROUTE}`)
 		.set('Authorization', `Bearer ${token}`)
 		.set('Content-Type', 'application/json')
-		.send(user)
+		.send(profile)
 		.then(response => {
 			return store.dispatch(setAction(response.body))
 		});
 }
 
-export const updateAction = (user) => (store) => {
+export const updateAction = (profile) => (store) => {
 	let {token} = store.getState();
 
-	return superagent.put(`${__API_URL__}${routes.PROFILE_ROUTE}/${user._id}`)
+	return superagent.put(`http://localhost:3000${routes.PROFILES_ROUTE}/${profile._id}`)
 		.set('Authorization',`Bearer ${token}`)
 		.set('Content-Type', 'application/json')
-		.send(user)
+		.send(profile)
 		.then(response => {
 			return store.dispatch(setAction(response.body));
 		});
@@ -33,9 +33,10 @@ export const updateAction = (user) => (store) => {
 export const fetchAction = () => (store) => {
 	let {token} = store.getState();
 
-	return superagent.get(`${__API_URL__}${routes.PROFILE_ROUTER}/me`)
+	return superagent.get(`http://localhost:3000${routes.PROFILES_ROUTE}/me`)
 		.set('Authorization', `Bearer ${token}`)
 		.then(response => {
+			console.log(response);
 			return store.dispatch(setAction(response.body));
 		});
 }
