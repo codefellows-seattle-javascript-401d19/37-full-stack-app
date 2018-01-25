@@ -9,10 +9,10 @@ const Favorite = require('../model/favorite');
 
 const favoriteRouter = (module.exports = new Router());
 
-favoriteRouter.put('/favorite:id', bearerAuth, jsonParser, (request, response, next) => {
+favoriteRouter.put('/favorite', bearerAuth, jsonParser, (request, response, next) => {
   if (!request.body) return next(new httpErrors(400, '__ERROR__ invalid request'));
 
-  return Favorite.findOne({ user: request.params.id })
+  return Favorite.findOne({ user: request.user._id })
     .then(favorite => {
       if (!favorite) {
         throw httpErrors(404, '__ERROR__ favorite not found');
@@ -28,8 +28,8 @@ favoriteRouter.put('/favorite:id', bearerAuth, jsonParser, (request, response, n
     .catch(next);
 });
 
-favoriteRouter.get('/favorite:id', bearerAuth, (request, response, next) => {
-  return Favorite.findOne({ user: request.params.id })
+favoriteRouter.get('/favorite/me', bearerAuth, (request, response, next) => {
+  return Favorite.findOne({ user: request.user._id })
     .then(favorite => {
       if (!favorite) {
         throw new httpErrors(404, '__ERROR__ favorite not found');

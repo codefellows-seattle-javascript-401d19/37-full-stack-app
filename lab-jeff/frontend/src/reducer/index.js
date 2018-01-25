@@ -1,3 +1,4 @@
 import { combineReducers } from 'redux';
 import token from './token.js';
-export default combineReducers({ token });
+import favorite from './favorite';
+export default combineReducers({ token, favorite });

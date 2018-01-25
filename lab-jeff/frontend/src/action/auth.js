@@ -1,5 +1,6 @@
 import superagent from 'superagent';
 import * as routes from '../routes';
+import { cookieDelete } from '../lib/util.js';
 
 //-----------------------------------------------------
 // SYNC
@@ -14,6 +15,11 @@ export const removeTokenAction = () => ({
   type: 'TOKEN_REMOVE',
 });
 
+export const logoutAction = () => {
+  cookieDelete('X-ScrambleVox-Token');
+  return removeTokenAction();
+};
+
 //-----------------------------------------------------
 // ASYNC
 //-----------------------------------------------------
@@ -25,7 +31,7 @@ export const signupAction = user => store => {
     .withCredentials()
     .then(response => {
       console.log({ response });
-      return store.dispatch(setTokenAction(response.token));
+      return store.dispatch(setTokenAction(JSON.parse(response.text).token));
     });
 };
 
@@ -36,6 +42,6 @@ export const loginAction = user => store => {
     .withCredentials()
     .then(response => {
       console.log({ response });
-      return store.dispatch(setTokenAction(response.token));
+      return store.dispatch(setTokenAction(JSON.parse(response.text).token));
     });
 };
