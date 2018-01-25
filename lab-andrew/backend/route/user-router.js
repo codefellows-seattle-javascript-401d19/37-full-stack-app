@@ -20,7 +20,10 @@ userRouter.post(`/signup`, jsonParser, (request, response, next) => {
       tempUser = user;
       return user.createToken();
     })
-    .then(token => response.json({token}))
+    .then(token => {
+      response.cookie('X-scrambleVox-Token', token, {maxAge: 900000});
+      response.json({token});
+    })
     .then(() => new Favorites({
       user: tempUser._id,
     }).save())
@@ -32,6 +35,9 @@ userRouter.get(`/login`, basicAuthMiddleware, (request, response, next) => {
     return next(new httpErrors(404, `__ERROR__ Not Found`));
   }
   return request.user.createToken()
-    .then(token => response.json({token}))
+    .then(token => {
+      response.cookie('X-scrambleVox-Token', token, {maxAge: 900000});
+      response.json({token});
+    })
     .catch(next);
 });
