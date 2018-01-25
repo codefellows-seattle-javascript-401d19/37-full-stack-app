@@ -39,6 +39,11 @@ export const fetchAction = () => store => {
       .then(response => {
         return store.dispatch(setAction(response.body));
       });
+  } else {
+    return superagent.get(`${__API_URL__}${routes.PROFILES_ROUTE}/me`)
+      .set('Authorization', `Bearer ${token}`)
+      .then(response => {
+        return store.dispatch(setAction(response.body));
+      });
   }
-
 };

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import * as routes from '../../routes';
 
-const AuthRedirect = ({ location, history, token }) => {
+const AuthRedirect = ({ location, token }) => {
   const { pathname } = location;
   let destinationRoute = null;
 

@@ -24,7 +24,6 @@ class Landing extends Component {
         this.props.history.push(routes.DASHBOARD_ROUTE);
       })
       .catch(console.error);
-
   }
 
   handleSignup(profile) {

@@ -19,6 +19,7 @@ class Profile extends Component {
   handleCreate(profile) {
     this.props.profileCreate(profile)
       .then(() => {
+        console.log('wtf');
         return this.props.history.push(routes.DASHBOARD_ROUTE);
       })
       .catch(err => console.log(err));
