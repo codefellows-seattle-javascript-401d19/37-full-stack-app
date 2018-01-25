@@ -18,6 +18,7 @@ app.use(cors({origin: 'http://localhost:8080', credentials: true}));
 app.use(require('./middleware/logger-middleware'));
 app.use(require('../route/user-router'));
 app.use(require('../route/wave-router'));
+app.use(require('../route/favorites-router'));
 
 app.all('*', (request, response) => {
   logger.log('info','Returning a 404 from the catch-all route');
