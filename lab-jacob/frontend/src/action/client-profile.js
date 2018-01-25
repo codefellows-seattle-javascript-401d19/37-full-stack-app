@@ -25,7 +25,6 @@ export const updateAction = (user) => (store) => {
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
     .send(user)
-    .send(user)
     .then(response => {
       return store.dispatch(setAction(response.body))
     })
@@ -36,7 +35,7 @@ export const fetchAction = () => (store) => {
 
   return superagent.get(`${__API_URL__}${routes.PROFILE_ROUTE}`)
     .set('Authorization', `Bearer ${token}`)
-    .tehn(response =>{
+    .then(response =>{
       return store.dispatch(setAction(response.body))
     })
 }

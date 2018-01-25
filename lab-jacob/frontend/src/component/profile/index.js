@@ -22,8 +22,6 @@ class Profile extends React.Component{
 
   }
 
-
-
   handleCreate(profile){
     this.props.profileCreate(profile)
       .then(() => {

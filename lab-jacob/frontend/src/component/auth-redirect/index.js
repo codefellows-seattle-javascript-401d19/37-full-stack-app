@@ -5,7 +5,7 @@ import * as routes from '../../route';
 
 class AuthRedirect extends React.Component {
   render(){
-    let {location, history, token} = this.props;
+    let {location, token} = this.props;
     let {pathname} = location;
     let destinationRoute = null;
 
