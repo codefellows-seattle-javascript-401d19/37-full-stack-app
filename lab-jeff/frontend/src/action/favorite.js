@@ -18,7 +18,7 @@ export const updateAction = favorite => store => {
   let { token } = store.getState();
 
   return superagent
-    .put(`${__API__URL__}${routes.FAVORITE_ROUTE}`)
+    .put(`${__API_URL__}${routes.FAVORITE_ROUTE}`)
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
     .send(favorite)
@@ -31,7 +31,7 @@ export const fetchAction = () => store => {
   let { token } = store.getState();
 
   return superagent
-    .get(`${__API__URL__}${routes.FAVORITE_ROUTE}/me`)
+    .get(`${__API_URL__}${routes.FAVORITE_ROUTE}/me`)
     .set('Authorization', `Bearer ${token}`)
     .then(response => {
       return store.dispatch(setAction(response.body));
