@@ -21,7 +21,7 @@ profileRouter.put('/profile/:id', bearerAuth, jsonParser, (request, response, ne
 });
 
 profileRouter.get('/profile/myProfile', bearerAuth, (request, response, next) => {
-  return Profile.findOne({owner: request.params._id})
+  return Profile.findOne({owner: request.user._id})
     .then(profile => {
       if(!profile){
         throw new httpErrors(404, `__ERROR__ no profile found`);
