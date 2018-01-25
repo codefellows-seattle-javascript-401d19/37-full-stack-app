@@ -15,7 +15,7 @@ export const removeTokenAction = () => ({
 });
 
 export const logoutAction = () => {
-  cookies.cookieDelete('X-Slugggram-Token'); // david - TODO figure out what should be deleted
+  cookies.cookieDelete('Lindahlgram-Token'); // david - TODO figure out what should be deleted
   return removeTokenAction();
 };
 

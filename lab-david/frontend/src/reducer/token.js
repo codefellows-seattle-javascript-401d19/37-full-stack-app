@@ -1,6 +1,6 @@
 import * as cookie from '../lib/cookie';
 
-const LINDAHLGRAM_COOKIE = 'X-Slugggram-Token'; 
+const LINDAHLGRAM_COOKIE = 'Lindahlgram-Token'; 
 let token = cookie.cookieFetch(LINDAHLGRAM_COOKIE);
 
 let initialState = token ? token : null;
