@@ -31,7 +31,7 @@ export const updateProfileAction = (user) => (store) => {
     .catch(console.log); // TODO: add error checking
 };
 
-export const fetchAction = () => (store) => {
+export const getProfileAction = () => (store) => {
   let {token} = store.getState();
 
   return superagent.get(`${apiUrl}/profiles/me`)

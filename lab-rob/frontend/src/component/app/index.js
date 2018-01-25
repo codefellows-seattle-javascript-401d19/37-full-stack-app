@@ -2,12 +2,20 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {BrowserRouter, Route, Link} from 'react-router-dom';
 
+import Header from '../header';
 import Landing from '../landing';
 import Dashboard from '../dashboard';
 import AuthRedirect from '../auth-redirect';
-import Header from '../header';
+import {getProfileAction} from '../../action/profile';
 
 class App extends React.Component {
+  componentDidMount() {
+    if(this.props.loggedIn) {
+      this.props.getProfile()
+        .catch(console.error);
+    }
+  }
+
   render () {
     return (
       <div className='app'>
@@ -26,4 +34,12 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  loggedIn: !!state.token,
+});
+
+const mapDispatchToProps = dispatch => ({
+  getProfile: () => dispatch(getProfileAction()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
