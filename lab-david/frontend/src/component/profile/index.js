@@ -63,7 +63,7 @@ class Profile extends React.Component{
       
       JSXDisplay = 
       <div>
-        <p>{profile.bio}</p> // david - TODO Fix profile bio
+        <p>{profile.bio}</p>
         <button onClick={() => this.setState({ editing : true })}> Edit Bio 
         </button>
       </div>;

@@ -9,7 +9,7 @@ import * as routes from '../routes';
 // SYNC ACTIONS
 //-------------------------------------------------------------
 const setAction = (profile) => ({
-  type : 'CLIENT_PROFILE_SET',
+  type : 'TOKEN_SET',
   payload : profile,
 });
 
@@ -26,7 +26,7 @@ export const createAction = (profile) => (store) => {
     .set('Content-Type', 'application/json') // david - TODO check what content we are requiring on front end and change
     .send(profile)
     .then(response => {
-      return store.dispatch(setAction(response.body));
+      return store.dispatch(setAction(response)); // changed this to response from response.body based on snug docs
     });
 };
 
