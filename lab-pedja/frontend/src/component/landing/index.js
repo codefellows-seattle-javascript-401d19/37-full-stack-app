@@ -3,30 +3,22 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import AuthForm from '../auth-form';
-import * as authActions from '../../action/auth';
-
 import * as routes from '../../routes';
+import * as authActions from '../../action/auth';
+import * as clientProfile from '../../action/client-profile';
 
 class Landing extends React.Component{
   constructor(props){
     super(props);
-    //-------------------------------------------------------------
-    // Binding Handlers
-    //-------------------------------------------------------------
-    let memberFunctions = Object.getOwnPropertyNames(Landing.prototype);
-    for(let functionName of memberFunctions){
-      if(functionName.startsWith('handle')){
-        this[functionName] = this[functionName].bind(this);
-      }
-    }
-    //-------------------------------------------------------------
+    
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleSignup = this.handleSignup.bind(this);
   }
-  //---------------------------------------------------------------
-  // Member Functions
-  //---------------------------------------------------------------
+
   handleLogin(user){
     this.props.doLogin(user)
       .then(() => {
+        this.props.fetchClientProfile();
         this.props.history.push(routes.DASHBOARD_ROUTE);
       })
       .catch(console.error);
@@ -48,8 +40,6 @@ class Landing extends React.Component{
     let rootJSX = 
       <div>
         <h2> welcome </h2>
-        <Link to='/signup'> signup </Link>
-        <Link to='/login'> login </Link>
       </div>;
     
     let signUpJSX = 
@@ -64,7 +54,7 @@ class Landing extends React.Component{
       <div>
         <h2> login </h2>
         <AuthForm type='login' onComplete={this.handleLogin} />
-        <p> Don't have an account? </p>
+        <p> Don&#39;t have an account? </p>
         <Link to='/signup'> signup </Link>
       </div>;
 
@@ -85,6 +75,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   doSignup : (user) => dispatch(authActions.signupAction(user)),
   doLogin : (user) => dispatch(authActions.loginAction(user)),
+  fetchClientProfile : () => dispatch(clientProfile.fetchAction()),
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(Landing);

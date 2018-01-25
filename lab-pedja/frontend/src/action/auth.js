@@ -1,5 +1,6 @@
 import superagent from 'superagent';
 import * as routes from '../routes';
+import { cookieDelete } from "../lib/util";
 
 //----------------------------------------------
 // SYNC
@@ -12,6 +13,11 @@ export const setTokenAction = (token) => ({
 export const removeTokenAction = () => ({
   type : 'TOKEN_REMOVE',
 });
+
+export const logoutAction = () => {
+  cookieDelete('X-Sluggram-Token');
+  return removeTokenAction();
+}
 
 //----------------------------------------------
 // ASYNC

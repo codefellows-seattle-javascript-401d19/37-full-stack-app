@@ -1,5 +1,5 @@
 {
-  "name": "front-end-routing",
+  "name": "Full-Stack-sluggram",
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
@@ -30,6 +30,7 @@
     "resolve-url-loader": "^2.2.1",
     "sass-loader": "^6.0.6",
     "superagent": "^3.8.2",
+    "validator": "^9.2.0",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.10.1"
   },

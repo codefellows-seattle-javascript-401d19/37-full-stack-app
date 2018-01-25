@@ -3,7 +3,7 @@
 // PRODUCTION SETTINGS
 //---------------------------------------------------------------------
 require('dotenv').config();
-// vinicio - this line is setting up webpack to interface with dotenv
+
 const {DefinePlugin,EnvironmentPlugin} = require('webpack');
 const CleanPlugin = require('clean-webpack-plugin');
 const UglifyPlugin = require('uglifyjs-webpack-plugin');
