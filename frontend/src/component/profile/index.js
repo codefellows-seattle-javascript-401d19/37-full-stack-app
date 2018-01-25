@@ -1,8 +1,8 @@
 import React from 'react';
-import {connect} from 'react-reduc';
+import {connect} from 'react-redux';
 import ProfileForm from '../profile-form';
 
-import * as clientProfileActions from '../../client-profile';
+import * as clientProfileActions from '../../action/client-profile';
 import * as routes from '../../routes';
 
 class Profile extends React.Component{
@@ -39,21 +39,21 @@ class Profile extends React.Component{
       profileUpdate,
     } = this.props;
 
-    let editingJSX;
-    let displayJSX;
-    let profileJSX;
+    let editingJSX = null;
+    let displayJSX = null;
+    let profileJSX = null;
 
     if(profile){
       editingJSX =
         <div>
           <ProfileForm profile={profile} handleComplete={this.handleUpdate} />
-          <button onclock={() => this.setState({editing : false})} > cancel </button>
+          <button onClick={() => this.setState({editing : false})} > cancel </button>
         </div>;
 
       displayJSX =
         <div>
           <p>{profile.bio}</p>
-          <button onclock={() => this.setState({editing : true})} > Edit Bio </button>
+          <button onClick={() => this.setState({editing : true})} > Edit Bio </button>
         </div>;
 
       displayJSX =

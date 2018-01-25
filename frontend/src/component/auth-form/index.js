@@ -54,9 +54,6 @@ class AuthForm extends React.Component{
       });
 
     }
-
-    this.props.handleComplete(this.state);
-    this.setState(emptyState);
   }
 
   handleValidation(name, value){
