@@ -5,6 +5,7 @@ import {BrowserRouter, Route, Link} from 'react-router-dom';
 import Landing from '../landing';
 import Dashboard from '../dashboard';
 import AuthRedirect from '../auth-redirect';
+import Header from '../header';
 
 class App extends React.Component {
   render () {
@@ -12,9 +13,7 @@ class App extends React.Component {
       <div className='app'>
         <BrowserRouter>
           <div>
-            <header>
-              <h1>Sluggram</h1>
-            </header>
+            <Header />
             <Route path='*' component={AuthRedirect} />
             <Route exact path='/' component={Landing} />
             <Route exact path='/signup' component={Landing} />
