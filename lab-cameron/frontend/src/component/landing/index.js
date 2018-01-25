@@ -17,8 +17,8 @@ class Landing extends Component {
   }
 
 
-  handleLogin(user) {
-    this.props.doLogin(user)
+  handleLogin(profile) {
+    this.props.doLogin(profile)
       .then(() => {
         this.props.fetchClientProfile();
         this.props.history.push(routes.DASHBOARD_ROUTE);
@@ -27,8 +27,8 @@ class Landing extends Component {
 
   }
 
-  handleSignup(user) {
-    this.props.doSignup(user)
+  handleSignup(profile) {
+    this.props.doSignup(profile)
       .then(() => {
         this.props.history.push(routes.DASHBOARD_ROUTE);
       })
@@ -76,8 +76,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  doSignup: user => dispatch(authActions.signupAction(user)),
-  doLogin: user => dispatch(authActions.loginAction(user)),
+  doSignup: profile => dispatch(authActions.signupAction(profile)),
+  doLogin: profile => dispatch(authActions.loginAction(profile)),
   fetchClientProfile: () => dispatch(clientProfile.fetchAction()),
 });
 

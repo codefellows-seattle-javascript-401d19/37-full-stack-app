@@ -1,4 +1,5 @@
 export const validateProfile = profile => {
+  console.log('====>', profile);
   if (!profile) {
     throw new Error('profile required');
   }

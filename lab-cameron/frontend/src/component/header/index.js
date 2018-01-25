@@ -16,7 +16,6 @@ class Header extends Component {
     const JSXLoggedIn =
       <ul>
         <li><Link to='/dashboard'>Dashboard</Link></li>
-        <li><Link to='/upload'>Upload</Link></li>
         <li><Link to='/profile'>Profile</Link></li>
       </ul>;
 

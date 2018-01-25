@@ -56,7 +56,7 @@ class AuthForm extends Component {
   }
 
   handleValidation(name, value) {
-    if (this.props.type !== 'login') {
+    if (this.props.type === 'login') {
       return null;
     }
 

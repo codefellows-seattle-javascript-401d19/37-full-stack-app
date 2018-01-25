@@ -19,23 +19,27 @@ export const createAction = profile => store => {
 };
 
 export const updateAction = profile => store => {
-  let { token } = store.getState();
+  let { clientProfile, token } = store.getState();
 
-  return superagent.put(`${__API_URL__}${routes.PROFILES_ROUTE}`)
+  return superagent.put(`${__API_URL__}${routes.PROFILES_ROUTE}/${profile._id}`)
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
     .send(profile)
     .then(response => {
+      console.log(profile);
       return store.dispatch(setAction(response.body));
     });
 };
 
 export const fetchAction = () => store => {
-  let { token } = store.getStore();
+  let { clientProfile, token } = store.getState();
 
-  return superagent.get(`${__API_URL__}${routes.PROFILES_ROUTE}/${profile.account}`)
-    .set('Authorization', `Bearer ${token}`)
-    .then(response => {
-      return store.dispatch(setAction(response.body));
-    });
+  if (clientProfile) {
+    return superagent.get(`${__API_URL__}${routes.PROFILES_ROUTE}/${clientProfile.account}`)
+      .set('Authorization', `Bearer ${token}`)
+      .then(response => {
+        return store.dispatch(setAction(response.body));
+      });
+  }
+
 };

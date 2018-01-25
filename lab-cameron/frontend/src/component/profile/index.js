@@ -17,10 +17,12 @@ class Profile extends Component {
   }
 
   handleCreate(profile) {
+    console.log('fucking');
     this.props.profileCreate(profile)
       .then(() => {
-        this.props.history.push(routes.DASHBOARD_ROUTE);
-      });
+        return this.props.history.push(routes.DASHBOARD_ROUTE);
+      })
+      .catch(err => console.log(err));
   }
 
   handleUpdate(profile) {

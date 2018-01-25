@@ -17,10 +17,8 @@ class ProfileForm extends Component {
   }
 
   handleChange(event) {
-    let { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
   }
 
   handleSubmit(event) {
@@ -29,7 +27,7 @@ class ProfileForm extends Component {
     this.setState(emptyState);
   }
 
-  componentWillRecieveProps(props) {
+  componentWillReceiveProps(props) {
     if (props.profile) {
       this.setState(props.profile);
     }
@@ -42,7 +40,7 @@ class ProfileForm extends Component {
           name='name'
           placeholder='name'
           type='text'
-          value={this.state.meetupMemberId}
+          value={this.state.name}
           onChange={this.handleChange}
         />
         <input
@@ -64,3 +62,5 @@ class ProfileForm extends Component {
     );
   }
 }
+
+export default ProfileForm;
