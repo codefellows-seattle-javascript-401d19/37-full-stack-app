@@ -33,7 +33,7 @@ export const updateAction = (user) => (store) => {
 export const fetchAction = () => (store) => {
   let {token} = store.getState();
 
-  return superagent.get(`${__API_URL}${routes.PROFILE_ROUTE}/me`)
+  return superagent.get(`${__API_URL__}${routes.PROFILE_ROUTE}/me`)
     .set('Authorization', `Bearer ${token}`)
     .then(response => {
       return store.dispatch(setAction(response.body));

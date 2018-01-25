@@ -8,7 +8,6 @@ import reducer from './reducer';
 import App from './component/app';
 import thunk from './lib/redux-thunk';
 import reporter from './lib/redux-reporter';
-import session from './li-redux-session';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
 const store = createStore(reducer, composeWithDevTools(
