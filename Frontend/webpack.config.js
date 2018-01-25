@@ -2,7 +2,7 @@
 
 require('dotenv').config();
 
-const {DefinePlugin, EnvironmentPlugin} = require('webpack');
+const { DefinePlugin, EnvironmentPlugin } = require('webpack');
 const CleanPlugin = require('clean-webpack-plugin');
 const UglifyPlugin = require('uglifyjs-webpack-plugin');
 
@@ -13,30 +13,35 @@ const webPackConfig = module.exports = {};
 
 const PRODUCTION = process.env.NODE_ENV === 'production';
 
-//--------------------------------------------------------------------
+//------------------------------------------------------------
 webPackConfig.entry = `${__dirname}/src/main.js`;
 webPackConfig.output = {
 	filename: 'bundle.[hash].js',
 	path: `${__dirname}/build`,
 	publicPath: process.env.CDN_URL,
-}
-//--------------------------------------------------------------------
+};
+//------------------------------------------------------------
 webPackConfig.plugins = [
-	new HTMLPlugin({title: 'Noncents Full-Stack App'}),
+	new HTMLPlugin({ title: 'Full Stack Application! ^-^' }),
 	new EnvironmentPlugin(['NODE_ENV']),
+	// new ExtractTextPlugin({
+	//   filename: 'bundle.[hash].css',
+	//   disable: process.env.NODE_ENV !== 'production',
+	// }),
+	// ];
 	new DefinePlugin({
-		__API_URL__ : JSON.stringify(process.env.API_URL)
+		__API_URL__: JSON.stringify(process.env.API_URL),
 	}),
-	new ExtractTextPlugin({filename: 'bundle[hash].css',}),
+	new ExtractTextPlugin('bundle.[hash].css'),
 ];
 
-if(PRODUCTION) {
+if (PRODUCTION) {
 	webPackConfig.plugins = webPackConfig.plugins.concat([
 		new UglifyPlugin(),
 		new CleanPlugin(),
 	]);
 }
-//--------------------------------------------------------------------
+//------------------------------------------------------------
 webPackConfig.module = {
 	rules: [
 		{
@@ -56,16 +61,16 @@ webPackConfig.module = {
 						options: {
 							sourceMap: true,
 							includePaths: [`${__dirname}/src/style`],
-						}
-					}
-				]
+						},
+					},
+				],
 			}),
-		}
+		},
 	],
 };
-//--------------------------------------------------------------------
+//------------------------------------------------------------
 webPackConfig.devtool = PRODUCTION ? undefined : 'eval-source-map';
 
 webPackConfig.devServer = {
-	historyApiFallback: true
+	historyApiFallback: true,
 };
