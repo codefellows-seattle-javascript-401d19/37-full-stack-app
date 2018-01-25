@@ -9,7 +9,7 @@ import * as routes from '../routes';
 // SYNC ACTIONS
 //-------------------------------------------------------------
 const setAction = (profile) => ({
-  type : 'TOKEN_SET',
+  type : 'CLIENT_PROFILE_SET',
   payload : profile,
 });
 
