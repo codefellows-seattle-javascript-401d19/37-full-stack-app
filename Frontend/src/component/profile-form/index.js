@@ -18,9 +18,9 @@ class ProfileForm extends React.Component {
 	}
 
 		handleChange(event) {
-			let {value} = event.target;
+			let {name, value} = event.target;
 			this.setState({
-				bio: value,
+				[name]: value,
 			});
 		}
 

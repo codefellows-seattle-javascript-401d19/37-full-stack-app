@@ -51,7 +51,7 @@ class Landing extends React.Component {
 		let signUpJSX = 
 			<div>
 				<h2>Sign Up</h2>
-				<AuthForm onComplete={this.handleSignup} />
+				<AuthForm type='signup' onComplete={this.handleSignup} />
 				<p>Already have an account?</p>
 				<Link to='/login'> Log In </Link>
 			</div>;
@@ -75,7 +75,7 @@ class Landing extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-	token: state.token,
+	token: state.token
 });
 
 const mapDispatchToProps = (dispatch) => ({

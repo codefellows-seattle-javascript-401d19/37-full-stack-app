@@ -28,7 +28,7 @@ constructor(props) {
 	}
 
 	handleUpdate(profile) {
-		this.props.profileUpate(profile);
+		this.props.profileUpdate(profile);
 		this.setState({editing: false});
 	}
 
@@ -46,21 +46,18 @@ constructor(props) {
 		if(profile) {
 			JSXEditing = 
 			<div>
-			<p>Profile Edit</p>
 				<ProfileForm profile={profile} onComplete={this.handleUpdate} />
 				<button onClick={() => this.setState({editing: false})}> Cancel </button>
 			</div>;
 
 			JSXDisplay = 
 			<div>
-			<p>Profile Edit?</p>
 			<p>{profile.bio}</p>
 			<button onClick={() => this.setState({editing: true})}> Edit Bio </button>
 			</div>;
 
 			JSXProfile = 
 			<div>
-			<p>Profile Display</p>
 				<h2>{profile.username}</h2>
 				<h3>{profile.email}</h3>
 				{this.state.editing ? JSXEditing : JSXDisplay }
