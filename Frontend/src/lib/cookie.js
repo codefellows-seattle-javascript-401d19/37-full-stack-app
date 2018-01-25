@@ -6,7 +6,7 @@ export const cookieFetchAll = () => {
 		}))
 }
 
-export const cookieDelay = (key) => {
+export const cookieDelete = (key) => {
 	document.cookie = `${key}=; expires=Thu, 01 Jan 1999 00:00:00 GMT`;
 }
 
