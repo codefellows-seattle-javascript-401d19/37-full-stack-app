@@ -4,9 +4,6 @@ let emptyState = {
   bio: '',
   bioDirty: false,
   bioError: '',
-
-  firstName: '',
-  lastName: '',
   avatar: 'URL',
 };
 
@@ -46,24 +43,6 @@ class ProfileForm extends React.Component {
       <form
         className='profile-form'
         onSubmit={this.handleSubmit}>
-
-        <input
-          name='firstName'
-          placeholder='First Name'
-          type='text'
-          value={this.state.firstName}
-          onChange={this.handleChange}
-        />
-        <br></br>
-
-        <input
-          name='lastName'
-          placeholder='Last Name'
-          type='text'
-          value={this.state.lastName}
-          onChange={this.handleChange}
-        />
-        <br></br>
 
         <input
           name='avatar'
