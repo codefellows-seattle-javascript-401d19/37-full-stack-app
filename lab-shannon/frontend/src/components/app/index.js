@@ -10,7 +10,7 @@ import * as profileActions from '../../actions/profile';
 class App extends React.Component{
   componentDidMount(){
     if(this.props.loggedIn){
-      this.props.getProfile();
+      this.props.getUserProfile();
     }
   }
 
@@ -37,7 +37,7 @@ let mapStateToProps = (state) => ({
 });
 
 let mapDispatchToProps = (dispatch) => ({
-  getProfile : () => dispatch(profileActions.getProfile()),
+  getUserProfile : () => dispatch(profileActions.getProfile()),
 });
 
-export default (mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
