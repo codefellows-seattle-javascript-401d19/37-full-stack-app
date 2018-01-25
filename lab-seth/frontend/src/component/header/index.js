@@ -1,6 +1,5 @@
 import React from 'react';
 import * as authActions from '../../action/auth';
-// import * as cookie from '../../lib/cookie';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -17,14 +16,14 @@ class Header extends React.Component {
 
     let JSXLoggedIn =
       <ul>
-        <li> <Link to='/dashboard'> dashboard </Link> </li>
-        <li> <Link to='/upload'> upload </Link> </li>
-        <li> <Link to='/profile'> profile </Link> </li>
+        <li> <Link to='/dashboard'> Dashboard </Link> </li>
+        <li> <Link to='/upload'> Upload </Link> </li>
+        <li> <Link to='/profile'> Profile </Link> </li>
       </ul>;
 
     return (
       <header className='header'>
-        <h1> Sluggram </h1>
+        <h1> Sluggram, Photot and Profile Uploader </h1>
         <nav>
           {this.props.loggedIn ? JSXLoggedIn : JSXNotLoggedIn}
         </nav>

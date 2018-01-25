@@ -41,7 +41,6 @@ class AuthForm extends React.Component {
   handleSubmit(event){
     event.preventDefault();
     let{nameError, emailError, passwordError} = this.state;
-    console.log('PROPS TYPE', this.props.type)
     
     if (this.props.type === 'login' || !nameError && !emailError && !passwordError){
       this.props.onComplete(this.state);
@@ -81,8 +80,6 @@ class AuthForm extends React.Component {
   render() {
     let {type} = this.props;
     
-    // type = type === 'login' ? 'login' : 'signup';
-
     let signupJSX = 
       <div>
       {this.state.emailDirty ? <p>{this.state.emailError}</p> : undefined}

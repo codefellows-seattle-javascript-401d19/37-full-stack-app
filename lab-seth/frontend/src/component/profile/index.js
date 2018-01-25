@@ -53,13 +53,16 @@ class Profile extends React.Component {
       
       JSXDisplay = 
         <div> 
-          <p> {profile.bio}</p>
+          <p> First: {profile.firstName}</p>
+          <p> Last: {profile.lastName}</p>
+          <p> Bio: {profile.bio}</p>
+          <p> Avatar: {profile.avatar}</p>
           <button onClick={() => this.setState({editing: true})}> Edit Bio </button>
         </div>;
       
       JSXProfile = 
         <div> 
-          <h2> {profile.username}</h2>
+          <h3> {profile.username}</h3>
           <h3> {profile.email}</h3>
           {this.state.editing ? JSXEditing : JSXDisplay}
         </div>;
@@ -67,7 +70,7 @@ class Profile extends React.Component {
 
     return(
       <div>
-        <h1>Profile</h1>
+        <h2>Profile</h2>
         {profile ? JSXProfile : <ProfileForm onComplete={this.handleCreate} />}
       </div>
     )

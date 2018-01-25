@@ -4,6 +4,10 @@ let emptyState = {
   bio: '',
   bioDirty: false,
   bioError: '',
+
+  firstName: '',
+  lastName: '',
+  avatar: 'URL',
 };
 
 class ProfileForm extends React.Component {
@@ -20,10 +24,10 @@ class ProfileForm extends React.Component {
   }
 
   handleChange(event){
-    let {value} = event.target;
+    let { name, value } = event.target;
 
     this.setState({
-      bio: value,
+      [name]: value,
     });
   }
 
@@ -43,13 +47,41 @@ class ProfileForm extends React.Component {
         className='profile-form'
         onSubmit={this.handleSubmit}>
 
+        <input
+          name='firstName'
+          placeholder='First Name'
+          type='text'
+          value={this.state.firstName}
+          onChange={this.handleChange}
+        />
+        <br></br>
+
+        <input
+          name='lastName'
+          placeholder='Last Name'
+          type='text'
+          value={this.state.lastName}
+          onChange={this.handleChange}
+        />
+        <br></br>
+
+        <input
+          name='avatar'
+          placeholder='Enter an image URL here'
+          type='text'
+          value={this.state.avatar}
+          onChange={this.handleChange}
+        />
+        <br></br>
+
         <textarea
           name='bio'
+          placeholder='Fill out a basic profile here!'
           value={this.state.bio}
           onChange={this.handleChange}
         />
 
-        <button type='submit'> {this.props.profile ? 'update' : 'create'} profile </button>
+        <button type='submit'> {this.props.profile ? 'Update' : 'Create'} Profile </button>
       </form>
     )
   }
