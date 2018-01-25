@@ -13,7 +13,7 @@ class App extends React.Component {
         <BrowserRouter>
           <div>
             <header>
-              <h1>Volly</h1>
+              <h1>Sluggram</h1>
             </header>
             <Route path='*' component={AuthRedirect} />
             <Route exact path='/' component={Landing} />

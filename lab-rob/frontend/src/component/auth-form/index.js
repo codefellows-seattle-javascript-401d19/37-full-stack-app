@@ -2,12 +2,10 @@ import React from 'react';
 
 import autoBind from '../../lib/auto-bind';
 
-let emptyState = { // TODO: Make work for both models
-  companyName: '',
+let emptyState = {
+  username: '',
   email: '',
-  phoneNumber: '',
   password: '',
-  website: '',
 };
 
 class AuthForm extends React.Component {
@@ -33,42 +31,24 @@ class AuthForm extends React.Component {
     let {type} = this.props;
 
     let signupJSX = (
-      <div>
-        <input 
-          name='email'
-          placeholder='email...'
-          type='email'
-          value={this.state.email}
-          onChange={this.handleChange} 
-        />
-
-        <input 
-          name='phoneNumber'
-          placeholder='phone number...'
-          type='text'
-          value={this.state.phoneNumber}
-          onChange={this.handleChange}
-        />
-
-        <input 
-          name='website'
-          placeholder='website...'
-          type='text'
-          value={this.state.website}
-          onChange={this.handleChange}
-        />
-      </div>
+      <input 
+        name='email'
+        placeholder='email...'
+        type='email'
+        value={this.state.email}
+        onChange={this.handleChange} 
+      />
     );
 
     let signupRender = type === 'signup' ? signupJSX : null;
 
     return (
       <form className='auth-form' onSubmit={this.handleSubmit}>
-        <input 
-          name='companyName'
-          placeholder='company name...'
+        <input
+          name='username'
+          placeholder='username...'
           type='text'
-          value={this.state.companyName}
+          value={this.state.username}
           onChange={this.handleChange}
         />
         

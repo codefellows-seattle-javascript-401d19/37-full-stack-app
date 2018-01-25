@@ -20,11 +20,11 @@ webpackConfig.output = {
 
 webpackConfig.plugins = [
   new HTMLPlugin({
-    title: 'Volly',
+    title: 'Sluggram',
   }),
   new EnvironmentPlugin(['NODE_ENV']),
   new DefinePlugin({
-    __API_URL__: JSON.stringify(process.env.API_URL),
+    API_URL: JSON.stringify(process.env.API_URL),
   }),
   new ExtractTextPlugin({
     filename: 'bundle.[hash].css',

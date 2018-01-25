@@ -1,7 +1,5 @@
 import superagent from 'superagent';
 
-import {LOGIN_ROUTE, SIGNUP_ROUTE, ROOT_ROUTE, DASHBOARD_ROUTE} from '../routes';
-
 export const setTokenAction = token => ({
   type: 'TOKEN_SET',
   payload: token,
@@ -11,18 +9,19 @@ export const removeToken = () => ({
   type: 'TOKEN_REMOVE',
 });
 
-export const signupAction = (user) => (store) => { // TODO: refactor to work for either model
-  return superagent.post(`${__API_URL__}/company${SIGNUP_ROUTE}`) //eslint-disable-line
+export const signupAction = (user) => (store) => {
+  return superagent.post(`${API_URL}/signup`) //eslint-disable-line
+    // .set('Content-Type', 'application/json')
     .send(user)
     .withCredentials()
-    .then(response => store.dispatch(setTokenAction(response.body.token)))
+    .then(response => store.dispatch(setTokenAction(response.text)))
     .catch(console.log); // TODO: add error checking
 };
 
-export const loginAction = (user) => (store) => { // TODO: refactor to work for either model
-  return superagent.get(`${__API_URL__}/company${LOGIN_ROUTE}`) //eslint-disable-line
-    .auth(user.companyName, user.password) // TODO: refactor to work for either model
+export const loginAction = (user) => (store) => {
+  return superagent.get(`${API_URL}/login`) //eslint-disable-line
+    .auth(user.username, user.password)
     .withCredentials()
-    .then(response => store.dispatch(setTokenAction(response.body.token)))
+    .then(response => store.dispatch(setTokenAction(response.text)))
     .catch(console.log); // TODO: add error checking
 };
