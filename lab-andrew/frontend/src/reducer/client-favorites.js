@@ -4,7 +4,7 @@ export const validateFavorites = (favs) => {
 
   let {user, favorites, notes} = favs;
 
-  if (!user || !favorites || !notes){
+  if (!user || !favorites && !notes){
     throw new Error('invalid favorites');
   }
 };

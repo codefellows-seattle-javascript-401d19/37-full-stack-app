@@ -18,19 +18,19 @@ class Landing extends React.Component {
     }
   }
   handleLogin(user) {
-    this.props.doLogin(user)
-      .then(() => {
-        this.props.history.push(routes.DASHBOARD_ROUTE);
-      })
-      .catch(console.error);
+    this.props.doLogin(user);
+    // .then(() => {
+    //   this.props.history.push(routes.DASHBOARD_ROUTE);
+    // })
+    // .catch(console.error);
   }
 
   handleSignup(user) {
-    this.props.doSignup(user)
-      .then(() => {
-        this.props.history.push(routes.DASHBOARD_ROUTE);
-      })
-      .catch(console.error);
+    this.props.doSignup(user);
+    // .then(() => {
+    //   this.props.history.push(routes.DASHBOARD_ROUTE);
+    // })
+    // .catch(console.error);
   }
   render() {
     let {location} = this.props;
@@ -38,26 +38,19 @@ class Landing extends React.Component {
     let rootJSX =
       <div>
         <h1> Welcome to scrambleVox! </h1>
-        <h2> Login or signup to get started: </h2>
-        <Link to='/signup'>Signup</Link>
-        <br/>
-        <Link to='/login'>Login</Link>
+        <h2> Login or signup to get started </h2>
       </div>;
 
     let signUpJSX =
       <div>
         <h2> Signup </h2>
         <AuthForm onComplete={this.handleSignup} />
-        <p> Already have an account? </p>
-        <Link to='/login'>Login</Link>
       </div>;
 
     let loginJSX =
       <div>
         <h2> Login </h2>
         <AuthForm type='login' onComplete={this.handleLogin}/>
-        <h2> Signup </h2>
-        <Link to='/signup'>Signup</Link>
       </div>;
     return (
       <div className='landing'>
