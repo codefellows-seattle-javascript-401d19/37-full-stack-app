@@ -19,7 +19,7 @@ const setAction = (profile) => ({
 
 
 export const createAction = (profile) => (store) => {
-  let token = store.getState().token; 
+  let {token} = store.getState(); 
 
   return superagent.post(`${__API_URL__}${routes.PROFILES_ROUTE}`)
     .set('Authorization', `Bearer ${token}`)
@@ -32,13 +32,16 @@ export const createAction = (profile) => (store) => {
 
 
 
-export const updateAction = (user) => (store) => {
-  let token = store.getState().token; 
+export const updateAction = (profile) => (store) => {
+  let {token} = store.getState(); 
 
-  return superagent.put(`${__API_URL__}${routes.PROFILES_ROUTE}/${user._id}`)
+  return superagent.put(`${__API_URL__}${routes.PROFILES_ROUTE}/${profile._id}`)
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json') // david - TODO check what content we are requiring on front end and change
-    .send(user)
+    .send(profile)
+    .then(
+      console.log(profile)
+    )
     .then(response => {
       return store.dispatch(setAction(response.body));
     });
@@ -46,7 +49,7 @@ export const updateAction = (user) => (store) => {
 
 // david - function meant to get a users own profile
 export const fetchAction = () => (store) => {
-  let token = store.getState().token; 
+  let {token} = store.getState(); 
 
   return superagent.get(`${__API_URL__}${routes.PROFILES_ROUTE}/me`)
     .set('Authorization', `Bearer ${token}`)
