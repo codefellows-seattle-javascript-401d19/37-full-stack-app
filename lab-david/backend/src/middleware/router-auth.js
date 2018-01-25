@@ -12,7 +12,7 @@ export default new Router()
   new User.create(req.body)
   .then(user => user.tokenCreate())
   .then(token => {
-    res.cookie('LINDAHLGRAM-Token', token, {maxAge: 900000})
+    res.cookie('X-Slugggram-Token', token, {maxAge: 900000})
     res.send(token)
   })
   .catch(next)
@@ -31,7 +31,7 @@ export default new Router()
   req.user.tokenCreate()
   .then((token) => {
     let cookieOptions = {maxAge: daysToMilliseconds(7)}
-    res.cookie('LINDAHLGRAM-Token', token, cookieOptions)
+    res.cookie('X-Slugggram-Token', token, cookieOptions)
     res.send(token)
   })
   .catch(next)

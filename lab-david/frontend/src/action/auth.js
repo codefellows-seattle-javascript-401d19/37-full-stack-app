@@ -15,7 +15,7 @@ export const removeTokenAction = () => ({
 });
 
 export const logoutAction = () => {
-  cookies.cookieDelete('LINDAHLGRAM-Token'); // david - TODO figure out what should be deleted
+  cookies.cookieDelete('X-Slugggram-Token'); // david - TODO figure out what should be deleted
   return removeTokenAction();
 };
 
@@ -38,7 +38,6 @@ export const loginAction = (user) => (store) => {
     .withCredentials()
     .then(response => {
       console.log({response});
-      // TODO : .text will change 
       return store.dispatch(setTokenAction(response.text));
     });
 };

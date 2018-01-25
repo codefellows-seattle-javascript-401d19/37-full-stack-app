@@ -1,6 +1,6 @@
 import * as cookie from '../lib/cookie';
 
-const LINDAHLGRAM_COOKIE = 'LINDAHLGRAM-Token'; // TODO set up x-budget-token in backend - attach in backend when it sets up token
+const LINDAHLGRAM_COOKIE = 'X-Slugggram-Token'; 
 let token = cookie.cookieFetch(LINDAHLGRAM_COOKIE);
 
 let initialState = token ? token : null;
