@@ -24,3 +24,19 @@
 {"level":"info","message":"Server is listening on port 3000","timestamp":"2018-01-25T05:12:42.144Z"}
 {"level":"info","message":"Server is listening on port 3000","timestamp":"2018-01-25T05:14:14.884Z"}
 {"level":"info","message":"Server is listening on port 3000","timestamp":"2018-01-25T05:14:56.432Z"}
+{"level":"info","message":"Server is listening on port 3000","timestamp":"2018-01-25T05:39:10.380Z"}
+{"level":"info","message":"Server is listening on port 3000","timestamp":"2018-01-25T22:35:08.040Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-25T22:35:29.398Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-25T22:35:29.545Z"}
+{"level":"info","message":"__ERROR_MIDDLEWARE__","timestamp":"2018-01-25T22:35:29.564Z"}
+{"message":"__ERROR__ favorite not found","stack":"NotFoundError: __ERROR__ favorite not found\n    at Favorite.findOne.then.favorite (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/route/favorite-router.js:35:15)\n    at <anonymous>\n    at process._tickDomainCallback (internal/process/next_tick.js:228:7)","name":"NotFoundError","level":"info","timestamp":"2018-01-25T22:35:29.564Z"}
+{"level":"info","message":"Responding with a 404 status and message: __ERROR__ favorite not found","timestamp":"2018-01-25T22:35:29.564Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-25T22:38:28.418Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-25T22:38:28.472Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-25T22:45:27.281Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-25T22:51:33.002Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-25T22:52:11.372Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-25T22:52:23.211Z"}
+{"level":"info","message":"Processing : PUT on : /favorite","timestamp":"2018-01-25T22:52:36.030Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-25T22:53:09.107Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-25T22:53:09.152Z"}

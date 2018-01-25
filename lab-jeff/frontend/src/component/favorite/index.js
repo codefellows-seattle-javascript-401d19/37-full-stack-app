@@ -41,26 +41,27 @@ class Favorite extends React.Component {
     let JSXDisplay = null;
     let JSXProfile = null;
 
-    JSXEditing = (
-      <div>
-        <FavoriteForm favorite={favorite} onComplete={this.handleUpdate} />
-        <button onClick={() => this.setState({ editing: false })}> cancel </button>
-      </div>
-    );
-    JSXDisplay = (
-      <div>
-        <p>{favorite.description}</p>
-        <button onClick={() => this.setState({ editing: true })}> Edit Description </button>
-      </div>
-    );
+    if (favorite) {
+      JSXEditing = (
+        <div>
+          <FavoriteForm favorite={favorite} onComplete={this.handleUpdate} />
+          <button onClick={() => this.setState({ editing: false })}> cancel </button>
+        </div>
+      );
+      JSXDisplay = (
+        <div>
+          <p>{favorite.description}</p>
+          <button onClick={() => this.setState({ editing: true })}> Edit Description </button>
+        </div>
+      );
 
-    JSXProfile = (
-      <div>
-        <h2> {favorite.description} </h2>
-        {this.state.editing ? JSXEditing : JSXDisplay}
-      </div>
-    );
-
+      JSXProfile = (
+        <div>
+          <h2> {favorite.description} </h2>
+          {this.state.editing ? JSXEditing : JSXDisplay}
+        </div>
+      );
+    }
     return (
       <div>
         <h2> Description </h2>
