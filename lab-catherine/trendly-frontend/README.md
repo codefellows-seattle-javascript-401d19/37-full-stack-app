@@ -252,6 +252,7 @@ Standard JavaScript with ES6
 * enzyme-adapter-react-16
 * redux-devtools-extension
 * uglifyjs-webpack-plugin
+* validator
 
 ---
 
