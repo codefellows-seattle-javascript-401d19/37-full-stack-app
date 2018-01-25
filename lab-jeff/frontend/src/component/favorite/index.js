@@ -50,7 +50,7 @@ class Favorite extends React.Component {
     JSXDisplay = (
       <div>
         <p>{favorite.description}</p>
-        <button onClick={() => this.setState({ editing: true })}> Edit Bio </button>
+        <button onClick={() => this.setState({ editing: true })}> Edit Description </button>
       </div>
     );
 
@@ -63,7 +63,7 @@ class Favorite extends React.Component {
 
     return (
       <div>
-        <h2> profile </h2>
+        <h2> Description </h2>
         {JSXProfile}
       </div>
     );

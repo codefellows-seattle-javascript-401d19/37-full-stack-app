@@ -20,8 +20,12 @@ userRouter.post(`/signup`, jsonParser, (request, response, next) => {
       tempUser = user;
       return user.createToken();
     })
-    .then(token => response.json({ token }))
-    .then(() => new Favorite({ user: tempUser._id }).save())
+    .then(token => {
+      response.cookie('X-ScrambleVox-Token', token, { maxAge: 900000 });
+      response.json({ token });
+    })
+
+    .then(() => new Favorite({ user: tempUser._id, description: 'put description here' }).save())
     .catch(next);
 });
 
@@ -31,6 +35,9 @@ userRouter.get(`/login`, basicAuthMiddleware, (request, response, next) => {
   }
   return request.user
     .createToken()
-    .then(token => response.json({ token }))
+    .then(token => {
+      response.cookie('X-ScrambleVox-Token', token, { maxAge: 900000 });
+      response.json({ token });
+    })
     .catch(next);
 });

@@ -46,7 +46,7 @@ class FavoriteForm extends React.Component {
       <form className="favorite-form" onSubmit={this.handleSubmit}>
         <textarea name="description" value={this.state.description} onChange={this.handleChange} />
 
-        <button type="submit"> {this.props.favorite ? 'update' : 'create'} Favorite </button>
+        <button type="submit"> {this.props.favorite ? 'update' : 'create'} Description </button>
       </form>
     );
   }

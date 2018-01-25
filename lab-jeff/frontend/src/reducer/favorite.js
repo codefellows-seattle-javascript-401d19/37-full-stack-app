@@ -3,7 +3,7 @@ export const validateFavorite = favorite => {
 
   let { description } = favorite;
 
-  if (!description) throw new Error('invalid favorite');
+  // if (!description) throw new Error('invalid favorite');
 };
 
 export default (state = null, action) => {

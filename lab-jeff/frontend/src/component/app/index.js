@@ -41,7 +41,7 @@ let mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchClientProfile: () => dispatch(favoriteAction.fetchAction()),
+  fetchFavorite: () => dispatch(favoriteAction.fetchAction()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
