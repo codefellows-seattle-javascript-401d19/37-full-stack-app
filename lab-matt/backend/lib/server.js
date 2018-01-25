@@ -17,8 +17,13 @@ mongoose.Promise = Promise;
 // ================ SERVER SETUP ===================
 const server = module.exports = {};
 
+const corsOptions = {
+  origin : process.env.CORS_ORIGINS.split(' '),
+  credentials : true,
+};
+
 const app = express();
-app.use(cors());
+app.use(cors(corsOptions));
 
 // ================ ROUTE SETUP ===================
 app.use(require('./middleware/logger-middleware'));

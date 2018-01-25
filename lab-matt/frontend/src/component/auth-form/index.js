@@ -2,11 +2,20 @@ import React from 'react';
 import { signupAction, loginAction } from '../../action/auth';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import validator from 'validator';
 
 let emptystate = {
   username: '',
+  usernameDirty: false,
+  usernameError: 'Username is required',
+
   email: '',
+  emailDirty: false,
+  emailError: 'Email is required',
+  
   password: '',
+  passwordDirty: false,
+  passwordError: 'Password is required',
 };
 
 class AuthForm extends React.Component {
@@ -15,28 +24,105 @@ class AuthForm extends React.Component {
 
     this.state = emptystate;
 
-    this.handleChange = (event) => {
-      let { name, value } = event.target;
-      this.setState({ [name] : value });
-    }
+    this.handleChange = (e) => {
+      let { name, value } = e.target;
+      this.setState({ 
+        [name] : value, 
+        [`${name}Dirty`] : true, 
+        [`${name}Error`] : this.handleValidation(name, value), 
+      });
+    };
 
     this.handleSubmit = (e) => {
       e.preventDefault();
-      this.props.onComplete(this.state);
+      let { nameError, emailError, passwordError } = this.state;
+      let { type, onComplete } = this.props;
+
+      if (type ==='login' || !nameError && !emailError && !passwordError) {
+        onComplete(this.state);
+        this.setState(emptystate);
+      } else {
+        this.setState({
+          usernameDirty : true,
+          emailDirty : true,
+          passwordDirty : true,
+        });
+      }
+    };
+
+    this.handleValidation = (name, value) => {
+      if (this.props.type === 'login') {
+        return null;
+      }
+
+      switch (name) {
+        case 'username':
+          if (value.length > 12) {
+            return 'name must not exceed 12 characters';
+          }
+          return null;
+          
+        case 'email':
+          if (!validator.isEmail(value)) {
+            return 'you must provide a valid email';
+          }
+          return null;
+
+        case 'password':
+          if (value.length > 20) {
+            return 'password must not exceed 20 characters';
+          }
+          return null;
+            
+        default:
+          return null;
+      }
     };
   }
   
   render() {
-    let renderEmail = this.props.signup ? 
-      <input onChange={this.handleChange} type="email" name='email' placeholder ='email' /> : null;
+    let {type} = this.props;
 
-    let header = this.props.signup ? 'Signup' : 'Login';
+    let renderEmail = type === 'signup' ? 
+      <React.Fragment>
+        {this.state.emailDirty ? <p>{this.state.emailError}</p> : undefined}
+        <input 
+          className={this.state.emailDirty && this.state.emailError ? 'invalid' : undefined}
+          onChange={this.handleChange} 
+          type="email" 
+          name='email' 
+          placeholder ='email' 
+        />
+      </React.Fragment> : null;
+      
+
+    let header = type === 'signup' ? 'Signup' : 'Login';
 
     return (
-      <form className='auth-form' onSubmit={this.handleSubmit}>
-        <input onChange={this.handleChange} type="username" name='username' placeholder ='username' />
+      <form noValidate className='auth-form' onSubmit={this.handleSubmit}>
+
+        {this.state.usernameDirty ? <p>{this.state.usernameError}</p> : undefined}
+
+        <input 
+          className={this.state.usernameDirty && this.state.usernameError ? 'invalid' : undefined}
+          onChange={this.handleChange} 
+          type="username" 
+          name='username' 
+          placeholder ='username' 
+        />
+
         {renderEmail}
-        <input onChange={this.handleChange} type="password" name='password' placeholder ='password' />
+
+        {this.state.passwordDirty ? <p>{this.state.passwordError}</p> : undefined}
+
+        <input 
+          className={this.state.passwordDirty && this.state.passwordError ? 'invalid' : undefined}
+          onChange={this.handleChange} 
+          type="password" 
+          name='password' 
+          placeholder ='password' 
+        />
+
         <button type="submit"> {header.toLowerCase()} </button>
       </form>
     );

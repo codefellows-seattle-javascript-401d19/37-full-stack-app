@@ -12,8 +12,8 @@ class AuthRedirect extends React.Component {
         pathname === '/signup' ||
         pathname === '/login') {
 
-        if (token) 
-          destinationRoute = '/dashboard';
+      if (token) 
+        destinationRoute = '/dashboard';
     } else {
       if (!token)
         destinationRoute = '/';

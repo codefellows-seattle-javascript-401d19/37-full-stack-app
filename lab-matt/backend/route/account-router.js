@@ -16,7 +16,11 @@ accountRouter.get('/login', basicAuthMiddleware, (request, response, next) => {
   }
 
   return request.account.createToken()
-    .then(newToken => response.json({token: newToken}))
+    .then(newToken => {
+      response.cookie('X-TRENDLY-TOKEN', newToken, {maxAge : 900000});
+      response.send(newToken);
+      return; 
+    })
     .catch(next);
 });
 
@@ -32,7 +36,9 @@ accountRouter.post('/signup', jsonParser, (request, response, next) => {
       return newUser.createToken();
     })
     .then(newToken => {
-      return response.json({token: newToken});
+      response.cookie('X-TRENDLY-TOKEN', newToken, {maxAge: 900000});
+      response.send(newToken);
+      return; 
     })
     .catch(next);
 });

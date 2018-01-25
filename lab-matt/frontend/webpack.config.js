@@ -41,7 +41,7 @@ webPackConfig.plugins = [
 ];
 
 if (PRODUCTION) {
-  webpack.plugins = webpack.plugins.concat([
+  webPackConfig.plugins = webPackConfig.plugins.concat([
     new UglifyPlugin(),
     new CleanPlugin(),
   ]);

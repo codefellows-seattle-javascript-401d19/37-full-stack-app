@@ -5,9 +5,20 @@ import Dashboard from '../dashboard';
 import Landing from '../landing';
 import AuthForm from '../auth-form';
 import AuthRedirect from '../auth-redirect';
+import Header from '../header';
+import { fetchProfile } from '../../action/profile';
+import Profile from '../profile';
 
 
 class App extends React.Component {
+  componentDidMount() {
+    let { loggedIn } = this.props;
+    console.log('__Logged_In?__', loggedIn);
+    if (loggedIn) {
+      this.props.fetchMyProfile();
+    }
+  }
+  
   render() {
     return (
       <div className='app'>
@@ -18,13 +29,15 @@ class App extends React.Component {
         <BrowserRouter>
           <div>
             <nav>
-              <Link to='/'> Home </Link>
+              <h1> Trendly </h1>
             </nav>
+            <Header />
             <Route exact path='*' component={AuthRedirect} />
             <Route exact path='/' component={Landing} />
             <Route exact path='/signup' component={Landing} />
             <Route exact path='/login' component={Landing} />
             <Route exact path='/dashboard' component={Dashboard} />
+            <Route exact path='/profile' component={Profile} />
           </div>
         </BrowserRouter>
       </div>
@@ -32,4 +45,11 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  loggedIn : !!state.token,
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchMyProfile : () => dispatch(fetchProfile()),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(App);

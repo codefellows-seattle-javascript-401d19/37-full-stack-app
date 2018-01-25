@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import AuthForm from '../auth-form';
 import { signupAction, loginAction } from '../../action/auth';
+import { fetchProfile } from '../../action/profile';
 
 class Landing extends React.Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class Landing extends React.Component {
     this.handleLogin = (user) => {
       this.props.logMeIn(user)
         .then(() => {
+          this.props.fetchMyProfile();
           this.props.history.push('/dashboard');
         })
         .catch(console.error);
@@ -32,22 +34,21 @@ class Landing extends React.Component {
 
     let root = 
       <div className='root'>
-        <Link to='/signup' > signup </Link>
-        <Link to='/login' > login </Link>
+        <h1>Signup or Login to continue.</h1>
       </div>;
 
     let signup = 
     <div className='signup'>
-        <h2> signup </h2>
-        <AuthForm onComplete={this.handleSignup} signup={true}/>
-        <p> already have an account? </p>
-        <Link to='/login' > login </Link>
-      </div>;
+      <h2> signup </h2>
+      <AuthForm onComplete={this.handleSignup} type='signup'/>
+      <p> already have an account? </p>
+      <Link to='/login' > login </Link>
+    </div>;
       
     let login = 
       <div className='login'>
         <h2> login </h2>
-        <AuthForm onComplete={this.handleLogin} />
+        <AuthForm onComplete={this.handleLogin} type='login'/>
         <p> don't have an account? </p>
         <Link to='/signup' > signup </Link>
       </div>;
@@ -58,7 +59,7 @@ class Landing extends React.Component {
         {pathname === '/signup' ? signup : undefined}
         {pathname === '/login' ? login : undefined}
       </div>
-    )
+    );
   }
 }
 
@@ -70,6 +71,7 @@ let mapDispatchToProps = (dispatch) => {
   return {
     signMeUp : (user) => dispatch(signupAction(user)),
     logMeIn : (user) => dispatch(loginAction(user)),
+    fetchMyProfile : () => dispatch(fetchProfile()),
   };
 };
 

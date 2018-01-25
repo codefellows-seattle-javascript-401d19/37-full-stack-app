@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import auth from './auth';
+import token from './token';
+import profile from './profile';
 
 export default combineReducers({
-  token: auth,
+  token,
+  profile,
 });

@@ -20,14 +20,28 @@ body {
 }
 
 // ----------------------------------------
+.dashboard {
+  h2 {
+    margin: 10px;
+  }
+}
+
+
 nav {
   text-align: center;
   box-shadow: 0px 2px 5px black;
   padding: 1vh 1vw;
-  margin-bottom: 15px;
+  // margin-bottom: 15px;
   height: 56px;
+
+  ul {
+    li {
+      display: inline-block;
+      padding: 0 10px;
+    }
+  }
   
-  a {
+  h1, a {
     color: rgb(238, 255, 0);
     font-size: 2em;
     text-decoration: none;
