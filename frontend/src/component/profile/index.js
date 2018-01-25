@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import ProfileForm from '../profile-form';
 
-import * as clientProfileActions from '../../action/client-profile';
+import * as clientProfileActions from '../../action/client';
 import * as routes from '../../routes';
 
 class Profile extends React.Component{

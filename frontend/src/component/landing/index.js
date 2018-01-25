@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 import AuthForm from '../auth-form';
 import * as authActions from '../../action/auth';
-import * as clientProfileActions  from '../../action/client-profile';
+import * as clientProfileActions  from '../../action/client';
 
 
 import * as routes from '../../routes';

@@ -9,7 +9,7 @@ import AuthRedirect from '../auth-redirect';
 import Header from '../header';
 import Profile from '../profile';
 
-import * as clientProfile from '../../action/client-profile';
+import * as clientProfileActions from '../../action/client';
 
 class App extends React.Component{
 
@@ -43,7 +43,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchClientProfile : () => dispatch(clientProfile.fetchAction()),
+  fetchClientProfile : () => dispatch(clientProfileActions.fetchAction()),
 });
 
 
