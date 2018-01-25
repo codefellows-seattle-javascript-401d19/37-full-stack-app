@@ -1,11 +1,26 @@
 import React from 'react';
+import validator from 'validator';
 
 let emptyState = {
   companyName: '',
+  companyNameDirty: false,
+  companyNameError: 'company name is required',
+
   password: '',
+  passwordDirty: false,
+  passwordError: 'password is required',
+
   website: '',
+  websiteDirty: false,
+  websiteError: 'website is required',
+
   email: '',
+  emailDirty: false,
+  emailError: 'email is required',
+
   phoneNumber: '',
+  phoneNumberDirty: false,
+  phoneNumberError: 'phone number is required',
 };
 
 class AuthForm extends React.Component {
@@ -21,15 +36,39 @@ class AuthForm extends React.Component {
     }
   }
 
+  // changed this to include dirty and error
+
   handleChange(event) {
     let {name, value} = event.target;
-    this.setState({[name]: value});
+
+    this.setState({
+      [name]: value,
+      [`${name}Dirty`]: true,
+      [`${name}Error`]: this.handleValidation(name, value),
+    });
   }
+
+  //TODO: add validation error handling to submit
 
   handleSubmit(event){
     event.preventDefault();
     this.props.onComplete(this.state);
     this.setState(emptyState);
+  }
+
+  handleValidation(name, value){
+    if(this.props.type === 'login')
+      return null;
+
+    // TODO: add validation
+
+    switch(name){
+    case 'companyName':
+    case 'password':
+    case 'website':
+    case 'email':
+    case 'phoneNumber':
+    }
   }
 
   render(){
@@ -38,30 +77,13 @@ class AuthForm extends React.Component {
     type = type === 'login' ? type : 'signup';
 
     let signupJSX =
-    <div>
-      <input
-        name='website'
-        placeholder='website'
-        type='text'
-        value={this.state.website}
-        onChange={this.handleChange}
-      />
       <input
         name='email'
         placeholder='email'
         type='email'
         value={this.state.email}
         onChange={this.handleChange}
-      />
-      <input
-        name='phoneNumber'
-        placeholder='phone number'
-        type='text'
-        value={this.state.phoneNumber}
-        onChange={this.handleChange}
-      />
-    </div>;
-
+      />;
 
     let signupRenderedJSX = (type !== 'login') ? signupJSX : undefined;
 

@@ -1,9 +1,11 @@
-import * as cookie from '../lib/cookie';
+// import * as cookie from '../lib/cookie';
+//
+// const VOLLY_COOKIE = 'X-Volly-Token';
+// let token = cookie.cookieFetch('');
 
-const VOLLY_COOKIE = 'X-Volly-Token';
-let token = cookie.cookieFetch('');
+let initiatState = null;
 
-let initiatState = token ? token : null;
+// token ? token :
 
 export default (state=initiatState, {type, payload}) => {
   switch(type){
