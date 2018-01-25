@@ -1,426 +1,251 @@
+SLUGGRAM
+===
+> a social photo platform REST API
 
-<h1 align="center">
-  <br>
-  <a href="https://volly-sms.herokuapp.com"><img src="https://i.imgur.com/NFMAaQS.png" alt="Volly" width="200"></a>
-  <br>
-  Volly SMS
-  <br>
-</h1>
-
-*Volly* is a volunteer management portal that helps non-profits manage their interactions with volunteers.
-
-Companies and volunteers sign up independently and connect via volunteer-initiated applications. Once approved by a company, the volunteer is added to the company's active pool, at which point volunteers can be contacted via text message.
-
-*Volly* is a back-end *REST*ful API that allows for basic CRUD operations.
-
-## Build Status
-
-[![Build Status](https://travis-ci.org/VollySMS/Volly.svg?branch=master)](https://travis-ci.org/VollySMS/Volly)
-[![npm](https://img.shields.io/npm/l/express.svg)](https://github.com/VollySMS/Volly/blob/master/LICENSE)
-![Contributions welcome](https://img.shields.io/badge/contributions-welcome-green.svg)
-
-
-
-
-## Tech / Frameworks
-- node.js
-    - bcrypt
-    - crypto
-    - dotenv
-    - express
-    - http-errors
-    - jsonwebtoken
-    - mongoose
-    - superagent
-    - winston
-    - eslint
-    - faker
-    - jest
-- Heroku
-- MongoDB
-- TravisCI
-
-
-## Features
-
-### Company
-
-- signup
-- login
-- update company information
-- get list of pending volunteers
-- get list of active volunteers
-- approve of pending volunteer
-- terminate volunteer
-- send text messages to active volunteers
-- delete
-
-### Volunteer
-
-- signup
-- login
-- update volunteer information
-- list all available companies
-- get list of pending companies
-- get list of active companies
-- apply to companies
-- remove application from company
-- delete volunteer account
-- opt in to receive text alerts
-
-### Schema
-
-<h1 align="center">
-  <img src="https://i.imgur.com/XkI7LST.png" alt="Volly" width="640"></a>
-</h1>
-
-### Tests
-
-All tests run through the Jest testing suite. To run our code on your machine, first clone the repo:
-
-```
-git clone https://github.com/VollySMS/Volly.git
+## Configureation
+Create a `.env` file and configure it with the following enviroment variables 
+``` bash
+PORT=3000 
+DEBUG=true
+CORS_ORIGINS='<one or more cors orgins (space seporated)>' 
+MONGO_URI='<mongo uri>'
+SECRET='<random string>'
+AWS_ACCESS_KEY_ID='<a aws access key id>'
+AWS_SECRET_ACCESS_KEY='<a aws secret access key>'
+AWS_BUCKET='<a aws bucket>'
 ```
 
-Install all dependencies by running `npm i`. Before you can run the tests, you must ensure you have [MongoDB](https://www.mongodb.com/download-center?jmp=nav#community) installed on your machine. Once Mongo is installed, start the database server with `npm run dbon`.
+## Running Sluggam 
+* Start a mongodb `yarn db-on`
+* Start the server `yarn start`
 
-To run all test suites run `npm test`. To run only Company-specific tests, run `npm run test-c`, or to run only Volunteer-specific tests run `npm run test-v`.
+## API Resources
+#### User Model
+The user model is used in the backend strickly for authentication and authorization. The user model will never be returned from the API, however userID's are stored on Profiles, Photos, and Comments for authorzation validation.  
 
-Once all tests have run, you can turn off the database with `npm run dboff`.
+* `_id` - an unique database genorated string which uniqly identifys a user
+* `email` - a unique string which stores the users email
+* `username` - a unique string that stores the users username
+* `passwordHash` - a string that holds a users hashed password
+* `tokenSeed` - a unique and random string used to genorate authorization tokens 
 
-## How to use?
+#### Profile Model
+Each user can have a single profile. Authorization is required for Creating, Updating, and Deleteing Profiles but they have public read access.  
 
-Interact with *Volly* as a company or volunteer via HTTP requests to the various endpoints at `https://volly-sms.herokuapp.com/`.
+* `_id` - an unique database genorated string which uniqly identifys a profile  
+* `owner` - the user id of the profiles creator 
+* `email` - a unique string which stores the profiles email
+* `username` - a unique string that stores the profiles profilename
+* `avatar` - a string holding a URL to a profile photo
+* `bio` - a string holding a profiles bio 
 
-This can be achieved from a front-end or from the command line using [HTTPie](https://github.com/jakubroztocil/httpie#installation).
+#### Photo Model
+Each user can have may photos. Authorization is required for Creating, Updating, and Deleteing Photos but they have public read access.
 
-In order to authenticate requests using HTTPie you must also install [httpie-jwt-auth](https://github.com/teracyhq/httpie-jwt-auth).
+* `_id` - an unique database genorated string which uniqly identifys a profile  
+* `owner` - the user id of the photos creator 
+* `profile` - stores a the creators profile ID. the profile is populated on GET requests
+* `comments` - stores an array of comment IDs. the comments are populated on GET requests
+* `url` - a string which store a url to the photo
+* `description` - a string with a description of the photo
 
-### Company
+#### Comment Model
+Each user can have many comments, and each photo can have may comments. Authorization is required for Creating, Updating, and Deleteing Comments but they have public read access.
 
-#### `POST /company/signup`
+* `_id` - an unique database genorated string which uniqly identifys a profile  
+* `owner` - the user id of the photos creator 
+* `profile` - stores a the creators profile ID. the profile is populated on GET requests
+* `photoID` - stores the photo id of the photo the comment is a response to 
+* `content` - a string with the users comment
 
-The first step for a company is to sign up.
+## Auth 
+Sluggram uses Basic authentication and Bearer authorization to enforce access controls. Basic and Bearer auth both use the HTTP `Authorization` header to pass credentials on a request.
 
-Send a JSON object containing the following properties (all are Strings):
+#### Basic Authentication
+Once a user account has been created Basic Authentication can be used to make a request on behalf of the account. To create a Basic Authorzation Header the client must base64 encode a string with the username and password seporated by a colon. Then the encoded string can then be appened to the string `'Basic '` and set to an `Authorization` header on an HTTP Request.    
 
-`companyName`, `password`, `email`, `phoneNumber` and `website`
+``` javascript
+// Example of formating a Basic Authentication header in Javascript 
+let username = 'slugbyte'
+let password = 'abcd1234'
 
-Upon successfully signing up, you will receive a JSON Web Token used for authenticating future requests.
-
-```
-echo '{"companyName": "<companyName>", "password": "<password>", "phoneNumber": "<phoneNumber>", "email": "<email>", "website": "<website>"}' | http POST https://volly-sms.herokuapp.com/company/signup
-
-// Response:
-//
-// {
-//    "token": "<companyToken>"
-// }
-```
-
-#### `GET /company/login`
-
-Your token is needed to authenticate all future requests. If your token is misplaced or expires, you can login to receive a new token. Send a GET request with your `companyName` and `password` using Basic Auth to the `/company/login` endpoint. Use the HTTPie flag `-a USERNAME:PASSWORD` to authenticate yourself.
-
-```
-http GET https://volly-sms.herokuapp.com/company/login -a <companyName>:<password>
-
-// Response:
-//
-// {
-//    "token": "<companyToken>"
-// }
-```
-
-#### `GET company/pending`
-
-Once you have created your account, users will be able to apply to be a volunteer with your company. You can request an array with information about each volunteer that has applied to your company. You will need to use *httpie-jwt-auth* to authenticate yourself by adding `Authorization:'Bearer <yourToken>'` after the url in your request.
-
-```
-http GET https://volly-sms.herokuapp.com/company/pending Authorization:'Bearer <companyToken>'
-
-{
-    "pendingVolunteers": [
-        {
-            "email": "<email>",
-            "firstName": "<firstName>",
-            "lastName": "<lastName>",
-            "phoneNumber": "<phoneNumber>",
-            "volunteerId": "<volunteerId>"
-        }
-    ]
+let encoded = window.btoa(`${username}:${password}`)
+let headers = {
+  Authorization: `Basic ${encoded}`
 }
 ```
 
-#### `GET company/active`
+#### Bearer Authorization
+After a successfull signup or login request the client will receive a token. Bearer Authorization uses that token to make a request on behalf of that user account. The token should be append to the string `'Bearer '` and set to an Authorization header on an HTTP Request.
 
-Once a pending volunteer has been approved you can request an array with information about each volunteer that has been accepted to your company. You will need to use *httpie-jwt-auth* to authenticate yourself by adding `Authorization:'Bearer <yourToken>'` after the url in your request.
+``` javascript
+// Example of formating a Bearer Authorization header in Javascript
+let token = '11983261983261982643918649814613298619823698243'
 
-```
-http GET https://volly-sms.herokuapp.com/company/pending Authorization:'Bearer <companyToken>'
-
-{
-    "activeVolunteers": [
-        {
-            "email": "<email>",
-            "firstName": "<firstName>",
-            "lastName": "<lastName>",
-            "phoneNumber": "<phoneNumber>",
-            "volunteerId": "<volunteerId>"
-        }
-    ]
+let headers = {
+  Authorization: `Beaer ${token}`
 }
 ```
 
-#### `PUT /company/approve`
+---
 
-If you have found an applicant that you would like to approve, you can make a PUT request to do so. Send an object with the `volunteerId` and make sure to authenticate your request with jwt-auth and your token.
 
-```
-echo '{"volunteerId": "volunteerId"}' | http PUT https://volly-sms.herokuapp.com/company/approve Authorization:'Bearer <companyToken>'
+#### POST `/signup`
+a HTTP POST request to /signup will create a new user account.
 
-// Response:
-// {
-//    "activeVolunteers": [
-//        "<volunteerId>"
-//    ],
-//    "pendingVolunteers": [
-//        "<volunteerId>"
-//    ]
-// }
-```
+###### request 
+* Expected Headers
+  * Content-Type: application/json
+* Request Body
+  * JSON containing a username, email and password
 
-#### `POST /company/send`
-
-This allows you to send messages to any volunteers that are currently active or pending and have opted in to receiving text alerts. Send an object with your `textMessage` and an array of your `volunteers` that you want to send a message to. You will need to use *httpie-jwt-auth* to authenticate yourself by adding `Authorization:'Bearer <yourToken>'` after the url in your request.
-
-```
-echo '{"textMessage": '<textMessage>', "volunteers": ['<volunteerId>']}' | http POST https://volly-sms.herokuapp.com/company/approve Authorization:'Bearer <companyToken>'
+``` json 
+{
+  "username": "slugbyte",
+  "email": "slugbyte@slugbyte.com",
+  "password": "abcd1234"
+}
 ```
 
-#### `PUT /company/terminate`
+###### response
+The response body will be a **bearer token**.
 
-To remove a volunteer from either pending or active status you must send an object containing `volunteerId` and make sure to authenticate your request with your token.
+--- 
 
-```
-echo '{"volunteerId": '<volunteerId>'}' | http PUT https://volly-sms.herokuapp.com/company/terminate Authorization:'Bearer <companyToken>'
+#### GET `/login`
+A HTTP GET request to /login will login (fetch a token) to an existing user account.
 
-Response:
-//  {
-//     "activeVolunteers": [<activeVolunteers>],
-//    "pendingVolunteers": [<pendingVolunteers>]
-//  }
-```
+###### request
+* Expected Headers 
+  * Basic Authorization for the user account
 
-#### `DELETE /company/delete`
+###### response 
+The response body will be a **bearer token**.
 
-Delete removes your company from Volly and removes your company from all volunteer pending and active lists. To delete your company from Volly you must authenticate your request with your token.
+## Profiles
+#### POST `/profiles`
+A HTTP POST request to /profiles will create a new profile. 
 
-```
-http DELETE https://volly-sms.herokuapp.com/company/delete Authorization:'Bearer <Company-Token>'
-```
+###### request 
+* Expected Headers
+  * Bearer authorization
+  * Content-Type: multipart/form-data
+* Expected Body 
+  * a `bio` field containing string with the users bio
+  * a `image` filed with the users avatar image
 
-#### `PUT /company/update`
+###### response 
+the response will be a JSON profile
 
-This allows you to update any of the included properties in your company: <companyName>, <email>, <password>, <phoneNumber>, <website>. You must send an object containing the properties you wish to update and the updated value. When a phone number is changed, our system will re-verify it. If your password is changed we will create a new token. Sends a response with the updated body.
+---
 
-```
-echo '{"companyName": <companyName>, "email": <email>, "password": <password>, "phoneNumber": <phoneNumber>, "website": <website>}' | http PUT https://volly-sms.herokuapp.com/company/update Authorization:'Bearer <companyToken>'
+#### GET `/profiles`
+a HTTP GET request to /profiles will return an array of profiles
+###### request 
+* Optional Query Paramiters
+  * SEE PAGINATION
 
-Response:
-//  {
-//     "companyName": "<companyName>",
-//     "email": "<email>",
-//     "password": "<password>",
-//     "phoneNumber": "<phoneNumber>",
-//     "website": "<website>",
-//
-//     "token": "<companyToken>"
-//  }
-```
+###### response
+See pageination
 
+---
 
-#### Volunteer
+#### GET `/profiles/:id`
+a HTTP GET request to /profiles/:id  will return a profile
+###### response
+the response will return a JSON profile 
 
-#### `POST /volunteer/signup?subscribe=<true>`
+---
 
-The first step for a volunteer is to sign up.
-
-Send a JSON object containing the following properties (all are Strings):
-
-`firstName`, `lastName`, `userName`, `password`, `email`, and `phoneNumber`
-
-To initiate text alert validation include `?subscribe=true` at the end of the signup url.
-The api will send you a text saying `Volly: Reply TEXT to receive text alerts`.
-
-Upon successfully signing up, you will receive a JSON Web Token used for authenticating future requests.
-
-```
-echo '{"firstName": "<firstName>", "lastName": "<lastName>", "userName": "<userName>", "password": "<password>", "phoneNumber": "<phoneNumber>", "email": "<email>"}' | http POST https://volly-sms.herokuapp.com/volunteer/signup
-// Response:
-//
-// {
-//    "token": "<volunteerToken>"
-// }
-```
-
-#### `GET /volunteer/login`
-
-Your token is needed to authenticate all future requests. If your token is misplaced or expires, you can login to receive a new token. Send a GET request with your `userName` and `password` using Basic Auth to the `/volunteer/login` endpoint. Use the HTTPie flag `-a USERNAME:PASSWORD` to authenticate yourself.
-
-```
-http GET https://volly-sms.herokuapp.com/volunteer/login -a <userName>:<password>
-
-// Response:
-//
-// {
-//    "token": "<volunteerToken>"
-// }
-```
-
-#### `GET /volunteer/opportunities`
-
-Once you have created an account and have your access token, you'll want to find some companies that have volunteer opportunities. Use your token to request the current list of companies. Data will be returned as an array of objects. You will need to use httpie-jwt-auth to authenticate yourself by adding `Authorization:'Bearer <yourToken>'` after the url in your request.
-
-```
-http GET https://volly-sms.herokuapp.com/volunteer/opportunities Authorization:'Bearer <volunteerToken>'
-
-// Response:
-//{
-// companies: {[
-//    {
-//     "companyId": "<companyId>",
-//     "companyName": "<companyName>",
-//     "email": "<email>",
-//     "password": "<password>",
-//     "phoneNumber": "<phoneNumber>",
-//     "website": "<website>",
-//    },
-// ]}
-//}
-//
-```
-
-### `GET /volunteer/pending`
-
-You can request an array with information about each company that you have a pending application in. You will need to use *httpie-jwt-auth* to authenticate yourself by adding `Authorization:'Bearer <yourToken>'` after the url in your request.
-
-```
-http GET https://volly-sms.herokuapp.com/volunteer/pending Authorization:'Bearer <volunteerToken>'
-
-Response:
-//  pendingCompanies:
-//  [
-//  {
-//     "companyName": <companyName>,
-//     "email": <email>,
-//     "password": <password>,
-//     "phoneNumber": <phoneNumber>,
-//     "website": <website>,
-//  }
-//  ]
-```
-
-#### `GET /volunteer/active`
-
-You can request an array with information about each company that you are currently active in. You will need to use *httpie-jwt-auth* to authenticate yourself by adding `Authorization:'Bearer <yourToken>'` after the url in your request.
-
-```
-http GET https://volly-sms.herokuapp.com/volunteer/active Authorization:'Bearer <volunteerToken>'
-
-Response:
-//  activeCompanies:
-//  [
-//  {
-//     "companyName": <companyName>,
-//     "email": <email>,
-//     "password": <password>,
-//     "phoneNumber": <phoneNumber>,
-//     "website": <website>,
-//  }
-//  ]
-```
-
-#### `PUT /volunteer/update?subscribe=<true>`
-
-This allows you to update any of the included properties: <userName>, <email>, <phoneNumber>, <firstName>, <lastName>,  <password>. You must send an object containing the properties you wish to update and the updated value. When a phone number is changed, our system will re-verify it. If your password is changed we will create a new token. Sends a response with the updated body.
-
-To initiate text alert validation include `?subscribe=true` at the end of the signup url.
-The api will send you a text saying `Volly: Reply TEXT to receive text alerts`.
-
-```
-echo '{"userName": <companyName>, "email": <email>, "password": <password>, "phoneNumber": <phoneNumber>, "website": <website>}' | http PUT https://volly-sms.herokuapp.com/company/update Authorization:'Bearer <volunteerToken>'
-
-Response:
-//  {
-//     "userName": <userName>,
-//     "email": <email>,
-//     "phoneNumber": <phoneNumber>,
-//     "firstName": <firstName>,
-//     "lastName": <lastName>,
-//
-//     "token": "<volunteerToken>"
-//  }
-```
+#### GET `/profiles/me`
+a HTTP GET request to /profiles/:id  will return a profile
+###### request 
+* Expected Headers
+  * Bearer authorization
+###### response
+the response will return a users JSON profile 
 
 
+---
 
-#### `PUT /volunteer/apply`
+#### PUT `/profiles/:id`
+a HTTP PUT request to /profiles/:id will update a profile
+###### request 
+* Expected Headers
+  * Bearer authorization
+  * Content-Type: multipart/form-data or application/json
+* Optional Body Fields
+  * an optional `image` filed with the users avatar image
+    * photo uploads are only posible for Content-Type: multipart/form-data
+  * an optional `bio` field containing string with the users bio
 
-Once you've found a company you want to volunteer for, apply to that company by sending an object with the `companyId` as a property. Don't forget to authenticate yourself using jwt-auth and your token.
+###### response
+the response will return a JSON profile 
 
-```
-echo '{"companyId": "<companyId>"}' | http PUT https://volly-sms.herokuapp.com/volunteer/apply Authorization:'Bearer <volunteerToken>'
+---
 
-// Response: 200
-//{
-//    "activeCompanies": [],
-//    "pendingCompanies": [
-//        {
-//            "companyId": "<companyId>",
-//            "companyName": "<companyName>",
-//            "email": "<email>",
-//            "phoneNumber": "<phoneNumber>",
-//            "website": "<website>"
-//        }
-//    ]
-//}
-```
+#### DELETE `/profiles/:id`
+a HTTP DELETE request to /profiles/:id will delete a profile
+###### request
+* Expected Headers
+  * Bearer authorization
 
-#### `PUT /volunteer/leave`
+###### response
+the response will have no body and a status of **204**
 
-If you no longer want to volunteer for a company (or be considered by that company if not yet approved) you can leave. Send an object with the `companyId` as a property and authenticate yourself using jwt-auth and your token. You will remove yourself from that company's database, and you will remove the record of that company from your database.
+## Photos 
+#### POST `/photos`
+A HTTP POST request to /photos will create a new photo. A photo cannot be created until the User has created a profile.
 
-```
-echo '{"companyId": "<companyId>"}' | http PUT https://volly-sms.herokuapp.com/volunteer/leave Authorization:'Bearer <volunteerToken>'
+###### request 
+* Expected Headers
+  * Bearer authorization
+  * Content-Type: multipart/form-data
+* Expected Body 
+  * a `photo` filed with the file asset
+  * a `description` field
 
-// Response: 200
-//{
-//    "activeCompanies": [remaining active companies],
-//    "pendingCompanies": [remaining pending companies]
-//}
-```
+###### response 
+the response will be a JSON photo
 
-#### `DELETE /volunteer/delete`
+#### GET `/photos`
+a HTTP GET request to /photos will return an array of photos
+###### request 
+* Optional Query Paramiters
+  * SEE PAGINATION
 
-Delete removes your account from Volly and removes your account from all company pending and active lists. To delete your account from Volly you must authenticate your request with your token.
+###### response
+See pageination
 
-```
-http DELETE https://volly-sms.herokuapp.com/volunteer/delete Authorization:'Bearer <volunteerToken>'
-```
+#### GET `/photos/:id`
+a HTTP GET request to /photos/:id  will return a photo
+###### response
+the response will return a JSON profile 
 
-## Contribute
+#### PUT `/photos/:id`
+a HTTP PUT request to /photos/:id will update a profile
 
-Want to help non-profits? Contribute to our project! Fork our [repo](https://github.com/VollySMS/Volly) and make a PR. Please feel free to contact us prior to beginning any work to discuss your ideas.
+###### request 
+* Expected Headers
+  * Bearer authorization
+  * Content-Type: multipart/form-data or application/json
+* Optional Body Fields
+  * an optional `photo` filed with a replacement photo
+    * photo uploads are only posible for Content-Type: multipart/form-data
+  * an optional `description` 
 
-## Credits
+#### DELETE `/photos/:id`
+a HTTP DELETE request to /photos/:id will delete a profile
+###### request
+* Expected Headers
+  * Bearer authorization
 
-[Anthony Robinson](https://github.com/Twandalon)
+###### response
+the response will have no body and a status of **204**
 
-[Pedja Josifovic](https://github.com/pjosifovic)
-
-[Robert Reed](https://github.com/RobertMcReed)
-
-## License
-
-MIT © [Anthony Robinson](https://github.com/Twandalon), [Pedja Josifovic](https://github.com/pjosifovic) & [Robert Reed](https://github.com/RobertMcReed)
+## Comments
+#### POST `/comments`
+#### GET `/comments`
+#### GET `/comments/:id`
+#### PUT `/comments/:id`
+#### DELETE `/comments/:id`

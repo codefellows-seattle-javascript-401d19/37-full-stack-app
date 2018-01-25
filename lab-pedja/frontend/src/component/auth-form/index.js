@@ -1,86 +1,83 @@
-import React from "react";
+import React from 'react';
 
 let emptyState = {
-  companyName : '',
-  email : '',
-  password : '',
-  website : '',
-  phoneNumber : '',
+  username: '',
+  email: '',
+  password: '',
 };
 
 class AuthForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = emptyState;
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+  constructor(props){
+    super(props)
+    this.state = emptyState
+    //-------------------------------------------------------------
+    // Binding Handlers
+    //-------------------------------------------------------------
+    let memberFunctions = Object.getOwnPropertyNames(AuthForm.prototype);
+    for(let functionName of memberFunctions){
+      if(functionName.startsWith('handle')){
+        this[functionName] = this[functionName].bind(this);
+      }
+    }
+    //-------------------------------------------------------------
+  }
+  //---------------------------------------------------------------
+  // Member Functions
+  //---------------------------------------------------------------
+  handleChange(e){
+    let {name, value} = e.target
+    this.setState({[name]: value})
   }
 
-  handleChange(event){
-    let {name, value} = event.target;
-    this.setState({ [name] : value });
+  handleSubmit(e){
+    e.preventDefault()
+    this.props.onComplete(this.state)
+    this.setState(emptyState)
   }
-
-  handleSubmit(event){
-    event.preventDefault();
-    this.props.onComplete(this.state);
-    this.setState(emptyState);
-  }
-
-  render() {
+  //---------------------------------------------------------------
+  // Life-cycle Hooks
+  //---------------------------------------------------------------
+  
+  render(){
     let { type } = this.props;
 
+    type = type === 'login' ? type : 'signup';
+
     let signupJSX = 
-      <div>
-        <input 
-          name = 'email'
-          placeholder = 'email'
-          type = 'email'
-          value = {this.state.email}
-          onChange = {this.handleChange}
-        />
-        <input 
-          name = 'phoneNumber'
-          placeholder = 'phone number'
-          type = 'text'
-          value = {this.state.phoneNumber}
-          onChange = {this.handleChange}
-        />
-        <input 
-          name = 'website'
-          placeholder = 'website'
-          type = 'text'
-          value = {this.state.website}
-          onChange = {this.handleChange}
-        />
+      <input
+        name='email'
+        placeholder='email'
+        type='email'
+        value={this.state.email}
+        onChange={this.handleChange}
+        />;
 
-      </div>;
-
-    let signupRenderJSX = type == 'signup' ? signupJSX : undefined;
+    let signupRenderedJSX = (type !== 'login') ? signupJSX : undefined;
 
     return (
       <form className='auth-form' onSubmit={this.handleSubmit} >
-        <input 
-          name = 'companyName'
-          placeholder = 'companyName'
-          type = 'text'
-          value = {this.state.companyName}
-          onChange = {this.handleChange}
-        />
+      
+        <input
+          name='username'
+          placeholder='username'
+          type='text'
+          value={this.state.username}
+          onChange={this.handleChange}
+          />
 
-        {signupRenderJSX}
+        {signupRenderedJSX}
 
-        <input 
-          name = 'password'
-          placeholder = 'password'
-          type = 'password'
-          value = {this.state.password}
-          onChange = {this.handleChange}
-        />
+        <input
+          name='password'
+          placeholder='password'
+          type='password'
+          value={this.state.password}
+          onChange={this.handleChange}
+          />
+
         <button type='submit'> {type} </button>
       </form>
-    );
+    )
   }
 }
 
