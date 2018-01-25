@@ -45,7 +45,6 @@ profileRouter.get('/profiles/me', bearerAuthMiddleware, (request, response, next
 
 profileRouter.put('/profiles/:id', bearerAuthMiddleware, jsonParser, (request, response, next) => {
   let { meetupMemberId, phoneNumber, meetups } = request.body;
-  console.log(request.body);
   if(!request.account)
     return next(new httpErrors(404, '__ERROR__ Not Found'));
     

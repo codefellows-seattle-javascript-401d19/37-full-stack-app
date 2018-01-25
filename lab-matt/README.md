@@ -19,13 +19,14 @@ This lab features a full stack application that uses react in the front-end and 
 1. `cd` into the backend folder
 2. `npm install` the required dependency packages
 1. setup a `.env` file with the following parameters:
+__backend__
 ```
 PORT=3000 // <port number can be your choice>
 MONGODB_URI=mongodb://localhost/live // <live can be replaced with your own local db>
 CLOUD_SALT='andsomefries' // <or use personal string / number sequence>
+API_KEY=00000000000000000000  // <replace with your meetup api_key>
 
 // Twilio not currently needed in this state of the full-stack application
-API_KEY=00000000000000000000  // <replace with your meetup api_key>
 TWILIO_ACCOUNT_SID=0000000000000000000000000 // <replace with twilio account_sid>
 TWILIO_AUTH_TOKEN=00000000000000000000000 // <replace with twilio auth_token>
 TWILIO_NUMBER=0000000000 // replace with selected twilio_number
@@ -33,6 +34,13 @@ TWILIO_NUMBER=0000000000 // replace with selected twilio_number
 2. `npm run dbon` to start the server
 4. run `nodemon -ignore log.json` or other methods to start up the server
 1. `cd` into the frontend folder
+1. setup a `.env` file with the following parameters:
+__frontend__
+```
+API_URL=http://localhost:3000 // 
+CDN_URL=/
+NODE_ENV=debug
+```
 2. `npm install` the required dependency packages
 4. `npm run watch` to run a local server to use the front-end react
 6. connect to `http://localhost:8080`
