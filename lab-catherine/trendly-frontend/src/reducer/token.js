@@ -1,6 +1,6 @@
-import * as util from '../lib/util';
+import * as cookie from '../lib/cookie';
 
-let token = util.cookieFetch('Trendly-Token');
+let token = cookie.cookieFetch('Trendly-Token');
 
 let initialState = token ? token : null;
 
