@@ -17,10 +17,10 @@ class Profile extends React.Component {
   }
 
   handleCreate(profile) {
-    this.props.createProfile(profile)
-      .then(() => {
-        this.props.history.push('/dashboard');
-      });
+    this.props.createProfile(profile);
+      // .then(() => {
+      //   this.props.history.push('/dashboard');
+      // });
   }
 
   handleUpdate(profile) {
