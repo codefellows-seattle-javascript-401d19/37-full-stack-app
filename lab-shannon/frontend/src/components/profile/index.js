@@ -21,11 +21,11 @@ class Profile extends React.Component{
   }
 
   handleCreate(profile){
-    this.props.createProfile(profile)
-      .then(() => {
-        console.log(this.props);
-        this.props.history.push('/dashboard');
-      });
+    this.props.createProfile(profile);
+    // .then(() => {
+    //   this.props.history.push('/dashboard');
+    // })
+    // .catch(error => console.log(error));
   }
 
   render(){
@@ -35,25 +35,27 @@ class Profile extends React.Component{
       updateProfile,
     } = this.props;
 
+    console.log(profile, `is the profile`);
+
     // these three need to be declared outside of the if block since they're referenced outside of the if block
     let displayedProfileJSX = null;
     let nonEditingJSX = null;
     let editingJSX = null;
 
     if(profile){
-      let nonEditingJSX =
+      nonEditingJSX =
       <div>
         <p>{profile.bio}</p>
         <button onClick={() => this.setState({editing: true})}> Edit Bio </button>
       </div>;
 
-      let editingJSX =
+      editingJSX =
       <div>
         <ProfileForm profile={profile} onComplete={this.handleUpdate} />
         <button onClick={() => {this.setState({editing: false});}}> Cancel </button>
       </div>;
 
-      let displayedProfileJSX =
+      displayedProfileJSX =
         <div>
           <h3>profile.username</h3>
           {this.state.editing ? editingJSX : nonEditingJSX}

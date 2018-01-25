@@ -97,3 +97,25 @@
 {"level":"info","message":"Server is listening on port 3000","timestamp":"2018-01-25T18:04:07.903Z"}
 {"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-25T18:04:31.155Z"}
 {"level":"info","message":"Processing : POST on : /profile","timestamp":"2018-01-25T18:04:36.413Z"}
+{"level":"info","message":"Server is listening on port 3000","timestamp":"2018-01-25T20:14:23.160Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-25T20:14:49.445Z"}
+{"level":"info","message":"Processing : POST on : /profile","timestamp":"2018-01-25T20:14:56.773Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-25T20:18:02.118Z"}
+{"level":"info","message":"Processing : POST on : /profile","timestamp":"2018-01-25T20:18:04.715Z"}
+{"level":"info","message":"__ERROR_MIDDLEWARE__","timestamp":"2018-01-25T20:18:04.721Z"}
+{"code":11000,"index":0,"errmsg":"E11000 duplicate key error collection: fullStackTesting.profile index: owner_1 dup key: { : ObjectId('5a6a3ab9c008fc61672c7753') }","op":{"_id":"5a6a3b7cc008fc61672c7755","owner":"5a6a3ab9c008fc61672c7753","bio":"","__v":0}}
+{"level":"info","message":"Responding with a 409 status code","timestamp":"2018-01-25T20:18:04.722Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-25T20:18:29.944Z"}
+{"level":"info","message":"Processing : POST on : /profile","timestamp":"2018-01-25T20:18:37.557Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-25T21:08:24.804Z"}
+{"level":"info","message":"Processing : POST on : /profile","timestamp":"2018-01-25T21:08:28.789Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-25T21:15:01.390Z"}
+{"level":"info","message":"Processing : POST on : /profile","timestamp":"2018-01-25T21:15:12.575Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-25T21:16:18.218Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-25T21:16:48.105Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-25T21:17:22.380Z"}
+{"level":"info","message":"Processing : POST on : /profile","timestamp":"2018-01-25T21:17:58.188Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-25T21:18:31.986Z"}
+{"level":"info","message":"Processing : POST on : /profile","timestamp":"2018-01-25T21:18:37.293Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-25T21:19:15.726Z"}
+{"level":"info","message":"Processing : POST on : /profile","timestamp":"2018-01-25T21:19:22.160Z"}

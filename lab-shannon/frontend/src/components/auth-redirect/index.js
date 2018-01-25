@@ -5,7 +5,7 @@ import {Redirect} from 'react-router-dom';
 class AuthRedirect extends React.Component{
   render(){
     let {location, history, token} = this.props;
-    //pathname is the url on the location object
+    //pathname is a property on the location object which holds the url
     let {pathname} = location;
     let destinationRoute = null;
 
