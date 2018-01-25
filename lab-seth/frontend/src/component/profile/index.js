@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ProfileForm from '../profile-form';
-import * as clientProfileActions from '../../action/client-profile';
+import * as clientProfile from '../../action/client-profile';
 import * as routes from '../../routes';
 
 class Profile extends React.Component {
@@ -24,7 +24,7 @@ class Profile extends React.Component {
       .then(() => {
         this.props.history.push(routes.DASHBOARD_ROUTE);//sends user back to dashboard as soon as new profile is created
       })
-      .catch(error)
+      .catch(console.error)
 
   }
 
@@ -40,7 +40,9 @@ class Profile extends React.Component {
       profileUpdate
     } = this.props; //destructering
     
-    let JSXEditing = JSXDisplay = JSXProfile = null;
+    let JSXEditing = null
+    let JSXDisplay = null
+    let JSXProfile = null
 
     if(profile){ //may need forms separated
       JSXEditing = 
@@ -78,8 +80,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispath) => ({
-  profileCreate: (profile) => dispath(clientProfileActions.createAction(profile)),
-  profileUpdate: (profile) => dispath(clientProfileActions.updateAction(profile)),
+  profileCreate: (profile) => dispath(clientProfile.createAction(profile)),
+  profileUpdate: (profile) => dispath(clientProfile.updateAction(profile)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

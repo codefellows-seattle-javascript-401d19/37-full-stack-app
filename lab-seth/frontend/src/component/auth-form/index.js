@@ -56,7 +56,7 @@ class AuthForm extends React.Component {
     }
   }
 
-  handleValidation(name, validation){
+  handleValidation(name, value){
     if(this.props.type == 'login') return null;
 
     switch(name){
@@ -92,7 +92,7 @@ class AuthForm extends React.Component {
           type='email'
           value={this.state.email}
           onChange={this.handleChange}
-          />;
+          />
       </div>
 
     let signupRenderedJSX = (type !== 'login') ? signupJSX : undefined;

@@ -20,8 +20,9 @@ export const createAction = (user) => (store) => {
 
 export const updateAction = (user) => (store) => {
   let {token} = store.getState();
+  console.log('user', user);
   
-  return superagent.put(`${__API_URL__}${routes.PROFILE_ROUTE}/${user.id}`)
+  return superagent.put(`${__API_URL__}${routes.PROFILE_ROUTE}/${user._id}`)
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', `application/json`)
     .send(user)
