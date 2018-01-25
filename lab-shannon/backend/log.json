@@ -83,3 +83,17 @@
 {"level":"info","message":"Processing : POST on : /profile","timestamp":"2018-01-25T16:59:51.337Z"}
 {"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-25T17:13:19.033Z"}
 {"level":"info","message":"Processing : POST on : /profile","timestamp":"2018-01-25T17:13:28.332Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-25T17:34:03.605Z"}
+{"level":"info","message":"__ERROR_MIDDLEWARE__","timestamp":"2018-01-25T17:34:03.632Z"}
+{"code":11000,"index":0,"errmsg":"E11000 duplicate key error collection: fullStackTesting.user index: email_1 dup key: { : \"stuff@gmail.com\" }","op":{"_id":"5a6a150b75be865b14df9201","username":"newthing","email":"stuff@gmail.com","passwordHash":"$2a$08$hWQN4/lClv2eK.XC9GxWzexoHo8WpvaHjgWscUrHwIcx3TVZgYlfe","tokenSeed":"54aead4f40223ddf59e4ce7848b001bad7bd5ed7c26f45b2babd1519ac7d8dadbcb9662541571069adfc8adeb24338a772a1c7bce7049563937c5ffe166b4ba3","passwordSalt":"b7c707c64ac5871a3aec43c1251e81c6db40d5339d6162aea7da049182e500f0c60eb309f895e4c597fefb3883a979221103f9ffdca8170f64abe117f4c07217","__v":0}}
+{"level":"info","message":"Responding with a 409 status code","timestamp":"2018-01-25T17:34:03.632Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-25T17:34:24.524Z"}
+{"level":"info","message":"__ERROR_MIDDLEWARE__","timestamp":"2018-01-25T17:34:24.548Z"}
+{"code":11000,"index":0,"errmsg":"E11000 duplicate key error collection: fullStackTesting.user index: email_1 dup key: { : \"stuff@gmail.com\" }","op":{"_id":"5a6a152075be865b14df9202","username":"eliza","email":"stuff@gmail.com","passwordHash":"$2a$08$//H9.O2Us.4iEpSyYuONFOLCjnFpXcwW8aYwiOI.9swAbYu/dNJ6q","tokenSeed":"9c764056be0b2fa9d2c7383dc5e8a13db828a6d993ddb525603401855ebbd818eba87efa87b321c39574afe4387b482da289e03d5bc986391b611cd4a457f0a3","passwordSalt":"1fb0b8d500b96ea71f47fe82aedd699fff4139ae735f19d327a5141c91850aaf9887fdc6cb824b07b04013b7fada0d757f44cd19f7f8c8a84aeabad37bcfc6fa","__v":0}}
+{"level":"info","message":"Responding with a 409 status code","timestamp":"2018-01-25T17:34:24.548Z"}
+{"level":"info","message":"Server is listening on port 3000","timestamp":"2018-01-25T17:34:44.669Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-25T17:35:30.335Z"}
+{"level":"info","message":"Processing : POST on : /profile","timestamp":"2018-01-25T17:35:48.136Z"}
+{"level":"info","message":"Server is listening on port 3000","timestamp":"2018-01-25T18:04:07.903Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-25T18:04:31.155Z"}
+{"level":"info","message":"Processing : POST on : /profile","timestamp":"2018-01-25T18:04:36.413Z"}

@@ -29,7 +29,7 @@ export const updateProfile = profile => store => {
     });
 };
 
-export const getProfile = user => store => {
+export const getProfile = () => store => {
   let {token} = store.getState();
 
   return superagent.get(`${__API_URL__}/profile/myProfile`) //eslint-disable-line
