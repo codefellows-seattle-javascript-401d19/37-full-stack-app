@@ -1,9 +1,9 @@
 import superagent from 'superagent';
 import * as routes from '../routes';
+import {cookieDelete} from '../lib/util.js';
 
-//----------------------------------------------
-// SYNC
-//----------------------------------------------
+// Sync
+
 export const setTokenAction = (token) => ({
   type : 'TOKEN_SET',
   payload : token,
@@ -13,9 +13,13 @@ export const removeTokenAction = () => ({
   type : 'TOKEN_REMOVE',
 });
 
-//----------------------------------------------
-// ASYNC
-//----------------------------------------------
+export const logoutAction = () => {
+  cookieDelete('X-Sluggram-Token');
+  return removeTokenAction();
+};
+
+// Async
+
 export const signupAction = (user) => (store) => {
   return superagent.post(`${__API_URL__}${routes.SIGNUP_ROUTE}`)
     .send(user)

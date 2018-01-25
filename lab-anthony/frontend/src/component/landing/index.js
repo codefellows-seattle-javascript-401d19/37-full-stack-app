@@ -4,12 +4,15 @@ import {connect} from 'react-redux';
 
 import AuthForm from '../auth-form';
 import * as authActions from '../../action/auth';
+import * as clientProfile from '../../action/client-profile';
 
 import * as routes from '../../routes';
 
 class Landing extends React.Component {
   constructor(props) {
     super(props);
+
+    //binding handlers
 
     let memberFunctions = Object.getOwnPropertyNames(Landing.prototype);
     for(let functionName of memberFunctions){
@@ -19,10 +22,12 @@ class Landing extends React.Component {
     }
   }
 
+  //member functions
+
   handleSignup(user) {
     this.props.doSignup(user)
       .then(() => {
-        this.props.history.push(routes.DASHBOARD_ROUTE);
+        this.props.history.push(routes.PROFILE_ROUTE);
       })
       .catch(console.error);
   }
@@ -30,10 +35,13 @@ class Landing extends React.Component {
   handleLogin(user) {
     this.props.doLogin(user)
       .then(() => {
+        this.props.fetchClientProfile();
         this.props.history.push(routes.DASHBOARD_ROUTE);
       })
       .catch(console.error);
   }
+
+  //hooks
 
   render() {
     let {location} = this.props;
@@ -41,15 +49,13 @@ class Landing extends React.Component {
     let rootJSX =
     <div>
       <h2> welcome </h2>
-      <Link to='/signup'> signup </Link>
-      <Link to='/login'> login </Link>
     </div>;
 
     let signUpJSX =
     <div>
       <h2> signup </h2>
       <AuthForm onComplete={this.handleSignup} />
-      <p> already have an account? </p>
+      <p> Already have an account? </p>
       <Link to='/login'> login </Link>
     </div>;
 
@@ -76,8 +82,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  doSignup : (user) => dispatch(authActions.signupAction(user)),
-  doLogin : (user) => dispatch(authActions.loginAction(user)),
+  doSignup: (user) => dispatch(authActions.signupAction(user)),
+  doLogin: (user) => dispatch(authActions.loginAction(user)),
+  fetchClientProfile: () => dispatch(clientProfile.fetchAction()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);
