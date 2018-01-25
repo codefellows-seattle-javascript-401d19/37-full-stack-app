@@ -6,7 +6,7 @@ export default (state = emptyState, action) => {
   switch(type){
     case 'SET_PROFILE':
       return payload;
-    case 'TOKEN_REMOVE':
+    case 'REMOVE_TOKEN':
       return null;
     default:
       return state;

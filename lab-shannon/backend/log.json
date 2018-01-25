@@ -67,3 +67,23 @@
 {"level":"info","message":"Returning a 404 from the catch-all route","timestamp":"2018-01-24T23:16:05.888Z"}
 {"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-24T23:16:16.986Z"}
 {"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-24T23:38:32.600Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-25T00:19:23.520Z"}
+{"level":"info","message":"__ERROR_MIDDLEWARE__","timestamp":"2018-01-25T00:19:23.547Z"}
+{"message":"__AUTH__ incorrect username or password","stack":"UnauthorizedError: __AUTH__ incorrect username or password\n    at bcrypt.compare.then.response (/Users/shannondillon/codefellows/401js/lab/day37-39/37-full-stack-app/lab-shannon/backend/model/user.js:43:15)\n    at <anonymous>","name":"UnauthorizedError","level":"info","timestamp":"2018-01-25T00:19:23.547Z"}
+{"level":"info","message":"Responding with a 401 status and message: __AUTH__ incorrect username or password","timestamp":"2018-01-25T00:19:23.547Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-25T00:19:36.894Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-25T00:20:43.676Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-25T00:23:09.631Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-25T00:23:28.434Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-25T00:42:00.890Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-25T00:44:14.685Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-25T00:44:19.724Z"}
+{"level":"info","message":"__ERROR_MIDDLEWARE__","timestamp":"2018-01-25T00:44:19.725Z"}
+{"message":"__ERROR__ username, password, and email are required","stack":"BadRequestError: __ERROR__ username, password, and email are required\n    at userRouter.post (/Users/shannondillon/codefellows/401js/lab/day37-39/37-full-stack-app/lab-shannon/backend/route/user-router.js:14:17)\n    at Layer.handle [as handle_request] (/Users/shannondillon/codefellows/401js/lab/day37-39/37-full-stack-app/lab-shannon/backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/shannondillon/codefellows/401js/lab/day37-39/37-full-stack-app/lab-shannon/backend/node_modules/express/lib/router/route.js:137:13)\n    at /Users/shannondillon/codefellows/401js/lab/day37-39/37-full-stack-app/lab-shannon/backend/node_modules/body-parser/lib/read.js:130:5\n    at invokeCallback (/Users/shannondillon/codefellows/401js/lab/day37-39/37-full-stack-app/lab-shannon/backend/node_modules/raw-body/index.js:224:16)\n    at done (/Users/shannondillon/codefellows/401js/lab/day37-39/37-full-stack-app/lab-shannon/backend/node_modules/raw-body/index.js:213:7)\n    at IncomingMessage.onEnd (/Users/shannondillon/codefellows/401js/lab/day37-39/37-full-stack-app/lab-shannon/backend/node_modules/raw-body/index.js:273:7)\n    at emitNone (events.js:106:13)\n    at IncomingMessage.emit (events.js:208:7)\n    at endReadableNT (_stream_readable.js:1056:12)\n    at _combinedTickCallback (internal/process/next_tick.js:138:11)\n    at process._tickDomainCallback (internal/process/next_tick.js:218:9)","name":"BadRequestError","level":"info","timestamp":"2018-01-25T00:44:19.725Z"}
+{"level":"info","message":"Responding with a 400 status and message: __ERROR__ username, password, and email are required","timestamp":"2018-01-25T00:44:19.726Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-25T00:44:24.732Z"}
+{"level":"info","message":"__ERROR_MIDDLEWARE__","timestamp":"2018-01-25T00:44:24.756Z"}
+{"code":11000,"index":0,"errmsg":"E11000 duplicate key error collection: testing.user index: username_1 dup key: { : \"double\" }","op":{"_id":"5a69286822f9453f561b4aeb","username":"double","email":"double@redundant.com","passwordHash":"$2a$08$Y2WlPjSXUAir1HPnOApuReTiV5TJ.hvuSBVwTy1Ft/5ZWa9ak/AmK","tokenSeed":"790c1e0944732f8c8ab7b8add8faa14582c2318767bfb3184b7ab4b971c05153b16aac10831bd38400355d8f4a31c1d711a8ef6c06ab8117c205c2517094b9ec","passwordSalt":"314cbae6db793e12c2d3cb6342825899a779a84f6539d3ba1e3f5512e8d649092bbcd5dd9c63d910e90db479ded584304bd6678241cbc3f8cef1450c5b4840cd","__v":0}}
+{"level":"info","message":"Responding with a 409 status code","timestamp":"2018-01-25T00:44:24.756Z"}
+{"level":"error","message":"__SERVER_ERROR__ server is already off","timestamp":"2018-01-25T00:44:59.781Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-25T01:12:00.127Z"}

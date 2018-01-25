@@ -1,9 +1,13 @@
 import React from 'react';
+import Profile from '../profile';
 
 class Dashboard extends React.Component{
   render(){
     return (
-      <div>Congratulations, you made it to the Dashboard!</div>
+      <div>
+        <h1>Congratulations, you made it to the Dashboard!</h1>
+        <Profile />
+      </div>
     );
   }
 }
