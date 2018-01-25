@@ -18,12 +18,12 @@ export const removeTokenAction = () => ({
 //----------------------------------------------
 export const signupAction = (user) => (store) => {
   return superagent.post(`${__API_URL__}${routes.SIGNUP_ROUTE}`)
-  .send(user)
-  .withCredentials()
-  .then(response => {
-    console.log({response});
-    return store.dispatch(setTokenAction(response.text));
-  });
+    .send(user)
+    .withCredentials()
+    .then(response => {
+      console.log({response});
+      return store.dispatch(setTokenAction(response.text));
+    });
 };
 
 export const loginAction = (user) => (store) => {

@@ -21,11 +21,11 @@ class AuthRedirect extends React.Component {
       if(!token)
         destinationRoute = routes.ROOT_ROUTE;
     }
-     return(
-       <div className='auth-redirect'>
-        { destinationRoute ? <Redirect to={destinationRoute} />: undefined }
-       </div>
-     );
+    return(
+      <div className='auth-redirect'>
+        { destinationRoute ? <Redirect to={destinationRoute} /> : undefined }
+      </div>
+    );
   }
 }
 
