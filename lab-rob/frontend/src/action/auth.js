@@ -1,6 +1,7 @@
 import superagent from 'superagent';
 
 import {cookieDelete} from '../lib/cookie';
+import {getProfileAction} from '../action/profile';
 
 const COOKIE = 'X-Sluggram-Token';
 
@@ -33,5 +34,8 @@ export const loginAction = (user) => (store) => {
     .withCredentials()
     .then(({text}) => 
       store.dispatch(setTokenAction(text)))
+    .then(() => {
+      store.dispatch(getProfileAction());
+    })
     .catch(console.log); // TODO: add error checking
 };

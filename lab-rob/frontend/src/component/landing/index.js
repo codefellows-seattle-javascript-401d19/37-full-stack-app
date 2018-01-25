@@ -35,8 +35,7 @@ class Landing extends React.Component {
     let rootJSX = (
       <div>
         <h2>Welcome!</h2>
-        <Link to={'/signup'}>Signup</Link> 
-        <Link to={'/login'}>Login</Link> 
+        <Link to={'/signup'}>Signup</Link> or <Link to={'/login'}>Login</Link> to continue!
       </div>
     );
 

@@ -36,8 +36,9 @@ export const getProfileAction = () => (store) => {
 
   return superagent.get(`${apiUrl}/profiles/me`)
     .set('Authorization', `Bearer ${token}`)
-    .then(({body}) => 
-      store.dispatch(setProfileAction(body))
+    .then(({body}) => {
+      store.dispatch(setProfileAction(body));
+    }
     )
-    .catch(console.log); // TODO: add error checking
+    .catch(response => console.log(response)); // TODO: add error checking
 };
