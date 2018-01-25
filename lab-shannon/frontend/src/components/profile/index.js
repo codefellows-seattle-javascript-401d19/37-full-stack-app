@@ -21,11 +21,11 @@ class Profile extends React.Component{
   }
 
   handleCreate(profile){
-    this.props.createProfile(profile);
-    // .then(() => {
-    //   this.props.history.push('/dashboard');
-    // })
-    // .catch(error => console.log(error));
+    this.props.createProfile(profile)
+      .then(() => {
+        this.props.history.push('/dashboard');
+      })
+      .catch(error => console.log(error));
   }
 
   render(){
@@ -60,9 +60,6 @@ class Profile extends React.Component{
         </div>;
     }
 
-    if(profile){
-      console.log(profile, `profile`);
-    }
     return (
       <div>
         <h2>Profile</h2>

@@ -31,6 +31,7 @@ class ProfileForm extends React.Component{
   }
 
   render(){
+    let buttonText = this.props.profile ? 'Update' : 'Create';
     return (
       <div>
         <h4>Testing out the profile form</h4>
@@ -40,7 +41,7 @@ class ProfileForm extends React.Component{
             value = {this.state.bio}
             onChange={this.handleChange}
           />
-          <button type='submit'>Submit</button>
+          <button type='submit'> {buttonText} </button>
         </form>
       </div>
     );

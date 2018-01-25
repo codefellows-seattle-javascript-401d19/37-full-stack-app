@@ -2,7 +2,8 @@ import React from 'react';
 import AuthForm from '../auth-form';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import * as actions from '../../actions/auth';
+import * as authActions from '../../actions/auth';
+import * as profileActions from '../../actions/profile';
 
 class Landing extends React.Component{
   constructor(props){
@@ -22,6 +23,7 @@ class Landing extends React.Component{
   onLogin(user){
     this.props.doLogin(user)
       .then(() => {
+        this.props.getUserProfile();
         this.props.history.push('/dashboard');
       })
       .catch(console.error);
@@ -68,8 +70,9 @@ let mapStateToProps = (state) => ({
 });
 
 let mapDispatchToProps = (dispatch) => ({
-  doSignup : (user) => dispatch(actions.signup(user)),
-  doLogin : (user) => dispatch(actions.login(user)),
+  doSignup : (user) => dispatch(authActions.signup(user)),
+  doLogin : (user) => dispatch(authActions.login(user)),
+  getUserProfile : () => dispatch(profileActions.getProfile()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);

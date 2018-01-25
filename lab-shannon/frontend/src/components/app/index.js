@@ -9,6 +9,7 @@ import * as profileActions from '../../actions/profile';
 
 class App extends React.Component{
   componentDidMount(){
+    console.log(this.props.loggedIn, `loggedIn`);
     if(this.props.loggedIn){
       this.props.getUserProfile();
     }

@@ -54,7 +54,7 @@ class AuthForm extends React.Component{
 
         <input
           name='password'
-          type='text'
+          type='password'
           value={this.state.password}
           placeholder='password'
           onChange={this.onChange}

@@ -34,7 +34,6 @@ Profile.create = (profile, user) => {
 };
 
 Profile.update = (request) => {
-  let options = {runValidators: true};
-  console.log(Profile.findByIdAndUpdate(request.params.id, {bio: request.body.bio}, options), `result of find and update`);
+  let options = {new: true, runValidators: true};
   return Profile.findByIdAndUpdate(request.params.id, {bio: request.body.bio}, options);
 };
