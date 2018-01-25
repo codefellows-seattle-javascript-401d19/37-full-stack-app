@@ -92,6 +92,7 @@ class AuthForm extends React.Component {
           type="email" 
           name='email' 
           placeholder ='email' 
+          value={this.state.email}
         />
       </React.Fragment> : null;
       
@@ -109,6 +110,7 @@ class AuthForm extends React.Component {
           type="username" 
           name='username' 
           placeholder ='username' 
+          value={this.state.username}
         />
 
         {renderEmail}
@@ -121,6 +123,7 @@ class AuthForm extends React.Component {
           type="password" 
           name='password' 
           placeholder ='password' 
+          value={this.state.password}
         />
 
         <button type="submit"> {header.toLowerCase()} </button>
