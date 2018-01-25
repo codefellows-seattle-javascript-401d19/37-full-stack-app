@@ -4,8 +4,15 @@ const jsonParser = require('body-parser').json();
 const Account = require('../model/account');
 const httpErrors = require('http-errors');
 const basicAuthMiddleware = require('../lib/basic-auth-middleware');
+const cors = require('cors');
 
-const authRouter = module.exports = new Router();
+const authRouter = module.exports = new Router()
+  .use([
+    cors({
+      origin:'http://localhost:8080',
+      credentials: true,
+    }),
+  ]);
 
 authRouter.post('/signup', jsonParser, (request, response, next) => {
   if(!request.body.username || !request.body.email || !request.body.password){

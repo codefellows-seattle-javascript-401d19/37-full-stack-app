@@ -1,8 +1,11 @@
 'use strict';
 
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const logger = require('./logger');
+
 
 const app = express();
 let isServerOn = false;
@@ -10,7 +13,6 @@ let httpServer = null;
 
 //Setting up MongoDB and Mongoose
 mongoose.Promise = Promise;
-mongoose.connect(process.env.MONGODB_URI, {useMongoClient : true});
 
 app.use(require('../route/auth-router'));
 
@@ -34,7 +36,8 @@ server.start = () => {
       logger.log('info', `Server is listening on port ${process.env.PORT}`);
       return resolve();
     });
-  });
+  })
+    .then(mongoose.connect(process.env.MONGODB_URI, {useMongoClient : true}));
 };
 
 server.stop = () => {

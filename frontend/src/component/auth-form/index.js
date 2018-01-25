@@ -1,10 +1,19 @@
-import './_auth-form.scss';
+// import './_auth-form.scss';
 import React from 'react';
+import validator from 'validator';
 
 let emptyState = {
   username: '',
+  usernameDirty: false,
+  usernameError: 'Username is required',
+
   email: '',
+  emailDirty: false,
+  emailError: 'Email is required',
+
   password: '',
+  passwordDirty: false,
+  passwordError: 'Password is required',
 };
 
 class AuthForm extends React.Component{
@@ -23,15 +32,53 @@ class AuthForm extends React.Component{
 
   handleChange(event){
     let {name, value} = event.target;
-    this.setState({[name] : value});
+    this.setState({
+      [name] : value,
+      [`${name}Dirty`] : true,
+      [`${name}Error`] : this.handleValidation(name, value),
+    });
   }
 
   handleSubmit(event){
     event.preventDefault();
+    let {nameError, emailError, passwordError} = this.state;
+
+    if(this.props.type === 'login' || !nameError && !emailError && !passwordError){
+      this.props.handleComplete(this.state);
+      this.setState(emptyState);
+    } else {
+      this.setState({
+        usernameDirty : true,
+        emailDirty : true,
+        passwordDirty : true,
+      });
+
+    }
+
     this.props.handleComplete(this.state);
     this.setState(emptyState);
   }
 
+  handleValidation(name, value){
+    if(this.props.type == 'login')
+      return null;
+    switch(name){
+      case 'username':
+        if(value.length < 6)
+          return 'username must more than 6 characters long';
+        return null;
+      case 'email':
+        if(!validator.isEmail(value))
+          return 'must be a valid email';
+        return null;
+      case 'password':
+        if(value.length < 8)
+          return 'password must be at least 8 characters';
+        return null;
+      default:
+        return null;
+    }
+  }
 
   render() {
     let {type} = this.props;
@@ -52,7 +99,10 @@ class AuthForm extends React.Component{
     return(
       <form
         onSubmit = {this.handleSubmit}
+        noValidate
         className = "auth-form">
+
+        {this.state.usernameDirty ? <p>{this.state.passwordError} </p> : undefined}
 
         <input
           type="text"
@@ -63,8 +113,10 @@ class AuthForm extends React.Component{
           required={true}
         />
 
+
         {signupRenderedJSX}
 
+        {this.state.passwordDirty ? <p>{this.state.passwordError} </p> : undefined}
         <input
           type="password"
           name="password"

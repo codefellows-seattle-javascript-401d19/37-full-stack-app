@@ -1,5 +1,8 @@
 import superagent from 'superagent';
 import * as routes from '../routes';
+import * as cookies from '../lib/cookie';
+// require('dotenv').config();
+const __API_URL__ = 'http://localhost:7000';
 
 export const setTokenAction = (token) => ({
   type : 'TOKEN_SET',
@@ -10,10 +13,16 @@ export const removeTokenAction = () => ({
   type : 'TOKEN_REMOVE',
 });
 
+export const logoutAction = () => {
+  cookies.cookieDelete('X-Noncents-Token');
+  return removeTokenAction(); 
+};
+
 
 
 export const signupAction = (user) => (store) => {
-  return superagent.post(`${process.env.API_URL}${routes.SIGNUP_ROUTE}`)
+  console.log('signupaction to :', __API_URL__, routes.SIGNUP_ROUTE);
+  return superagent.post(`${__API_URL__}${routes.SIGNUP_ROUTE}`)
     .send(user)
     .withCredentials()
     .then(response => {
@@ -23,7 +32,7 @@ export const signupAction = (user) => (store) => {
 };
 
 export const loginAction = (user) => (store) => {
-  return superagent.get(`${process.env.API_URL}${routes.LOGIN_ROUTE}`)
+  return superagent.get(`${__API_URL__}${routes.LOGIN_ROUTE}`)
     .auth(user.username, user.password)
     .withCredentials()
     .then(response => {
