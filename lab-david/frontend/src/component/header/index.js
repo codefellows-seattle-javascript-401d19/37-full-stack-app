@@ -2,27 +2,48 @@ import React from 'react';
 import * as authActions from '../../action/auth';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {navbar} from 'bulma';
+// import './header.scss';
+import logo from '../../assets/lindahlgram.png';
 
 class Header extends React.Component{
   render(){
     let JSXNotLoggedIn = 
       <ul>
-        <li> <Link to='/'>Home</Link> </li>
-        <li> <Link to='/login'> Login </Link></li>
-        <li> <Link to='/signup'> Signup </Link></li>
+        <li className="navbar-item"> <Link to='/'>Home</Link> </li>
+        <li className="navbar-item"> <Link to='/login'> Login </Link></li>
+        <li className="navbar-item"> <Link to='/signup'> Signup </Link></li>
       </ul>;
     let JSXLoggedIn = 
     <ul>
-      <li> <Link to='/dashboard'>Home</Link></li>
-      <li> <Link to='/upload'>Upload</Link></li>
-      <li> <Link to='/profile'>Profile </Link></li>
+      <li className="navbar-item"> <Link to='/dashboard'>Home</Link></li>
+      <li className="navbar-item"> <Link to='/upload'>Upload</Link></li>
+      <li className="navbar-item"> <Link to='/profile'>Profile </Link></li>
     </ul>;
 
     return(
       <header className='header'>
         <h1>Lindahlgram</h1>
-        <nav>
-          { this.props.loggedIn ? JSXLoggedIn : JSXNotLoggedIn }
+        <nav className="navbar" role="navigation" aria-label="main navigation">
+          <div className="navbar-brand">
+            <a className="navbar-item" href="#">
+              <img src={logo} alt="lindahlgram logo" width="112" height="28"/>
+            </a>
+
+            <button className="button navbar-burger">
+              <span>{ this.props.loggedIn ? JSXLoggedIn : JSXNotLoggedIn }</span>
+            </button>
+          </div>
+
+          <div className="navbar-menu is-hidden-desktop-only">
+            <div className="navbar-start">
+              <span>{ this.props.loggedIn ? JSXLoggedIn : JSXNotLoggedIn }</span>
+            </div>
+            <div className="navbar-end">
+              <span></span>
+            </div>
+          </div>
+            
         </nav>
         { 
           this.props.loggedIn ? 

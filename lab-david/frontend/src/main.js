@@ -12,10 +12,9 @@ const store = createStore(reducer, composeWithDevTools(
   applyMiddleware(thunk),
 ))
 
-const container = document.createElement('div');
-document.body.appendChild(container);
+// const container = document.getElementById('content');
 
 ReactDOM.render(
   <Provider store={store}>
     <App />
-  </Provider>, container);
+  </Provider>, document.getElementById('content'));

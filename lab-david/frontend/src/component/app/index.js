@@ -8,6 +8,7 @@ import Profile from '../profile';
 import Dashboard from '../dashboard';
 import AuthRedirect from '../auth-redirect';
 
+
 import * as clientProfile from '../../action/client-profile';
 
 
@@ -23,10 +24,16 @@ class App extends React.Component {
   render(){
     return (
       <div className='app'>
+        
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0"
+        />
+
         <BrowserRouter>
           <div>
             <Header/>
-
+            
             <Route path='*' component={AuthRedirect} />
             <Route exact path='/' component={Landing} />
             <Route exact path='/signup' component={Landing} />
