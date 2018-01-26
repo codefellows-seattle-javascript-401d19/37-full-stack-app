@@ -77,8 +77,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  createProfile : (profile) => dispatch(profileActions.createProfile(profile)),
-  updateProfile : (profile) => dispatch(profileActions.updateProfile(profile)),
+  createProfile : (profile) => dispatch(profileActions.createAction(profile)),
+  updateProfile : (profile) => dispatch(profileActions.updateAction(profile)),
   doLogout : () => dispatch(authActions.logout()),
 });
 

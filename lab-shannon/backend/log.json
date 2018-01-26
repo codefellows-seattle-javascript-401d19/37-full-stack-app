@@ -374,3 +374,7 @@
 {"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:59:31.802Z"}
 {"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-26T02:14:21.706Z"}
 {"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T02:14:21.755Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-26T04:59:43.567Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T04:59:43.624Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T04:59:49.011Z"}
+{"level":"info","message":"Processing : PUT on : /profile/5a6a7d39d06d4373237d430f","timestamp":"2018-01-26T04:59:58.919Z"}
