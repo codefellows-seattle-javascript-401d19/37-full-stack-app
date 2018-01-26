@@ -287,3 +287,24 @@
 {"level":"info","message":"Processing : PUT on : /profile/5a6a578d519d8865c701abe5","timestamp":"2018-01-25T23:36:44.604Z"}
 {"level":"info","message":"Server is listening on port 3000","timestamp":"2018-01-25T23:55:30.207Z"}
 {"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-25T23:56:23.500Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-26T00:10:44.986Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:10:45.048Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-26T00:12:46.901Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:12:46.944Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-26T00:13:03.368Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:26:19.673Z"}
+{"level":"info","message":"__ERROR_MIDDLEWARE__","timestamp":"2018-01-26T00:26:19.677Z"}
+{"message":"__ERROR__ no profile found","stack":"NotFoundError: __ERROR__ no profile found\n    at Profile.findOne.then.profile (/Users/shannondillon/codefellows/401js/lab/day37-39/37-full-stack-app/lab-shannon/backend/route/profile-router.js:27:15)\n    at <anonymous>\n    at process._tickDomainCallback (internal/process/next_tick.js:228:7)","name":"NotFoundError","level":"info","timestamp":"2018-01-26T00:26:19.677Z"}
+{"level":"info","message":"Responding with a 404 status and message: __ERROR__ no profile found","timestamp":"2018-01-26T00:26:19.677Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:26:19.771Z"}
+{"level":"info","message":"__ERROR_MIDDLEWARE__","timestamp":"2018-01-26T00:26:19.775Z"}
+{"message":"__ERROR__ no profile found","stack":"NotFoundError: __ERROR__ no profile found\n    at Profile.findOne.then.profile (/Users/shannondillon/codefellows/401js/lab/day37-39/37-full-stack-app/lab-shannon/backend/route/profile-router.js:27:15)\n    at <anonymous>\n    at process._tickDomainCallback (internal/process/next_tick.js:228:7)","name":"NotFoundError","level":"info","timestamp":"2018-01-26T00:26:19.775Z"}
+{"level":"info","message":"Responding with a 404 status and message: __ERROR__ no profile found","timestamp":"2018-01-26T00:26:19.775Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:26:26.859Z"}
+{"level":"info","message":"__ERROR_MIDDLEWARE__","timestamp":"2018-01-26T00:26:26.862Z"}
+{"message":"__ERROR__ no profile found","stack":"NotFoundError: __ERROR__ no profile found\n    at Profile.findOne.then.profile (/Users/shannondillon/codefellows/401js/lab/day37-39/37-full-stack-app/lab-shannon/backend/route/profile-router.js:27:15)\n    at <anonymous>\n    at process._tickDomainCallback (internal/process/next_tick.js:228:7)","name":"NotFoundError","level":"info","timestamp":"2018-01-26T00:26:26.862Z"}
+{"level":"info","message":"Responding with a 404 status and message: __ERROR__ no profile found","timestamp":"2018-01-26T00:26:26.862Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-26T00:26:54.762Z"}
+{"level":"info","message":"Processing : POST on : /profile","timestamp":"2018-01-26T00:27:03.950Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:27:05.698Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:27:07.262Z"}
