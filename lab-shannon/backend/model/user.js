@@ -22,6 +22,10 @@ const userSchema = mongoose.Schema({
     required: true,
     unique: true,
   },
+  profile: {
+    type : mongoose.Schema.Types.ObjectId,
+    ref: 'profile',
+  },
   tokenSeed: {
     type: String,
     required: true,

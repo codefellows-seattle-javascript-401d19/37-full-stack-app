@@ -20,6 +20,7 @@ app.use(cors(
 
 app.use(require('./middleware/logger-middleware'));
 app.use(require('../route/user-router'));
+app.use(require('../route/profile-router'));
 app.use(require('../route/wave-router'));
 
 app.all('*', (request, response) => {

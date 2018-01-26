@@ -16,7 +16,10 @@ userRouter.post(`/signup`, jsonParser, (request, response, next) => {
 
   return User.create(request.body.username, request.body.email, request.body.password)
     .then(user => user.createToken())
-    .then(token => response.json({token}))
+    .then(token => {
+      response.cookie('X-Scramblevox-Token', token, {maxAge: 900000});
+      response.json({token});
+    })
     .catch(next);
 });
 
@@ -25,6 +28,9 @@ userRouter.get(`/login`, basicAuthMiddleware, (request, response, next) => {
     return next(new httpErrors(404, `__ERROR__ Not Found`));
   }
   return request.user.createToken()
-    .then(token => response.json({token}))
+    .then(token => {
+      response.cookie('X-Scramblevox-Token', token, {maxAge: 900000});
+      response.json({token});
+    })
     .catch(next);
 });

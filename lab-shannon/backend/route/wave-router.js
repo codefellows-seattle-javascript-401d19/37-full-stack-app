@@ -47,14 +47,14 @@ waveRouter.post('/waves/:transform', bearerAuth, upload.any(), (request, respons
   if (request.params.transform === 'reverse'){
     transformFunc = reverse;
   }
-  
+
   return Wave.findOne({user: request.user._id})
     .then(wave => {
       if(wave){
-        
+
         const urlArray = wave.url.split('/');
-        const oldKey = urlArray[urlArray.length - 1]; 
-        
+        const oldKey = urlArray[urlArray.length - 1];
+
         return s3.remove(oldKey)
           .then(() => {
             return Wave.findOneAndRemove({user: request.user._id})
@@ -81,7 +81,7 @@ waveRouter.post('/waves/:transform', bearerAuth, upload.any(), (request, respons
           })
           .catch(next);
       } else {
-        return fsx.readFile(file.path) 
+        return fsx.readFile(file.path)
           .then(data => {
             const parsedFile = waveParser(data);
             transformedFile = transformFunc(parsedFile);
@@ -123,13 +123,24 @@ waveRouter.delete('/waves', bearerAuth, (request, response, next) => {
         throw new httpErrors(404, '__ERROR__ wave not found');
       }
       let urlArray = wave.url.split('/');
-      let key = urlArray[urlArray.length - 1]; 
+      let key = urlArray[urlArray.length - 1];
 
       return s3.remove(key)
         .then(() => {
           return response.sendStatus(204);
         })
         .catch(next);
+    })
+    .catch(next);
+});
+
+waveRouter.put('/waves', bearerAuth, (request, response, next) => {
+  return Wave.findOne({user: request.user._id})
+    .then(wave => {
+      if(!wave){
+        throw new httpErrors(404, '__ERROR__ wave not found');
+      }
+      console.log('I found the wave');
     })
     .catch(next);
 });
