@@ -49,7 +49,7 @@ class AuthForm extends React.Component {
   handleSubmit(event){
     event.preventDefault();
 
-    let {nameError,emailError,passwordError} = this.state;
+    let {nameError, emailError, passwordError} = this.state;
 
     if(this.props.type === 'login' || !nameError && !emailError && !passwordError){
       this.props.onComplete(this.state);
@@ -103,7 +103,7 @@ class AuthForm extends React.Component {
           type='email'
           value={this.state.email}
           onChange={this.handleChange}
-        />;
+        />
       </div>;
 
     let signupRenderedJSX = (type !== 'login') ? signupJSX : undefined;
