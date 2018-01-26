@@ -30,8 +30,8 @@ export const setActionRequest = (wav) => store => {
   let {token} = store.getState();
   superagent.post(`${__API_URL__}/waves`) //eslint-disable-line
     .set('Authorization', `Bearer ${token}`)
-    .set('Content-Type','application/json')
-    .send(wav)
+    .field('wavename', 'testname')
+    .attach('wav', wav)
     .then(response => {
       return store.dispatch(setAction(response.body));
     });
@@ -40,7 +40,8 @@ export const updateActionRequest = (wav) => store => {
   let {token} = store.getState();
   superagent.put(`${__API_URL__}/waves`) //eslint-disable-line
     .set('Authorization', `Bearer ${token}`)
-    .send(wav)
+    .field('wavename', 'testname')
+    .attach('wav', wav)
     .then(response => {
       return store.dispatch(updateAction(response.body)); //if things won't update correctly later, look back here; profiles are handled differently and that might be important
     });

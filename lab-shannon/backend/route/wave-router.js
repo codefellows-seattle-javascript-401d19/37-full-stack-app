@@ -134,13 +134,67 @@ waveRouter.delete('/waves', bearerAuth, (request, response, next) => {
     .catch(next);
 });
 
-waveRouter.put('/waves', bearerAuth, (request, response, next) => {
+waveRouter.put('/waves', bearerAuth, upload.any(), (request, response, next) => {
+  const file = request.files[0];
+  const key = `${file.filename}.${file.originalname}`;
+  const tempFilePath = `${__dirname}/../temp/transform-temp.wav`;
+  let transformedFile = null;
+  let transformFunc = null;
+
+  if (request.params.transform === 'bitcrusher'){
+    transformFunc = bitCrusher;
+  }
+  if (request.params.transform === 'downpitcher'){
+    transformFunc = downPitcher;
+  }
+  if (request.params.transform === 'delay'){
+    transformFunc = delay;
+  }
+  if (request.params.transform === 'noise'){
+    transformFunc = noiseAdd;
+  }
+  if (request.params.transform === 'reverse'){
+    transformFunc = reverse;
+  }
+
   return Wave.findOne({user: request.user._id})
     .then(wave => {
       if(!wave){
         throw new httpErrors(404, '__ERROR__ wave not found');
       }
-      console.log('I found the wave');
+    })
+    .then(wave => {
+      if(wave){
+
+        const urlArray = wave.url.split('/');
+        const oldKey = urlArray[urlArray.length - 1];
+
+        return s3.remove(oldKey)
+          .then(() => {
+            return Wave.findOneAndRemove({user: request.user._id})
+              .then(() => {
+                return fsx.readFile(file.path)
+                  .then(data => {
+                    const parsedFile = waveParser(data);
+                    transformedFile = transformFunc(parsedFile);
+                    return fsx.writeFile(tempFilePath, transformedFile)
+                      .then(() => {
+                        return S3.upload(tempFilePath, key)
+                          .then(url => {
+                            return new Wave({
+                              wavename: request.body.wavename,
+                              user: request.user._id,
+                              url,
+                            }).save();
+                          })
+                          .then(newWave => response.json(newWave))
+                          .catch(next);
+                      });
+                  });
+              });
+          })
+          .catch(next);
+      }
     })
     .catch(next);
 });
