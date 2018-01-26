@@ -1,9 +1,10 @@
+import './header.scss';
+
 import React from 'react';
 import * as authActions from '../../action/auth';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {navbar} from 'bulma';
-// import './header.scss';
 import logo from '../../assets/lindahlgram.png';
 
 class Header extends React.Component{
@@ -35,7 +36,7 @@ class Header extends React.Component{
             </button>
           </div>
 
-          <div className="navbar-menu is-hidden-desktop-only">
+          <div className="navbar-menu">
             <div className="navbar-start">
               <span>{ this.props.loggedIn ? JSXLoggedIn : JSXNotLoggedIn }</span>
             </div>

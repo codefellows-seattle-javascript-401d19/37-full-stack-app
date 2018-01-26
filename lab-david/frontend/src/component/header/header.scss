@@ -1,4 +1,14 @@
 
+body {
+  font-family: sans-serif;
+}
+
+.navbar {
+  width: 100%;
+  outline: 1px dotted blue; 
+}
+
+
 // $blue: #72d0eb
 // // Add pink and its invert
 // $pink: #43bbe2
@@ -15,12 +25,3 @@
 // $danger: $orange
 // // Use the new san-serif family
 // $family-primary: $family-sans-serif
-
-body {
-  font-family: sans-serif;
-}
-
-
-@import '~bulma/bulma.sass';
-
-

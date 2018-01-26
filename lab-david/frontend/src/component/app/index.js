@@ -8,6 +8,8 @@ import Profile from '../profile';
 import Dashboard from '../dashboard';
 import AuthRedirect from '../auth-redirect';
 
+import '../../style/core.scss';
+
 
 import * as clientProfile from '../../action/client-profile';
 

@@ -16,11 +16,11 @@ const webPackConfig = module.exports = {};
 
 const PRODUCTION = process.env.NODE_ENV === 'production';
 
-const extractSass = new ExtractTextPlugin({
-  filename: 'style.css',
-  disable: true,
-  allChunks: true,
-});
+// const extractSass = new ExtractTextPlugin({
+//   filename: 'style.css',
+//   disable: true,
+//   allChunks: true,
+// });
 
 //-------------------------------------------------------------
 webPackConfig.entry = `${__dirname}/src/main.js`;
@@ -46,7 +46,7 @@ if(PRODUCTION) {
   webPackConfig.plugins = webPackConfig.plugins.concat([
     new UglifyPlugin(),
     new CleanPlugin(),
-    extractSass,
+    // extractSass,
   ]);
 }
 //-------------------------------------------------------------
@@ -58,7 +58,7 @@ webPackConfig.module = {
       loader: 'babel-loader',
     },
     {
-      test: /\.scss$/, 
+      test: /\.(scss|sass)$/, 
       loader: ExtractTextPlugin.extract({
         use : [
           'css-loader',
@@ -73,23 +73,23 @@ webPackConfig.module = {
         ],
       }),
     },
-    {
-      test: /\.js$/,
-      exclude: /(node_modules|bower_components)/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: ['env', 'react'],
-        },
-      },
-    },
-    {
-      test: /\.(css|sass|scss)$/,
-      use: extractSass.extract({
-        fallback: 'style-loader',
-        use: ['css-loader', 'sass-loader'],
-      }),
-    },
+    // {
+    //   test: /\.js$/,
+    //   exclude: /(node_modules|bower_components)/,
+    //   use: {
+    //     loader: 'babel-loader',
+    //     options: {
+    //       presets: ['env', 'react'],
+    //     },
+    //   },
+    // },
+    // {
+    //   test: /\.(css|sass|scss)$/,
+    //   use: extractSass.extract({
+    //     fallback: 'style-loader',
+    //     use: ['css-loader', 'sass-loader'],
+    //   }),
+    // },
     {
       test: /\.(jpg|gif|png|svg)$/,
       exclude: /\.icon\.svg$/,
