@@ -4,7 +4,8 @@
   "description": "## Volly frontend",
   "main": "webpack.config.js",
   "scripts": {
-    "watch": "webpack-dev-server --inline --hot"
+    "watch": "webpack-dev-server --inline --hot",
+    "test": "jest -i --coverage"
   },
   "keywords": [],
   "author": "",
