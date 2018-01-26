@@ -10,12 +10,11 @@ import App from './component/app';
 import reducer from './reducer';
 
 import thunk from './lib/redux-thunk';
-import reporter from './lib/redux-reporter';
 
 const store = createStore(
   reducer,
   composeWithDevTools(
-    applyMiddleware(thunk, reporter)
+    applyMiddleware(thunk)
   )
 );
 
