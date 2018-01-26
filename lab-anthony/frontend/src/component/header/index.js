@@ -22,7 +22,7 @@ class Header extends React.Component{
 
     return(
       <header className='header'>
-        <h1> Sluggram </h1>
+        <h1> Welcome </h1>
         <nav>
           {this.props.loggedIn ? JSXLoggedIn : JSXNotLoggedIn}
         </nav>

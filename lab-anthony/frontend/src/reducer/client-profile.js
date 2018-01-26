@@ -9,7 +9,7 @@ export const validateProfile = (profile) => {
 };
 
 export default (state = null, action) => {
-  let {type,payload} = action;
+  let {type, payload} = action;
   switch(type){
   case 'CLIENT_PROFILE_SET':
     validateProfile(payload);

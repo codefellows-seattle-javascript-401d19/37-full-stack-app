@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import AuthForm from '../auth-form';
 import * as authActions from '../../action/auth';
 import * as clientProfile from '../../action/client-profile';
+import Header from '../header';
 
 import * as routes from '../../routes';
 
@@ -46,10 +47,14 @@ class Landing extends React.Component {
   render() {
     let {location} = this.props;
 
-    let rootJSX =
-    <div>
-      <h2> welcome </h2>
-    </div>;
+    // let rootJSX =
+    // <div>
+    //   <h2> welcome </h2>
+    // </div>;
+
+    // Since the Header component includes the signup and login links, we
+    // can assign it as rootJSX which is to be displayed when url path is '/'
+    let rootJSX = <Header />;
 
     let signUpJSX =
     <div>
@@ -67,9 +72,12 @@ class Landing extends React.Component {
         <Link to='/signup'> signup </Link>
       </div>;
 
+      //changes
+
     return(
       <div className='landing'>
-        {location.pathname === routes.ROOT_ROUTE ? rootJSX : undefined}
+        <Header />
+        {/* {location.pathname === routes.ROOT_ROUTE ? rootJSX : undefined} */}
         {location.pathname === routes.SIGNUP_ROUTE ? signUpJSX : undefined}
         {location.pathname === routes.LOGIN_ROUTE ? loginJSX : undefined}
       </div>

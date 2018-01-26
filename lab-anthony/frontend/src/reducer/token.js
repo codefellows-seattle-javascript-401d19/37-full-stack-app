@@ -1,13 +1,9 @@
-// import * as cookie from '../lib/cookie';
-//
-// const VOLLY_COOKIE = 'X-Volly-Token';
-// let token = cookie.cookieFetch('');
+import * as util from '../lib/util.js';
 
-let initiatState = null;
+let token = util.cookieFetch('X-Sluggram-Token');
+let initialState = token ? token : null;
 
-// token ? token :
-
-export default (state=initiatState, {type, payload}) => {
+export default (state=initialState, {type, payload}) => {
   switch(type){
   case 'TOKEN_SET':
     return payload;

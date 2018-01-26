@@ -16,8 +16,10 @@ export default new Router()
   .catch(next)
 })
 .get('/profiles/me', bearerAuth, (req, res, next) => {
+  console.log('req user: ', req.user);
   Profile.findOne({owner: req.user._id})
   .then(profile => {
+    console.log('prof: ', profile)
     if(!profile)
       return next(createError(404, 'NOT FOUND ERROR: profile not found'))
     res.json(profile)
