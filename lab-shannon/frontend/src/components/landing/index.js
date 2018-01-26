@@ -1,5 +1,6 @@
 import React from 'react';
 import AuthForm from '../auth-form';
+import Navbar from '../navbar';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import * as authActions from '../../actions/auth';
@@ -35,31 +36,30 @@ class Landing extends React.Component{
     let rootJSX =
       <div>
         <h2>Welcome</h2>
-        <Link to='/signup'>Sign Up</Link>
-        <Link to='/login'>Login</Link>
       </div>;
 
     let signUpJSX =
       <div>
         <h2>Thank you for signing up!</h2>
         <AuthForm onComplete={this.onSignup}/>
-        <p>Already have an account?</p>
-        <Link to='/login'>Login</Link>
       </div>;
 
     let loginJSX =
       <div>
         <h2>Please login below</h2>
         <AuthForm type={'login'} onComplete={this.onLogin} />
-        <p>Need to create an account?</p>
-        <Link to='/signup'>Sign Up</Link>
       </div>;
 
     return (
       <div>
-        {location.pathname === '/' ? rootJSX : undefined}
-        {location.pathname === '/signup' ? signUpJSX : undefined}
-        {location.pathname === '/login' ? loginJSX : undefined}
+        <header>
+          <Navbar />
+        </header>
+        <div>
+          {location.pathname === '/' ? rootJSX : undefined}
+          {location.pathname === '/signup' ? signUpJSX : undefined}
+          {location.pathname === '/login' ? loginJSX : undefined}
+        </div>
       </div>
     );
   }

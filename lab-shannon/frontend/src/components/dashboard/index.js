@@ -1,14 +1,19 @@
 import React from 'react';
 import Profile from '../profile';
 import Wav from '../wav';
+import Navbar from '../navbar';
 
 class Dashboard extends React.Component{
   render(){
     return (
       <div>
-        <h1>Congratulations, you made it to the Dashboard!</h1>
-        <Profile />
-        <Wav />
+        <header>
+          <Navbar />
+        </header>
+        <div>
+          <Profile />
+          <Wav />
+        </div>
       </div>
     );
   }

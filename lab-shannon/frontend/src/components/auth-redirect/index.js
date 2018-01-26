@@ -9,7 +9,7 @@ class AuthRedirect extends React.Component{
     let {pathname} = location;
     let destinationRoute = null;
 
-    if(pathname === '/signup' || pathname === '/login' || pathname === '/'){
+    if(pathname === '/signup' || pathname === '/login'){
       if(token){
         destinationRoute = '/dashboard';
       }

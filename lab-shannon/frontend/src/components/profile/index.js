@@ -34,7 +34,6 @@ class Profile extends React.Component{
       profile,
       createProfile,
       updateProfile,
-      doLogout,
     } = this.props;
 
     // these three need to be declared outside of the if block since they're referenced outside of the if block
@@ -45,9 +44,8 @@ class Profile extends React.Component{
     if(profile){
       nonEditingJSX =
       <div>
-        <p>{profile.bio}</p>
+        <span>Bio: {profile.bio}</span>
         <button onClick={() => this.setState({editing: true})}> Edit Bio </button>
-        <button onClick={this.props.doLogout}> Logout </button>
       </div>;
 
       editingJSX =
@@ -58,14 +56,14 @@ class Profile extends React.Component{
 
       displayedProfileJSX =
         <div>
-          <h3>{profile.username}</h3>
+          <h3>Username: {profile.username}</h3>
           {this.state.editing ? editingJSX : nonEditingJSX}
         </div>;
     }
 
     return (
       <div>
-        <h2>Profile</h2>
+        <h2>Your Profile</h2>
         { profile ? displayedProfileJSX : <ProfileForm onComplete={this.handleCreate}/>}
       </div>
     );
@@ -79,7 +77,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   createProfile : (profile) => dispatch(profileActions.createAction(profile)),
   updateProfile : (profile) => dispatch(profileActions.updateAction(profile)),
-  doLogout : () => dispatch(authActions.logout()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
