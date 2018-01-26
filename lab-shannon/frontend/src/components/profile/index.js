@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import * as profileActions from '../../actions/profile';
+import * as authActions from '../../actions/auth';
 import ProfileForm from '../profile-form';
 
 let defaultState = {
@@ -33,6 +34,7 @@ class Profile extends React.Component{
       profile,
       createProfile,
       updateProfile,
+      doLogout,
     } = this.props;
 
     // these three need to be declared outside of the if block since they're referenced outside of the if block
@@ -45,6 +47,7 @@ class Profile extends React.Component{
       <div>
         <p>{profile.bio}</p>
         <button onClick={() => this.setState({editing: true})}> Edit Bio </button>
+        <button onClick={this.props.doLogout}> Logout </button>
       </div>;
 
       editingJSX =
@@ -76,6 +79,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   createProfile : (profile) => dispatch(profileActions.createProfile(profile)),
   updateProfile : (profile) => dispatch(profileActions.updateProfile(profile)),
+  doLogout : () => dispatch(authActions.logout()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

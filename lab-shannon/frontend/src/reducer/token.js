@@ -1,7 +1,7 @@
 import * as cookie from '../lib/cookie';
 
 let token = cookie.fetchCookie('X-Scramblevox-Token');
-const initialState = token ? token : null;
+let initialState = token ? token : null;
 
 export default (state = initialState, action) => {
   let {type, payload} = action;

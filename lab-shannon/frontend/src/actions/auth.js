@@ -35,5 +35,5 @@ export const login = (user) => (store) => {
 
 export const logout = () => store => {
   deleteCookie('X-Scramblevox-Token');
-  return removeToken();
+  return store.dispatch(removeToken());
 };

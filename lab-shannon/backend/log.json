@@ -308,3 +308,58 @@
 {"level":"info","message":"Processing : POST on : /profile","timestamp":"2018-01-26T00:27:03.950Z"}
 {"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:27:05.698Z"}
 {"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:27:07.262Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:28:29.367Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:32:23.895Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:32:24.185Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:32:37.619Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:32:37.860Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:32:58.076Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:32:58.329Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:34:52.575Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:34:52.629Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:34:54.694Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:34:54.726Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-26T00:36:03.299Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:36:11.021Z"}
+{"level":"info","message":"__ERROR_MIDDLEWARE__","timestamp":"2018-01-26T00:36:11.024Z"}
+{"message":"__ERROR__ no profile found","stack":"NotFoundError: __ERROR__ no profile found\n    at Profile.findOne.then.profile (/Users/shannondillon/codefellows/401js/lab/day37-39/37-full-stack-app/lab-shannon/backend/route/profile-router.js:27:15)\n    at <anonymous>\n    at process._tickDomainCallback (internal/process/next_tick.js:228:7)","name":"NotFoundError","level":"info","timestamp":"2018-01-26T00:36:11.024Z"}
+{"level":"info","message":"Responding with a 404 status and message: __ERROR__ no profile found","timestamp":"2018-01-26T00:36:11.024Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:36:12.655Z"}
+{"level":"info","message":"__ERROR_MIDDLEWARE__","timestamp":"2018-01-26T00:36:12.658Z"}
+{"message":"__ERROR__ no profile found","stack":"NotFoundError: __ERROR__ no profile found\n    at Profile.findOne.then.profile (/Users/shannondillon/codefellows/401js/lab/day37-39/37-full-stack-app/lab-shannon/backend/route/profile-router.js:27:15)\n    at <anonymous>\n    at process._tickDomainCallback (internal/process/next_tick.js:228:7)","name":"NotFoundError","level":"info","timestamp":"2018-01-26T00:36:12.658Z"}
+{"level":"info","message":"Responding with a 404 status and message: __ERROR__ no profile found","timestamp":"2018-01-26T00:36:12.658Z"}
+{"level":"info","message":"Processing : POST on : /profile","timestamp":"2018-01-26T00:36:18.458Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-26T00:36:36.727Z"}
+{"level":"info","message":"__ERROR_MIDDLEWARE__","timestamp":"2018-01-26T00:36:36.754Z"}
+{"message":"__AUTH__ incorrect username or password","stack":"UnauthorizedError: __AUTH__ incorrect username or password\n    at bcrypt.compare.then.response (/Users/shannondillon/codefellows/401js/lab/day37-39/37-full-stack-app/lab-shannon/backend/model/user.js:44:15)\n    at <anonymous>","name":"UnauthorizedError","level":"info","timestamp":"2018-01-26T00:36:36.754Z"}
+{"level":"info","message":"Responding with a 401 status and message: __AUTH__ incorrect username or password","timestamp":"2018-01-26T00:36:36.754Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-26T00:36:46.420Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:36:46.472Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-26T00:46:32.144Z"}
+{"level":"info","message":"__ERROR_MIDDLEWARE__","timestamp":"2018-01-26T00:46:32.165Z"}
+{"message":"__AUTH__ incorrect username or password","stack":"UnauthorizedError: __AUTH__ incorrect username or password\n    at bcrypt.compare.then.response (/Users/shannondillon/codefellows/401js/lab/day37-39/37-full-stack-app/lab-shannon/backend/model/user.js:44:15)\n    at <anonymous>","name":"UnauthorizedError","level":"info","timestamp":"2018-01-26T00:46:32.165Z"}
+{"level":"info","message":"Responding with a 401 status and message: __AUTH__ incorrect username or password","timestamp":"2018-01-26T00:46:32.165Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-26T00:46:37.713Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:46:37.765Z"}
+{"level":"info","message":"Processing : POST on : /signup","timestamp":"2018-01-26T00:47:12.772Z"}
+{"level":"info","message":"Processing : POST on : /profile","timestamp":"2018-01-26T00:47:19.246Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-26T00:48:23.637Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:48:23.687Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-26T00:48:40.953Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:48:41.000Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-26T00:49:05.931Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:49:05.989Z"}
+{"level":"info","message":"Processing : PUT on : /profile/5a6a7a97d9fa526f571dd627","timestamp":"2018-01-26T00:49:15.867Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-26T00:50:47.343Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:50:47.394Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-26T00:51:12.822Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:51:12.875Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-26T00:52:02.268Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:52:02.321Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-26T00:56:27.188Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:56:27.243Z"}
+{"level":"info","message":"Server is listening on port 3000","timestamp":"2018-01-26T00:56:43.094Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-26T00:56:59.048Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:56:59.140Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:57:11.489Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-26T00:57:14.812Z"}
