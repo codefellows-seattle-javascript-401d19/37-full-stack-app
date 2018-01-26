@@ -7,9 +7,6 @@ export const fetchAllCookies = () => {
 };
 
 export const fetchCookie = (key) => {
-  console.log(`cookies ran`);
-  console.log(key, `key`);
-  console.log(fetchAllCookies()[key], `result`);
   return fetchAllCookies()[key];
 };
 
