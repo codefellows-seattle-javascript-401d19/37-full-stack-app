@@ -18,7 +18,7 @@ export const destroyAction = () => ({
 
 //------------- Async actions -------------//
 
-export const getActionRequest = (wav) => store => {
+export const getActionRequest = () => store => {
   let {token} = store.getState();
   superagent.get(`${__API_URL__}/waves`) //eslint-disable-line
     .set('Authorization', `Bearer ${token}`)
@@ -28,10 +28,10 @@ export const getActionRequest = (wav) => store => {
 };
 export const setActionRequest = (wav) => store => {
   let {token} = store.getState();
-  superagent.post(`${__API_URL__}/waves`) //eslint-disable-line
+  superagent.post(`${__API_URL__}/waves/${wav.transform}`) //eslint-disable-line
     .set('Authorization', `Bearer ${token}`)
-    .field('wavename', 'testname')
-    .attach('wav', wav)
+    .field('wavename', wav.wavename)
+    .attach('wav', wav.wave)
     .then(response => {
       return store.dispatch(setAction(response.body));
     });
@@ -41,9 +41,9 @@ export const updateActionRequest = (wav) => store => {
   superagent.put(`${__API_URL__}/waves`) //eslint-disable-line
     .set('Authorization', `Bearer ${token}`)
     .field('wavename', 'testname')
-    .attach('wav', wav)
+    .attach('wave', wav.wav)
     .then(response => {
-      return store.dispatch(updateAction(response.body)); //if things won't update correctly later, look back here; profiles are handled differently and that might be important
+      return store.dispatch(updateAction(response.body)); //if things won't update correctly later, look back here; profile updates are handled differently and that might be important
     });
 };
 export const destroyActionRequest = () => store => {

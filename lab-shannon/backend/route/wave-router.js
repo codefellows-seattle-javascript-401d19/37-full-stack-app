@@ -23,7 +23,11 @@ const waveRouter = module.exports = new Router();
 waveRouter.post('/waves/:transform', bearerAuth, upload.any(), (request, response, next) => {
 
   if(!request.body.wavename || request.files.length > 1 || request.files[0].fieldname !== 'wave' || !request.params.transform){
-    return next(new httpErrors(400, '__ERROR__ invalid request'));
+    console.log(request.body.wavename, `request wavename`);
+    console.log(request.files.length, `number of files`);
+    console.log(request.files[0].fieldname, `should be wave`);
+    console.log(request.params.transform, `transform`);
+    return next(new httpErrors(400, '__ERROR__ invalid request; right here'));
   }
 
   const file = request.files[0];

@@ -1,20 +1,16 @@
-const defaultState = [];
+const defaultState = null;
 
 export default (state = defaultState, action) => {
   let {type, payload} = action;
   switch(type){
     case 'SET_WAV':
-      return [...state, payload];
+      return payload;
     case 'UPDATE_WAV':
-      return state.map(wav => {
-        wav.id === payload.id ? payload : wav;
-      });
+      return payload;
     case 'DESTROY_WAV':
-      return state.filter(wav => {
-        if (wav.id !== payload.id){
-          return wav;
-        }
-      });
+      return null;
+    case 'TOKEN_REMOVE':
+      return defaultState;
     default:
       return state;
   }
