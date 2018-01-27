@@ -41,7 +41,7 @@ class Profile extends React.Component{
 
   render(){
     let {
-      wave,
+      wavFile,
       profile,
       createProfile,
       updateProfile,
@@ -77,8 +77,8 @@ class Profile extends React.Component{
     let  displayedWavJSX =
         <div>
           <span>Wav Files: </span>
-          <span>{wave ? wave.url : `You don't have any wav files`}</span>
-          {wave ? (this.state.waveEditing ? editingWavJSX : nonEditingWavJSX) : <button><Link to='/upload'>Upload a Wav File</Link></button>}
+          <span>{wavFile ? wavFile.url : `You don't have any wav files`}</span>
+          {wavFile ? (this.state.waveEditing ? editingWavJSX : nonEditingWavJSX) : <button><Link to='/upload'>Upload a Wav File</Link></button>}
         </div>;
 
     let  nonEditingWavJSX =
@@ -88,7 +88,7 @@ class Profile extends React.Component{
 
     let editingWavJSX =
       <div>
-        <WavForm wave={wave} onComplete={this.handleWaveUpdate} updateWave={this.props.updateWave} destroyWave={this.props.destroyWave}/>
+        <WavForm wavFile={wavFile} onComplete={this.handleWaveUpdate} updateWave={this.props.updateWave} destroyWave={this.props.destroyWave}/>
         <button onClick={() => {this.setState({waveEditing: false});}}> Cancel </button>
       </div>;
 
@@ -102,9 +102,9 @@ class Profile extends React.Component{
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => ({ //these names on the state come from what names you use in the reducer (i.e. imported wave reducer as wavFile, so that's the property on state)
   profile : state.profile,
-  wave: state.wave,
+  wavFile: state.wavFile,
 });
 
 const mapDispatchToProps = (dispatch) => ({

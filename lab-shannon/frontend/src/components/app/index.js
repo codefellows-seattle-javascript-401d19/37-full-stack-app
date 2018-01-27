@@ -7,11 +7,13 @@ import AuthRedirect from '../auth-redirect';
 import Profile from '../profile';
 import Wav from '../wav';
 import * as profileActions from '../../actions/profile';
+import * as waveActions from '../../actions/wavFile';
 
 class App extends React.Component{
   componentDidMount(){
     if(this.props.loggedIn){
       this.props.getUserProfile();
+      this.props.getWavFiles();
     }
   }
 
@@ -40,6 +42,7 @@ let mapStateToProps = (state) => ({
 
 let mapDispatchToProps = (dispatch) => ({
   getUserProfile : () => dispatch(profileActions.getProfile()),
+  getWavFiles : () => dispatch(waveActions.getActionRequest()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
