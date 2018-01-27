@@ -1,6 +1,5 @@
 import React from 'react';
 import Profile from '../profile';
-import Wav from '../wav';
 import Navbar from '../navbar';
 
 class Dashboard extends React.Component{
@@ -12,7 +11,6 @@ class Dashboard extends React.Component{
         </header>
         <div>
           <Profile />
-          <Wav />
         </div>
       </div>
     );

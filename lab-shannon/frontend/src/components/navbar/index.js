@@ -10,6 +10,7 @@ class Navbar extends React.Component{
       <h2>You are logged in</h2>
       <Link to='/'>Home</Link>
       <Link to='/dashboard'>Dashboard</Link>
+      <Link to='/upload'>Upload Wavs</Link>
     </div>;
 
     let notLoggedInJSX =

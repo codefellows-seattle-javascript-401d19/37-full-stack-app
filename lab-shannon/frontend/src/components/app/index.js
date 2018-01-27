@@ -5,6 +5,7 @@ import Dashboard from '../dashboard';
 import Landing from '../landing';
 import AuthRedirect from '../auth-redirect';
 import Profile from '../profile';
+import Wav from '../wav';
 import * as profileActions from '../../actions/profile';
 
 class App extends React.Component{
@@ -25,6 +26,7 @@ class App extends React.Component{
             <Route exact path='/login' component={Landing} />
             <Route exact path='/dashboard' component={Dashboard} />
             <Route exact path='/profile' component={Profile}/>
+            <Route exact path='/upload' component={Wav}/>
           </div>
         </BrowserRouter>
       </div>
