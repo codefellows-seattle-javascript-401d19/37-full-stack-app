@@ -77,3 +77,6 @@
 {"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-27T23:13:09.017Z"}
 {"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-27T23:15:27.934Z"}
 {"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-27T23:16:02.875Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-27T23:30:21.866Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-27T23:30:21.923Z"}
+{"level":"info","message":"Processing : POST on : /waves/bitcrusher","timestamp":"2018-01-27T23:31:07.906Z"}

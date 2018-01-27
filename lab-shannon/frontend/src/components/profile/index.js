@@ -5,6 +5,7 @@ import * as profileActions from '../../actions/profile';
 import * as authActions from '../../actions/auth';
 import * as waveActions from '../../actions/wavFile';
 import ProfileForm from '../profile-form';
+import WavForm from '../wav-form';
 
 let defaultState = {
   bioEditing: false,
@@ -44,6 +45,8 @@ class Profile extends React.Component{
       profile,
       createProfile,
       updateProfile,
+      updateWave,
+      destroyWave,
     } = this.props;
 
     // these three need to be declared outside of the if block since they're referenced outside of the if block
@@ -71,18 +74,29 @@ class Profile extends React.Component{
         </div>;
     }
 
-    let wavJSX =
+    let  displayedWavJSX =
+        <div>
+          <span>Wav Files: </span>
+          <span>{wave ? wave.url : `You don't have any wav files`}</span>
+          {wave ? (this.state.waveEditing ? editingWavJSX : nonEditingWavJSX) : <button><Link to='/upload'>Upload a Wav File</Link></button>}
+        </div>;
+
+    let  nonEditingWavJSX =
+        <div>
+          <button onClick={() => {this.setState({waveEditing: true});}}>Edit Wav File</button>
+        </div>;
+
+    let editingWavJSX =
       <div>
-        <span>Wav Files: </span>
-        <span>{wave ? wave.url : `You don't have any wav files`}</span>
-        {wave ? 'groot' : <button><Link to='/upload'>Upload a Wav File</Link></button>}
+        <WavForm wave={wave} onComplete={this.handleWaveUpdate} updateWave={this.props.updateWave} destroyWave={this.props.destroyWave}/>
+        <button onClick={() => {this.setState({waveEditing: false});}}> Cancel </button>
       </div>;
 
     return (
       <div>
         <h2>Your Profile</h2>
         { profile ? displayedProfileJSX : <ProfileForm onComplete={this.handleProfileCreate}/>}
-        { profile ? wavJSX : undefined}
+        { displayedWavJSX }
       </div>
     );
   }
