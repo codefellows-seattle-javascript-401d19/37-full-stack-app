@@ -20,7 +20,7 @@ export const destroyAction = () => ({
 
 export const getActionRequest = () => store => {
   let {token} = store.getState();
-  superagent.get(`${__API_URL__}/waves`) //eslint-disable-line
+  return superagent.get(`${__API_URL__}/waves`) //eslint-disable-line
     .set('Authorization', `Bearer ${token}`)
     .then(response => {
       return store.dispatch(setAction(response.body));
@@ -28,7 +28,7 @@ export const getActionRequest = () => store => {
 };
 export const setActionRequest = (wav) => store => {
   let {token} = store.getState();
-  superagent.post(`${__API_URL__}/waves/${wav.transform}`) //eslint-disable-line
+  return superagent.post(`${__API_URL__}/waves/${wav.transform}`) //eslint-disable-line
     .set('Authorization', `Bearer ${token}`)
     .field('wavename', wav.wavename)
     .attach('wave', wav.wave)
@@ -39,7 +39,7 @@ export const setActionRequest = (wav) => store => {
 };
 export const updateActionRequest = (wav) => store => {
   let {token} = store.getState();
-  superagent.put(`${__API_URL__}/waves`) //eslint-disable-line
+  return superagent.put(`${__API_URL__}/waves`) //eslint-disable-line
     .set('Authorization', `Bearer ${token}`)
     .field('wavename', 'testname')
     .attach('wave', wav.wave)
@@ -49,7 +49,7 @@ export const updateActionRequest = (wav) => store => {
 };
 export const destroyActionRequest = () => store => {
   let {token} = store.getState();
-  superagent.delete(`${__API_URL__}/waves`) //eslint-disable-line
+  return superagent.delete(`${__API_URL__}/waves`) //eslint-disable-line
     .set('Authorization', `Bearer ${token}`)
     .then(response => {
       return store.dispatch(destroyAction());

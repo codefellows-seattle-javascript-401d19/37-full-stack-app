@@ -3,4 +3,4 @@ import token from './token';
 import profile from './profile';
 import wavFile from './wavFile';
 
-export default combineReducers({token, profile}, wavFile);
+export default combineReducers({token, profile, wavFile});

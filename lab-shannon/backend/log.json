@@ -80,3 +80,13 @@
 {"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-27T23:30:21.866Z"}
 {"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-27T23:30:21.923Z"}
 {"level":"info","message":"Processing : POST on : /waves/bitcrusher","timestamp":"2018-01-27T23:31:07.906Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-27T23:32:46.248Z"}
+{"level":"info","message":"Processing : POST on : /waves/noise","timestamp":"2018-01-27T23:32:58.801Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-27T23:33:14.161Z"}
+{"level":"info","message":"Processing : POST on : /waves/reverse","timestamp":"2018-01-27T23:33:23.070Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-27T23:36:11.430Z"}
+{"level":"info","message":"Processing : POST on : /waves/noise","timestamp":"2018-01-27T23:36:27.150Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-27T23:36:55.534Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-27T23:37:16.382Z"}
+{"level":"info","message":"Processing : POST on : /waves/noise","timestamp":"2018-01-27T23:37:28.067Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-27T23:37:45.653Z"}
