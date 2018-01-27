@@ -2,24 +2,23 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import * as authActions from '../../actions/auth';
+import './navbar.scss';
 
 class Navbar extends React.Component{
   render(){
     let loggedInJSX =
-    <div>
-      <h2>You are logged in</h2>
-      <Link to='/'>Home</Link>
-      <Link to='/dashboard'>Dashboard</Link>
-      <Link to='/upload'>Upload Wavs</Link>
-    </div>;
+    <ul>
+      <li><Link to='/'>Home</Link></li>
+      <li><Link to='/dashboard'>Dashboard</Link></li>
+      <li><Link to='/upload'>Upload A Wav File</Link></li>
+    </ul>;
 
     let notLoggedInJSX =
-      <div>
-        <h2>You are NOT logged in</h2>
-        <Link to='/signup'>Sign Up</Link>
-        <Link to='/login'>Login</Link>
-        <Link to='/'>Home</Link>
-      </div>;
+      <ul>
+        <li><Link to='/signup'>Sign Up</Link></li>
+        <li><Link to='/login'>Login</Link></li>
+        <li><Link to='/'>Home</Link></li>
+      </ul>;
 
     return (
       <div>
