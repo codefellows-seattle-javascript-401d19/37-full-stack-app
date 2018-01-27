@@ -40,3 +40,20 @@
 {"level":"info","message":"Processing : PUT on : /favorite","timestamp":"2018-01-25T22:52:36.030Z"}
 {"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-25T22:53:09.107Z"}
 {"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-25T22:53:09.152Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-26T23:42:10.529Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-26T23:42:10.813Z"}
+{"level":"info","message":"Server is listening on port 3000","timestamp":"2018-01-27T17:56:27.415Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-27T18:11:40.476Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-27T18:11:40.600Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-27T18:15:21.846Z"}
+{"level":"info","message":"Processing : POST on : /waves","timestamp":"2018-01-27T18:15:32.624Z"}
+{"level":"info","message":"Returning a 404 from the catch-all route","timestamp":"2018-01-27T18:15:32.624Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-27T18:17:12.825Z"}
+{"level":"info","message":"Processing : POST on : /waves/delay","timestamp":"2018-01-27T18:17:26.293Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-27T18:23:44.201Z"}
+{"level":"info","message":"Processing : POST on : /waves/delay","timestamp":"2018-01-27T18:23:54.480Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-27T18:35:57.713Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-27T18:35:57.776Z"}
+{"level":"info","message":"Processing : POST on : /waves/delay","timestamp":"2018-01-27T18:36:07.065Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-27T18:38:59.346Z"}
+{"level":"info","message":"Processing : POST on : /waves/delay","timestamp":"2018-01-27T18:39:09.985Z"}

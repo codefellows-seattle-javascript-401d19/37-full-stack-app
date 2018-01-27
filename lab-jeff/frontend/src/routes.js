@@ -3,3 +3,4 @@ export const SIGNUP_ROUTE = '/signup';
 export const ROOT_ROUTE = '/';
 export const DASHBOARD_ROUTE = '/dashboard';
 export const FAVORITE_ROUTE = '/favorite';
+export const WAVE_ROUTE = '/waves';
