@@ -80,6 +80,7 @@ class WavForm extends React.Component{
         />
         <label>Transform Options</label>
         <select name='transform' onChange={this.onChange}>
+          <option value=''>Select Transform</option>
           <option value='bitcrusher'>Bitcrush</option>
           <option value='delay'>Delay</option>
           <option value='noise'>Add Noise</option>
