@@ -63,19 +63,33 @@ class WaveForm extends React.Component {
     this.setState(this.emptyState);
   }
   render() {
+    let { wave } = this.props;
+    let JSXWave = null;
+    if (wave) {
+      JSXWave = (
+        <div>
+          <p>
+            <a href={wave.url}>link to wave file</a>
+          </p>
+        </div>
+      );
+    }
     return (
-      <form onSubmit={this.handleSubmit} className="wave-form">
-        <p>{this.state.photoError}</p>
-        <label>Wave</label>
+      <section>
+        <form onSubmit={this.handleSubmit} className="wave-form">
+          <p>{this.state.photoError}</p>
+          <label>Wave</label>
 
-        <input type="file" name="wave" onChange={this.handleChange} />
+          <input type="file" name="wave" onChange={this.handleChange} />
 
-        <label>Wave Name</label>
+          <label>Wave Name</label>
 
-        <input type="text" name="wavename" value={this.state.wavename} onChange={this.handleChange} />
+          <input type="text" name="wavename" value={this.state.wavename} onChange={this.handleChange} />
 
-        <button type="submit"> upload wave </button>
-      </form>
+          <button type="submit"> upload wave </button>
+        </form>
+        {JSXWave}
+      </section>
     );
   }
 }

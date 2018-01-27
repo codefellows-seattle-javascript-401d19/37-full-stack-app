@@ -9,13 +9,15 @@ class Dashboard extends React.Component {
     return (
       <div className="dashboard">
         <h1> DASHBOARD YO! </h1>
-        <WaveForm onComplete={this.props.createWave} />
+        <WaveForm onComplete={this.props.createWave} wave={this.props.wave} />
       </div>
     );
   }
 }
-
+const mapStateToProps = state => ({
+  wave: state.wave,
+});
 const mapDispatchToProps = dispatch => ({
   createWave: wave => dispatch(waveActions.createActionRequest(wave)),
 });
-export default connect(null, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
