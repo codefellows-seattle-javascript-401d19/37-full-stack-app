@@ -1,11 +1,9 @@
-
-body {
-  font-family: sans-serif;
-}
+@import '../../style/lib/vars/vars';
 
 .navbar {
   width: 100%;
   outline: 1px dotted blue; 
+  padding: $gutter; 
 }
 
 

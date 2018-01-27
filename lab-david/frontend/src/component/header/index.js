@@ -5,6 +5,7 @@ import * as authActions from '../../action/auth';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {navbar} from 'bulma';
+
 import logo from '../../assets/lindahlgram.png';
 
 class Header extends React.Component{
