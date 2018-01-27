@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import WavForm from '../wav-form';
 import Navbar from '../navbar';
-import * as wavActions from '../../actions/wavFile';
+import * as waveActions from '../../actions/wavFile';
 
 class Wav extends React.Component{
   render(){
@@ -12,7 +12,7 @@ class Wav extends React.Component{
           <Navbar />
         </header>
         <p>Select a wav file to upload</p>
-        <WavForm onComplete={this.props.createWav} updateWav={this.props.updateWav} destroyWav={this.props.destroyWav}/>
+        <WavForm onComplete={this.props.createWave} updateWave={this.props.updateWave} destroyWave={this.props.destroyWave}/>
       </div>
     );
   }
@@ -23,9 +23,9 @@ let mapStateToProps = (state) => ({
 });
 
 let mapDispatchToProps = (dispatch) => ({
-  createWav : (wav) => dispatch(wavActions.setActionRequest(wav)),
-  updateWav : (wav) => dispatch(wavActions.updateActionRequest(wav)),
-  destroyWav: () => dispatch(wavActions.destroyActionRequest()),
+  createWave : (wave) => dispatch(waveActions.setActionRequest(wave)),
+  updateWave : (wave) => dispatch(waveActions.updateActionRequest(wave)),
+  destroyWave: () => dispatch(waveActions.destroyActionRequest()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Wav);

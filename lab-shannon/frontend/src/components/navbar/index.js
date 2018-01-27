@@ -9,7 +9,7 @@ class Navbar extends React.Component{
     let loggedInJSX =
     <ul>
       <li><Link to='/'>Home</Link></li>
-      <li><Link to='/dashboard'>Dashboard</Link></li>
+      <li><Link to='/dashboard'>Profile</Link></li>
       <li><Link to='/upload'>Upload A Wav File</Link></li>
     </ul>;
 

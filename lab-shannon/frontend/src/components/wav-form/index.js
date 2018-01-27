@@ -10,7 +10,7 @@ const emptyState = {
 class WavForm extends React.Component{
   constructor(props){
     super(props);
-    this.state = emptyState;
+    this.state = this.props.wave ? this.props.wave : emptyState;
     this.onChange = this.onChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.validateFile = this.validateFile.bind(this);
@@ -59,6 +59,12 @@ class WavForm extends React.Component{
     event.preventDefault();
     this.props.onComplete(this.state);
     this.setState(emptyState);
+  }
+
+  componentWillReceiveProps(nextProps){
+    if(nextProps.wave){
+      this.setState(nextProps.wave);
+    }
   }
 
   render(){

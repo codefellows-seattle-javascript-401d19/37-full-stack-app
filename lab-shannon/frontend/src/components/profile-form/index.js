@@ -34,7 +34,6 @@ class ProfileForm extends React.Component{
     let buttonText = this.props.profile ? 'Update' : 'Create';
     return (
       <div>
-        <h4>Testing out the profile form</h4>
         <form onSubmit={this.handleSubmit}>
           <textarea
             name = 'bio'
