@@ -47,6 +47,13 @@ class ProfileForm extends React.Component {
         <input 
           onChange={this.handleChange}
           type='text' 
+          name='name' 
+          placeholder='name' 
+          value={this.state.name}
+        /> 
+        <input 
+          onChange={this.handleChange}
+          type='text' 
           name='meetupMemberId' 
           placeholder='meetup member id' 
           value={this.state.meetupMemberId}
@@ -65,11 +72,6 @@ class ProfileForm extends React.Component {
           placeholder='meetups' 
           value={this.state.meetups}
         /> 
-        <textarea
-          name='bio'
-          value={this.state.bio}
-          onChange={this.handleChange}
-        />
 
         <button type='submit'>{this.props.profile ? 'update' : 'create'} profile </button>
       </form>

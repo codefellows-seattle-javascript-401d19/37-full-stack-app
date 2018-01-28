@@ -26,7 +26,8 @@ class Profile extends React.Component {
     this.props.profileCreate(profile)
       .then(() => {
         this.props.history.push(routes.DASHBOARD_ROUTE);
-      });
+      })
+      .catch(error => console.log(error));
   }
 
   handleUpdate(profile) {
@@ -54,8 +55,12 @@ class Profile extends React.Component {
       
       JSXDisplay = 
         <div>
+          <p>Profile Information:</p>
+          <p>{profile.name}</p>
+          <p>{profile.phoneNumber}</p>
+          <p>{profile.meetupMemberId}</p>
           <p>{profile.meetups}</p>
-          <button onClick={() => this.setState({editing:true})}> Edit Bio </button>
+          <button onClick={() => this.setState({editing:true})}> Edit Profile Information </button>
         </div>;
       
       JSXProfile = 

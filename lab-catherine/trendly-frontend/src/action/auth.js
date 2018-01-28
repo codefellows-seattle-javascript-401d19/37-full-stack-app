@@ -1,6 +1,6 @@
 import superagent from 'superagent';
 import * as routes from '../routes';
-import * as cookies from '../lib/cookie';
+import * as cookie from '../lib/cookie';
 
 // Sync
 
@@ -14,7 +14,7 @@ export const removeTokenAction = () => ({
 });
 
 export const logoutAction = () => {
-  cookies.cookieDelete('X-Trendly-Token');
+  cookie.cookieDelete('X-Trendly-Token');
   return removeTokenAction();
 };
 
