@@ -47,47 +47,47 @@ A RESTful API for uploading, altering, and saving wav files
 ## Routes
 
 ## Technologies Used
-  aws-sdk
-  aws-sdk-mock
-  babel-core
-  babel-loader
-  babel-plugin-transform-object-rest-spread
-  babel-preset-env
-  babel-preset-react
-  bcrypt
-  clean-webpack-plugin
-  cors
-  css-loader
-  dotenv
-  enzyme
-  enzyme-adapter-react-16
-  eslint
-  eslint-plugin-react
-  express
-  extract-text-webpack-plugin
-  faker
-  fs-extra
-  html-webpack-plugin
-  http-errors
-  jest
-  jsonwebtoken
-  mongoose
-  multer
-  node-sass
-  react
-  react-dom
-  react-redux
-  react-router-dom
-  redux-devtools-extension
-  resolve-url-loader
-  sass-loader
-  style-loader
-  superagent
-  uglifyjs-webpack-plugin
-  uuid
-  webpack
-  webpack-dev-server
-  winston
+  * aws-sdk
+  * aws-sdk-mock
+  * babel-core
+  * babel-loader
+  * babel-plugin-transform-object-rest-spread
+  * babel-preset-env
+  * babel-preset-react
+  * bcrypt
+  * clean-webpack-plugin
+  * cors
+  * css-loader
+  * dotenv
+  * enzyme
+  * enzyme-adapter-react-16
+  * eslint
+  * eslint-plugin-react
+  * express
+  * extract-text-webpack-plugin
+  * faker
+  * fs-extra
+  * html-webpack-plugin
+  * http-errors
+  * jest
+  * jsonwebtoken
+  * mongoose
+  * multer
+  * node-sass
+  * react
+  * react-dom
+  * react-redux
+  * react-router-dom
+  * redux-devtools-extension
+  * resolve-url-loader
+  * sass-loader
+  * style-loader
+  * superagent
+  * uglifyjs-webpack-plugin
+  * uuid
+  * webpack
+  * webpack-dev-server
+  * winston
 
 ## License
 MIT
