@@ -19,7 +19,10 @@ const server = module.exports = {};
 
 const app = express();
 
-app.use(cors()),
+app.use(cors({
+  origin: process.env.CORS_ORIGIN.split(' '),
+  credentials: true,
+})),
 
 // ================ ROUTE SETUP ===================
 app.use(require('./middleware/logger-middleware'));
