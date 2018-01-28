@@ -38,7 +38,7 @@ export const setActionRequest = (wav) => store => {
 };
 export const updateActionRequest = (wav) => store => {
   let {token} = store.getState();
-  return superagent.put(`${__API_URL__}/waves`) //eslint-disable-line
+  return superagent.put(`${__API_URL__}/waves/${wav.transform}`) //eslint-disable-line
     .set('Authorization', `Bearer ${token}`)
     .field('wavename', wav.wavename)
     .attach('wave', wav.wave)

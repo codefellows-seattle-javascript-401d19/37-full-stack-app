@@ -135,7 +135,7 @@ waveRouter.delete('/waves', bearerAuth, (request, response, next) => {
     .catch(next);
 });
 
-waveRouter.put('/waves', bearerAuth, upload.any(), (request, response, next) => {
+waveRouter.put('/waves/:transform', bearerAuth, upload.any(), (request, response, next) => {
   const file = request.files[0];
   const key = `${file.filename}.${file.originalname}`;
   const tempFilePath = `${__dirname}/../temp/transform-temp.wav`;
@@ -159,11 +159,6 @@ waveRouter.put('/waves', bearerAuth, upload.any(), (request, response, next) => 
   }
 
   return Wave.findOne({user: request.user._id})
-    .then(wave => {
-      if(!wave){
-        throw new httpErrors(404, '__ERROR__ wave not found');
-      }
-    })
     .then(wave => {
       if(wave){
 
