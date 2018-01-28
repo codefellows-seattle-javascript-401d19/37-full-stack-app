@@ -7,11 +7,6 @@ export const setAction = (wav) => ({
   payload: wav,
 });
 
-export const updateAction = (wav) => ({
-  type: 'UPDATE_WAV',
-  payload: wav,
-});
-
 export const destroyAction = () => ({
   type: 'DESTROY_WAV',
 });
@@ -23,6 +18,7 @@ export const getActionRequest = () => store => {
   return superagent.get(`${__API_URL__}/waves`) //eslint-disable-line
     .set('Authorization', `Bearer ${token}`)
     .then(response => {
+      console.log(response.body, `is the response body in the get request`);
       return store.dispatch(setAction(response.body));
     });
 };
@@ -43,8 +39,8 @@ export const updateActionRequest = (wav) => store => {
     .field('wavename', wav.wavename)
     .attach('wave', wav.wave)
     .then(response => {
-      console.log(response, `response`);
-      return store.dispatch(updateAction(response.body));
+      console.log(response.body, `is the response body in the update request`);
+      return store.dispatch(setAction(response.body));
     });
 };
 export const destroyActionRequest = () => store => {

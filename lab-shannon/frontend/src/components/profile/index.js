@@ -47,6 +47,7 @@ class Profile extends React.Component{
       updateProfile,
       updateWave,
       destroyWave,
+      getWavFiles,
     } = this.props;
 
     // these three need to be declared outside of the if block since they're referenced outside of the if block
@@ -89,7 +90,7 @@ class Profile extends React.Component{
 
     let editingWavJSX =
       <div>
-        <WavForm wavFile={wavFile} onComplete={this.handleWaveUpdate} updateWave={updateWave} destroyWave={destroyWave}/>
+        <WavForm wavFile={wavFile} onComplete={this.handleWaveUpdate} getWaveFiles={this.props.getWaveFiles}/>
         <button onClick={() => {this.setState({waveEditing: false});}}> Cancel </button>
       </div>;
 
@@ -124,6 +125,7 @@ const mapDispatchToProps = (dispatch) => ({
   updateProfile : (profile) => dispatch(profileActions.updateAction(profile)),
   updateWave : (wave) => dispatch(waveActions.updateActionRequest(wave)),
   destroyWave : () => dispatch(waveActions.destroyActionRequest()),
+  getWaveFiles : () => dispatch(waveActions.getActionRequest()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

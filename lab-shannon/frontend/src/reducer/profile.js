@@ -7,7 +7,7 @@ export default (state = emptyState, action) => {
     case 'SET_PROFILE':
       return payload;
     case 'REMOVE_TOKEN':
-      return null;
+      return emptyState;
     default:
       return state;
   }

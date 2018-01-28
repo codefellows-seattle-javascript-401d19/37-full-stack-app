@@ -23,7 +23,7 @@ const waveRouter = module.exports = new Router();
 waveRouter.post('/waves/:transform', bearerAuth, upload.any(), (request, response, next) => {
 
   if(!request.body.wavename || request.files.length > 1 || request.files[0].fieldname !== 'wave' || !request.params.transform){
-    return next(new httpErrors(400, '__ERROR__ invalid request; right here'));
+    return next(new httpErrors(400, '__ERROR__ invalid request'));
   }
 
   const file = request.files[0];
@@ -136,6 +136,7 @@ waveRouter.delete('/waves', bearerAuth, (request, response, next) => {
 });
 
 waveRouter.put('/waves/:transform', bearerAuth, upload.any(), (request, response, next) => {
+  console.log(request, `is the request`);
   const file = request.files[0];
   const key = `${file.filename}.${file.originalname}`;
   const tempFilePath = `${__dirname}/../temp/transform-temp.wav`;
@@ -184,7 +185,6 @@ waveRouter.put('/waves/:transform', bearerAuth, upload.any(), (request, response
                               transform: request.params.transform,
                             }).save();
                           })
-                          .then(newWave => console.log(newWave, `the new wave file`))
                           .then(newWave => response.json(newWave))
                           .catch(next);
                       });

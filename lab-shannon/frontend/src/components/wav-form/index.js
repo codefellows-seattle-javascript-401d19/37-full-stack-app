@@ -58,12 +58,13 @@ class WavForm extends React.Component{
   handleSubmit(event){
     event.preventDefault();
     this.props.onComplete(this.state);
+    this.props.getWaveFiles();
     this.setState(emptyState);
   }
 
   componentWillReceiveProps(nextProps){
-    if(nextProps.wave){
-      this.setState(nextProps.wave);
+    if(nextProps.wavFile){
+      this.setState(nextProps.wavFile);
     }
   }
 

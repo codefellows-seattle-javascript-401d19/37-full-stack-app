@@ -1,16 +1,16 @@
-const defaultState = null;
+const emptyState = null;
 
-export default (state = defaultState, action) => {
+export default (state = emptyState, action) => {
   let {type, payload} = action;
+
   switch(type){
     case 'SET_WAV':
-      return payload;
-    case 'UPDATE_WAV':
+      console.log(payload, `is the payload`);
       return payload;
     case 'DESTROY_WAV':
       return null;
     case 'TOKEN_REMOVE':
-      return defaultState;
+      return emptyState;
     default:
       return state;
   }
