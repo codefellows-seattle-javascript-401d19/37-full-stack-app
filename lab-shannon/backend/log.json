@@ -5,3 +5,4 @@
 {"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-28T03:05:52.291Z"}
 {"level":"info","message":"Processing : PUT on : /waves/delay","timestamp":"2018-01-28T03:07:01.795Z"}
 {"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-28T03:07:01.798Z"}
+{"level":"info","message":"Processing : DELETE on : /waves","timestamp":"2018-01-28T03:07:47.987Z"}
