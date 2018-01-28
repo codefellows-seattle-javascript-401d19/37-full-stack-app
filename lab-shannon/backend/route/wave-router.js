@@ -71,6 +71,7 @@ waveRouter.post('/waves/:transform', bearerAuth, upload.any(), (request, respons
                               wavename: request.body.wavename,
                               user: request.user._id,
                               url,
+                              transform: request.params.transform,
                             }).save();
                           })
                           .then(newWave => response.json(newWave))
@@ -93,6 +94,7 @@ waveRouter.post('/waves/:transform', bearerAuth, upload.any(), (request, respons
                       wavename: request.body.wavename,
                       user: request.user._id,
                       url,
+                      transform: request.params.transform,
                     }).save();
                   })
                   .then(wave => response.json(wave))
@@ -105,7 +107,6 @@ waveRouter.post('/waves/:transform', bearerAuth, upload.any(), (request, respons
 });
 
 waveRouter.get('/waves', bearerAuth, (request, response, next) => {
-
   return Wave.findOne({ user: request.user._id })
     .then(wave => {
       if (!wave){
@@ -185,8 +186,10 @@ waveRouter.put('/waves', bearerAuth, upload.any(), (request, response, next) => 
                               wavename: request.body.wavename,
                               user: request.user._id,
                               url,
+                              transform: request.params.transform,
                             }).save();
                           })
+                          .then(newWave => console.log(newWave, `the new wave file`))
                           .then(newWave => response.json(newWave))
                           .catch(next);
                       });

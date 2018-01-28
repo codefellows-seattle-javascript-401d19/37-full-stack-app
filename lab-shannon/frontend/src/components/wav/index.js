@@ -12,14 +12,14 @@ class Wav extends React.Component{
           <Navbar />
         </header>
         <p>Select a wav file to upload</p>
-        <WavForm onComplete={this.props.createWave} updateWave={this.props.updateWave} destroyWave={this.props.destroyWave}/>
+        <WavForm onComplete={this.props.createWave}/>
       </div>
     );
   }
 }
 
 let mapStateToProps = (state) => ({
-  wave : state.wave,
+  wavFile : state.wavFile,
 });
 
 let mapDispatchToProps = (dispatch) => ({

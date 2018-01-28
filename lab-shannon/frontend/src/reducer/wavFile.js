@@ -6,6 +6,7 @@ export default (state = defaultState, action) => {
     case 'SET_WAV':
       return payload;
     case 'UPDATE_WAV':
+      console.log(payload);
       return payload;
     case 'DESTROY_WAV':
       return null;

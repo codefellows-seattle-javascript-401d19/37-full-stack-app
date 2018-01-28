@@ -35,7 +35,7 @@ class Profile extends React.Component{
   }
 
   handleWaveUpdate(wave){
-    this.props.updateActionRequest(wave);
+    this.props.updateWave(wave);
     this.setState(defaultState);
   }
 
@@ -83,13 +83,13 @@ class Profile extends React.Component{
 
     let nonEditingWavJSX =
         <div>
-          <button onClick={() => {this.setState({waveEditing: true});}}>Edit Wav File</button>
+          <button onClick={() => {this.setState({waveEditing: true});}}> Update Wav File </button>
           <button onClick={() => destroyWave()}> Delete Wav </button>
         </div>;
 
     let editingWavJSX =
       <div>
-        <WavForm wavFile={wavFile} onComplete={this.handleWaveUpdate} updateWave={this.props.updateWave} destroyWave={this.props.destroyWave}/>
+        <WavForm wavFile={wavFile} onComplete={this.handleWaveUpdate} updateWave={updateWave} destroyWave={destroyWave}/>
         <button onClick={() => {this.setState({waveEditing: false});}}> Cancel </button>
       </div>;
 
@@ -99,7 +99,7 @@ class Profile extends React.Component{
       JSXforExistingWav =
         <div>
           <span>Wav Files: </span>
-          <span>{wavFile.url}</span>
+          <p><em>{wavFile.wavename}</em>: {wavFile.url}</p>
           {this.state.waveEditing ? editingWavJSX : nonEditingWavJSX}
         </div>;
     }

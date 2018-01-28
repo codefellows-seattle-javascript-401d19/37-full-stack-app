@@ -40,10 +40,11 @@ export const updateActionRequest = (wav) => store => {
   let {token} = store.getState();
   return superagent.put(`${__API_URL__}/waves`) //eslint-disable-line
     .set('Authorization', `Bearer ${token}`)
-    .field('wavename', 'testname')
+    .field('wavename', wav.wavename)
     .attach('wave', wav.wave)
     .then(response => {
-      return store.dispatch(updateAction(response.body)); //if things won't update correctly later, look back here; profile updates are handled differently and that might be important
+      console.log(response, `response`);
+      return store.dispatch(updateAction(response.body));
     });
 };
 export const destroyActionRequest = () => store => {

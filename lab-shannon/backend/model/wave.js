@@ -14,6 +14,9 @@ const waveSchema = mongoose.Schema({
     type : String,
     required : true,
   },
+  transform : {
+    type : String,
+  },
 
 });
 
