@@ -31,8 +31,9 @@ export const signupAction = (user) => (store) => {
 };
 
 export const loginAction = (user) => (store) => {
+  console.log('__user__', user);
   return superagent.get(`${__API_URL__}${routes.LOGIN_ROUTE}`)
-    .auth(user.name, user.password)
+    .auth(user.username, user.password)
     .withCredentials()
     .then(response => {
       console.log({response});
