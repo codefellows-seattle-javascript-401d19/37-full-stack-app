@@ -5,7 +5,6 @@ export default (state = emptyState, action) => {
 
   switch(type){
     case 'SET_WAV':
-      console.log(payload, `is the payload`);
       return payload;
     case 'DESTROY_WAV':
       return null;

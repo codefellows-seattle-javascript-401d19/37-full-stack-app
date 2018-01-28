@@ -136,7 +136,6 @@ waveRouter.delete('/waves', bearerAuth, (request, response, next) => {
 });
 
 waveRouter.put('/waves/:transform', bearerAuth, upload.any(), (request, response, next) => {
-  console.log(request, `is the request`);
   const file = request.files[0];
   const key = `${file.filename}.${file.originalname}`;
   const tempFilePath = `${__dirname}/../temp/transform-temp.wav`;
