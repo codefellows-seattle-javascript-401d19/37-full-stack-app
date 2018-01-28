@@ -1,4 +1,4 @@
-const validatePhotos = (photo) => {
+const validatePhoto = (photo) => {
   if(!photo)
     throw new Error('a photo is required');
 
@@ -14,17 +14,23 @@ export default(state = [], {type, payload}) => { // david - default  : (state, a
       if(!Array.isArray(payload))
         throw new Error('client photos must be an array');
 
-      payload.forEach(validatePhotos);
+      payload.forEach(validatePhoto);
       return payload;
 
     case 'CLIENT_PHOTO_CREATE' : 
+      validatePhoto(payload);
+      return [payload, ...state];
 
     case 'CLIENT_PHOTO_REMOVE' : 
+      validatePhoto(payload);
+      return state.filter( item => item._id !== payload._id);
 
     // david - always include this to remove things from store when user logs out
     case 'TOKEN_REMOVE' : 
+      return [];
 
     default :
+      return state;
 
   }
 };
