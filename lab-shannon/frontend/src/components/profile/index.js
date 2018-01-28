@@ -74,16 +74,17 @@ class Profile extends React.Component{
         </div>;
     }
 
-    let  displayedWavJSX =
-        <div>
-          <span>Wav Files: </span>
-          <span>{wavFile ? wavFile.url : `You don't have any wav files`}</span>
-          {wavFile ? (this.state.waveEditing ? editingWavJSX : nonEditingWavJSX) : <button><Link to='/upload'>Upload a Wav File</Link></button>}
-        </div>;
+    let JSXforNoWav =
+    <div>
+      <span>Wav Files: </span>
+      <span>{`You don't have any wav files`}</span>
+      <button><Link to='/upload'>Upload a Wav File</Link></button>
+    </div>;
 
-    let  nonEditingWavJSX =
+    let nonEditingWavJSX =
         <div>
           <button onClick={() => {this.setState({waveEditing: true});}}>Edit Wav File</button>
+          <button onClick={() => destroyWave()}> Delete Wav </button>
         </div>;
 
     let editingWavJSX =
@@ -92,11 +93,22 @@ class Profile extends React.Component{
         <button onClick={() => {this.setState({waveEditing: false});}}> Cancel </button>
       </div>;
 
+
+    let JSXforExistingWav = null;
+    if(wavFile){
+      JSXforExistingWav =
+        <div>
+          <span>Wav Files: </span>
+          <span>{wavFile.url}</span>
+          {this.state.waveEditing ? editingWavJSX : nonEditingWavJSX}
+        </div>;
+    }
+
     return (
       <div>
         <h2>Your Profile</h2>
         { profile ? displayedProfileJSX : <ProfileForm onComplete={this.handleProfileCreate}/>}
-        { displayedWavJSX }
+        { wavFile ? JSXforExistingWav : JSXforNoWav }
       </div>
     );
   }
@@ -111,6 +123,7 @@ const mapDispatchToProps = (dispatch) => ({
   createProfile : (profile) => dispatch(profileActions.createAction(profile)),
   updateProfile : (profile) => dispatch(profileActions.updateAction(profile)),
   updateWave : (wave) => dispatch(waveActions.updateActionRequest(wave)),
+  destroyWave : () => dispatch(waveActions.destroyActionRequest()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

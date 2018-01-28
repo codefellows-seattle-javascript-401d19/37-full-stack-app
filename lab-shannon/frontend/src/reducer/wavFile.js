@@ -4,7 +4,6 @@ export default (state = defaultState, action) => {
   let {type, payload} = action;
   switch(type){
     case 'SET_WAV':
-      console.log(payload);
       return payload;
     case 'UPDATE_WAV':
       return payload;

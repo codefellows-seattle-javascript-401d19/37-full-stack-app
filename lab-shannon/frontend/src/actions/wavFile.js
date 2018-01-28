@@ -33,7 +33,6 @@ export const setActionRequest = (wav) => store => {
     .field('wavename', wav.wavename)
     .attach('wave', wav.wave)
     .then(response => {
-      console.log(response.body, `response body`);
       return store.dispatch(setAction(response.body));
     });
 };
