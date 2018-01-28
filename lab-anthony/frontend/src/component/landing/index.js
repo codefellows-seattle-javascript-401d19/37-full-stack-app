@@ -47,14 +47,14 @@ class Landing extends React.Component {
   render() {
     let {location} = this.props;
 
-    // let rootJSX =
-    // <div>
-    //   <h2> welcome </h2>
-    // </div>;
+    let rootJSX =
+    <div>
+      <h2> welcome </h2>
+    </div>;
 
     // Since the Header component includes the signup and login links, we
     // can assign it as rootJSX which is to be displayed when url path is '/'
-    let rootJSX = <Header />;
+    // let rootJSX = <Header />;
 
     let signUpJSX =
     <div>
@@ -77,7 +77,7 @@ class Landing extends React.Component {
     return(
       <div className='landing'>
         <Header />
-        {/* {location.pathname === routes.ROOT_ROUTE ? rootJSX : undefined} */}
+        {location.pathname === routes.ROOT_ROUTE ? rootJSX : undefined}
         {location.pathname === routes.SIGNUP_ROUTE ? signUpJSX : undefined}
         {location.pathname === routes.LOGIN_ROUTE ? loginJSX : undefined}
       </div>
