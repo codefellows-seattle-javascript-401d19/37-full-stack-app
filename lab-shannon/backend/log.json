@@ -1,0 +1,8 @@
+{"level":"info","message":"Server is listening on port 3000","timestamp":"2018-01-28T03:05:32.840Z"}
+{"level":"info","message":"Processing : GET on : /profile/myProfile","timestamp":"2018-01-28T03:05:41.381Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-28T03:05:41.395Z"}
+{"level":"info","message":"Processing : PUT on : /waves/noise","timestamp":"2018-01-28T03:05:52.287Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-28T03:05:52.291Z"}
+{"level":"info","message":"Processing : PUT on : /waves/delay","timestamp":"2018-01-28T03:07:01.795Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-28T03:07:01.798Z"}
+{"level":"info","message":"Processing : DELETE on : /waves","timestamp":"2018-01-28T03:07:47.987Z"}
