@@ -32,10 +32,20 @@ profileRouter.post('/profiles', bearerAuthMiddleware, jsonParser, (request, resp
 });
 
 
-profileRouter.get('/profiles/:id', bearerAuthMiddleware, (request, response, next) => {
+profileRouter.get('/profiles/me', bearerAuthMiddleware, (request, response, next) => {
   if(!request.account)
     return next(new httpErrors(404, '__ERROR__ Not Found'));
-  return Profile.findById(request.params.id)
+  return Profile.findOne({account: request.account._id})
     .then(profile => response.json(profile))
+    .catch(next);
+});
+
+profileRouter.put('/profiles/:id', bearerAuthMiddleware, jsonParser, (request, response, next) => {
+  let {meetupMemberId, phoneNumber, meetups} = request.body;
+  if(!request.account)
+    return next(new httpErrors(404, '__ERROR__ Not Found'));
+
+  return Profile.findByIdAndUpdate(request.params.id, {meetupMemberId, phoneNumber, meetups})
+    .then(() => response.json(request.body))
     .catch(next);
 });
