@@ -20,7 +20,7 @@ const server = module.exports = {};
 const app = express();
 
 app.use(cors({
-  origin: process.env.CORS_ORIGINS.split(' '),
+  origin: process.env.CORS_ORIGIN.split(' '),
   credentials: true,
 })),
 

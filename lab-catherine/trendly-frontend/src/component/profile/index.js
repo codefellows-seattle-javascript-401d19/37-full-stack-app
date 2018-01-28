@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import ProfileForm from '../profile-form';
 
 
-import * as clientProfileActions from '../../action/client-profile';
+import {createAction, updateAction, fetchAction}from '../../action/client-profile';
 import * as routes from '../../routes';
 
 
@@ -85,8 +85,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  profileCreate : (profile) => dispatch(clientProfileActions.createAction(profile)),
-  profileUpdate : (profile) => dispatch(clientProfileActions.updateAction(profile)),
+  profileCreate : (profile) => dispatch(createAction(profile)),
+  profileUpdate : (profile) => dispatch(updateAction(profile)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

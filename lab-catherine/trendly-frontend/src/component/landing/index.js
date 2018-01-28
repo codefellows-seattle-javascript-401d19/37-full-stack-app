@@ -42,9 +42,7 @@ class Landing extends React.Component {
 
     let rootJSX = 
       <div>
-        <h2>welcome</h2>
-        <Link to='/signup'>signup</Link>
-        <Link to='/login'>login</Link>
+        <h2>welcome - signup or login</h2>
       </div>;
 
     let signUpJSX =
@@ -77,10 +75,12 @@ const mapStateToProps = (state) => ({
   token: state.token,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  doSignup: (user) => dispatch(authActions.signupAction(user)),
-  doLogin: (user) => dispatch(authActions.loginAction(user)),
-  fetchClientProfile: () => dispatch(profileActions.fetchAction()),
-});
+const mapDispatchToProps = (dispatch) => {
+  return {
+    doSignup: (user) => dispatch(authActions.signupAction(user)),
+    doLogin: (user) => dispatch(authActions.loginAction(user)),
+    fetchClientProfile: () => dispatch(profileActions.fetchAction()),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);

@@ -10,7 +10,7 @@ let emptyState = {
 class ProfileForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = props.profile ? props.profile : emptyState;
+    this.state = props.profile || emptyState;
 
     let memberFunctions = Object.getOwnPropertyNames(ProfileForm.prototype);
     for(let functionName of memberFunctions) {

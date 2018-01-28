@@ -4,7 +4,7 @@ export const validateProfile = (profile) => {
 
   let {meetupMemberId, name, phoneNumber, account, meetups} = profile;
 
-  if(!meetupMemberId || !name || !phoneNumber || !account)
+  if(!meetupMemberId || !account)
     throw new Error('invalid profile!');
 };
 

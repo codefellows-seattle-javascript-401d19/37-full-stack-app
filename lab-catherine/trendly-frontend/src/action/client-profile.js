@@ -10,12 +10,13 @@ export const createAction = (profile) => (store) => {
   let {token} = store.getState();
 
   return superagent.post(`${__API_URL__}${routes.PROFILE_ROUTE}`)
-    .set('Authorization, `Bearer ${token}')
+    .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
     .send(profile)
     .then(response => {
       return store.dispatch(setAction(response.body));
-    });
+    })
+    .catch(console.error);
 };
 
 export const updateAction = (user) => (store) => {
@@ -27,17 +28,17 @@ export const updateAction = (user) => (store) => {
     .send(user)
     .then(response => {
       return store.dispatch(setAction(response.body));
-    });
+    })
+    .catch(console.error);
 };
 
 export const fetchAction = () => (store) => {
-  let {token, clientProfile} = store.getState();
+  let {token} = store.getState();
 
-  if(clientProfile) {
-    return superagent.get(`${__API_URL__}${routes.PROFILE_ROUTE}/${clientProfile.account}`)
-      .set('Authorization', `Bearer ${token}`)
-      .then(response => {
-        return store.dispatch(setAction(response.body));
-      });
-  }
+  return superagent.get(`${__API_URL__}${routes.PROFILE_ROUTE}/me`)
+    .set('Authorization', `Bearer ${token}`)
+    .then(response => {
+      return store.dispatch(setAction(response.body));
+    })
+    .catch(console.error);
 };
