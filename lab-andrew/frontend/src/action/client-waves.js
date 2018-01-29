@@ -16,7 +16,6 @@ export const fetchActionRequest = () => store => {
   return superagent.get(`${__API_URL__}${routes.WAVES_ROUTE}`) //eslint-disable-line
     .set('Authorization', `Bearer ${token}`)
     .then(response => {
-      console.log(response);
       return store.dispatch(setAction(response.body));
     })
     .catch(response => {
@@ -30,14 +29,12 @@ export const fetchActionRequest = () => store => {
 
 export const createActionRequest = wave => store => {
   let {token} = store.getState();
-  console.log('wave on createActionRequest', wave);
   
   return superagent.post(`${__API_URL__}${routes.WAVES_ROUTE}/${wave.transform}`) //eslint-disable-line
     .set('Authorization', `Bearer ${token}`)
     .field('wavename', wave.wavename)
     .attach('wave', wave.wave)
     .then(response => {
-      console.log('response', response);
       return store.dispatch(setAction(response.body));
     })
     .catch(console.error);

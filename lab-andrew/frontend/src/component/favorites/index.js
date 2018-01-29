@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import FavoritesForm from '../favorites-form';
-import {Redirect} from 'react-router-dom';
 
 import * as clientFavorites from '../../action/client-favorites';
 import * as routes from '../../routes';
@@ -26,28 +25,33 @@ class Favorites extends React.Component {
     this.props.favoritesUpdate(favorites);
     this.setState({editing: false});
   }
+
+  componentWillMount(){
+    if (!this.props.loggedIn){
+      this.props.history.push(routes.ROOT_ROUTE);
+    }
+    if (!this.props.favorites){
+      this.props.history.push(routes.DASHBOARD_ROUTE);
+    }
+  }
+
   render() {
     let {favorites} = this.props;
 
-    if (!this.props.loggedIn) {
-      return (<Redirect to={routes.ROOT_ROUTE}/>);
-    }
-
-    if (!favorites) {
-      return (<Redirect to={routes.ROOT_ROUTE}/>);
-    }
-
-    const JSXEditing =
+    let JSXEditing, JSXDisplay;
+    if (favorites){
+      JSXEditing =
       <React.Fragment>
         <FavoritesForm favorites={favorites} onComplete={this.handleUpdate} />
         <button onClick={() => this.setState({editing: false})}> Cancel </button>
       </React.Fragment>;
       
-    const JSXDisplay =
+      JSXDisplay =
       <React.Fragment>
         <p>{favorites.notes}</p>
         <button onClick={() => this.setState({editing: true})}> Edit Notes </button>
       </React.Fragment>;
+    }
 
     const JSXFavorites = this.state.editing ? JSXEditing : JSXDisplay;
 
