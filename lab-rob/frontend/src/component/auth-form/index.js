@@ -92,7 +92,8 @@ class AuthForm extends React.Component {
 
     let signupJSX = (
       <Fragment>
-        <input 
+        <input
+          className={this.state.emailDirty && this.state.emailError ? 'error' : null}
           name='email'
           placeholder='email...'
           type='text'
@@ -108,6 +109,7 @@ class AuthForm extends React.Component {
     return (
       <form className='auth-form' onSubmit={this.handleSubmit}>
         <input
+          className={this.state.usernameDirty && this.state.usernameError ? 'error' : null}
           name='username'
           placeholder='username...'
           type='text'
@@ -116,7 +118,8 @@ class AuthForm extends React.Component {
         />
         {this.state.usernameDirty ? <p>{this.state.usernameError}</p> : null}
         
-        <input 
+        <input
+          className={this.state.passwordDirty && this.state.passwordError ? 'error' : null}
           name='password'
           placeholder='password...'
           type='password'

@@ -4,6 +4,7 @@ import {cookieDelete} from '../lib/cookie';
 import {getProfileAction} from '../action/profile';
 
 const COOKIE = 'X-Sluggram-Token';
+const apiUrl = API_URL; // eslint-disable-line
 
 export const setTokenAction = token => ({
   type: 'TOKEN_SET',
@@ -20,7 +21,7 @@ export const logoutAction = () => {
 };
 
 export const signupAction = (user) => (store) => {
-  return superagent.post(`${API_URL}/signup`) //eslint-disable-line
+  return superagent.post(`${apiUrl}/signup`)
     .send(user)
     .withCredentials()
     .then(({text}) => 
@@ -29,13 +30,13 @@ export const signupAction = (user) => (store) => {
 };
 
 export const loginAction = (user) => (store) => {
-  return superagent.get(`${API_URL}/login`) //eslint-disable-line
+  return superagent.get(`${apiUrl}/login`)
     .auth(user.username, user.password)
     .withCredentials()
     .then(({text}) => 
       store.dispatch(setTokenAction(text)))
     .then(() => {
-      store.dispatch(getProfileAction());
+      store.dispatch(getProfileAction()); // could also perform this action in in landing handleLogin
     })
     .catch(console.log); // TODO: add error checking
 };

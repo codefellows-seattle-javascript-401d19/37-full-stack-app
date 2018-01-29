@@ -1,8 +1,8 @@
 import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
 
-import autoBind from '../../lib/auto-bind';
 import ProfileForm from '../profile-form';
+import autoBind from '../../lib/auto-bind';
 import {createProfileAction, updateProfileAction} from '../../action/profile';
 
 class Profile extends React.Component {
@@ -18,9 +18,6 @@ class Profile extends React.Component {
 
   handleCreate(profile) {
     this.props.createProfile(profile);
-      // .then(() => {
-      //   this.props.history.push('/dashboard');
-      // });
   }
 
   handleUpdate(profile) {
@@ -31,7 +28,6 @@ class Profile extends React.Component {
   render() {
     let {
       profile,
-      profileCreate,
     } = this.props;
 
     let JSXEditing = null, JSXProfile = null, JSXRender = null;

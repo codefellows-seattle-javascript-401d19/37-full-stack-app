@@ -20,9 +20,8 @@ class Header extends React.Component {
           <li><Link to='/dashboard'>Dashboard</Link></li>
           <li><Link to='/profile'>Profile</Link></li>
         </ul>
-        <button onClick={this.props.handleLogout}>Logout</button>
+        <button onClick={this.props.performLogout}>Logout</button>
       </Fragment>
-      
     );
 
     return (
@@ -41,7 +40,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleLogout: () => dispatch(logoutAction()),
+  performLogout: () => dispatch(logoutAction()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

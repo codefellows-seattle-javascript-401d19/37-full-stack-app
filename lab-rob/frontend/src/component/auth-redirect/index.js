@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
@@ -17,9 +17,9 @@ class AuthRedirect extends React.Component {
     }
 
     return (
-      <div className='auth-redirect'>
+      <Fragment>
         {destinationRoute ? <Redirect to={destinationRoute} /> : null}
-      </div>
+      </Fragment>
     );
   }
 }

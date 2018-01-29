@@ -15,7 +15,7 @@ const store = createStore(reducer, composeWithDevTools(
   applyMiddleware(reporter, thunk)
 ));
 
-let container = document.createElement('main');
+const container = document.createElement('main');
 document.body.appendChild(container);
 
 ReactDOM.render(
