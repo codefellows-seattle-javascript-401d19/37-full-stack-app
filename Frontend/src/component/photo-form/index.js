@@ -35,7 +35,7 @@ class PhotoForm extends React.Component {
 						return 'You must select only one file.';
 
 					let imageType = files[0].type;
-
+					console.log('image type', imageType)
 					if(!validImageTypes.includes(imageType))
 						return 'The image must be a png or jpg';
 
@@ -60,7 +60,7 @@ class PhotoForm extends React.Component {
 						.then(preview => this.setState({preview}));
 				}
 				this.setState({
-					photo: file[0],
+					photo: files[0],
 					photoError: error,
 					photoDirty: true,
 				});
@@ -75,7 +75,6 @@ class PhotoForm extends React.Component {
 
 		handleSubmit(event) {
 			event.preventDefault();
-
 			this.props.onComplete(this.state);
 			this.setState(this.emptyState);
 		}
