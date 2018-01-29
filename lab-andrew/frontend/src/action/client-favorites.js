@@ -6,7 +6,7 @@ export const setAction = favorite => ({
   payload: favorite,
 });
 
-export const updateAction = favorite => (store) => {
+export const updateAction = favorite => store => {
   let {token} = store.getState();
 
   return superagent.put(`${__API_URL__}${routes.FAVORITES_ROUTE}`) //eslint-disable-line
@@ -18,7 +18,7 @@ export const updateAction = favorite => (store) => {
     });
 };
 
-export const fetchAction = () => (store) => {
+export const fetchAction = () => store => {
   let {token} = store.getState();
   console.log({token});
   return superagent.get(`${__API_URL__}${routes.FAVORITES_ROUTE}/me`) //eslint-disable-line
