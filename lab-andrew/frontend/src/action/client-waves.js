@@ -1,13 +1,8 @@
 import superagent from 'superagent';
 import * as routes from '../routes';
 
-export const setAction = waves => ({
-  type: 'CLIENT_WAVES_SET',
-  payload: waves,
-});
-
-export const createAction = wave => ({
-  type: 'CLIENT_WAVE_CREATE',
+export const setAction = wave => ({
+  type: 'CLIENT_WAVE_SET',
   payload: wave,
 });
 
@@ -22,19 +17,22 @@ export const fetchActionRequest = () => store => {
   return superagent.get(`${__API_URL__}${routes.WAVES_ROUTE}`) //eslint-disable-line
     .set('Authorization', `Bearer ${token}`)
     .then(response => {
+      console.log(response);
       return store.dispatch(setAction(response.body.data));
     });
 };
 
 export const createActionRequest = wave => store => {
   let {token} = store.getState();
-
-  return superagent.post(`${__API_URL__}${routes.WAVES_ROUTE}`) //eslint-disable-line
+  console.log('wave on createActionRequest', wave);
+  
+  return superagent.post(`${__API_URL__}${routes.WAVES_ROUTE}/delay`) //eslint-disable-line
     .set('Authorization', `Bearer ${token}`)
-    .field('description', wave.description)
+    .field('wavename', wave.wavename)
     .attach('wave', wave.wave)
     .then(response => {
-      return store.dispatch(createAction(response.body));
+      console.log(response);
+      return store.dispatch(setAction(response.body));
     });
 
 };

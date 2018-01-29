@@ -11,17 +11,14 @@ export const validateWave = wave => {
 
 export default (state = [], {type, payload}) => {
   switch (type) {
-    case 'CLIENT_WAVES_SET':
-      validateWave(payload);
-      return payload;
-    case 'CLIENT_WAVE_CREATE':
+    case 'CLIENT_WAVE_SET':
       validateWave(payload);
       return payload;
     case 'CLIENT_WAVE_REMOVE':
       validateWave(payload);
-      return state.filter(item => item._id !== payload._id);
+      return null;
     case 'TOKEN_REMOVE':
-      return [];
+      return null;
     default:
       return state;
   }

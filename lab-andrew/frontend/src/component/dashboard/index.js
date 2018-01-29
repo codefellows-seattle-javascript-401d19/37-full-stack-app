@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+// import Wave from '../wave';
+import * as clientWaves from '../../action/client-waves';
 import * as clientFavorites from '../../action/client-favorites';
 
 
@@ -15,6 +17,7 @@ class Dashboard extends React.Component {
     return (
       <div className='dashboard'>
         <h1> scrambleVox </h1>
+        {/* <Wave/> */}
       </div>
     );
   }
@@ -25,6 +28,7 @@ let mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  createWave: wave => dispatch(clientWaves.createActionRequest(wave)),
   fetchClientFavorites: () => dispatch(clientFavorites.fetchAction()),
 });
 

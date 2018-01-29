@@ -5,6 +5,7 @@ import Header from '../header';
 import Landing from '../landing';
 import Favorites from '../favorites';
 import Dashboard from '../dashboard';
+import WaveForm from '../wave-form';
 import AuthRedirect from '../auth-redirect';
 
 class App extends React.Component {
@@ -19,7 +20,8 @@ class App extends React.Component {
             <Route exact path='/signup' component={Landing}/>
             <Route exact path='/login' component={Landing}/>
             <Route exact path='/dashboard' component={Dashboard}/>
-            <Route exact path='/favorites' component={Favorites} />
+            <Route exact path='/upload' component={WaveForm}/>
+            <Route exact path='/favorites' component={Favorites}/>
           </div>
         </BrowserRouter>
       </div>

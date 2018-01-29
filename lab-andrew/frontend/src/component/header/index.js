@@ -33,11 +33,11 @@ class Header extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   loggedIn: !!state.token,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   doLogout: () => dispatch(authActions.logoutAction()),
 });
 
