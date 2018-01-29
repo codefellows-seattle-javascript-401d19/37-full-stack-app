@@ -4,15 +4,15 @@ import {Redirect} from 'react-router-dom';
 import * as routes from '../../routes';
 
 class AuthRedirect extends React.Component {
-	render () {
-		let {location, history, token} = this.props;
-		let {pathname} = location;
-		let destinationRoute = null;
+  render () {
+    let {location, history, token} = this.props;
+    let {pathname} = location;
+    let destinationRoute = null;
 
-		if(pathname === routes.LOGIN_ROUTE || pathname === routes.SIGNUP_ROUTE || pathname === routes.ROOT_ROUTE) {
-			if(token) {
-				destinationRoute = routes.DASHBOARD_ROUTE;
-			}
+    if(pathname === routes.LOGIN_ROUTE || pathname === routes.SIGNUP_ROUTE || pathname === routes.ROOT_ROUTE) {
+      if(token) {
+        destinationRoute = routes.DASHBOARD_ROUTE;
+      }
 		 }
 		 else {
 			 if(!token)
@@ -23,11 +23,11 @@ class AuthRedirect extends React.Component {
 			 {destinationRoute ? <Redirect to={destinationRoute} /> : undefined }
 			 </div>
 		 );
-	}
+  }
 }
 
 const mapStateToProps = state => ({
-	token: state.token,
+  token: state.token,
 });
 
 export default connect(mapStateToProps)(AuthRedirect);
