@@ -1,5 +1,5 @@
-# 38#: User, Profile Login with React, Redux, Auth,Middleware and a backend Sluggram
-This app allows a user to signup, login and change their profile.
+# 40#: User, Profile, Photo Login with React, Redux, Auth,Middleware and a backend Sluggram and AWS
+This app allows a user to signup, login and change their profile and add a photo to AWS bucket.
 It saves cookies so the user can move around without having to login each time.
 
 ## Features

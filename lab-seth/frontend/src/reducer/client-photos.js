@@ -7,7 +7,9 @@ export const validatePhoto = (photo) => {
     throw new Error('Photo not valid')
 }
 
-export default(state = [], {type, payload}) => {
+export default (state = [], { type, payload }) => {
+  console.log('type:', type, 'payload: ', payload)
+
   switch(type){
     case 'CLIENT_PHOTOS_FETCH':
       if(!Array.isArray(payload))
@@ -17,6 +19,7 @@ export default(state = [], {type, payload}) => {
       return payload
 
     case 'CLIENT_PHOTO_CREATE':
+      console.log('+++++CREATE PAYLOAD++++', payload)
       validatePhoto(payload)
       return [payload,...state]
 
