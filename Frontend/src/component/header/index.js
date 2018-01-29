@@ -15,7 +15,7 @@ class Header extends React.Component {
 			<ul>
 			  <li><Link to='/dashboard'> Dashboard </Link> </li>
 			  <li><Link to='/upload'> Upload Image </Link> </li>
-			  <li><Link to='/profile'> Go to Profile </Link> </li>
+			  <li><Link to='/profiles'> Go to Profile </Link> </li>
 			</ul>
 
     return(
