@@ -7,6 +7,8 @@ class Wave extends React.Component {
   render(){
     let scrambledAudio = this.props.wave ? (
       <React.Fragment>
+        <h3>Here is your transformed wave file:</h3>
+        <h2>{this.props.wave.wavename}</h2>
         <audio
           controls
           src={this.props.wave.url}
@@ -17,7 +19,7 @@ class Wave extends React.Component {
           Delete
         </button>
       </React.Fragment>
-    ) : <p>Click on upload to load a wave file and get started!</p>;
+    ) : <h3>Click on upload to load a wave file and get started!</h3>;
     return (
       <React.Fragment>
         {scrambledAudio}
