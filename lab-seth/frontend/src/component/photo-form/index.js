@@ -56,7 +56,7 @@ class PhotoForm extends React.Component {
     let {type, value, files} = event.target
 
     if(type === 'file'){
-      let error = this.handleValidate(event.target)
+      let error = this.handleValidate(event.target) 
       if(!error){
         fileToDataURL(files[0])
           .then(preview => this.setState({preview}))
@@ -69,7 +69,7 @@ class PhotoForm extends React.Component {
     }else{
       this.setState({
         description: value,
-        descriptionError: this.handleChange(event.target),
+        descriptionError: this.handleValidate(event.target),
         descriptionDirty: true,
       })
     }

@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux'
 
 import PhotoForm from '../photo-form'
-import * as clientPhotos from '../../action/client-photo'
+import * as clientPhotos from '../../action/client-photos'
 
 class Dashboard extends React.Component{
   render(){
@@ -16,7 +16,7 @@ class Dashboard extends React.Component{
 }
 
 const mapDispathToProps = (dispatch) => ({
-  createPhoto: (photo) => dispatch(clientPhotos.createAction(photo))
+  createPhoto: (photo) => dispatch(clientPhotos.createActionRequest(photo))
 })
 
-export default Dashboard;
+export default connect(null, mapDispathToProps)(Dashboard);
