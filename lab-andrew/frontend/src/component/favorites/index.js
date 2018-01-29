@@ -62,8 +62,8 @@ class Favorites extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  favorites: state.clientFavorites,
   loggedIn: !!state.token,
+  favorites: state.clientFavorites,
 });
 
 const mapDispatchToProps = (dispatch) => ({

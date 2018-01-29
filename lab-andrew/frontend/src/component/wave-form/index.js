@@ -14,6 +14,8 @@ const emptyState = {
   wavename: '',
   wavenameDirty: false,
   wavenameError: 'Wavename is required.',
+
+  transform: 'bitcrusher',
 };
 
 class WaveForm extends React.Component {
@@ -41,7 +43,6 @@ class WaveForm extends React.Component {
           return 'You must only select one file';
 
         let audioType = files[0].type;
-        console.log(files[0]);
         if (!validAudioType.includes(audioType))
           return 'The audio must be a wav';
 
@@ -59,7 +60,6 @@ class WaveForm extends React.Component {
 
   handleChange(event) {
     let {type, value, files} = event.target;
-
     if (type === 'file') {
       let error = this.handleValidate(event.target);
       if (!error) {
@@ -71,11 +71,15 @@ class WaveForm extends React.Component {
         waveError: error,
         waveDirty: true,
       });
-    } else {
+    } else if (type === 'text') {
       this.setState({
         wavename: value,
         wavenameError: this.handleValidate(event.target),
         wavenameDirty: true,
+      });
+    } else {
+      this.setState({
+        transform: value,
       });
     }
   }
@@ -106,7 +110,8 @@ class WaveForm extends React.Component {
           className='wave-form'>
           <audio 
             controls
-            src={this.state.preview} type='audio/wav'>
+            src={this.state.preview}
+            type='audio/wav'>
           </audio>
 
           <p>{this.state.waveDirty ? this.state.waveError : null}</p>
@@ -127,6 +132,15 @@ class WaveForm extends React.Component {
             value={this.state.wavename}
             onChange={this.handleChange}
           />
+          
+          <select name="transform" onChange={this.handleChange}>
+            <option value="bitcrusher">Bit-Crush</option>
+            <option value="downpitcher">Down-Pitch</option>
+            <option value="delay">Delay</option>
+            <option value="noise">Add Noise</option>
+            <option value="reverse">Reverse</option>
+          </select>
+          <label>Tranform option</label>
 
           <button type='submit'> upload wave </button>
         </form>
