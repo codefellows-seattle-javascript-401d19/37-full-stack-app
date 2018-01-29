@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 
 import AuthForm from '../auth-form';
 import * as authActions from '../../action/auth';
+import * as profileActions from '../../action/client-profile';
 
 import * as routes from '../../routes';
 
@@ -76,5 +77,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   doSignup : (user) => dispatch(authActions.signupAction(user)),
   doLogin : (user) => dispatch(authActions.loginAction(user)),
+  fetchClientProfile: () => dispatch(profileActions.fetchAction()),
 });
 export default connect(mapStateToProps,mapDispatchToProps)(Landing);
