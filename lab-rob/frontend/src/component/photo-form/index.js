@@ -2,23 +2,23 @@ import React, {Fragment} from 'react';
 
 import autoBind from '../../lib/auto-bind';
 
-let emptyState = {
-  preview: null,
-
-  photo: '',
-  photoDirty: false,
-  photoError: 'Photo is required.',
-
-  description: '',
-  descriptionDirty: false,
-  descriptionError: 'Description is required.',
-};
-
 class PhotoForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = emptyState;
+    this.emptyState = {
+      preview: null,
+    
+      photo: '',
+      photoDirty: false,
+      photoError: 'Photo is required.',
+    
+      description: '',
+      descriptionDirty: false,
+      descriptionError: 'Description is required.',
+    };
+
+    this.state = this.emptyState;
 
     autoBind(this, PhotoForm);
   }
@@ -75,7 +75,7 @@ class PhotoForm extends React.Component {
     event.preventDefault();
     
     this.props.onComplete(this.state);
-    this.setState(emptyState); // TODO: May need to change this to a this prop
+    this.setState(this.emptyState); // TODO: May need to change this to a this prop
   }
 
   render() {

@@ -2,6 +2,7 @@ import superagent from 'superagent';
 
 import {cookieDelete} from '../lib/cookie';
 import {getProfileAction} from '../action/profile';
+import {getPhotosActionRequest} from '../action/photos';
 
 const COOKIE = 'X-Sluggram-Token';
 const apiUrl = API_URL; // eslint-disable-line
@@ -37,6 +38,9 @@ export const loginAction = (user) => (store) => {
       store.dispatch(setTokenAction(text)))
     .then(() => 
       store.dispatch(getProfileAction()) // could also perform this action in in landing handleLogin
+    )
+    .then(() => 
+      store.dispatch(getPhotosActionRequest())
     )
     .catch(console.log); // TODO: add error checking
 };
