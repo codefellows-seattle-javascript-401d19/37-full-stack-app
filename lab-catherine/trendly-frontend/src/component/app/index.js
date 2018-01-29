@@ -8,6 +8,7 @@ import Profile from '../profile';
 import Dashboard from '../dashboard';
 import AuthRedirect from '../auth-redirect';
 import AuthForm from '../auth-form';
+import PhotoForm from '../photo-form';
 
 import * as clientProfile from '../../action/client-profile';
 
@@ -32,6 +33,7 @@ class App extends React.Component {
             <Route exact path='/login' component={Landing}/>
             <Route exact path ='/dashboard' component={Dashboard}/>
             <Route exact path='/profile' component={Profile}/>
+            <Route exact path='/upload' component={PhotoForm}/>
           </div>
         </BrowserRouter>
       </div>
