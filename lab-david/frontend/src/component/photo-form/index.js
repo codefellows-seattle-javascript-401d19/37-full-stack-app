@@ -34,22 +34,22 @@ class PhotoForm extends React.Component{
   //-------------------------------------------------------------
 
   handleValidate({type, value, files}){
-    let validImageTypes = ['image/png', 'image/jpg', 'image/jpg'];
+    let validImageTypes = ['image/png', 'image/jpeg', 'image/jpg'];
     
     switch(type){
       case 'file':
         if(files.length !== 1)
-          return 'You must only upload one, and only one, photo';
+          return 'You must only select one file';
 
         let imageType = files[0].type;
 
         if(!validImageTypes.includes(imageType))
-          return 'The photo must be a jpeg, png or jpg';
-        
+          return 'The image must be a png or a jpg';
+
         return null;
       case 'text':
         if(value.length < 5)
-          return 'You must have at least 5 characters';
+          return 'Description must have at least 5 characters';
         return null;
       default:
         return null;
@@ -79,10 +79,10 @@ class PhotoForm extends React.Component{
     }
   }
 
-  handleSumbit(event){
+  handleSubmit(event){
     event.preventDefault();
     // david - TODO if there is an error dont call onComplete
-    this.props.OnComplete(this.state);
+    this.props.onComplete(this.state);
     this.setState(this.emptyState);
   }
 
@@ -128,16 +128,12 @@ const fileToDataURL = (file) => {
   return new Promise((resolve, reject) => {
     if(!file)
       return reject(new Error('file required'));
-  
+
     let reader = new FileReader();
 
     reader.addEventListener('load', () => resolve(reader.result));
     reader.addEventListener('error', reject);
 
     return reader.readAsDataURL(file);
-  }
-
-
-
-  );
+  });
 };

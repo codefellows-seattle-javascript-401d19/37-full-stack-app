@@ -3,6 +3,7 @@ const validatePhoto = (photo) => {
     throw new Error('a photo is required');
 
   // david - optional TODO refactor into IFs so user knows what failed exactly
+  let {_id, url, description, owner} = photo;
   if(!photo._id || !photo.url || !photo.description || !photo.owner) 
     throw new Error('the photo is invalid and requires id, url, description and owner');
 };
