@@ -104,7 +104,8 @@ class WaveForm extends React.Component {
     const {redirect} = this.state;
     return (
       <React.Fragment>
-
+        <h2> Upload </h2>
+        <h4> Upload any 16 bit wav file under 48khz and less than 10 Mb </h4>
         <form
           onSubmit={this.handleSubmit}
           className='wave-form'>

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is the front end for the scrambleVox application. Upon arrival, a user will be welcomed and asked to login or signup. If they are successful, they will be returned a token, and will be redirected to the dashboard. The user's favorites model will be retrieved from the dashboard, and they have the opportunity to add a memo in the 'notes' area.
+This is the front end for the scrambleVox application. Upon arrival, a user will be welcomed and asked to login or signup. If they are successful, they will be returned a token, and will be redirected to the dashboard. The user's favorites model will be retrieved from the dashboard, and they have the opportunity to add a memo in the 'notes' area. 
 
 ***
 ## Getting Started

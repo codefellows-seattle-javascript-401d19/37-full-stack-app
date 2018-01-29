@@ -53,7 +53,9 @@ class Favorites extends React.Component {
 
     return (
       <React.Fragment>
-        <h2> favorites </h2>
+        <h1> Favorites </h1>
+        <h3> Here is where you can keep notes about your favorite transform functions! </h3>
+        <h2> My Notes: </h2>
         {JSXFavorites}
       </React.Fragment>
 
