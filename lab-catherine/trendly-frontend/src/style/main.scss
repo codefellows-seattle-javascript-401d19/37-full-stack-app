@@ -1,0 +1,21 @@
+* {
+  background-color: cornsilk;
+  font-family: Baskerville;
+  color: darkSlateGray;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+nav {
+li {
+  margin: 10px;
+  display: inline-block;
+}
+
+a {
+  padding: 5px;
+}
+  a:hover {
+    background-color: salmon;
+  }
+}
