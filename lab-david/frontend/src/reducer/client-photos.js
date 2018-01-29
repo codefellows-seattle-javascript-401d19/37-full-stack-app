@@ -10,6 +10,7 @@ const validatePhoto = (photo) => {
 
 // setting state to default array b/c backend returns empty array
 export default(state = [], {type, payload}) => { // david - default  : (state, action)
+  
   switch(type){
     case 'CLIENT_PHOTOS_SET' : 
       if(!Array.isArray(payload))
@@ -21,6 +22,7 @@ export default(state = [], {type, payload}) => { // david - default  : (state, a
     case 'CLIENT_PHOTO_CREATE' : 
       validatePhoto(payload);
       return [payload, ...state];
+      
 
     case 'CLIENT_PHOTO_REMOVE' : 
       validatePhoto(payload);
