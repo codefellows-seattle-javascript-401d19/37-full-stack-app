@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import clientPhoto from '../../action/client-photo';
 
 class PhotoForm extends React.Component {
   constructor(props) {
@@ -13,7 +15,7 @@ class PhotoForm extends React.Component {
 
       description:  '',
       descriptionDirty: false,
-      descriptionError: 'Photo is required',
+      descriptionError: 'Description is required',
     };
 
     this.state = this.emptyState;
@@ -28,14 +30,13 @@ class PhotoForm extends React.Component {
 
   handleValidate({type, value, files}) {
     let validImageTypes = ['image/png', 'image/jpeg', 'image/jpg'];
-    let imageType = files[0].type;
-
+    
     switch(type) {
       case 'file':
         if(files.length !== 1)
           return 'You must only select one file at a time';
-
-        if(!validImageTypes.includes(imageType))
+      
+        if(!validImageTypes.includes(files[0].type))
           return 'The image must be a png or a jpg';
 
         return null;
@@ -74,7 +75,8 @@ class PhotoForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.onComplete(this.state);
+    // this.props.onComplete(this.state);
+    this.props.photoSubmit(this.state);
     this.setState(this.emptyState);
   }
 
@@ -110,7 +112,11 @@ class PhotoForm extends React.Component {
   }
 }
 
-export default PhotoForm;
+const mapDispatchToProps = (dispatch) => ({
+  photoSubmit : (photo) => dispatch(clientPhoto.createActionRequest(photo)),
+});
+
+export default connect(null, mapDispatchToProps)(PhotoForm);
 
 const fileToDataURL = (file) => {
   return new Promise((resolve, reject) => {
