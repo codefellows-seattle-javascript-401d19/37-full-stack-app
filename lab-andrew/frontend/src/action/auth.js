@@ -2,7 +2,7 @@ import superagent from 'superagent';
 import * as routes from '../routes';
 import * as cookie from '../lib/cookie';
 
-export const setTokenAction = (token) => ({
+export const setTokenAction = token => ({
   type: 'TOKEN_SET',
   payload: token,
 });
@@ -16,7 +16,7 @@ export const logoutAction = () => {
   return removeTokenAction();
 };
 
-export const signupAction = (user) => (store) => {
+export const signupAction = user => store => {
   return superagent.post(`${__API_URL__}${routes.SIGNUP_ROUTE}`) //eslint-disable-line
     .send(user)
     .withCredentials()
@@ -27,7 +27,7 @@ export const signupAction = (user) => (store) => {
     .catch(console.error);
 };
 
-export const loginAction = (user) => (store) => {
+export const loginAction = user => store => {
   return superagent.get(`${__API_URL__}${routes.LOGIN_ROUTE}`) //eslint-disable-line
     .auth(user.username, user.password)
     .withCredentials()

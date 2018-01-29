@@ -104,6 +104,12 @@ waveRouter.post('/waves/:transform', bearerAuth, upload.any(), (request, respons
 
 });
 
+waveRouter.get('/waves/all', bearerAuth, (request, response, next) => {
+  return Wave.find({})
+    .then(waves => response.json(waves))
+    .catch(next);
+});
+
 waveRouter.get('/waves', bearerAuth, (request, response, next) => {
 
   return Wave.findOne({ user: request.user._id })
