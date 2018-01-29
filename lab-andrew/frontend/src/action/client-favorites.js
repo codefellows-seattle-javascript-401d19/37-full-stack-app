@@ -20,7 +20,6 @@ export const updateAction = favorite => store => {
 
 export const fetchAction = () => store => {
   let {token} = store.getState();
-  console.log({token});
   return superagent.get(`${__API_URL__}${routes.FAVORITES_ROUTE}/me`) //eslint-disable-line
     .set('Authorization', `Bearer ${token}`)
     .then(response => {

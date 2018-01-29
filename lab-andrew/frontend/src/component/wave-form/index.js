@@ -1,6 +1,5 @@
 import React from 'react';
 import * as clientWaves from '../../action/client-waves';
-import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as routes from '../../routes';
 
@@ -23,7 +22,6 @@ class WaveForm extends React.Component {
     super(props);
 
     this.state = emptyState;
-    this.state.redirect = false;
     
     let memberFunctions = Object.getOwnPropertyNames(WaveForm.prototype);
     for (let functionName of memberFunctions) {
@@ -90,7 +88,7 @@ class WaveForm extends React.Component {
     if (!waveError && !wavenameError) {
       this.props.waveCreate(this.state);
       this.setState(emptyState);
-      this.setState({redirect: true});
+      this.props.history.push(routes.DASHBOARD_ROUTE);
     } else {
       this.setState({
         waveDirty: true,
@@ -101,7 +99,6 @@ class WaveForm extends React.Component {
 
 
   render() {
-    const {redirect} = this.state;
     return (
       <React.Fragment>
         <h2> Upload </h2>
@@ -145,10 +142,6 @@ class WaveForm extends React.Component {
 
           <button type='submit'> upload wave </button>
         </form>
-        {redirect && (
-          <Redirect to={routes.DASHBOARD_ROUTE} />
-        )
-        }
       </React.Fragment>
     
     );
