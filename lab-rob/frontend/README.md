@@ -1,9 +1,9 @@
 # Code Fellows: Code 401d19: Full-Stack JavaScript
 
-## Lab 36: Full Stack Crud
-### 1/23/18
+## Lab 40: Full Stack Crud
+### 1/28/18
 
-This is the front end to the budget calculator, now with mongo persistence.
+This is a frontend to SlugGram, an instagram clone. You can signup for an account, login, create a profile, and uplaod photos to your account. Photos are stored in AWS.
 
 ## Tech/frameworks/packages
 
@@ -40,8 +40,6 @@ This is the front end to the budget calculator, now with mongo persistence.
 ## How to use?
 
 Clone this repo, `cd` into `lab-rob/frontend`, run `npm i` to install dependencies. 
-
-  If all you want to do is use the site, simply open `/lab-rob/build/index.html` using live-server or nodemon. Don't forget to start the backend as well.
 
 If you want to make and see your changes, make sure you have `webpack-dev-server` installed globally with `npm i webpack-dev-server -g`. Type `npm run watch` to start a live-server. Webpack will tell you the url of the site, but it will most likely be `localhost:8080`. You can now make changes to the file and see them rendered to the page. Make sure to start the backend as well.
 

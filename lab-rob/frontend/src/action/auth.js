@@ -35,8 +35,8 @@ export const loginAction = (user) => (store) => {
     .withCredentials()
     .then(({text}) => 
       store.dispatch(setTokenAction(text)))
-    .then(() => {
-      store.dispatch(getProfileAction()); // could also perform this action in in landing handleLogin
-    })
+    .then(() => 
+      store.dispatch(getProfileAction()) // could also perform this action in in landing handleLogin
+    )
     .catch(console.log); // TODO: add error checking
 };

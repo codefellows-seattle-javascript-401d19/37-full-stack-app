@@ -10,7 +10,7 @@ class AuthRedirect extends React.Component {
 
     if(['/login', '/signup', '/'].includes(pathname)) {
       if(token) // If already logged in, go to dashboard
-        destinationRoute = '/dashboard';
+        destinationRoute = '/profile';
     } else { // TODO: change this to a catch all that shows a 404
       if(!token)
         destinationRoute = '/';
