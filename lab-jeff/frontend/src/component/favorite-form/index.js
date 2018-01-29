@@ -38,7 +38,7 @@ class FavoriteForm extends React.Component {
   // Hooks
   //---------------------------------------------------------------
   componentWillReceiveProps(props) {
-    if (props.profile) this.setState(props.profile);
+    if (props.favorite) this.setState(props.favorite);
   }
 
   render() {

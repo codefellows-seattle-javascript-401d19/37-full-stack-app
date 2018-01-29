@@ -1,9 +1,5 @@
 export const validateWave = wave => {
   if (!wave) throw new Error('wave required');
-
-  let { url, user, wavename } = wave;
-
-  // if (!description) throw new Error('invalid favorite');
 };
 
 export default (state = null, action) => {

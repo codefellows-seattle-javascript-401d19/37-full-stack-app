@@ -47,12 +47,11 @@ export const createActionRequest = wave => store => {
   let { token } = store.getState();
 
   return superagent
-    .post(`${__API_URL__}${routes.WAVE_ROUTE}/delay`)
+    .post(`${__API_URL__}${routes.WAVE_ROUTE}/${wave.transform}`)
     .set('Authorization', `Bearer ${token}`)
     .field('description', wave.wavename)
     .attach('wave', wave.wave)
     .then(response => {
-      console.log(response.body);
       return store.dispatch(createAction(response.body));
     });
 };

@@ -26,7 +26,7 @@ class Header extends React.Component {
           <Link to="/dashboard"> dashboard </Link>
         </li>
         <li>
-          <Link to="/upload"> upload </Link>
+          <Link to="/transform"> transform a wave </Link>
         </li>
         <li>
           <Link to="/favorite"> favorites </Link>

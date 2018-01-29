@@ -30,7 +30,6 @@ export const signupAction = user => store => {
     .send(user)
     .withCredentials()
     .then(response => {
-      console.log({ response });
       return store.dispatch(setTokenAction(JSON.parse(response.text).token));
     });
 };
@@ -41,7 +40,6 @@ export const loginAction = user => store => {
     .auth(user.username, user.password)
     .withCredentials()
     .then(response => {
-      console.log({ response });
       return store.dispatch(setTokenAction(JSON.parse(response.text).token));
     });
 };

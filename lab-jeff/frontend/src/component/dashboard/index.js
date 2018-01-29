@@ -9,7 +9,6 @@ class Dashboard extends React.Component {
     return (
       <div className="dashboard">
         <h1> DASHBOARD YO! </h1>
-        <WaveForm onComplete={this.props.createWave} wave={this.props.wave} />
       </div>
     );
   }

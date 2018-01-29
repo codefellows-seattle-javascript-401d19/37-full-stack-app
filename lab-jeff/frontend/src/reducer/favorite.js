@@ -1,9 +1,5 @@
 export const validateFavorite = favorite => {
   if (!favorite) throw new Error('favorite required');
-
-  let { description } = favorite;
-
-  // if (!description) throw new Error('invalid favorite');
 };
 
 export default (state = null, action) => {

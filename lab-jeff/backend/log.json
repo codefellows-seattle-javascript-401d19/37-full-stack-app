@@ -67,3 +67,116 @@
 {"level":"info","message":"Processing : POST on : /waves/delay","timestamp":"2018-01-27T18:56:14.286Z"}
 {"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-27T18:57:40.662Z"}
 {"level":"info","message":"Processing : POST on : /waves/delay","timestamp":"2018-01-27T18:57:52.096Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-29T02:15:23.107Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T02:15:23.253Z"}
+{"level":"info","message":"Processing : POST on : /waves/delay","timestamp":"2018-01-29T02:16:07.738Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T02:24:01.927Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T02:25:38.638Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T02:26:06.119Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T02:27:49.069Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T02:28:24.617Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-29T02:32:39.913Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T02:32:39.965Z"}
+{"level":"info","message":"Processing : POST on : /waves/delay","timestamp":"2018-01-29T02:33:00.574Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T02:34:24.988Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T02:34:48.723Z"}
+{"level":"info","message":"Processing : POST on : /waves/delay","timestamp":"2018-01-29T02:34:59.316Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T02:43:50.183Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T02:44:22.187Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-29T02:48:05.458Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T02:48:05.516Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-29T02:50:31.623Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T02:50:31.688Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T03:01:44.702Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T03:01:44.706Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-29T03:02:41.631Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T03:02:41.692Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T03:02:41.695Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T03:03:53.957Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T03:03:53.959Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T03:11:49.325Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T03:11:49.326Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-29T03:19:11.556Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T03:19:11.621Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T03:19:11.624Z"}
+{"level":"info","message":"Processing : POST on : /waves/delay","timestamp":"2018-01-29T03:19:35.667Z"}
+{"level":"info","message":"Processing : POST on : /waves/delay","timestamp":"2018-01-29T03:22:47.389Z"}
+{"level":"info","message":"__ERROR_MIDDLEWARE__","timestamp":"2018-01-29T03:22:47.403Z"}
+{"message":"Cannot read property 'fieldname' of undefined","stack":"TypeError: Cannot read property 'fieldname' of undefined\n    at waveRouter.post (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/route/wave-router.js:24:52)\n    at Layer.handle [as handle_request] (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/express/lib/router/route.js:137:13)\n    at Immediate.<anonymous> (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/multer/lib/make-middleware.js:53:37)\n    at runCallback (timers.js:793:20)\n    at tryOnImmediate (timers.js:751:5)\n    at processImmediate [as _immediateCallback] (timers.js:722:5)","level":"info","timestamp":"2018-01-29T03:22:47.403Z"}
+{"level":"info","message":"Responding with a 500 status code","timestamp":"2018-01-29T03:22:47.408Z"}
+{"message":"Cannot read property 'fieldname' of undefined","stack":"TypeError: Cannot read property 'fieldname' of undefined\n    at waveRouter.post (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/route/wave-router.js:24:52)\n    at Layer.handle [as handle_request] (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/express/lib/router/route.js:137:13)\n    at Immediate.<anonymous> (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/multer/lib/make-middleware.js:53:37)\n    at runCallback (timers.js:793:20)\n    at tryOnImmediate (timers.js:751:5)\n    at processImmediate [as _immediateCallback] (timers.js:722:5)","level":"info","timestamp":"2018-01-29T03:22:47.408Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-29T03:23:30.969Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T03:23:31.030Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T03:23:31.031Z"}
+{"level":"info","message":"Processing : POST on : /waves/delay","timestamp":"2018-01-29T03:25:20.830Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T03:35:41.287Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T03:35:41.296Z"}
+{"level":"info","message":"Processing : POST on : /waves/","timestamp":"2018-01-29T03:35:52.372Z"}
+{"level":"info","message":"Returning a 404 from the catch-all route","timestamp":"2018-01-29T03:35:52.372Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-29T03:40:10.585Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T03:40:10.645Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T03:40:10.646Z"}
+{"level":"info","message":"Processing : POST on : /waves/reverse","timestamp":"2018-01-29T03:40:40.806Z"}
+{"level":"info","message":"Processing : POST on : /waves/bitcrusher","timestamp":"2018-01-29T03:40:58.771Z"}
+{"level":"info","message":"__ERROR_MIDDLEWARE__","timestamp":"2018-01-29T03:40:58.774Z"}
+{"message":"Cannot read property 'fieldname' of undefined","stack":"TypeError: Cannot read property 'fieldname' of undefined\n    at waveRouter.post (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/route/wave-router.js:24:52)\n    at Layer.handle [as handle_request] (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/express/lib/router/route.js:137:13)\n    at Immediate.<anonymous> (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/multer/lib/make-middleware.js:53:37)\n    at runCallback (timers.js:793:20)\n    at tryOnImmediate (timers.js:751:5)\n    at processImmediate [as _immediateCallback] (timers.js:722:5)","level":"info","timestamp":"2018-01-29T03:40:58.774Z"}
+{"level":"info","message":"Responding with a 500 status code","timestamp":"2018-01-29T03:40:58.774Z"}
+{"message":"Cannot read property 'fieldname' of undefined","stack":"TypeError: Cannot read property 'fieldname' of undefined\n    at waveRouter.post (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/route/wave-router.js:24:52)\n    at Layer.handle [as handle_request] (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/express/lib/router/route.js:137:13)\n    at Immediate.<anonymous> (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/multer/lib/make-middleware.js:53:37)\n    at runCallback (timers.js:793:20)\n    at tryOnImmediate (timers.js:751:5)\n    at processImmediate [as _immediateCallback] (timers.js:722:5)","level":"info","timestamp":"2018-01-29T03:40:58.774Z"}
+{"level":"info","message":"Processing : POST on : /waves/bitcrusher","timestamp":"2018-01-29T03:41:14.865Z"}
+{"level":"info","message":"__ERROR_MIDDLEWARE__","timestamp":"2018-01-29T03:41:14.870Z"}
+{"message":"Cannot read property 'fieldname' of undefined","stack":"TypeError: Cannot read property 'fieldname' of undefined\n    at waveRouter.post (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/route/wave-router.js:24:52)\n    at Layer.handle [as handle_request] (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/express/lib/router/route.js:137:13)\n    at Immediate.<anonymous> (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/multer/lib/make-middleware.js:53:37)\n    at runCallback (timers.js:793:20)\n    at tryOnImmediate (timers.js:751:5)\n    at processImmediate [as _immediateCallback] (timers.js:722:5)","level":"info","timestamp":"2018-01-29T03:41:14.870Z"}
+{"level":"info","message":"Responding with a 500 status code","timestamp":"2018-01-29T03:41:14.870Z"}
+{"message":"Cannot read property 'fieldname' of undefined","stack":"TypeError: Cannot read property 'fieldname' of undefined\n    at waveRouter.post (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/route/wave-router.js:24:52)\n    at Layer.handle [as handle_request] (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/express/lib/router/route.js:137:13)\n    at Immediate.<anonymous> (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/multer/lib/make-middleware.js:53:37)\n    at runCallback (timers.js:793:20)\n    at tryOnImmediate (timers.js:751:5)\n    at processImmediate [as _immediateCallback] (timers.js:722:5)","level":"info","timestamp":"2018-01-29T03:41:14.870Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T03:41:23.745Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T03:41:23.747Z"}
+{"level":"info","message":"Processing : POST on : /waves/bitcrusher","timestamp":"2018-01-29T03:41:42.513Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T03:44:19.644Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T03:44:19.654Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-29T03:44:32.165Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T03:44:32.230Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T03:44:32.235Z"}
+{"level":"info","message":"Processing : POST on : /waves/noise","timestamp":"2018-01-29T03:44:56.610Z"}
+{"level":"info","message":"Processing : POST on : /waves/downpitcher","timestamp":"2018-01-29T03:45:11.062Z"}
+{"level":"info","message":"__ERROR_MIDDLEWARE__","timestamp":"2018-01-29T03:45:11.064Z"}
+{"message":"Cannot read property 'fieldname' of undefined","stack":"TypeError: Cannot read property 'fieldname' of undefined\n    at waveRouter.post (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/route/wave-router.js:24:52)\n    at Layer.handle [as handle_request] (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/express/lib/router/route.js:137:13)\n    at Immediate.<anonymous> (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/multer/lib/make-middleware.js:53:37)\n    at runCallback (timers.js:793:20)\n    at tryOnImmediate (timers.js:751:5)\n    at processImmediate [as _immediateCallback] (timers.js:722:5)","level":"info","timestamp":"2018-01-29T03:45:11.064Z"}
+{"level":"info","message":"Responding with a 500 status code","timestamp":"2018-01-29T03:45:11.064Z"}
+{"message":"Cannot read property 'fieldname' of undefined","stack":"TypeError: Cannot read property 'fieldname' of undefined\n    at waveRouter.post (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/route/wave-router.js:24:52)\n    at Layer.handle [as handle_request] (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/express/lib/router/route.js:137:13)\n    at Immediate.<anonymous> (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/multer/lib/make-middleware.js:53:37)\n    at runCallback (timers.js:793:20)\n    at tryOnImmediate (timers.js:751:5)\n    at processImmediate [as _immediateCallback] (timers.js:722:5)","level":"info","timestamp":"2018-01-29T03:45:11.065Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T03:45:19.299Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T03:45:19.301Z"}
+{"level":"info","message":"Processing : POST on : /waves/downpitcher","timestamp":"2018-01-29T03:45:30.172Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-29T04:04:56.791Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T04:04:56.849Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T04:04:56.852Z"}
+{"level":"info","message":"Processing : POST on : /waves/","timestamp":"2018-01-29T04:05:04.793Z"}
+{"level":"info","message":"Returning a 404 from the catch-all route","timestamp":"2018-01-29T04:05:04.793Z"}
+{"level":"info","message":"Processing : POST on : /waves/bitcrusher","timestamp":"2018-01-29T04:05:33.856Z"}
+{"level":"info","message":"__ERROR_MIDDLEWARE__","timestamp":"2018-01-29T04:05:33.862Z"}
+{"message":"Cannot read property 'fieldname' of undefined","stack":"TypeError: Cannot read property 'fieldname' of undefined\n    at waveRouter.post (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/route/wave-router.js:24:52)\n    at Layer.handle [as handle_request] (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/express/lib/router/route.js:137:13)\n    at Immediate.<anonymous> (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/multer/lib/make-middleware.js:53:37)\n    at runCallback (timers.js:793:20)\n    at tryOnImmediate (timers.js:751:5)\n    at processImmediate [as _immediateCallback] (timers.js:722:5)","level":"info","timestamp":"2018-01-29T04:05:33.862Z"}
+{"level":"info","message":"Responding with a 500 status code","timestamp":"2018-01-29T04:05:33.863Z"}
+{"message":"Cannot read property 'fieldname' of undefined","stack":"TypeError: Cannot read property 'fieldname' of undefined\n    at waveRouter.post (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/route/wave-router.js:24:52)\n    at Layer.handle [as handle_request] (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/express/lib/router/route.js:137:13)\n    at Immediate.<anonymous> (/Users/jeffkusowski/CF/401/labs/37-full-stack-app/lab-jeff/backend/node_modules/multer/lib/make-middleware.js:53:37)\n    at runCallback (timers.js:793:20)\n    at tryOnImmediate (timers.js:751:5)\n    at processImmediate [as _immediateCallback] (timers.js:722:5)","level":"info","timestamp":"2018-01-29T04:05:33.863Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T04:05:38.924Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T04:05:38.925Z"}
+{"level":"info","message":"Processing : POST on : /waves/noise","timestamp":"2018-01-29T04:05:49.729Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T04:07:28.232Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T04:07:28.233Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T04:07:32.912Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T04:07:32.913Z"}
+{"level":"info","message":"Processing : POST on : /waves/noise","timestamp":"2018-01-29T04:07:42.025Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T04:08:05.778Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T04:08:05.780Z"}
+{"level":"info","message":"Processing : POST on : /waves/noise","timestamp":"2018-01-29T04:08:13.823Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T04:16:13.614Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T04:16:13.630Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T04:16:52.379Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T04:16:52.380Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T04:17:16.964Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T04:17:16.965Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T04:17:56.715Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T04:17:56.719Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T04:18:23.319Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T04:18:23.321Z"}
+{"level":"info","message":"Processing : GET on : /login","timestamp":"2018-01-29T04:19:06.190Z"}
+{"level":"info","message":"Processing : GET on : /favorite/me","timestamp":"2018-01-29T04:19:06.252Z"}
+{"level":"info","message":"Processing : GET on : /waves","timestamp":"2018-01-29T04:19:06.254Z"}
+{"level":"info","message":"Processing : POST on : /waves/noise","timestamp":"2018-01-29T04:19:23.338Z"}
+{"level":"info","message":"Processing : PUT on : /favorite","timestamp":"2018-01-29T04:19:49.452Z"}
