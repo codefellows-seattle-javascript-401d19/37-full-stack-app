@@ -33,7 +33,9 @@
     "resolve-url-loader": "^2.2.1",
     "sass-loader": "^6.0.6",
     "superagent": "^3.8.2",
+    "uglifyjs-webpack-plugin": "^1.1.8",
     "uuid": "^3.2.1",
+    "validator": "^9.3.0",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
   },

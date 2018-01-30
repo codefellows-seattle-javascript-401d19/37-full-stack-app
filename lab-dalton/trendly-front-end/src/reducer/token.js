@@ -1,8 +1,11 @@
+import * as cookie from '../lib/cookie';
 
-let initialState = null;
+let token = cookie.cookieFetch('X-Trendly-Token');
+
+let initialState = token ? token : null;
 
 export default (state = initialState, {type, payload}) => {
-  switch(type){
+  switch(type) {
     case 'TOKEN_SET':
       return payload;
     case 'TOKEN_REMOVE':
