@@ -1,6 +1,6 @@
 import React from 'react';
 import * as authActions from '../../action/auth';
-// import * as cookie from '../../lib/cookie';
+import * as cookie from '../../lib/cookie';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
