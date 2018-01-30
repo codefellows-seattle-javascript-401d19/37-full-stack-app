@@ -6,7 +6,6 @@ import AuthForm from '../auth-form';
 import * as authActions from '../../action/auth';
 
 import * as routes from '../../routes';
-import { log } from 'util';
 
 class Landing extends React.Component{
   constructor(props){
@@ -65,7 +64,7 @@ class Landing extends React.Component{
       <div>
         <h2>Login</h2>
         <AuthForm type='login' onComplete={this.handleLogin} />
-        <p> Don't have an account? </p>
+        <p> Do not have an account? </p>
         <Link to='/signup'> Signup </Link>
       </div>;
 
