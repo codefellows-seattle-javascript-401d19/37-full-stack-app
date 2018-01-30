@@ -1,5 +1,6 @@
 import superagent from 'superagent';
 import * as routes from '../routes';
+import * as cookies from '../lib/cookie';
 
 //-------------------------------------------------------------
 // SYNC
@@ -13,6 +14,11 @@ export const removeTokenAction = () => ({
   type : 'TOKEN_REMOVE',
 });
 
+export const logoutAction = () => {
+  cookies.cookieDelete('X-Lindahlgram-Token'); // david - TODO figure out what should be deleted
+  return removeTokenAction();
+};
+
 //-------------------------------------------------------------
 // ASYNC
 //-------------------------------------------------------------
@@ -22,7 +28,9 @@ export const signupAction = (user) => (store) => {
     .withCredentials()
     .then(response => {
       console.log({response});
-      return store.dispatch(setTokenAction(response.text));
+      return store.dispatch(setTokenAction(response.text))
+      .catch(error)
+        throw new Error;
     });
 };
 
@@ -32,7 +40,6 @@ export const loginAction = (user) => (store) => {
     .withCredentials()
     .then(response => {
       console.log({response});
-      // TODO : .text will change 
       return store.dispatch(setTokenAction(response.text));
     });
 };

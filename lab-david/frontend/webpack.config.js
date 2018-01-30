@@ -16,6 +16,12 @@ const webPackConfig = module.exports = {};
 
 const PRODUCTION = process.env.NODE_ENV === 'production';
 
+// const extractSass = new ExtractTextPlugin({
+//   filename: 'style.css',
+//   disable: true,
+//   allChunks: true,
+// });
+
 //-------------------------------------------------------------
 webPackConfig.entry = `${__dirname}/src/main.js`;
 webPackConfig.output = {
@@ -25,7 +31,10 @@ webPackConfig.output = {
 };
 //-------------------------------------------------------------
 webPackConfig.plugins = [
-  new HTMLPlugin( { title : 'ScrambleVOXXX!' } ),
+  new HTMLPlugin( {
+    title : 'Lindahlgram!',
+    template : `${__dirname}/src/index.html`,
+  } ),
   new EnvironmentPlugin([ 'NODE_ENV' ]),
   new DefinePlugin({
     __API_URL__ : JSON.stringify(process.env.API_URL),
@@ -37,6 +46,7 @@ if(PRODUCTION) {
   webPackConfig.plugins = webPackConfig.plugins.concat([
     new UglifyPlugin(),
     new CleanPlugin(),
+    // extractSass,
   ]);
 }
 //-------------------------------------------------------------
@@ -48,7 +58,7 @@ webPackConfig.module = {
       loader: 'babel-loader',
     },
     {
-      test: /\.scss$/,
+      test: /\.(scss|sass)$/, 
       loader: ExtractTextPlugin.extract({
         use : [
           'css-loader',
@@ -62,6 +72,46 @@ webPackConfig.module = {
           },
         ],
       }),
+    },
+    // {
+    //   test: /\.js$/,
+    //   exclude: /(node_modules|bower_components)/,
+    //   use: {
+    //     loader: 'babel-loader',
+    //     options: {
+    //       presets: ['env', 'react'],
+    //     },
+    //   },
+    // },
+    // {
+    //   test: /\.(css|sass|scss)$/,
+    //   use: extractSass.extract({
+    //     fallback: 'style-loader',
+    //     use: ['css-loader', 'sass-loader'],
+    //   }),
+    // },
+    {
+      test: /\.(jpg|gif|png|svg)$/,
+      exclude: /\.icon\.svg$/,
+      use: [{
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: 'image/[name].[hash].[ext]',
+        },
+      }],
+    },
+    {
+      test: /\.(woff|woff2|ttf|eot).*/,
+      use: [
+        {
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            name: 'font/[name].[hash].[ext]',
+          },
+        },
+      ],
     },
   ],
 };

@@ -1,0 +1,12 @@
+@import './lib/base/reset';
+
+@import './lib/vars/vars';
+
+h1 {
+  font-family: $title;
+  font-size: 2em;
+}
+
+p {
+  font-family: $body;
+}

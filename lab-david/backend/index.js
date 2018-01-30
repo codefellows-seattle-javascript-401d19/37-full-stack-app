@@ -1,9 +1,3 @@
-'use strict';
-
-require('dotenv').config();
-
-let server = require('./lib/server');
-
-server.start();
-
-console.log(`Server is running on port ${process.env.PORT}`);
+require('dotenv').config()
+require('babel-register')
+require('./src/main.js')

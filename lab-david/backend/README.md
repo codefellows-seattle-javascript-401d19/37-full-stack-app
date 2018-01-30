@@ -1,137 +1,251 @@
-![Logo](/assets/scramblevox.logo.png)
+SLUGGRAM
+===
+> a social photo platform REST API
+
+## Configureation
+Create a `.env` file and configure it with the following enviroment variables 
+``` bash
+PORT=3000 
+DEBUG=true
+CORS_ORIGINS='<one or more cors orgins (space seporated)>' 
+MONGO_URI='<mongo uri>'
+SECRET='<random string>'
+AWS_ACCESS_KEY_ID='<a aws access key id>'
+AWS_SECRET_ACCESS_KEY='<a aws secret access key>'
+AWS_BUCKET='<a aws bucket>'
+```
+
+## Running Sluggam 
+* Start a mongodb `yarn db-on`
+* Start the server `yarn start`
+
+## API Resources
+#### User Model
+The user model is used in the backend strickly for authentication and authorization. The user model will never be returned from the API, however userID's are stored on Profiles, Photos, and Comments for authorzation validation.  
+
+* `_id` - an unique database genorated string which uniqly identifys a user
+* `email` - a unique string which stores the users email
+* `username` - a unique string that stores the users username
+* `passwordHash` - a string that holds a users hashed password
+* `tokenSeed` - a unique and random string used to genorate authorization tokens 
+
+#### Profile Model
+Each user can have a single profile. Authorization is required for Creating, Updating, and Deleteing Profiles but they have public read access.  
+
+* `_id` - an unique database genorated string which uniqly identifys a profile  
+* `owner` - the user id of the profiles creator 
+* `email` - a unique string which stores the profiles email
+* `username` - a unique string that stores the profiles profilename
+* `avatar` - a string holding a URL to a profile photo
+* `bio` - a string holding a profiles bio 
+
+#### Photo Model
+Each user can have may photos. Authorization is required for Creating, Updating, and Deleteing Photos but they have public read access.
+
+* `_id` - an unique database genorated string which uniqly identifys a profile  
+* `owner` - the user id of the photos creator 
+* `profile` - stores a the creators profile ID. the profile is populated on GET requests
+* `comments` - stores an array of comment IDs. the comments are populated on GET requests
+* `url` - a string which store a url to the photo
+* `description` - a string with a description of the photo
+
+#### Comment Model
+Each user can have many comments, and each photo can have may comments. Authorization is required for Creating, Updating, and Deleteing Comments but they have public read access.
+
+* `_id` - an unique database genorated string which uniqly identifys a profile  
+* `owner` - the user id of the photos creator 
+* `profile` - stores a the creators profile ID. the profile is populated on GET requests
+* `photoID` - stores the photo id of the photo the comment is a response to 
+* `content` - a string with the users comment
+
+## Auth 
+Sluggram uses Basic authentication and Bearer authorization to enforce access controls. Basic and Bearer auth both use the HTTP `Authorization` header to pass credentials on a request.
+
+#### Basic Authentication
+Once a user account has been created Basic Authentication can be used to make a request on behalf of the account. To create a Basic Authorzation Header the client must base64 encode a string with the username and password seporated by a colon. Then the encoded string can then be appened to the string `'Basic '` and set to an `Authorization` header on an HTTP Request.    
+
+``` javascript
+// Example of formating a Basic Authentication header in Javascript 
+let username = 'slugbyte'
+let password = 'abcd1234'
+
+let encoded = window.btoa(`${username}:${password}`)
+let headers = {
+  Authorization: `Basic ${encoded}`
+}
+```
+
+#### Bearer Authorization
+After a successfull signup or login request the client will receive a token. Bearer Authorization uses that token to make a request on behalf of that user account. The token should be append to the string `'Bearer '` and set to an Authorization header on an HTTP Request.
+
+``` javascript
+// Example of formating a Bearer Authorization header in Javascript
+let token = '11983261983261982643918649814613298619823698243'
+
+let headers = {
+  Authorization: `Beaer ${token}`
+}
+```
+
+---
 
 
-[![Build Status](https://travis-ci.org/ScrambleVox/server.svg?branch=readme)](https://travis-ci.org/ScrambleVox/server)
-![Heroku](http://heroku-badge.herokuapp.com/?app=angularjs-crypto&style=flat&svg=1)
+#### POST `/signup`
+a HTTP POST request to /signup will create a new user account.
 
-_scramble your voice by the method of your choice_
+###### request 
+* Expected Headers
+  * Content-Type: application/json
+* Request Body
+  * JSON containing a username, email and password
+
+``` json 
+{
+  "username": "slugbyte",
+  "email": "slugbyte@slugbyte.com",
+  "password": "abcd1234"
+}
+```
+
+###### response
+The response body will be a **bearer token**.
+
+--- 
+
+#### GET `/login`
+A HTTP GET request to /login will login (fetch a token) to an existing user account.
+
+###### request
+* Expected Headers 
+  * Basic Authorization for the user account
+
+###### response 
+The response body will be a **bearer token**.
+
+## Profiles
+#### POST `/profiles`
+A HTTP POST request to /profiles will create a new profile. 
+
+###### request 
+* Expected Headers
+  * Bearer authorization
+  * Content-Type: multipart/form-data
+* Expected Body 
+  * a `bio` field containing string with the users bio
+  * a `image` filed with the users avatar image
+
+###### response 
+the response will be a JSON profile
+
+---
+
+#### GET `/profiles`
+a HTTP GET request to /profiles will return an array of profiles
+###### request 
+* Optional Query Paramiters
+  * SEE PAGINATION
+
+###### response
+See pageination
+
+---
+
+#### GET `/profiles/:id`
+a HTTP GET request to /profiles/:id  will return a profile
+###### response
+the response will return a JSON profile 
+
+---
+
+#### GET `/profiles/me`
+a HTTP GET request to /profiles/:id  will return a profile
+###### request 
+* Expected Headers
+  * Bearer authorization
+###### response
+the response will return a users JSON profile 
 
 
-![picture of WAV file](/assets/AudacityWAV.png)
-## Overview
-This API is designed to take an audio file and return a transformed version of that file. HTTP requests can be made to the server, which is built on RESTful principles. Users can send an 8 bit or 16 bit uncompressed WAV audio file, and depending on the request, one of a number of provided transforms will be performed (see 'Transforms'). A command line tool is provided for proof of concept, and as a handy way to easily perform the various transforms by making requests to the deployed server on Heroku.
-***
+---
 
-## Getting Started
-Familiarity with node, git and the command line are expected. To set up ScrambleVox on your own machine, take the following steps:
-1. Fork or clone the repository onto your machine
-2. Run 'npm i -g' from the cloned repo
-3. To use the command line tools, type 'scramblevox `<command>`'. To see how to interact with the server using the CLI, simply type 'scramblevox', or 'scamblevox help' and the help file will be shown. Requests will be made to the deployed Heroku app.
+#### PUT `/profiles/:id`
+a HTTP PUT request to /profiles/:id will update a profile
+###### request 
+* Expected Headers
+  * Bearer authorization
+  * Content-Type: multipart/form-data or application/json
+* Optional Body Fields
+  * an optional `image` filed with the users avatar image
+    * photo uploads are only posible for Content-Type: multipart/form-data
+  * an optional `bio` field containing string with the users bio
 
-## To Record a WAV format audio sample for use with this app
-[Audacity](https://www.audacityteam.org/) : free, open source, cross-platform audio software for multi-track recording and editing.
-***
-## Models
-### User
-The user schema defines a userame, passwordHash, passwordSalt and email. The username and email must be unique. When a user signs up, a passwordSalt is randomly generated, and a hash is created using this along with their password. The password is never stored anywhere. A token seed is then randomly generated and encrypted with the application's secret salt, and the resulting token is returned to the user. When the user logs back in, their password is hashed along with their passwordSalt, and if this matches the stored hash, a new tokenSeed is generated, stored, encrypted and the resulting token is sent back to the user. When certain requests are made, the user sends their token, which is decrypted by the secret salt, and if it matches their tokenseed, they are authorized to finish making the request.
-### Wave
-The wave schema defines a user, a wavename and a url. When a wave is posted, the token sent with the request is decrypted and matched to a user. If a valid user is found, the wave's user property is set to reference that user's mongodb _id. The wave file will be transformed and posted to AWS, and the link to the AWS-hosted resource is returned and set to the wave's url property. The wavename is set to the value passed in the relevant field, however this is not a required parameter.
-***
-## Transforms
-*Bitcrusher*: Reduces the resolution of the audio from 8 or 16 bits to 3 bits without affecting the actual bit depth of the audio file.
+###### response
+the response will return a JSON profile 
 
-![picture of sound wave](/assets/bitcrusher.png)
+---
 
-*Down Pitcher*: Reduces the sample rate of the audio file by half, reducing the maximum possible frequency of the recording which results in a lower pitch.
+#### DELETE `/profiles/:id`
+a HTTP DELETE request to /profiles/:id will delete a profile
+###### request
+* Expected Headers
+  * Bearer authorization
 
-![picture of sound wave](/assets/downpitcher.png)
+###### response
+the response will have no body and a status of **204**
 
-*Delay*: Adds a portion of the sound wave from a prior sample in the audio buffer to the current position via a fixed interval; simulating an echo.
+## Photos 
+#### POST `/photos`
+A HTTP POST request to /photos will create a new photo. A photo cannot be created until the User has created a profile.
 
-![picture of sound wave](/assets/delay.png)
-![picture of sound wave](/assets/delay2.png)
+###### request 
+* Expected Headers
+  * Bearer authorization
+  * Content-Type: multipart/form-data
+* Expected Body 
+  * a `photo` filed with the file asset
+  * a `description` field
 
-*Noise Addition*: Adds or subtracts a small random number to each sample which has the effect of adding noise to the sound wave.  
+###### response 
+the response will be a JSON photo
 
-![picture of sound wave](/assets/noise.png)
+#### GET `/photos`
+a HTTP GET request to /photos will return an array of photos
+###### request 
+* Optional Query Paramiters
+  * SEE PAGINATION
 
-*Reverse*: Reverses the order of the bytes in the audio buffer of the sound wave.
+###### response
+See pageination
 
-![picture of sound wave](/assets/reverse.png)
-***
-## Routes
-### Account setup
-1. **POST** __api_url__/signup : Creates a new account and responds with a token. You must include a username (String), email (String), and password (String).
-2. **GET** __api_url__/login : Accesses an account and returns a new token. You must send the account's username and password in the auth header of the request. If no basic authentication is included a 400 error will occur.
+#### GET `/photos/:id`
+a HTTP GET request to /photos/:id  will return a photo
+###### response
+the response will return a JSON profile 
 
-### Transforming files
-1. **POST** __api_url__/waves/:transform : Transforms an audio file with the given transform function and returns a url to the modified file. You must send the token for your account in the authorization header of the request. If no bearer authorization is included a 401 error will occur. If a file already exists in the database, it will be removed from both AWS and the database first before uploading the new file.
-2. **GET** __api_url__/waves : Returns the wave that is stored in the database which belongs to the user with whom the sent token is associated. A 401 will occur if the bearer authorization fails.
-2 **DELETE** __api_url__/waves : Removes the wave which belongs to the user with whom the sent token is associated. The file will be removed from both AWS and the database. A 401 will occur if bearer authorization fails.
+#### PUT `/photos/:id`
+a HTTP PUT request to /photos/:id will update a profile
 
-***
-## Tests
-ScrambleVox implements continuous integration (CI) via Travis CI and is deployed on Heroku. Tests are performed with Jest. Pushes to master will be tested by Travis, and if all tests pass, an updated build will be automatically deployed on Heroku.
+###### request 
+* Expected Headers
+  * Bearer authorization
+  * Content-Type: multipart/form-data or application/json
+* Optional Body Fields
+  * an optional `photo` filed with a replacement photo
+    * photo uploads are only posible for Content-Type: multipart/form-data
+  * an optional `description` 
 
-Tests examine both proper behavior for each route as well as behavior when errors occur. The following tests can be executed by running 'npm run test' after installing Jest with 'npm i jest'. Note: in order to successfully run the tests, the mongodb server must be on, and the server must be off.
+#### DELETE `/photos/:id`
+a HTTP DELETE request to /photos/:id will delete a profile
+###### request
+* Expected Headers
+  * Bearer authorization
 
-1. User Router Tests
-  * POST
-    * Tests success case in which the username, email, and password are included and a new account and token are successfully created.
-    * Tests failure cases in which:
-      * The request is missing information (username, email, and password are all required)
-      * The username and/or email provided are already being used on an existing account
+###### response
+the response will have no body and a status of **204**
 
-  * GET
-    * Tests success case in which the account username and password are verified and a token can successfully be returned.
-    * Tests failure cases in which:
-      * No bearer authorization is provided in the HTTP authorization header.
-      * No user can be found with the specified username and password.
-
-2. Wave Router Tests
-  * Tests success case in which a user successfully makes an account, the file provided is modified, and the url to the modified file is returned.
-  * Tests failure cases in which:
-    * The user is verified using bearer authorization but the request is bad.
-    * No authorization header or a bad token is sent with the request.
-
-3. Wave Parser Tests
-  * Tests success case in which file meets all requirements and a new Constructed Wave File is created.
-  * Tests failure cases in which:
-    * The file is the incorrect format (not RIFF or not WAV)
-    * The file size is too large
-    * The file has additional pieces of data that are unexpected (subchunk id 1 or subchunk id 2 do not match the expected values of 'fmt' and 'data' respectively)
-    * The file is not linear PCM encoded (i.e. the file is compressed)
-    * The file has more than two channels (it is not mono or stereo)
-    * The sample rate is too high (above 48k)
-    * The file has a bit depth other than 8 or 16 bits
-
-4. Transform Tests
-  * Tests success cases for 8 bit and 16 bit files, i.e. that the expected results from the transform in question are properly returned.
-***
-## Technologies Used
-### Production
-* ES6
-* node
-* aws-sdk
-* bcrypt
-* dotenv
-* express
-* fs-extra
-* http-errors
-* jsonwebtoken
-* mongodb
-* mongoose
-* multer
-* winston
-
-### Development
-* aws-sdk-mock
-* eslint
-* faker
-* jest
-* superagent
-***
-## To Contribute
-If you would like to help improve this API you can do so by opening an issue under the 'Issues' tab on the repo. We welcome any helpful feedback! Be sure to include a label to help us better understand the issue (i.e. 'bug' to report a problem).
-***
-## License
-MIT (see License file)
-***
-## Authors
-- Andrew Bloom | [GitHub](https://github.com/ALB37)
-- Shannon Dillon | [GitHub](https://github.com/sedillon93)
-- Jeff Kusowski | [GitHub](https://github.com/jjkusowski)
-- David A. Lindahl | [GitHub](https://github.com/austriker27)
-***
-## Special Thanks
-Thank you to Vinicio Vladimir Sanchez Trejo, Steve Geluso, Izzy Baer, Joshua Evans, and Ron Dunphy for help problem solving and identifying useful tools to examine WAV files.
+## Comments
+#### POST `/comments`
+#### GET `/comments`
+#### GET `/comments/:id`
+#### PUT `/comments/:id`
+#### DELETE `/comments/:id`
