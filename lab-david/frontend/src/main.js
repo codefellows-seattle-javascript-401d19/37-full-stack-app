@@ -9,8 +9,7 @@ import thunk from './lib/redux-thunk.js';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 const store = createStore(reducer, composeWithDevTools(
-  applyMiddleware(thunk),
-))
+  applyMiddleware(thunk)));
 
 // const container = document.getElementById('content');
 
