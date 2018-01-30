@@ -1,35 +1,28 @@
+# linter file via Vinicio Vladimir Sanchez Trejo
+
 {
-  "rules": {
-    "react/prop-types": [0],
-    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
-    "comma-dangle": ["error", "always-multiline"],
-    "no-console": "off",
-    "no-unused-vars": "off",
-    "indent": [ "error", 2, { "SwitchCase": 1 } ],
-    "semi": ["error", "always"]
-  },
-  "plugins": [ "react" ],
-  "parserOptions": {
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
-      "module": true,
-      "jsx": true
-    }
-  },
   "env": {
-    "es6": true,
+    "browser": true,
     "node": true,
+    "commonjs": true,
     "jest": true,
-    "browser": true
+    "es6": true
   },
   "globals": {
-    "__API_URI__": false,
-    "__TITLE__": false,
-    "__DEBUG__": false
+    "err": true,
+    "req": true,
+    "res": true,
+    "next": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended"
-  ]
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-console": "off",
+    "indent": [ "error", 2, {"SwitchCase": 1} ],
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "comma-dangle": ["error", "always-multiline"],
+    "semi": [ "error", "always" ]
+  }
 }
