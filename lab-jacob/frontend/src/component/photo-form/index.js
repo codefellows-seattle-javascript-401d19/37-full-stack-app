@@ -73,4 +73,50 @@ class PhotoForm extends React.Component{
     })
   }
 
+  render(){
+    return(
+      <form 
+        onSubmit={this.handleSubmit}
+        className='photo-form'>
+        <img src={this.state.preview} style={{width:'200px'}} />
+
+        <p>{this.state.photoError}</p>
+        <label>Photo</label>
+
+        <input
+          type='file'
+          name='photo'
+          onChange={this.handleChange}
+        />
+
+        <p>{this.state.descriptionError}</p>
+        <label>Description</label>
+
+        <input
+          type='text'
+          name='description'
+          value={this.state.description}
+          onChange={this.handleChange}
+        />
+
+        <button type='submit'> upload photo </button>
+        
+      </form>
+    )
+  }
+}
+
+export default PhotoForm
+
+const fileToDataURL = (file) => {
+  return new Promise((resolve, reject) => {
+    if(!file)
+      return reject(new Error('File Required'))
+    let reader = new FileReader();
+
+    reader.addEventListener('load', () => resolve(reader.result))
+    reader.addEventListener('error', reject)
+
+    return reader.readAsDataURL(file)
+  })
 }
