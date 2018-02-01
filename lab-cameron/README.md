@@ -45,6 +45,14 @@ API_KEY=<insert your meetup API key here>
 CORS=<DOMAIN:PORT OF SERVER >
 ```
 
+### Frontend
+
+
+```
+API_URL=http://localhost:3000
+NODE_ENV=debug
+```
+
 # Tests
 
 All tests written in jest
