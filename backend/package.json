@@ -1,0 +1,38 @@
+{
+  "name": "block-chain-dev",
+  "version": "1.0.0",
+  "description": " This is a blockchain technology testing project for the authors to test their skills, understand blockchain, and have fun!",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest -i --coverage",
+    "lint": "eslint .",
+    "start": "node index.js",
+    "dbon": "mkdir -p ./db && mongod --dbpath ./db",
+    "dboff": "killall mongod"
+  },
+  "author": "Seth Donohue, Nicholas Carignan, Kerry Nordstrom, Jacob Evans",
+  "license": "MIT",
+  "devDependencies": {
+    "dotenv": "^4.0.0",
+    "eslint": "^4.12.1",
+    "jest": "^21.2.1",
+    "superagent": "^3.8.1"
+  },
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "eslint": "^4.12.1",
+    "express": "^4.16.2",
+    "faker": "^4.1.0",
+    "httperrors": "^2.3.0",
+    "jest": "^21.2.1",
+    "jshashes": "^1.0.7",
+    "jsonwebtoken": "^8.1.1",
+    "mongoose": "^4.13.7",
+    "superagent": "^3.8.1",
+    "winston": "^2.4.0"
+  },
+  "engines": {
+    "node": "8.9.3"
+  }
+}
