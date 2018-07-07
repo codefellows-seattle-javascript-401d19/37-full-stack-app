@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for lib/scheduler.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">All files</a> / <a href="index.html">lib</a> scheduler.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">31.11% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>14/45</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">16.67% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>3/18</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">31.11% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>14/45</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+const schedule = require('node-schedule');
+const smsProfile = require('../model/sms-profile');
+const superagent = require('superagent');
+const httpErrors = require('http-errors');
+const sms = require('../lib/sms');
+&nbsp;
+let eventsNextDay = schedule.scheduleJob('00 00 12 * * *', <span class="fstat-no" title="function not covered" >fu</span>nction(){
+<span class="cstat-no" title="statement not covered" >  scheduler.eventsNextDay();</span>
+});
+&nbsp;
+let updateAllGroups = schedule.scheduleJob('00 00 9 * * *', <span class="fstat-no" title="function not covered" >fu</span>nction(){
+<span class="cstat-no" title="statement not covered" >  scheduler.updateAllGroups();</span>
+});
+&nbsp;
+const scheduler = module.exports = {};
+&nbsp;
+scheduler.eventsNextDay = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >  smsProfile.find({})</span>
+    .then(<span class="fstat-no" title="function not covered" >al</span>lProfiles =&gt; {
+      const ONE_DAY = <span class="cstat-no" title="statement not covered" >86400000;</span>
+<span class="cstat-no" title="statement not covered" >      allProfiles.forEach(<span class="fstat-no" title="function not covered" >ea</span>chProfile =&gt; {</span>
+        // sms.sendMessage('sending out test at noon', eachProfile.phoneNumber);
+<span class="cstat-no" title="statement not covered" >        eachProfile.meetups.forEach(<span class="fstat-no" title="function not covered" >ea</span>chMeetupGroup =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >          superagent.get(`https://api.meetup.com/${eachMeetupGroup}/events?key=${process.env.API_KEY}`)</span>
+            .then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; {
+<span class="cstat-no" title="statement not covered" >              return response.body;</span>
+            })
+            .then(<span class="fstat-no" title="function not covered" >ev</span>entsArray =&gt; {
+              let aDaysTime = <span class="cstat-no" title="statement not covered" >Date.now() + ONE_DAY;</span>
+              let filteredEvents = <span class="cstat-no" title="statement not covered" >eventsArray.filter(<span class="fstat-no" title="function not covered" >ev</span>ent =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                return event.time &lt; aDaysTime;</span>
+              });
+<span class="cstat-no" title="statement not covered" >              return filteredEvents.reduce(<span class="fstat-no" title="function not covered" >(a</span>cc, each) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                return `${acc}Hey You have an upcoming event for${each.name}\n${each.group.name}\n${new Date(each.time).toString().match(/\D+ \d+ \d+/)[0]}\n@${each.local_time}\n\n`;</span>
+              }, '');
+            })
+            .then(<span class="fstat-no" title="function not covered" >fi</span>lteredEventsString =&gt; {
+<span class="cstat-no" title="statement not covered" >              if (filteredEventsString.length === 0) {</span>
+<span class="cstat-no" title="statement not covered" >                return;</span>
+              }
+<span class="cstat-no" title="statement not covered" >              console.log(filteredEventsString, eachProfile.phoneNumber);</span>
+<span class="cstat-no" title="statement not covered" >              sms.sendMessage(filteredEventsString, eachProfile.phoneNumber);</span>
+<span class="cstat-no" title="statement not covered" >              return;</span>
+            })
+            .catch(console.log);
+        });
+      });
+    })
+    .catch(console.log);
+};
+&nbsp;
+scheduler.updateAllGroups = () =&gt; {
+  smsProfile.find({})
+    .then(allProfiles =&gt; {
+      console.log(allProfiles);
+&nbsp;
+      allProfiles.forEach(eachProfile =&gt; {
+        // sms.sendMessage('running group updates at 9:00', eachProfile.phoneNumber);
+        superagent.get(`https://api.meetup.com/groups?member_id=${eachProfile.meetupMemberId}&amp;key=${process.env.API_KEY}`)
+          .then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; {
+<span class="cstat-no" title="statement not covered" >            return response.body;</span>
+          })
+          .then(<span class="fstat-no" title="function not covered" >me</span>etupObject =&gt; {
+            const results = <span class="cstat-no" title="statement not covered" >meetupObject.results;</span>
+            let groups = <span class="cstat-no" title="statement not covered" >[];</span>
+            let isTheSame = <span class="cstat-no" title="statement not covered" >true;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            results.forEach(<span class="fstat-no" title="function not covered" >(e</span>achResult, index) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >              groups.push(eachResult);</span>
+<span class="cstat-no" title="statement not covered" >              if (eachProfile.meetups[index] !== eachResult[index]) {</span>
+<span class="cstat-no" title="statement not covered" >                isTheSame = false;</span>
+              }
+            });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (isTheSame) {</span>
+<span class="cstat-no" title="statement not covered" >              return;</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >              console.log('groups =====&gt;', groups);</span>
+<span class="cstat-no" title="statement not covered" >              smsProfile.findByIdAndUpdate(eachProfile._id, {meetups: groups})</span>
+                .then(<span class="fstat-no" title="function not covered" >up</span>datedSmsProfile =&gt; {
+<span class="cstat-no" title="statement not covered" >                  console.log('Account updated', updatedSmsProfile);</span>
+                })
+                .catch(console.log);
+            }
+          })
+          .catch(console.log);
+      });
+    });
+};
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Jan 04 2018 13:51:35 GMT-0800 (PST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
