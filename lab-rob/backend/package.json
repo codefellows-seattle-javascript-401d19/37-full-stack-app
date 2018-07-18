@@ -1,0 +1,49 @@
+{
+  "name": "volly",
+  "version": "1.0.0",
+  "description": "Volunteer management platform for non-profits.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest -i --coverage",
+    "test-c": "jest -i --coverage company-auth-router.test.js",
+    "test-v": "jest -i --coverage volunteer-auth-router.test.js",
+    "test-p": "jest -i --coverage phone-verify-router.test.js",
+    "test-s": "jest -i --coverage server.test.js",
+    "lint": "eslint .",
+    "start": "node index.js",
+    "dbon": "mkdir -p ./db && mongod --dbpath ./db",
+    "dboff": "killall mongod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VollySMS/Volly.git"
+  },
+  "keywords": [
+    "volunteer",
+    "management",
+    "twilio"
+  ],
+  "author": "Pedja Josifovic && Anthony Robinson && Robert Reed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VollySMS/Volly/issues"
+  },
+  "homepage": "https://github.com/VollySMS/Volly#readme",
+  "devDependencies": {
+    "eslint": "^4.14.0",
+    "faker": "^4.1.0",
+    "jest": "^22.0.4"
+  },
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "cors": "^2.8.4",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "http-errors": "^1.6.2",
+    "jsonwebtoken": "^8.1.0",
+    "mongoose": "^4.13.7",
+    "superagent": "^3.8.2",
+    "twilio": "^3.11.0",
+    "winston": "^2.4.0"
+  }
+}
